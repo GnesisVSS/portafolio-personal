@@ -20,7 +20,6 @@ conexion.connect(function (error) {
         throw error;
     } else {
         console.log("Conexión exitosa a la base de datos")
-
     }
 });
 
@@ -37,23 +36,28 @@ app.get('/api/usuarios', (req, res) => {
             throw error;
         } else {
             res.send(filas);
-            // console.log("exito");
         }
     })
 });
 
+
 app.post('/api/usuarios', (req, res) => {
-    
-    // const contrasena = req.body.inputPasswordReg;
-    // let passwordHaash = await bcryptjs.hash(pass, 8);
 
     let data = { correo: req.body.correo, nombre: req.body.nombre, apellido: req.body.apellido, usuario: req.body.usuario, contrasena: req.body.contrasena}
     let sql = "INSERT INTO usuarios SET ?";
-    conexion.query(sql, data, function (error, results) {
-        if (error) {
-            throw error;
-        } else {
+    conexion.query(sql, data, (error, results) => {
+        
+            // throw error;
+            // res.send({err: error});
+            
+        if(error.code === 'ER_DUP_ENTRY'){
+            res.send({ message: "El usuario ya existe!" });
+        }
+        
+        if(results !== null) {
             res.send(results);
+        }else{
+            res.send({ message: "El usuario ya existe!" });
         }
 
     });
