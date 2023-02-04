@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,6 +17,7 @@
     <link rel="shortcut icon" href="img/letra-p.png" />
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body
     style="background-image: url('img/madera.jpg'); background-repeat: no-repeat; background-attachment: fixed; background-size:cover ;">
     <!---------------------------NAVBAR -------------------------------------->
@@ -89,7 +91,7 @@
                 <div class="col-sm-8 text-black py-5" style="padding: 0px;">
                     <div class="card p-4"
                         style="width: auto; background-color:rgba(255, 255, 255, 0.548); height: auto;">
-                        
+
                         <div class="card-body text-black">
                             <h2 class="card-title">Bienvenido(a)!</h2>
                             <p class="card-text" style="font-family: 'Lora', serif;">
@@ -107,7 +109,7 @@
                         <h3>Inicia sesión</h3>
                         <div class="card-body">
                             <hr>
-                            <label for="basic-url" class="form-label">¿No tienes una cuenta? Registrate aquí</label>  
+                            <label for="basic-url" class="form-label">¿No tienes una cuenta? Registrate aquí</label>
                             <div>
                                 <div id="app">
                                     <v-app>
@@ -208,26 +210,36 @@
                             this.usuario = response.data;
                         })
                 },
+                buscar: function () {
+                    // let correo = { correo: this.usuarios.correo }
+                    axios.get(url+this.usuarios.correo)
+                        .then(response => {
+                            // if (response.data.message === "El usuario ya existe!") {
+                            //     alert("El usuario ya existe!")
+                            // }else if(response.data.message === "Usuario disponible"){
+                            //     this.crear();
+                            // }else{
+                            //     alert("Algo salió mal!")
+                            // }
+
+                            if(response.data.message === "Usuario disponible"){
+                                this.crear();
+                            }else if(response.data.message === "Usuario no disponible"){
+                                alert("El usuario ya existe!")
+                            }else{
+                                alert("Algo salió mal!")
+                            }
+
+                        })
+                },
                 crear: function () {
                     let parametros = { correo: this.usuarios.correo, nombre: this.usuarios.nombre, apellido: this.usuarios.apellido, usuario: this.usuarios.usuario, contrasena: this.usuarios.contrasena };
                     axios.post(url, parametros)
                         .then((response) => {
-                            if (response.data.message === "El usuario ya existe!") {
-                                this.mostrar();
-                                alert("El usuario ya existe!")
-                            } else{
-                                this.mostrar();
-                                alert("Usuario registrado exitosamente")
-                            }
-                            // else {
-                            //     this.mostrar();
-                            //     alert("Usuario creado exitosamente")
-                            // }
+                            alert("Usuario registrado exitosamente")
+                            this.mostrar();
                         })
-                    // .catch(e => {
-                    //     // Capturamos los errores
-                    //     alert("El usuario ya existe!")
-                    // });
+                    
                     this.usuarios.correo = "";
                     this.usuarios.nombre = "";
                     this.usuarios.apellido = "";
@@ -237,7 +249,7 @@
 
                 //Botones y formularios
                 guardar: function () {
-                    this.crear();
+                    this.buscar();
                 }
             }
         });
@@ -248,4 +260,5 @@
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital@1&display=swap" rel="stylesheet">
 
 </body>
+
 </html>

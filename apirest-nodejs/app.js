@@ -40,25 +40,53 @@ app.get('/api/usuarios', (req, res) => {
     })
 });
 
+// busqueda por correo de usuario
+app.get('/api/usuarios/:correo', (req, res) => {
+    conexion.query("SELECT * FROM usuarios WHERE correo = ?", [req.params.correo], (error, fila) => {
+        if(error){
+            res.send({ message: "Algo salio mal" });
+        }else{
+            if(fila.length > 0){
+                // res.send(fila);
+                res.send({ message: "Usuario no disponible" });
+            }else{
+                res.send({ message: "Usuario disponible" });
+            }
+            
+        }
+        // if (results) {
+        //     // res.send({ message: "El usuario ya existe!" });
+            
+        // } else {
+        //     res.send({ message: "Usuario disponible" });
+        // }
+    })
+});
 
 app.post('/api/usuarios', (req, res) => {
 
-    let data = { correo: req.body.correo, nombre: req.body.nombre, apellido: req.body.apellido, usuario: req.body.usuario, contrasena: req.body.contrasena}
+    let data = { correo: req.body.correo, nombre: req.body.nombre, apellido: req.body.apellido, usuario: req.body.usuario, contrasena: req.body.contrasena }
     let sql = "INSERT INTO usuarios SET ?";
     conexion.query(sql, data, (error, results) => {
-        
-            // throw error;
-            // res.send({err: error});
-            
-        if(error.code === 'ER_DUP_ENTRY'){
-            res.send({ message: "El usuario ya existe!" });
+
+        // throw error;
+        // res.send({err: error});
+        if (error) {
+            throw error;
         }
-        
-        if(results !== null) {
+
+        if (results) {
             res.send(results);
-        }else{
-            res.send({ message: "El usuario ya existe!" });
+        } else {
+            res.send({ message: "Algo salió mal!" });
         }
+
+
+        // if(results !== null) {
+
+        // }else{
+        //     res.send({ message: "El usuario ya existe!" });
+        // }
 
     });
 
