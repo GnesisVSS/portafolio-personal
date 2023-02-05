@@ -14,17 +14,17 @@
     <link rel="stylesheet" type="text/css"
         href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap5.min.css">
-    <link rel="shortcut icon" href="img/letra-p.png" />
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="../img/letra-p.png" />
+    <link rel="stylesheet" href="../css/style.css">
+    
 </head>
 
-<body
-    style="background-image: url('img/madera.jpg'); background-repeat: no-repeat; background-attachment: fixed; background-size:cover ;">
+<body>
     <!---------------------------NAVBAR -------------------------------------->
     <nav class="navbar navbar-expand-lg sticky-top" id="contenido">
         <div class=" container">
             <a class="navbar-brand text-black" href="/">
-                <img src="img/portafolio.png" alt="Bootstrap" width="35" height="35"> Portafolio
+                <img src="../img/portafolio.png" alt="Bootstrap" width="35" height="35"> Portafolio
             </a>
             <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,7 +33,7 @@
             <div class="  collapse navbar-collapse  " id="navbarNav">
                 <ul class="navbar-nav text">
                     <li class="nav-item ">
-                        <a class="nav-link black-white" id="boton" href="recetas.html">Recetas</a>
+                        <a class="nav-link black-white" id="boton" href="Inicio.html">Recetas</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav flex-row flex-wrap ms-md-auto"></ul>
@@ -86,26 +86,20 @@
     <!-- CONTENIDO DE LA PÁGINA -->
     <section>
         <div class="container ">
-            <div class="row align-items-center py-2">
+            <div class="row align-items-center py-6">
                 <!------------------------------- CARRUSEL ------------------------------------>
-                <div class="col-sm-8 text-black py-5" style="padding: 0px;">
-                    <div class="card p-4"
+                <div class="col-sm-8 text-black py-2" style="padding: 0px;">
+                    <div class="card p-0"
                         style="width: auto; background-color:rgba(255, 255, 255, 0.548); height: auto;">
 
-                        <div class="card-body text-black">
-                            <h2 class="card-title">Bienvenido(a)!</h2>
-                            <p class="card-text" style="font-family: 'Lora', serif;">
-                                Recetas dulces, saladas, saludables, para todos los gustos! Accede a estas y más recetas
-                                creandote una cuenta en en formulario!
-                            </p>
-                        </div>
+                        
 
-                        <img class="rounded" src="img/comida.png" alt="">
+                        <img class="rounded" src="../img/waffle-2596092_1280.jpg" height="550px" alt="">
                     </div>
                 </div>
                 <!---------------------------- FORMULARIO LOGIN --------------------------------->
                 <div class="col py-5" style="padding: 0px;">
-                    <div class="card text-center p-4" style="background-color: #7474746d; height: auto">
+                    <div class="card text-center p-4" style="background-color: #ffaa006d; height: auto">
                         <h3>Inicia sesión</h3>
                         <div class="card-body">
                             <hr>
@@ -155,6 +149,7 @@
                                                     <input @click="guardar()" type="submit" class="btn btn-outline-dark"
                                                         value="Registrarse">
                                                 </div>
+                                                <!-- <a href="Inicio.html" type="button" class="btn btn-outline-dark">hola</a> -->
                                             </form>
                                         </v-main>
                                     </v-app>
@@ -214,15 +209,9 @@
                     // let correo = { correo: this.usuarios.correo }
                     axios.get(url+this.usuarios.correo)
                         .then(response => {
-                            // if (response.data.message === "El usuario ya existe!") {
-                            //     alert("El usuario ya existe!")
-                            // }else if(response.data.message === "Usuario disponible"){
-                            //     this.crear();
-                            // }else{
-                            //     alert("Algo salió mal!")
-                            // }
 
                             if(response.data.message === "Usuario disponible"){
+                                alert("Usuario registrado exitosamente")
                                 this.crear();
                             }else if(response.data.message === "Usuario no disponible"){
                                 alert("El usuario ya existe!")
@@ -236,7 +225,6 @@
                     let parametros = { correo: this.usuarios.correo, nombre: this.usuarios.nombre, apellido: this.usuarios.apellido, usuario: this.usuarios.usuario, contrasena: this.usuarios.contrasena };
                     axios.post(url, parametros)
                         .then((response) => {
-                            alert("Usuario registrado exitosamente")
                             this.mostrar();
                         })
                     
