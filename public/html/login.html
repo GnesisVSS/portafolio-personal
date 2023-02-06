@@ -16,9 +16,9 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap5.min.css">
     <link rel="shortcut icon" href="../img/letra-p.png" />
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -35,7 +35,7 @@
             <div class="  collapse navbar-collapse  " id="navbarNav">
                 <ul class="navbar-nav text">
                     <li class="nav-item ">
-                        <a class="nav-link black-white" id="boton" href="login-register.html">Recetas</a>
+                        <a class="nav-link black-white" id="boton" href="Inicio-recetas.html">Recetas</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav flex-row flex-wrap ms-md-auto"></ul>
@@ -87,39 +87,80 @@
     </nav>
     <!-- CONTENIDO DE LA PÁGINA -->
     <section>
-        <div>
-            <div class="container col-sm-8 py-4 mx-auto">
-                <div class="row align-items-center py-2">
-                    <div class="col text-black">
-                        <h1 class="text-focus-in titulo-inicio" style="color: #F9A826;">Bienvenido(a)!</h1>
-                        <p style="font-family: 'Lora', serif;">
-                            Recetas dulces, saladas, saludables, para todos los gustos! Accede a estas y más recetas
-                            iniciando sesión, si no tienes una cuenta puedes registrarte gratis, para acceder al listado
-                            completo de
-                            resetas que tenemos para ti. Además tambien puedes crear tus propias recetas y guardarlas
-                            junto a las que te entregamos
-                            para tener una mayor variedad.
-                        </p>
-                        <div style="text-align: center;">
-                            <a href="login-register.html" type="button" class="button-inicio">Inicia sesión</a>
-                        </div>
-
+        <div class="container col-sm-8 mx-auto">
+            <div class="row align-items-center">
+                <!------------------------------- CARRUSEL ------------------------------------>
+                <div class="col-sm-8 text-black" style="padding: 0px;">
+                    <div class="card" style="width: auto; background-color:rgba(255, 255, 255, 0.548);">
+                        <img class="rounded" src="../img/waffle-2596092_1280.jpg" alt="">
                     </div>
-                    <div class="col py-4">
-                        <img src="../img/dibujo-cocina.svg" style="height: 578px; width: 578px;" alt="">
-                    </div>
-
                 </div>
-                
+                <!---------------------------- FORMULARIO LOGIN --------------------------------->
+                <div class="col py-4" style="padding: 0px;">
+                    <div class="card text-center p-4">
+                        <h3><strong>Inicia sesión</strong></h3>
+                        <div>
+                            <div id="app">
+                                <app>
+                                    <main>
+                                        <form class="p-4">
+                                            <div class="input-group mb-3">
+                                                <input v-model="usuarios.nombre" type="text" class="form-control"
+                                                    placeholder="Nombre" aria-label="nombre" aria-describedby="nombre">
+                                            </div>
+
+                                            <div class="input-group mb-3">
+                                                <input v-model="usuarios.apellido" type="text" class="form-control"
+                                                    placeholder="Apellido" aria-label="apellido"
+                                                    aria-describedby="apellido">
+                                            </div>
+
+                                            <div class="input-group mb-3">
+                                                <input v-model="usuarios.correo" type="text" class="form-control"
+                                                    placeholder="Correo" aria-label="correo" aria-describedby="correo">
+                                            </div>
+
+                                            <div class="input-group mb-3">
+                                                <input v-model="usuarios.usuario" type="text" class="form-control"
+                                                    placeholder="Nombre de Usuario" aria-label="usuario"
+                                                    aria-describedby="usuario">
+                                            </div>
+
+                                            <div class="input-group mb-3">
+
+                                                <input v-model="usuarios.contrasena" type="password"
+                                                    class="form-control" placeholder="Contraseña"
+                                                    aria-label="contrasena" aria-describedby="contrasena"
+                                                    id="txtPassword" style="border-right: none;">
+                                                <!-- <button id="show_password" class="btn btn-primary" type="button"
+                                                    onclick="mostrarPassword()"> <span
+                                                        class="fa fa-eye-slash icon"></span> </button> -->
+                                                <span id="show_password" type="button" onclick="mostrarPassword()"
+                                                    class="fa fa-eye-slash icon input-group-text" style="background-color: transparent; border-left: none;"></span>
+
+                                            </div>
+                                            <div style="text-align: center;" class="py-2">
+                                                <a @click="guardar()" type="submit" class="button-inicio">Prueba</a>
+                                            </div>
+                                            <!-- <a href="Inicio.html" type="button" class="btn btn-outline-dark">hola</a> -->
+                                        </form>
+                                    </main>
+                                </app>
+                            </div>
+                        </div>
+                        <!-- <div style="text-align: center;">
+                            <a href="login-register.html" type="button" class="button-inicio">Inicia sesión</a>
+                        </div> -->
+                        <div class="card-body pt-1">
+                            <hr>
+                            <a href="registro.html" for="basic-url" class="form-label">¿No tienes una cuenta? Registrate
+                                aquí</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            
         </div>
     </section>
-
-
-
-
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
@@ -168,15 +209,9 @@
                     // let correo = { correo: this.usuarios.correo }
                     axios.get(url + this.usuarios.correo)
                         .then(response => {
-                            // if (response.data.message === "El usuario ya existe!") {
-                            //     alert("El usuario ya existe!")
-                            // }else if(response.data.message === "Usuario disponible"){
-                            //     this.crear();
-                            // }else{
-                            //     alert("Algo salió mal!")
-                            // }
 
                             if (response.data.message === "Usuario disponible") {
+                                alert("Usuario registrado exitosamente")
                                 this.crear();
                             } else if (response.data.message === "Usuario no disponible") {
                                 alert("El usuario ya existe!")
@@ -190,7 +225,6 @@
                     let parametros = { correo: this.usuarios.correo, nombre: this.usuarios.nombre, apellido: this.usuarios.apellido, usuario: this.usuarios.usuario, contrasena: this.usuarios.contrasena };
                     axios.post(url, parametros)
                         .then((response) => {
-                            alert("Usuario registrado exitosamente")
                             this.mostrar();
                         })
 
@@ -208,6 +242,25 @@
             }
         });
 
+    </script>
+    <script type="text/javascript">
+        function mostrarPassword() {
+            var cambio = document.getElementById("txtPassword");
+            if (cambio.type == "password") {
+                cambio.type = "text";
+                $('.icon').removeClass('fa fa-eye-slash').addClass('fa fa-eye');
+            } else {
+                cambio.type = "password";
+                $('.icon').removeClass('fa fa-eye').addClass('fa fa-eye-slash');
+            }
+        }
+
+        $(document).ready(function () {
+            //CheckBox mostrar contraseña
+            $('#ShowPassword').click(function () {
+                $('#Password').attr('type', $(this).is(':checked') ? 'text' : 'password');
+            });
+        });
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

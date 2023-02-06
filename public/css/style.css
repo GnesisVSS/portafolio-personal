@@ -299,7 +299,7 @@ a:link.cardt-button, a:visited.cardt-button, a:active.cardt-button {
        }
        
        .button-inicio:active:before {
-        background: #3a0ca3;
+        background: #f98826;
         transition: background 0s;
        }
     
