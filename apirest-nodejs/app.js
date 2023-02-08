@@ -41,7 +41,7 @@ app.get('/api/usuarios', (req, res) => {
 });
 
 // busqueda por correo de usuario
-app.get('/api/usuarios/:correo', (req, res) => {
+app.get('/api/usuarios', (req, res) => {
     conexion.query("SELECT * FROM usuarios WHERE correo = ?", [req.params.correo], (error, fila) => {
         if(error){
             res.send({ message: "Algo salio mal" });
@@ -54,12 +54,22 @@ app.get('/api/usuarios/:correo', (req, res) => {
             }
             
         }
-        // if (results) {
-        //     // res.send({ message: "El usuario ya existe!" });
+    })
+});
+
+// busqueda por correo de usuario y contraseña
+app.get('/api/usuarios/:correo', (req, res) => {
+    conexion.query("SELECT * FROM usuarios WHERE correo = ? and contrasena = ?", [req.params.correo,req.params.contrasena], (error, fila) => {
+        if(error){
+            res.send({ message: "Algo salio mal" });
+        }else{
+            if(fila.length > 0){
+                res.send({ message: "Credenciales correctas" });
+            }else{
+                res.send({ message: "Revisa los campos e intentalo de nuevo" });
+            }
             
-        // } else {
-        //     res.send({ message: "Usuario disponible" });
-        // }
+        }
     })
 });
 
@@ -69,8 +79,6 @@ app.post('/api/usuarios', (req, res) => {
     let sql = "INSERT INTO usuarios SET ?";
     conexion.query(sql, data, (error, results) => {
 
-        // throw error;
-        // res.send({err: error});
         if (error) {
             throw error;
         }
@@ -80,13 +88,6 @@ app.post('/api/usuarios', (req, res) => {
         } else {
             res.send({ message: "Algo salió mal!" });
         }
-
-
-        // if(results !== null) {
-
-        // }else{
-        //     res.send({ message: "El usuario ya existe!" });
-        // }
 
     });
 

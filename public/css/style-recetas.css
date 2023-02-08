@@ -4,7 +4,7 @@
 }
 
 body{
-    background-color: #484554;
+    background-color: white;
 }
 
 .titulo-inicio{
@@ -272,7 +272,7 @@ a:link.cardt-button, a:visited.cardt-button, a:active.cardt-button {
         z-index: 1;
         font-size: 17px;
         border-radius: 6px;
-        font-weight: 600;
+        font-weight: 500;
         color: var(--color);
         text-decoration: none;
         text-align: center;
@@ -307,13 +307,6 @@ a:link.cardt-button, a:visited.cardt-button, a:active.cardt-button {
         background: #f98826;
         transition: background 0s;
        }
-
-       .icono{
-        background-color: rgba(48, 48, 48, 0.588);
-        color: white;
-       }
-
-       
     
     
     

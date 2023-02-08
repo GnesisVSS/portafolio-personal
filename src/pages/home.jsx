@@ -1,135 +1,159 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-
-// Modelos
-import { User } from '../models/user.class';
-const RegisterFormik = () => {
-
-    let user = new User();
+import PropTypes from 'prop-types';
+// import { LEVELS } from '../../../models/levels.enum';
+// import { Task } from '../../../models/task.class';
 
 
-    const initialValues = {
-        username: '',
-        email: '',
-        password: '',
-        confirm: ''
-    }
+const TaskForm = ({ add, length }) => {
+
+    const nameRef = useRef('')
+    const descriptionRef = useRef('')
+    // const levelRef = useRef(LEVELS.NORMAL)
+
+    // function addTask() {
+    //     const newTask = new Task(
+    //         nameRef.current.value,
+    //         descriptionRef.current.value,
+    //         false,
+    //         levelRef.current.value
+    //     );
+
+    //     add(newTask);
+    // }
+
+    // const initialValues = {
+    //     name: '',
+    //     description: '',
+    //     completed: false,
+    //     level: LEVELS.NORMAL
+    // }
 
     const RegisterSchema = Yup.object().shape(
         // Objeto a validar
         {
-            username: Yup.string()
-                .min(6, 'El nombre de usuario es muy corto')
-                .max(12, 'El nombre de usuario es muy largo')
-                .required('El nombre de usuario es obligatorio'),
-            email: Yup.string()
-                .email('Formato de email invalido')
-                .required('El email es obligatorio'),
-            password: Yup.string()
-                .min(8, 'La contraseña es muy corta')
-                .required('La contraseña es obligatoria')
-                .matches(``),
-            confirm: Yup.string()
-                // cuando esté la contraseña
-                .when("password", {
-                    // Condiciones
-                    // Si el valor existe y si es mayor a 0
-                    is: value => (value && value.length > 0 ? true : false),
-                    // Esto cuando ya se tiene un valor revisa que sea uno de la lista
-                    then: Yup.string().oneOf(
-                        // obtiene el valor de password
-                        [Yup.ref("password")],
-                        // mensaje de error
-                        '¡La contraseña debe coincidir!'
-                    )
-                }).required('Debes confirmar la contraseña')
+            name: Yup.string()
+                .min(6, 'El nombre de la tarea es muy corto')
+                .max(12, 'El nombre de la tarea es muy largo')
+                .required('El nombre de la tarea es obligatorio'),
+                description: Yup.string()
+                .min(5, 'La descripción de la tarea es muy corta')
+                .max(12, 'La descripción de la tarea es muy larga')
+                .required('La descripción de la tarea es obligatorio'),
+            completed: Yup.string()
+                .required('El estado de la tarea es obligatorio')
         }
     )
 
-    // --------------------------------SUBMIT-----------------------------------
-    // const submit = (values) => {
-    //     alert('Register User')
-    // }
+    const normalStyle = {
+        color: 'blue',
+        fontWeight: 'bold'
+    }
+
+    const urgentStyle = {
+        color: 'yellow',
+        fontWeight: 'bold'
+    }
+
+    const blockingStyle = {
+        color: 'red',
+        fontWeight: 'bold'
+    }
 
     return (
-        <div>
-            <h4>Register Formik</h4>
-            <Formik
-                initialValues={initialValues}
-                validationSchema={RegisterSchema}
-                onSubmit={async (values) => {
+        <Formik initialValues={0}
+            validationSchema={RegisterSchema}
+            onSubmit={async (values,e) => {
                     await new Promise((r) => setTimeout(r, 1000));
                     alert(JSON.stringify(values, null, 2));
-                }}
-            >
-                {({ values,
-                    //para saber si el usuario ha tocado el campo
-                    touched,
-                    errors,
-                    // Dice si se ha terminado de enviar
-                    isSubmitting,
-                    //Controlar cambios del campo
-                    handleChange,
-                    //controlar cambios de foco
-                    handleBlur }) => (
-                    <Form>
-                        <label htmlFor="username">Username</label>
-                        <Field id="username" type="text" name="username" placeholder="Tu nombre de usuario" />
+                    // addTask();
+                    
+                    }}
+        >
+            {({ values,
+                //para saber si el usuario ha tocado el campo
+                touched,
+                errors,
+                // Dice si se ha terminado de enviar
+                isSubmitting,
+                //Controlar cambios del campo
+                handleChange,
+                preventDefault,
+                //controlar cambios de foco
+                handleBlur }) => (
+                <Form className='d-flex justify-content-center align-items-center mb-4'>
+                    
+                    <div className='form-outline flex-fill'>
+                        {/* NOMBRE DE LA TAREA*/}
+                        {/* <label htmlFor="name">Nombre de la tarea</label> */}
+                        <Field innerRef={nameRef} name="name"  id="name" type="text" className='form-control form-control-lg' placeholder='Task Name' autoFocus />
                         {
                             //Si el usuario a tocado el email si no no sale
-                            errors.username && touched.username &&
+                            errors.name && touched.name &&
                             (
-                                <ErrorMessage name="username" component='div'></ErrorMessage>
-
+                                <ErrorMessage name="name" component='div'></ErrorMessage>
                             )
                         }
-                        <label htmlFor="email">Email</label>
-                        <Field id="email" type="email" name="email" placeholder="ejemplo@ejemplo.com" />
+
+                        {/* DESCRIPCION DE LA TAREA */}
+                        {/* <label htmlFor="description">Descripcion de la tarea</label> */}
+                        <Field id="des" name="description" innerRef={descriptionRef} type="text" className='form-control form-control-lg' placeholder='Task Description' />
                         {
                             //Si el usuario a tocado el email si no no sale
-                            errors.email && touched.email &&
+                            errors.description && touched.description &&
                             (
-                                <ErrorMessage name="email" component='div'></ErrorMessage>
-
-                            )
-                        }
-                        <label htmlFor="password">Contraseña</label>
-                        <Field
-                            id="password"
-                            name="password"
-                            placeholder="password"
-                            type="password"
-                        />
-                        {
-                            errors.password && touched.password &&
-                            (
-                                <ErrorMessage name="password" component='div'></ErrorMessage>
+                                <ErrorMessage name="description" component='div'></ErrorMessage>
 
                             )
                         }
 
-                        <label htmlFor="confirm">Contraseña</label>
-                        <Field
-                            id="confirm"
-                            name="confirm"
-                            placeholder="confirm password"
-                            type="password"
-                        />
-                        {
-                            errors.confirm && touched.confirm &&
-                            (
-                                <ErrorMessage name="confirm" component='div'></ErrorMessage>
+                        {/* <Field component="select" className='form-control form-control-lg' innerRef={levelRef}  id='level' name='level'>
+                            <option value={LEVELS.NORMAL}>
+                                Normal
+                            </option>
+                            <option value={LEVELS.URGENT}>
+                                Urgent
+                            </option>
+                            <option value={LEVELS.BLOCKING}>
+                                Blocking
+                            </option>
+                        </Field> */}
+                        <button type='submit' className='btn btn-success btn-lg ms-2'>
+                            {length > 0 ? 'Añade una tarea' : 'Crea tu primera tarea'}
+                        </button>
+                    </div>
+                </Form>
+            )}
+        </Formik>
 
-                            )
-                        }
+        // <form onSubmit={addTask} className='d-flex justify-content-center align-items-center mb-4'>
+        //     <div className='form-outline flex-fill'>
+        //         <input ref={nameRef} id='inputName' type='text' className='form-control form-control-lg' required autoFocus placeholder='Task Name'></input>
+        //         <input ref={descriptionRef} id='inputDescription' type='text' className='form-control form-control-lg' required placeholder='Task Description'></input>
+        //         <select className='form-control form-control-lg' ref={levelRef} defaultValue={LEVELS.NORMAL} id='selectLevel'>
+        //             <option value={LEVELS.NORMAL}>
+        //                 Normal
+        //             </option>
+        //             <option value={LEVELS.URGENT}>
+        //                 Urgent
+        //             </option>
+        //             <option value={LEVELS.BLOCKING}>
+        //                 Blocking
+        //             </option>
+        //         </select>
+        //         <button type='submit' className='btn btn-success btn-lg ms-2'>
+        //             {length > 0 ? 'Añade una tarea' : 'Crea tu primera tarea'}
+        //         </button>
+        //     </div>
 
-                        <button type="submit">Registrar nuevo usuario</button>
-                        {isSubmitting ? (<p>Ingresando tus credenciales...</p>) : null}
-                    </Form>
-                )}</Formik>
-        </div>
+        // </form>
     );
 }
 
-export default RegisterFormik;
+TaskForm.propTypes = {
+    add: PropTypes.func.isRequired,
+    length: PropTypes.number.isRequired
+}
+
+export default TaskForm;
