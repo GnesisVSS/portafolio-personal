@@ -41,24 +41,26 @@ app.get('/api/usuarios', (req, res) => {
 });
 
 // busqueda por correo de usuario
-app.get('/api/usuarios', (req, res) => {
+app.get('/api/usuarios/:correo', (req, res) => {
     conexion.query("SELECT * FROM usuarios WHERE correo = ?", [req.params.correo], (error, fila) => {
         if(error){
             res.send({ message: "Algo salio mal" });
         }else{
             if(fila.length > 0){
                 // res.send(fila);
-                res.send({ message: "Usuario no disponible" });
+                res.send({ message: "Usuario ya registrado" });
             }else{
-                res.send({ message: "Usuario disponible" });
+                res.send({ message: "Usuario no registrado" });
             }
             
         }
     })
 });
 
+// -----------------------------LOGIN--------------------------------------
+
 // busqueda por correo de usuario y contraseña
-app.get('/api/usuarios/:correo', (req, res) => {
+app.get('/api/usuarios/:correo/:contrasena', (req, res) => {
     conexion.query("SELECT * FROM usuarios WHERE correo = ? and contrasena = ?", [req.params.correo,req.params.contrasena], (error, fila) => {
         if(error){
             res.send({ message: "Algo salio mal" });

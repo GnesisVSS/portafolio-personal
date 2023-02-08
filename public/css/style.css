@@ -276,9 +276,9 @@ a:link.cardt-button, a:visited.cardt-button, a:active.cardt-button {
         color: var(--color);
         text-decoration: none;
         text-align: center;
-       }
-       
-       .button-inicio:before {
+    }
+    
+    .button-inicio:before {
         content: "";
         position: absolute;
         z-index: -1;
@@ -286,35 +286,29 @@ a:link.cardt-button, a:visited.cardt-button, a:active.cardt-button {
         height: 150px;
         width: 200px;
         border-radius: 50%;
-       }
-       
-       .button-inicio:hover {
+    }
+    
+    .button-inicio:hover {
         color: #fff;
-       }
-       
-       .button-inicio:before {
+    }
+    
+    .button-inicio:before {
         top: 100%;
         left: 100%;
         transition: all .7s;
-       }
-       
-       .button-inicio:hover:before {
+    }
+    
+    .button-inicio:hover:before {
         top: -30px;
         left: -30px;
-       }
-       
-       .button-inicio:active:before {
+    }
+    
+    .button-inicio:active:before {
         background: #f98826;
         transition: background 0s;
-       }
+    }
 
-       .icono{
-        background-color: rgba(48, 48, 48, 0.588);
+    .icono{
+        background-color: #484554;
         color: white;
-       }
-
-       
-    
-    
-    
-    
+    }
