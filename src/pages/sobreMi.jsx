@@ -26,9 +26,9 @@ const SobreMi = () => {
         <section id='sobreMi' >
             <div style={{ backgroundColor: 'white' }}>
 
-                <div class="container col py-2 mx-auto">
+                <div className="container col py-2 mx-auto">
                     <strong><h1 className='p-5' style={{ textAlign: 'left' }}>Sobre Mi</h1></strong>
-                    <div class="row  py-5">
+                    <div className="row  py-5">
                         {/* <div class="col-2" >
                             <div class="col text-black" >
 
@@ -53,14 +53,14 @@ const SobreMi = () => {
                             </div>
                         </div> */}
 
-                        <div class="col px-5" >
-                            <div class="col text-black">
-                                <img alt='' src='img/sobremi.svg' class='card-img-top' />
+                        <div className="col px-5" >
+                            <div className="col text-black">
+                                <img alt='' src='img/sobremi.svg' className='card-img-top' />
                             </div>
                         </div>
 
-                        <div class="col-6" >
-                            <div class="col text-black" >
+                        <div className="col-6" >
+                            <div className="col text-black" >
                                 <h4>Experiencia</h4>
                                 <div className='py-4'>
                                     <p style={estilo2}>

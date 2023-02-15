@@ -31,10 +31,10 @@ const Recetas = () => {
     return (
         <section id='recetas'>
             <div style={{ backgroundColor: 'white' }}>
-                <div class="container col-sm-8 py-4 mx-auto">
-                    <div class="row align-items-center py-2">
-                        <div class="col text-black">
-                            <h1 class="text-focus-in titulo-inicio" style={estilo1}>Bienvenido(a)!</h1>
+                <div className="container col-sm-8 py-4 mx-auto">
+                    <div className="row align-items-center py-2">
+                        <div className="col text-black">
+                            <h1 className="text-focus-in titulo-inicio" style={estilo1}>Bienvenido(a)!</h1>
                             <p style={estilo2}>
                                 Recetas dulces, saladas, saludables, para todos los gustos! Accede a estas y más recetas
                                 iniciando sesión, si no tienes una cuenta puedes registrarte gratis, para acceder al listado
@@ -44,11 +44,11 @@ const Recetas = () => {
                                 para tener una mayor variedad.
                             </p>
                             <div style={estilo3}>
-                                <a href="/login" type="button" class="button-inicio">Inicia sesión</a>
+                                <a href="/login" type="button" className="button-inicio">Inicia sesión</a>
                             </div>
 
                         </div>
-                        <div class="col py-4">
+                        <div className="col py-4">
                             <img src="../img/dibujo-cocina.svg" style={estilo4} alt="" />
                         </div>
 

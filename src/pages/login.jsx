@@ -24,17 +24,17 @@ const Login = () => {
 
     return (
         <section className='py-5'>
-            <div class="container col-sm-8 mx-auto">
-                <div class="row">
-                    <div class="card mb-3 ps-0">
-                        <div class="row g-0">
-                            <div class="col-md-7">
-                                <img class="img-fluid rounded-start" src="../img/waffle-2596092_1280.jpg" alt="" />
+            <div className="container col-sm-8 mx-auto">
+                <div className="row">
+                    <div className="card mb-3 ps-0">
+                        <div className="row g-0">
+                            <div className="col-md-7">
+                                <img className="img-fluid rounded-start" src="../img/waffle-2596092_1280.jpg" alt="" />
                             </div>
-                            <div class="col-md-5">
-                                <div class="card-body p-4">
-                                    <h3 class="card-title text-center fw-bold">Inicia sesión</h3>
-                                    <div class="card-text p-4">
+                            <div className="col-md-5">
+                                <div className="card-body p-4">
+                                    <h3 className="card-title text-center fw-bold">Inicia sesión</h3>
+                                    <div className="card-text p-4">
                                         <Formik
                                             initialValues={{
                                                 correo: "",
@@ -53,9 +53,9 @@ const Login = () => {
                                         >
                                             {({ handleChange, handleSubmit }) => (
                                                 <Form onSubmit={handleSubmit}>
-                                                    <div class="input-group mb-3">
+                                                    <div className="input-group mb-3">
                                                         <input
-                                                            class="form-control"
+                                                            className="form-control"
                                                             type="text"
                                                             name='correo'
                                                             placeholder="Ingresa tu correo"
@@ -63,27 +63,27 @@ const Login = () => {
                                                         />
                                                     </div>
 
-                                                    <div class="input-group mb-3">
+                                                    <div className="input-group mb-3">
                                                         <input
-                                                            class="form-control form-icono"
+                                                            className="form-control form-icono"
                                                             type={mostrarPass ? "text" : "password"}
                                                             name='contrasena'
                                                             placeholder="Ingresa tu contraseña"
                                                             onChange={handleChange} />
                                                         <span className='input-group-text icono pointer' role="button" onClick={() =>
                                                             setMostrarPass(!mostrarPass)}>
-                                                            {mostrarPass ? <i class="bi bi-eye-fill"></i> : <i class="bi bi-eye-slash-fill"></i>}
+                                                            {mostrarPass ? <i className="bi bi-eye-fill"></i> : <i className="bi bi-eye-slash-fill"></i>}
                                                         </span>
                                                     </div>
-                                                    <div style={estilo2} class="py-2">
+                                                    <div style={estilo2} className="py-2">
 
-                                                        <button type="submit" class="button-inicio" >
+                                                        <button type="submit" className="button-inicio" >
                                                             {/* <span >Loading...</span> */}
-                                                            <div class="visually-hidden" id='loading' role="status" >
-                                                            <div class="spinner-border spinner-border-sm" role="status" />
+                                                            <div className="visually-hidden" id='loading' role="status" >
+                                                            <div className="spinner-border spinner-border-sm" role="status" />
                                                             </div>
                                                             
-                                                            <span class="" id='iniciar'>Iniciar Sesión</span>
+                                                            <span className="" id='iniciar'>Iniciar Sesión</span>
                                                         </button>
                                                     </div>
                                                 </Form>
@@ -91,13 +91,13 @@ const Login = () => {
                                         </Formik>
                                         <hr />
                                         <div className='visually-hidden' id='alerta'>
-                                            <p class="text-danger" ><small>La contraseña no es correcta. Compruébala.</small></p>
+                                            <p className="text-danger" ><small>La contraseña no es correcta. Compruébala.</small></p>
                                         </div>
                                         <div className='visually-hidden' id='alerta-2'>
-                                            <p class="text-danger" ><small>El usuario no existe, por favor comprueba el correo electronico y vuelve a intentarlo.</small></p>
+                                            <p className="text-danger" ><small>El usuario no existe, por favor comprueba el correo electronico y vuelve a intentarlo.</small></p>
                                         </div>
-                                        <div class="card-text text-center">
-                                            <small><a href="/registro" for="basic-url" class="form-label">¿No tienes una cuenta? Registrate
+                                        <div className="card-text text-center">
+                                            <small><a href="/registro" htmlFor="basic-url" className="form-label">¿No tienes una cuenta? Registrate
                                                 aquí</a></small>
                                         </div>
                                     </div>

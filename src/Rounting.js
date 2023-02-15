@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import { useEffect } from 'react';
 import { BrowserRouter as Router, Navigate, Route, Routes } from 'react-router-dom'
 import Index from './pages';
@@ -22,8 +23,7 @@ function Routing() {
     return (
         <Router>
             {/* Redirecciones para proteger nuestras rutas */}
-            <Routes>
-                <Route path='/' element={<Index />} />
+            <Routes>            
                 <Route path='/recetas' element={<Recetas />} />
                 <Route path='/login' element={<Login />} />
                 <Route path='/registro' element={<Registro />} />
