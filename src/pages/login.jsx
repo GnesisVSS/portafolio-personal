@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Form, Formik } from 'formik';
-import { buscarLogin } from '../api/registro.api';
-import { Alert } from 'bootstrap';
+import { useNavigate } from 'react-router-dom';
 import { carga } from '../funciones/carga';
 const Login = () => {
 
@@ -20,7 +19,7 @@ const Login = () => {
     var letras2 = document.getElementById('nav-recetas');
     letras2.style.color = "black";
 
-    
+    const history = useNavigate();
 
 
     return (
@@ -38,17 +37,14 @@ const Login = () => {
                                     <div class="card-text p-4">
                                         <Formik
                                             initialValues={{
-                                                nombre: "",
-                                                apellido: "",
                                                 correo: "",
-                                                usuario: "",
                                                 contrasena: ""
                                             }}
                                             onSubmit={async (values) => {
                                                 console.log(values)
                                                 try {
-                                                    // cambiar la funcion, debe ser el buscar correo o nombre de usuario
                                                     const response = await carga(values)
+                                                    // history('/recetasHome');
                                                     console.log(response)
                                                 } catch (error) {
                                                     console.log(error)
@@ -87,7 +83,7 @@ const Login = () => {
                                                             <div class="spinner-border spinner-border-sm" role="status" />
                                                             </div>
                                                             
-                                                            <span class="" id='iniciar'>Inciar Sesión</span>
+                                                            <span class="" id='iniciar'>Iniciar Sesión</span>
                                                         </button>
                                                     </div>
                                                 </Form>

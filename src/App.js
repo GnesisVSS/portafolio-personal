@@ -5,11 +5,15 @@ import './App.css';
 import Home from './pages/home';
 import ReactDOM from 'react-dom/client';
 import { Formik } from 'formik/dist';
+import RecetasLog from './pages/recetas-log';
+import Recetas from './pages/recetas';
+import Index from './pages';
+import PrevRecetas from './pages/prev-recetas';
 
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" style={{backgroundColor:'#484554'}}>
       {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -24,7 +28,8 @@ function App() {
           Learn React
         </a>
       </header> */}
-      <Home></Home>
+      <Index/>
+      
       
     </div>
   );

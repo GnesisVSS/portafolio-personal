@@ -2,24 +2,22 @@ import React from 'react';
 
 const Recetas = () => {
 
-const estilo1 = {
-    color: '#F9A826'
-}
+    const estilo1 = {
+        color: '#F9A826'
+    }
 
-const estilo2 = {
-    fontFamily: ['"Lora"','serif']
-}
+    const estilo2 = {
+        fontFamily: ['"Lora"', 'serif']
+    }
 
-const estilo3 = {
-    textAlign: 'center'
-}
+    const estilo3 = {
+        textAlign: 'center'
+    }
 
-const estilo4 = {
-    height: '578px',
-    width: '578px'
-}
-
-
+    const estilo4 = {
+        height: '578px',
+        width: '578px'
+    }
 
     var fondo = document.getElementById('ind');
     fondo.style.backgroundColor = "white";
@@ -31,8 +29,8 @@ const estilo4 = {
     letras2.style.color = "black";
 
     return (
-        <section>
-            <div>
+        <section id='recetas'>
+            <div style={{ backgroundColor: 'white' }}>
                 <div class="container col-sm-8 py-4 mx-auto">
                     <div class="row align-items-center py-2">
                         <div class="col text-black">
@@ -51,7 +49,7 @@ const estilo4 = {
 
                         </div>
                         <div class="col py-4">
-                            <img src="../img/dibujo-cocina.svg" style={estilo4} alt=""/>
+                            <img src="../img/dibujo-cocina.svg" style={estilo4} alt="" />
                         </div>
 
                     </div>
@@ -59,6 +57,7 @@ const estilo4 = {
                 </div>
 
             </div>
+
         </section>
     );
 }

@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import RecetasLog from "../pages/recetas-log";
 
 let url = 'http://localhost:3000/api/usuarios/';
@@ -65,7 +66,10 @@ export const buscarLogin = async (ingreso) => {
             if (response.data.message === "Credenciales correctas") {
                 success();
                 // alert("Credenciales correctas!")
+                localStorage.setItem('credentials', [ingreso])
+
                 window.location.href = '/recetasHome';
+                
             } else if (response.data.message === "Revisa los campos e intentalo de nuevo") { 
                 buscarCorreoLogin(ingreso);
             } else {
