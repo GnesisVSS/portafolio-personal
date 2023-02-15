@@ -19,7 +19,7 @@ const options = {
     ], // these are the options we'd previously passed in
 };
 module.exports = {
-    entry: './src/index.js',
+    entry: './src/index.jsx',
     output: {
         path: path.join(__dirname, '/dist'),
         filename: 'bundle.[hash].js',
