@@ -40,7 +40,7 @@ const PrevRecetas = () => {
                                     </div>
                                 </div>
                                 <div className="card__content">
-                                    <img alt='' src='https://raw.githubusercontent.com/GnesisVSS/portafolio-personal/main/public/img/RecetasScreen/InicioRecetas.png?token=GHSAT0AAAAAAB53B55NWHJLP3VVRHMQUFO6Y7NIDEQ' className='card-img-top' />
+                                    <img alt='' src='../../public/img/RecetasScreen/InicioRecetas.png' className='card-img-top' />
                                 </div>
                             </div>
                         </div>
