@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import Routing from './Rounting';
 
 const img = document.querySelector("#port");
-img.src = "/img/portafolio.png";
+img.src = "/public/img/portafolio.png";
 
 ReactDOM.render(
     <React.StrictMode>
