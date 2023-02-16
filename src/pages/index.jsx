@@ -25,7 +25,10 @@ const Index = () => {
                             <h1 className="text-focus-in">Hola mundo! Soy Genesis, Ingeniera en Informática y Desarrolladora
                                 Frontend!</h1>
                         </div>
-                        <div className="col py-4">
+                        {/* <div className="col py-4">
+                            <img src="img/prom.svg" alt="" />
+                        </div> */}
+                        <div className="col">
                             <img src="img/prom.svg" alt="" />
                         </div>
                     </div>
