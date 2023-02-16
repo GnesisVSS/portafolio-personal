@@ -26,7 +26,7 @@ const Index = () => {
                                 Frontend!</h1>
                         </div>
                         <div className="col py-4">
-                            <img src="../../public/img/prom.svg" alt="" />
+                            <img src="img/prom.svg" alt="" />
                         </div>
                     </div>
                 </div>

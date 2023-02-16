@@ -40,7 +40,7 @@ const PrevRecetas = () => {
                                     </div>
                                 </div>
                                 <div className="card__content">
-                                    <img alt='' src='../../public/img/RecetasScreen/InicioRecetas.png' className='card-img-top' />
+                                    <img alt='' src='img/RecetasScreen/InicioRecetas.png' className='card-img-top' />
                                 </div>
                             </div>
                         </div>

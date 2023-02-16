@@ -55,7 +55,7 @@ const SobreMi = () => {
 
                         <div className="col px-5" >
                             <div className="col text-black">
-                                <img alt='' src='../../public/img/sobremi.svg' className='card-img-top' />
+                                <img alt='' src='img/sobremi.svg' className='card-img-top' />
                             </div>
                         </div>
 
