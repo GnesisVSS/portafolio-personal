@@ -22,34 +22,34 @@ const Recetas = () => {
     var fondo = document.getElementById('ind');
     fondo.style.backgroundColor = "white";
 
-    // var letras = document.getElementById('nav-titulo');
-    // letras.style.color = "black";
-
-    // var letras2 = document.getElementById('nav-recetas');
-    // letras2.style.color = "black";
-
     return (
         <section id='recetas'>
             <div style={{ backgroundColor: 'white' }}>
-                <div className="container col-sm-8 py-4 mx-auto">
-                    <div className="row align-items-center py-2">
-                        <div className="col text-black">
-                            <h1 className="text-focus-in titulo-inicio" style={estilo1}>Bienvenido(a)!</h1>
-                            <p style={estilo2}>
-                                Recetas dulces, saladas, saludables, para todos los gustos! Accede a estas y más recetas
-                                iniciando sesión, si no tienes una cuenta puedes registrarte gratis, para acceder al listado
-                                completo de
-                                resetas que tenemos para ti. Además tambien puedes crear tus propias recetas y guardarlas
-                                junto a las que te entregamos
-                                para tener una mayor variedad.
-                            </p>
-                            <div style={estilo3}>
-                                <a href="/login" type="button" className="button-inicio">Inicia sesión</a>
-                            </div>
+                <div className="container col-sm-12 py-2 mx-auto">
+                    <div className="row justify-content-center align-items-center py-5">
 
+                        <div className="col-sm-8 col-md-5 px-5">
+                            <div className="col text-black">
+                                <h1 className="text-focus-in titulo-inicio" style={estilo1}>Bienvenido(a)!</h1>
+                                <p style={estilo2}>
+                                    Recetas dulces, saladas, saludables, para todos los gustos! Accede a estas y más recetas
+                                    iniciando sesión, si no tienes una cuenta puedes registrarte gratis, para acceder al listado
+                                    completo de
+                                    resetas que tenemos para ti. Además tambien puedes crear tus propias recetas y guardarlas
+                                    junto a las que te entregamos
+                                    para tener una mayor variedad.
+                                </p>
+                                <div style={estilo3}>
+                                    <a href="/login" type="button" className="button-inicio">Inicia sesión</a>
+                                </div>
+                            </div>
                         </div>
-                        <div className="col py-4">
-                            <img src="../img/dibujo-cocina.svg" style={estilo4} alt="" />
+
+
+                        <div className="col-sm-8 col-md-6 px-5 py-4">
+                            <div className="col text-black">
+                                <img src="../img/dibujo-cocina.svg" alt="" className='img-fluid'/>
+                            </div>
                         </div>
 
                     </div>
