@@ -62,7 +62,7 @@ const SobreMi = () => {
                         <div className="col-6" >
                             <div className="col text-black" >
                                 <h4>Experiencia</h4>
-                                <div className='py-4'>
+                                <div className='py-4'>  
                                     <p style={estilo2}>
                                         A la fecha he realizado las prácticas correspondientes a mi carrera realizando una
                                         página web con wordpress y una integración de Transbank con webpay plus y One

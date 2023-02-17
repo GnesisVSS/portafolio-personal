@@ -49,7 +49,7 @@ const PrevRecetas = () => {
 
                         <div className="col px-5" >
                             {/* <img src="../img/dibujo-cocina.svg" style={estilo4} alt="" /> */}
-                            <div className="col text-black" style={{width:'544px',lineHeight:'27px'}}>
+                            <div className="col text-black" style={{lineHeight:'27px'}}>
                             
                                 <h2 className='titulo-demo'>Web de Recetas</h2>
                                 <p style={estilo2}>

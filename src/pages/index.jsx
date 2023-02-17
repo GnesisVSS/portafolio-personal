@@ -13,9 +13,6 @@ const Index = () => {
         paddingTop: '52px',
         paddingBottom: '52px'
     }
-
-    
-
     return (
         <div id='home'>
             <div style={estilo1}>
@@ -29,7 +26,7 @@ const Index = () => {
                             <img src="img/prom.svg" alt="" />
                         </div> */}
                         <div className="col">
-                            <img src="img/prom.svg" alt="" />
+                            <img src="img/prom.svg" alt="" className='card-img-top'/>
                         </div>
                     </div>
                 </div>
