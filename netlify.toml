@@ -10,6 +10,10 @@
   #  from = "/*"
   #  to = "/index.jsx"
   #  status = 200
+  
+  #  from = "/recetas"
+  #  to = "/pages/recetas.jsx"
+  #  status = 200
 
   ## (optional) Settings for Netlify Dev
   ## https://github.com/netlify/cli/blob/main/docs/netlify-dev.md#project-detection
