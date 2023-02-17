@@ -9,7 +9,8 @@ import Routing from './Rounting';
 
 ReactDOM.render(
     <React.StrictMode>
-        <App />
+        {/* <App /> */}
+        <Routing></Routing>
     </React.StrictMode>,
     document.getElementById('root'),
 );

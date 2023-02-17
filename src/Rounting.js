@@ -24,6 +24,7 @@ function Routing() {
         <Router>
             {/* Redirecciones para proteger nuestras rutas */}
             <Routes>            
+            
                 <Route path='/recetas' element={<Recetas />} />
                 <Route path='/login' element={<Login />} />
                 <Route path='/registro' element={<Registro />} />

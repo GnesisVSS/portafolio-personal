@@ -10,12 +10,13 @@ import App from './App';
 // Importamos las hojas de estilos
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import '../public/css/style.css';
+import Routing from './Rounting';
 
 // TODO: Si trabajamos con Redux, crear el Store y aplicar el middleware de Redux Saga
 
 ReactDOM.render(
     <React.StrictMode>
-        <App />
+        <App></App>
     </React.StrictMode>,
     document.getElementById('root'),
 );
