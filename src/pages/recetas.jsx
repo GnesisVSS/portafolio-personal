@@ -22,11 +22,11 @@ const Recetas = () => {
     var fondo = document.getElementById('ind');
     fondo.style.backgroundColor = "white";
 
-    var letras = document.getElementById('nav-titulo');
-    letras.style.color = "black";
+    // var letras = document.getElementById('nav-titulo');
+    // letras.style.color = "black";
 
-    var letras2 = document.getElementById('nav-recetas');
-    letras2.style.color = "black";
+    // var letras2 = document.getElementById('nav-recetas');
+    // letras2.style.color = "black";
 
     return (
         <section id='recetas'>
