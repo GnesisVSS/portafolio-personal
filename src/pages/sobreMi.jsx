@@ -28,7 +28,7 @@ const SobreMi = () => {
 
                 <div className="container col py-2 mx-auto">
                     <strong><h1 className='p-5' style={{ textAlign: 'left' }}>Sobre Mi</h1></strong>
-                    <div className="row  py-5">
+                    <div className="row align-items-center">
                         {/* <div class="col-2" >
                             <div class="col text-black" >
 
@@ -53,16 +53,16 @@ const SobreMi = () => {
                             </div>
                         </div> */}
 
-                        <div className="col px-5" >
+                        <div className="col-sm-6 col-md-5 p-5 align-self-center" >
                             <div className="col text-black">
-                                <img alt='' src='img/sobremi.svg' className='card-img-top' />
+                                <img alt='' src='img/sobremi.svg' className='img-fluid' />
                             </div>
                         </div>
 
-                        <div className="col-6" >
+                        <div className="col px-5" >
                             <div className="col text-black" >
                                 <h4>Experiencia</h4>
-                                <div className='py-4'>  
+                                <div className='p-5'>
                                     <p style={estilo2}>
                                         A la fecha he realizado las prácticas correspondientes a mi carrera realizando una
                                         página web con wordpress y una integración de Transbank con webpay plus y One
@@ -86,9 +86,11 @@ const SobreMi = () => {
 
                                 </div>
                             </div>
+
                         </div>
 
                     </div>
+                   
 
                 </div>
 

@@ -26,7 +26,7 @@ const Index = () => {
                             <img src="img/prom.svg" alt="" />
                         </div> */}
                         <div className="col">
-                            <img src="img/prom.svg" alt="" className='card-img-top'/>
+                            <img src="img/prom.svg" alt="" className='img-fluid'/>
                         </div>
                     </div>
                 </div>
