@@ -82,6 +82,7 @@ return (
 
         </div>
 
+<Recetas></Recetas>
 
     </section>
 );
