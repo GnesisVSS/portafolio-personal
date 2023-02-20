@@ -24,11 +24,11 @@ const SobreMi = () => {
 
     return (
         <section id='sobreMi' >
-            <div style={{ backgroundColor: 'white' }}>
+            <div style={{ backgroundColor: 'white'}} >
 
-                <div className="container col py-2 mx-auto">
+                <div className="container col py-2 mx-auto" >
                     <strong><h1 className='p-5' style={{ textAlign: 'left' }}>Sobre mi</h1></strong>
-                    <div className="row justify-content-center">
+                    <div className="row justify-content-center" style={{height: '852px'}}>
                         {/* <div class="col-2" >
                             <div class="col text-black" >
 
@@ -53,13 +53,13 @@ const SobreMi = () => {
                             </div>
                         </div> */}
 
-                        <div className="col-sm-6 col-md-5 p-5 align-self-center" >
+                        <div className="col-sm-6 col-md-7 p-5 align-self-center" >
                             <div className="col text-black">
                                 <img alt='' src='img/meditating.png' className='img-fluid' />
                             </div>
                         </div>
 
-                        <div className="col-sm-8 col-md-5 px-5 text-center" >
+                        <div className="col-sm-8 col-md-5 px-5 text-center align-self-center" >
                             <div className="col text-black" >
                                 <h4>Experiencia</h4>
                                 <div className='py-5'>

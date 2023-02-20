@@ -27,8 +27,8 @@ const PrevRecetas = () => {
             <div style={{ backgroundColor: 'white' }}>
                 <div className="container col-sm-12 py-2 mx-auto">
                     <strong><h1 className='p-5' style={{ textAlign: 'left' }}>Mis proyectos</h1></strong>
-                    <div className="row justify-content-center">
-                        <div className='col-sm-6 col-md-5 p-5' >
+                    <div className="row justify-content-center" style={{height: '852px'}}>
+                        <div className='col-sm-6 col-md-7 p-5 align-self-center' >
                             <div className="card-rec">
                                 <div className="tools">
                                     <div className="circle">
@@ -49,7 +49,7 @@ const PrevRecetas = () => {
 
 
 
-                        <div className="col-sm-8 col-md-5 px-5" >
+                        <div className="col-sm-8 col-md-5 px-5 align-self-center" >
                             {/* <img src="../img/dibujo-cocina.svg" style={estilo4} alt="" /> */}
                             <div className="col text-black" style={{ lineHeight: '27px' }}>
 
