@@ -22,8 +22,8 @@ const Index = () => {
                             <h1 className="text-focus-in">Hola mundo! Soy Genesis, Ingeniera en Informática y Desarrolladora
                                 Frontend!</h1>
                         </div>
-                        <div className="col">
-                            <img src="img/prom.svg" alt="" className='img-fluid'/>
+                        <div className="col py-5">
+                            <img src="img/composition-7.png" alt="" className='img-fluid rounded-circle py-5'/>
                         </div>
                     </div>
                 </div>

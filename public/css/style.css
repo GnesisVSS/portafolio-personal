@@ -398,3 +398,18 @@ a:link.cardt-button, a:visited.cardt-button, a:active.cardt-button {
       .titulo-demo{
         text-align: right;
       }
+
+      .img-inicio {
+        /* display: inline-block; */
+        /* position: relative; */
+        width: 400px;
+        height: 400px;
+        /* overflow: hidden; */
+        /* border-radius: 50%; */
+      }
+      
+      /* .img-inicio img {
+        width: auto;
+        height: 100%;
+        margin-left: -90px;
+      } */

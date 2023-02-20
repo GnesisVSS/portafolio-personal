@@ -13,12 +13,6 @@ const Login = () => {
     var fondo = document.getElementById('ind');
     fondo.style.backgroundColor = "white";
 
-    var letras = document.getElementById('nav-titulo');
-    letras.style.color = "black";
-
-    var letras2 = document.getElementById('nav-recetas');
-    letras2.style.color = "black";
-
     const history = useNavigate();
 
 

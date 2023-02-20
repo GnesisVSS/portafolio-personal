@@ -13,12 +13,6 @@ const Registro = () => {
     var fondo = document.getElementById('ind');
     fondo.style.backgroundColor = "white";
 
-    var letras = document.getElementById('nav-titulo');
-    letras.style.color = "black";
-
-    var letras2 = document.getElementById('nav-recetas');
-    letras2.style.color = "black";
-
     return (
         <section className='py-5'>
             <div className="container col-sm-8 mx-auto">

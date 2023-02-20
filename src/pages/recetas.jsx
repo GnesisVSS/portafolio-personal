@@ -25,7 +25,8 @@ const Recetas = () => {
     return (
         <section id='recetas'>
             <div style={{ backgroundColor: 'white' }}>
-                <div className="container col-sm-12 py-2 mx-auto">
+            <div className='col align-self-center'>
+            <div className="container col-sm-12 py-2 mx-auto">
                     <div className="row justify-content-center align-items-center py-5">
 
                         <div className="col-sm-8 col-md-5">
@@ -53,6 +54,8 @@ const Recetas = () => {
                     </div>
 
                 </div>
+            </div>
+                
 
             </div>
 
