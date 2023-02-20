@@ -8,7 +8,7 @@ const SobreMi = () => {
     }
 
     const estilo2 = {
-        fontFamily: ['"Lora"', 'serif'],
+        // fontFamily: ['"Lora"', 'serif'],
         textAlign: 'justify'
     }
 
@@ -27,7 +27,7 @@ const SobreMi = () => {
             <div style={{ backgroundColor: 'white' }}>
 
                 <div className="container col py-2 mx-auto">
-                    <strong><h1 className='p-5' style={{ textAlign: 'left' }}>Sobre Mi</h1></strong>
+                    <strong><h1 className='p-5' style={{ textAlign: 'left' }}>Sobre mi</h1></strong>
                     <div className="row justify-content-center">
                         {/* <div class="col-2" >
                             <div class="col text-black" >
@@ -55,7 +55,7 @@ const SobreMi = () => {
 
                         <div className="col-sm-6 col-md-5 p-5 align-self-center" >
                             <div className="col text-black">
-                                <img alt='' src='img/sobremi.svg' className='img-fluid' />
+                                <img alt='' src='img/meditating.png' className='img-fluid' />
                             </div>
                         </div>
 
@@ -73,7 +73,7 @@ const SobreMi = () => {
                                     </p>
                                 </div>
                                 <div className='py-4'>
-                                    <h4>Conocimientos Destacables</h4>
+                                    <h4>Conocimientos destacables</h4>
                                     <IconBrandReact width='50px' height='50px' style={{ color: '#61DBFB', margin: '20px' }} />
 
                                     <IconBrandJavascript width='50px' height='50px' style={{ color: '#ffd630', margin: '20px' }} />

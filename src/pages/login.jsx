@@ -77,7 +77,7 @@ const Login = () => {
                                                             <div className="spinner-border spinner-border-sm" role="status" />
                                                             </div>
                                                             
-                                                            <span className="" id='iniciar'>Iniciar Sesión</span>
+                                                            <span className="" id='iniciar'>Iniciar sesión</span>
                                                         </button>
                                                     </div>
                                                 </Form>

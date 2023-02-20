@@ -31,7 +31,7 @@ const Recetas = () => {
 
                         <div className="col-sm-8 col-md-5">
                             <h1 className="text-focus-in titulo-inicio" style={estilo1}>Bienvenido(a)!</h1>
-                            <p style={estilo2}>
+                            <p>
                                 Recetas dulces, saladas, saludables, para todos los gustos! Accede a estas y más recetas
                                 iniciando sesión, si no tienes una cuenta puedes registrarte gratis, para acceder al listado
                                 completo de
@@ -47,7 +47,7 @@ const Recetas = () => {
 
                         <div className="col-sm-8 col-md-6 px-5 py-4">
                             <div className="col text-black">
-                                <img src="../img/dibujo-cocina.svg" alt="" className='img-fluid' />
+                                <img src="../img/coffee.gif" alt="" className='img-fluid' />
                             </div>
                         </div>
 
