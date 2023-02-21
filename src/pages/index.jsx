@@ -28,6 +28,7 @@ const Index = () => {
                     </div>
                 </div>
             </div>
+            
             <SobreMi/>
             <PrevRecetas/>
             

@@ -3,6 +3,7 @@
     
 }
 
+
 body{
     background-color: #484554;
 }
@@ -382,7 +383,7 @@ a:link.cardt-button, a:visited.cardt-button, a:active.cardt-button {
       .button-demo .span-demo {
         transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
         text-decoration: none;
-        color: white;
+        color: rgb(255, 184, 225);
       }
       
       .button-demo:hover .svg-demo {
