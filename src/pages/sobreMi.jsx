@@ -29,8 +29,8 @@ const SobreMi = () => {
     }
 
     const boxVariant = {
-        visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } },
-        hidden: { opacity: 0, scale: 0 },
+        visible: { opacity: 1, scale: 1},
+        hidden: { opacity: 0, scale: 0.5 },
     }
 
     const control = useAnimation()
@@ -38,7 +38,7 @@ const SobreMi = () => {
 
     useEffect(() => {
         if (inView) {
-            control.start("visible");
+            control.start("visible" );
         } else {
             control.start("hidden");
         }
@@ -46,28 +46,40 @@ const SobreMi = () => {
 
     return (
 
-        <section id='sobreMi' style={{ minHeight: '100vh',backgroundColor: 'rgb(255 231 241)'  }}>
+        <section id='sobreMi' style={{ minHeight: '100vh', backgroundColor: 'rgb(255 231 241)' }}>
             <motion.div
                 ref={ref}
                 variants={boxVariant}
-                initial="hidden"
+                initial={{ opacity: 0, scale: 0.5 }}
                 animate={control}
+                transition={{
+                    default: {
+                        duration: 0.3,
+                        ease: [0, 0.71, 0.2, 1.01]
+                    },
+                    scale: {
+                        type: "spring",
+                        damping: 5,
+                        stiffness: 100,
+                        restDelta: 0.001
+                    }
+                }}
             >
                 <div className='py-4'>
 
-                    <div className="container col py-2 mx-auto" >
+                    <div className="container col py-2 mx-auto" style={{ color: '#484554' }}>
                         <strong><h1 className='p-5' style={{ textAlign: 'left' }}>Experiencia</h1></strong>
                         <div className="row justify-content-center py-5">
                             <div className="row justify-content-center">
                                 <div className="col-sm-6 col-md-7 p-5 align-self-center" >
-                                    <div className="col text-black">
+                                    <div className="col">
                                         <img alt='' src='img/meditating.png' className='img-fluid' />
                                     </div>
                                 </div>
 
                                 <div className="col-sm-8 col-md-5 px-5 align-self-center" >
-                                    <div className="col text-black" >
-                                        <div className='py-5'>
+                                    <div className="col" >
+                                        <div className='py-4'>
                                             <p style={estilo2}>
                                                 A la fecha he realizado las prácticas correspondientes a mi carrera realizando una
                                                 página web con wordpress y una integración de Transbank con webpay plus y One
@@ -77,17 +89,17 @@ const SobreMi = () => {
                                                 aprendiendo.
                                             </p>
                                         </div>
-                                        <div className='py-5'>
+                                        <div className='py-3' id='iconos'>
                                             <h4>Conocimientos destacables</h4>
-                                            <IconBrandReact width='50px' height='50px' style={{ color: '#61DBFB', margin: '20px' }} />
+                                            <IconBrandReact width='50px' height='50px' style={{ color: '#61DBFB', margin: '18px', backgroundColor: 'white', borderRadius: '15px' }} />
 
-                                            <IconBrandJavascript width='50px' height='50px' style={{ color: '#ffd630', margin: '20px' }} />
+                                            <IconBrandJavascript width='50px' height='50px' style={{ color: '#ffd630', margin: '18px', backgroundColor: 'white', borderRadius: '15px' }} />
 
-                                            <IconBrandGit width='50px' height='50px' style={{ color: '#f96926', margin: '20px' }} />
+                                            <IconBrandGit width='50px' height='50px' style={{ color: '#f96926', margin: '18px', backgroundColor: 'white', borderRadius: '15px' }} />
 
-                                            <IconBrandCss3 width='50px' height='50px' style={{ color: '#61DBFB', margin: '20px' }} />
+                                            <IconBrandCss3 width='50px' height='50px' style={{ color: '#61DBFB', margin: '18px', backgroundColor: 'white', borderRadius: '15px' }} />
 
-                                            <IconBrandHtml5 width='50px' height='50px' style={{ color: '#f96926', margin: '20px' }} />
+                                            <IconBrandHtml5 width='50px' height='50px' style={{ color: '#f96926', margin: '18px', backgroundColor: 'white', borderRadius: '15px' }} />
 
                                         </div>
                                     </div>

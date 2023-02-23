@@ -2,6 +2,7 @@
 import { useAnimation, motion } from 'framer-motion';
 import React, { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
+import { homeAnimation } from '../animation';
 import Recetas from './recetas';
 
 const PrevRecetas = () => {
@@ -21,8 +22,9 @@ const PrevRecetas = () => {
 
 
     const boxVariant = {
-        visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } },
-        hidden: { opacity: 0, scale: 0 },
+        visible: {x: 0, opacity: 1,transition: { duration: 0.5 } },
+        hidden: { x: -400, opacity: 0 },
+
     }
 
     const control = useAnimation()
@@ -37,7 +39,7 @@ const PrevRecetas = () => {
     }, [control, inView]);
 
     return (
-        <section id='recetas' style={{ minHeight: '100vh', backgroundColor: 'white' }}>
+        <section id='recetas' style={{ minHeight: '100vh', backgroundColor: 'white' ,color: '#484554' }}>
             <motion.div
                 ref={ref}
                 variants={boxVariant}
@@ -72,7 +74,7 @@ const PrevRecetas = () => {
 
                             <div className="col-sm-8 col-md-5 px-5 align-self-center" >
                                 {/* <img src="../img/dibujo-cocina.svg" style={estilo4} alt="" /> */}
-                                <div className="col text-black" style={{ lineHeight: '27px' }}>
+                                <div className="col" style={{ lineHeight: '27px' }}>
 
                                     <h2 className='titulo-demo'>Web de recetas</h2>
                                     <p style={estilo2}>
