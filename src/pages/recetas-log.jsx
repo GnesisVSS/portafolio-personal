@@ -51,7 +51,7 @@ const estilo4 = {
 
                         </div>
                         <div className="col py-4">
-                            <img src="../img/dibujo-cocina.svg" style={estilo4} alt=""/>
+                            <img src="../img/coffee.gif" style={estilo4} alt=""/>
                         </div>
 
                     </div>

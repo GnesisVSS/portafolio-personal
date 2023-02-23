@@ -10,7 +10,7 @@ import App from './App';
 // Importamos las hojas de estilos
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import '../public/css/style.css';
-import Routing from './Rounting';
+import Routing from './Routing';
 
 // TODO: Si trabajamos con Redux, crear el Store y aplicar el middleware de Redux Saga
 

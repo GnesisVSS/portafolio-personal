@@ -3,9 +3,9 @@
     
 }
 
-
 body{
     background-color: #484554;
+    min-height: 100vh;
 }
 
 .titulo-inicio{

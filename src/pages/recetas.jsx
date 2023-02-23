@@ -16,7 +16,7 @@ const Recetas = () => {
         width: '578px'
     }
 
-    var fondo = document.getElementById('ind');
+    var fondo = document.getElementById('root');
     fondo.style.backgroundColor = "white";
 
     return (
