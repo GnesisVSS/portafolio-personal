@@ -22,8 +22,8 @@ const PrevRecetas = () => {
 
 
     const boxVariant = {
-        visible: {x: 0, opacity: 1,transition: { duration: 1 } },
-        hidden: { x: -400, opacity: 0 },
+        visible: { opacity: 1, scale: 1},
+        hidden: { opacity: 0, scale: 0.5 },
 
     }
 
@@ -45,6 +45,18 @@ const PrevRecetas = () => {
                 variants={boxVariant}
                 initial="hidden"
                 animate={control}
+                transition={{
+                    default: {
+                        duration: 0.3,
+                        ease: [0, 0.71, 0.2, 1.01]
+                    },
+                    scale: {
+                        type: "spring",
+                        damping: 5,
+                        stiffness: 100,
+                        restDelta: 0.001
+                    }
+                }}
             >
                 <div className='py-4'>
                 
