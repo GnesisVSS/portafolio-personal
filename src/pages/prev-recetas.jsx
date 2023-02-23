@@ -22,7 +22,7 @@ const PrevRecetas = () => {
 
 
     const boxVariant = {
-        visible: {x: 0, opacity: 1,transition: { duration: 0.5 } },
+        visible: {x: 0, opacity: 1,transition: { duration: 1 } },
         hidden: { x: -400, opacity: 0 },
 
     }
