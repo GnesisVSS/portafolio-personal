@@ -13,9 +13,8 @@ const CardRecetas = ({ rec }) => {
         //     <div className="rating"></div>
         //     <a href="#" className="link">See the recipe</a>
         // </div>
-
         <div className="card card-home-rec justify-content-center">
-            <div className="img">
+            <div className="img" style={{backgroundImage:`url(${rec.imgUrl})`}}>
                 <div className="save">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 683 683" height="683" width="683" className="svg">
                         <g clipPath="url(#clip0_993_25)">
