@@ -10,7 +10,7 @@ const Login = () => {
         textAlign: 'center'
     }
 
-    var fondo = document.getElementById('ind');
+    var fondo = document.getElementById('root');
     fondo.style.backgroundColor = "white";
 
     const history = useNavigate();

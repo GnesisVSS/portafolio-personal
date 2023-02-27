@@ -9,6 +9,7 @@ import React, { useEffect, useRef } from 'react';
 import { useAnimation, motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import SobreMi from './pages/sobreMi';
+import RecetasPreLog from './pages/recetas-pre-log';
 
 
 
@@ -26,6 +27,7 @@ function Routing() {
                 <Route path='/recetas' element={<Recetas />} />
                 <Route path='/login' element={<Login />} />
                 <Route path='/registro' element={<Registro />} />
+                <Route path='/HomeLogin' element={<RecetasPreLog />} />
             </Routes>
         </Router>
 

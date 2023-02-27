@@ -1,4 +1,8 @@
-import React from 'react';
+
+import React, { useState } from 'react';
+import { RecetasC } from '../models/recetas.class';
+import CardRecetas from './Elementos/cardRecetas';
+import NavbarRecetas from './navbar-recetas';
 
 const Recetas = () => {
 
@@ -16,38 +20,64 @@ const Recetas = () => {
         width: '578px'
     }
 
+
+
+    // Recetas base de prueba
+    const defaultRec1 = new RecetasC('Receta1', 'Describiendo receta 1', 'preparando', 'Categoria1', '3 min', '5 porciones', 'facil');
+    const defaultRec2 = new RecetasC('Receta2', 'Describiendo receta 2', 'preparando2', 'Categoria2', '20 min', '12 porciones', 'media');
+    const defaultRec3 = new RecetasC('Receta3', 'Describiendo receta 3', 'preparando3', 'Categoria3', '1 hora 30 min', '30 porciones', 'dificil');
+
+    // use state para definir como estado inicial las tareas definidas como base
+    const [recetas, setRecetas] = useState([defaultRec1, defaultRec2, defaultRec3])
+
+    const Tarjetas = () => {
+        return (
+            <div>
+                {recetas.map((rec, index) => {
+                    return (
+                        <CardRecetas key={index} rec={rec} />
+                    )
+                })}
+            </div>
+
+        )
+    }
+
+    let recetaInfo;
+
+    if (recetas.length > 0) {
+        recetaInfo = <Tarjetas></Tarjetas>
+    } else {
+        recetaInfo = (
+            <div>
+                <h3>No hay información por mostrar</h3>
+                <h4>Porfavor, intentelo mas tarde</h4>
+            </div>
+        )
+
+    }
+    // while (n < 3) {
+    //     n++;
+    //     <CardRecetas/>
+    // }
+
+
     var fondo = document.getElementById('root');
     fondo.style.backgroundColor = "white";
 
     return (
-        <section id='recetas'>
-            <div className="container col-sm-12 py-5 mx-auto">
-                <div className="row justify-content-center py-5">
 
-                    <div className="col-sm-8 col-md-4 align-self-center">
-                        <h1 className="text-focus-in titulo-inicio" style={estilo1}>Bienvenido(a)!</h1>
-                        <p>
-                            Recetas dulces, saladas, saludables, para todos los gustos! Accede a estas y más recetas
-                            iniciando sesión, si no tienes una cuenta puedes registrarte gratis, para acceder al listado
-                            completo de
-                            resetas que tenemos para ti. Además tambien puedes crear tus propias recetas y guardarlas
-                            junto a las que te entregamos
-                            para tener una mayor variedad.
-                        </p>
-                        <div style={estilo3}>
-                            <a href="/login" type="button" className="button-inicio">Inicia sesión</a>
-                        </div>
+        <section id='homeRecetas'>
+            <NavbarRecetas />
+            {/* <div className="col-sm-6">
+                {recetaInfo}
+            </div> */}
+            <div>
+                <div className="row">
+                    <div className="col-sm-6 py-5 px-5">
+                        {recetaInfo}
                     </div>
-
-
-                    <div className="col-sm-8 col-md-8 px-5 py-4 align-self-center">
-                        <div className="col text-black">
-                            <img src="../img/coffee.gif" alt="" className='img-fluid' />
-                        </div>
-                    </div>
-
                 </div>
-
             </div>
 
         </section>

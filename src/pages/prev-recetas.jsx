@@ -59,12 +59,11 @@ const PrevRecetas = () => {
                 }}
             >
                 <div className='py-4'>
-                
                     <div className="container col-sm-12 py-2 mx-auto">
                         <strong><h1 className='p-5' style={{ textAlign: 'left' }}>Mis proyectos</h1></strong>
                         <div className="row justify-content-center py-5">
                             <div className='col-sm-6 col-md-7 p-5 align-self-center' >
-                                <div className="card-rec">
+                                <div className="card-prev-rec">
                                     <div className="tools">
                                         <div className="circle">
                                             <span className="red box"></span>

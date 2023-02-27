@@ -10,7 +10,7 @@ const Registro = () => {
         textAlign: 'center'
     }
 
-    var fondo = document.getElementById('ind');
+    var fondo = document.getElementById('root');
     fondo.style.backgroundColor = "white";
 
     return (

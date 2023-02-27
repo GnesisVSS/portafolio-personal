@@ -12,17 +12,12 @@ function Index() {
     
 
     return (
-
         <div id='home'>
             <Navbar/>
             <Home/>
             <SobreMi/>
             <PrevRecetas />
         </div>
-
-
-
-
     );
 }
 

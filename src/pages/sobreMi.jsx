@@ -5,16 +5,12 @@ import { useInView } from 'react-intersection-observer';
 
 
 const SobreMi = () => {
-    // const { scrollY } = useScroll();
-    // const scaleRight = useTransform(scrollY, [500, 0], [1, 0]);
-
-
+    
     const estilo1 = {
         color: '#F9A826'
     }
 
     const estilo2 = {
-        // fontFamily: ['"Lora"', 'serif'],
         fontSize: '18px'
     }
 
@@ -46,17 +42,14 @@ const SobreMi = () => {
     }, [control, inView]);
 
     return (
-
         <section id='sobreMi' style={{ minHeight: '100vh', backgroundColor: 'rgb(255 231 241)' }}>
             <motion.div
                 ref={ref}
                 variants={boxVariant}
                 initial="hidden"
                 animate={control}
-                
             >
                 <div className='py-4'>
-
                     <div className="container col py-2 mx-auto" style={{ color: '#484554' }}>
                         <strong><h1 className='p-5' style={{ textAlign: 'left' }}>Experiencia</h1></strong>
                         <div className="row justify-content-center py-5">
@@ -66,7 +59,6 @@ const SobreMi = () => {
                                         <img alt='' src='img/meditating.png' className='img-fluid' />
                                     </div>
                                 </div>
-
                                 <div className="col-sm-8 col-md-5 px-5 align-self-center" >
                                     <div className="col" >
                                         <div className='py-4'>
@@ -90,50 +82,15 @@ const SobreMi = () => {
                                             <IconBrandCss3 width='50px' height='50px' style={{ color: '#61DBFB', margin: '18px', backgroundColor: 'white', borderRadius: '15px' }} />
 
                                             <IconBrandHtml5 width='50px' height='50px' style={{ color: '#f96926', margin: '18px', backgroundColor: 'white', borderRadius: '15px' }} />
-
                                         </div>
                                     </div>
-
                                 </div>
-                            </div>
-                            {/* <div class="col-2" >
-                            <div class="col text-black" >
-
-                                <ul >
-                                    <h4>Conocimientos en</h4>
-                                    <li class="list-group-item py-2"><IconBrandReact width='50px' height='50px' style={{ color: '#61DBFB' }} />
-                                        React JS
-                                    </li>
-                                    <li class="list-group-item py-2"><IconBrandJavascript width='50px' height='50px' style={{ color: '#ffd630' }} />
-                                        JavaScript
-                                    </li>
-                                    <li class="list-group-item py-2"><IconBrandGit width='50px' height='50px' style={{ color: '#f96926' }} />
-                                        Git
-                                    </li>
-                                    <li class="list-group-item py-2"><IconBrandCss3 width='50px' height='50px' style={{ color: '#61DBFB' }} />
-                                        CSS
-                                    </li>
-                                    <li class="list-group-item py-2"><IconBrandHtml5 width='50px' height='50px' style={{ color: '#f96926' }} />
-                                        HTML
-                                    </li>
-                                </ul>
-                            </div>
-                        </div> */}
-
-
-
+                            </div>                        
                         </div>
-
-
                     </div>
                 </div>
-
             </motion.div>
-
         </section>
-
-
-
     );
 }
 
