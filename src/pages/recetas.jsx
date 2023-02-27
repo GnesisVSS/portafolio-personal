@@ -74,7 +74,7 @@ const Recetas = () => {
             </div> */}
             <div>
                 <div className="row">
-                    <div className="col-sm-6 py-5 px-5">
+                    <div className="py-5 px-5">
                         {recetaInfo}
                     </div>
                 </div>
