@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react';
-import PrevRecetas from './prev-recetas';
-import SobreMi from './sobreMi';
+
 import { motion, useAnimation } from "framer-motion";
 import { homeAnimation } from '../animation';
 import Navbar from './navbar';
 import { useInView } from 'react-intersection-observer';
-import Home from './home';
 
+// Secciones para el Home
+import Home from './Home/home';
+import Proyectos from './Home/proyectos';
+import SobreMi from './Home/sobreMi';
 function Index() {
 
     
@@ -16,7 +18,7 @@ function Index() {
             <Navbar/>
             <Home/>
             <SobreMi/>
-            <PrevRecetas />
+            <Proyectos />
         </div>
     );
 }

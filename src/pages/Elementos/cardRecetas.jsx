@@ -6,13 +6,6 @@ const CardRecetas = ({ rec }) => {
 
     return (
 
-        // <div className="card-rec" style={{marginRight:'32px'}}>
-        //     <div className="icon">🫠</div>
-        //     <div className="title">{rec.nombre}</div>
-        //     <p className="description">{rec.descripcion}</p>
-        //     <div className="rating"></div>
-        //     <a href="#" className="link">See the recipe</a>
-        // </div>
         <div className="card card-home-rec justify-content-center">
             <div className="img" style={{backgroundImage:`url(${rec.imgUrl})`}}>
                 <div className="save">

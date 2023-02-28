@@ -1,12 +1,10 @@
-
 import { useAnimation, motion } from 'framer-motion';
 import React, { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
-import { homeAnimation } from '../animation';
-import Recetas from './recetas';
+import { homeAnimation } from '../../animation';
+import Recetas from '../recetas';
 
-const PrevRecetas = () => {
-
+const Proyectos = () => {
 
     const estilo1 = {
         color: '#F9A826'
@@ -22,9 +20,8 @@ const PrevRecetas = () => {
 
 
     const boxVariant = {
-        visible: { opacity: 1, transition: { duration: 0.9 } },
-        hidden: { opacity: 0},
-
+        visible: {x: 0, opacity: 1,transition: { duration: 1 } },
+        hidden: { x: 0, opacity: 0 },
     }
 
     const control = useAnimation()
@@ -45,20 +42,9 @@ const PrevRecetas = () => {
                 variants={boxVariant}
                 initial="hidden"
                 animate={control}
-                transition={{
-                    default: {
-                        duration: 0.3,
-                        ease: [0, 0.71, 0.2, 1.01]
-                    },
-                    scale: {
-                        type: "spring",
-                        damping: 5,
-                        stiffness: 100,
-                        restDelta: 0.001
-                    }
-                }}
+                
             >
-                <div className='py-4'>
+                <div className='py-5'>
                     <div className="container col-sm-12 py-2 mx-auto">
                         <strong><h1 className='p-5' style={{ textAlign: 'left' }}>Mis proyectos</h1></strong>
                         <div className="row justify-content-center py-5">
@@ -80,13 +66,8 @@ const PrevRecetas = () => {
                                     </div>
                                 </div>
                             </div>
-
-
-
                             <div className="col-sm-8 col-md-5 px-5 align-self-center" >
-                                {/* <img src="../img/dibujo-cocina.svg" style={estilo4} alt="" /> */}
                                 <div className="col" style={{ lineHeight: '27px' }}>
-
                                     <h2 className='titulo-demo'>Web de recetas</h2>
                                     <p style={estilo2}>
                                         Recetas dulces, saladas, saludables, para todos los gustos! Accede a estas y más recetas
@@ -101,26 +82,17 @@ const PrevRecetas = () => {
                                             <a href='/recetas' type="button" className="span-demo text-white">Ver demo</a>
                                         </button>
                                     </div>
-
-
                                 </div>
                             </div>
-
                         </div>
-
                     </div>
-
                 </div>
             </motion.div>
-
-
-
-
         </section>
     );
 }
 
-export default PrevRecetas;
+export default Proyectos;
 
 
 

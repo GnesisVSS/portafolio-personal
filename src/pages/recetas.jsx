@@ -79,10 +79,8 @@ const Recetas = () => {
                 {recetaInfo}
             </div> */}
             <div>
-                <div className="row">
-                    <div className="py-5 px-5">
+                <div>
                         {recetaInfo}
-                    </div>
                 </div>
             </div>
 
