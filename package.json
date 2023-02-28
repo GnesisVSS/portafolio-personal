@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@netlify/planetscale": "^1.0.0",
+    "@planetscale/database": "^1.5.0",
     "@tabler/icons-react": "^2.4.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -11,9 +13,12 @@
     "babel-install": "^2.1.0",
     "bootstrap": "^5.2.3",
     "bootstrap-icons": "^1.10.3",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
     "formik": "^2.2.9",
     "framer-motion": "^9.0.4",
     "history": "^5.3.0",
+    "mysql": "^2.18.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-intersection-observer": "^9.4.2",
@@ -35,7 +40,8 @@
     "docs:build": "documentation build src/** -f html -o docs",
     "build": "webpack --mode development",
     "build:prod": "webpack --mode production",
-    "deploy:prod": "netlify deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_AUTH_TOKEN --prod"
+    "deploy:prod": "netlify deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_AUTH_TOKEN --prod",
+    "dev": "concurrently \"npm run deploy:dev\" \"node app.js\""
   },
   "eslintConfig": {
     "extends": [

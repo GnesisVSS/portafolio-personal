@@ -41,7 +41,7 @@ const SobreMi = () => {
     }, [control, inView]);
 
     return (
-        <section id='sobreMi' style={{ minHeight: '100vh', backgroundColor: 'rgb(255 231 241)' }}>
+        <section id='sobreMi' style={{ minHeight: '101vh', backgroundColor: 'rgb(255 231 241)' }}>
             <motion.div
                 ref={ref}
                 variants={boxVariant}

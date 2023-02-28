@@ -1,8 +1,6 @@
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import RecetasLog from "../pages/recetas-log";
 
-let url = 'http://localhost:3000/api/usuarios/';
+let url = 'http://localhost:3001/api/usuarios/';
 
 // -------------------------------LOGIN-----------------------------------------
 
@@ -65,7 +63,7 @@ export const buscarLogin = async (ingreso) => {
         .then(response => {
             if (response.data.message === "Credenciales correctas") {
                 success();
-                // alert("Credenciales correctas!")
+                alert("Credenciales correctas!")
                 localStorage.setItem('credentials', [ingreso])
 
                 window.location.href = '/recetasHome';

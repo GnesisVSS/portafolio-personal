@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Form, Formik } from 'formik';
 import { useNavigate } from 'react-router-dom';
 import { carga } from '../funciones/carga';
+import NavbarRecetas from './navbar-recetas';
 const Login = () => {
 
     const [mostrarPass, setMostrarPass] = useState(false)
@@ -17,7 +18,9 @@ const Login = () => {
 
 
     return (
+        
         <section className='py-5'>
+        <NavbarRecetas />
             <div className="container col-sm-8 mx-auto">
                 <div className="row">
                     <div className="card mb-3 ps-0">
