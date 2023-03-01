@@ -101,7 +101,7 @@ app.post('/api/usuarios', (req, res) => {
 // Variable de entorno
 // si el puerto está disponible en el definido por cmd en PUERTO accede a el,
 // sino accede al 3000
-const puerto = process.env.PUERTO || 3001;
+const puerto = process.env.PUERTO || 3000;
 
 
 app.listen(puerto, function () {
