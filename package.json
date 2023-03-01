@@ -36,13 +36,12 @@
     "start": "react-scripts start",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy:dev": "webpack-dev-server --mode development --hot --open --static",
+    "deploy:dev": "concurrently \"webpack-dev-server --mode development --hot --open --static\" \"node app.js\"",
     "docs:build": "documentation build src/** -f html -o docs",
     "build": "webpack --mode development",
-    "build:prod": "webpack --mode production",
+    "build:prod": "concurrently \"webpack --mode production\" \"node app.js\"",
     "deploy:prod": "netlify deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_AUTH_TOKEN --prod",
-    "dev": "concurrently \"npm run deploy:dev\" \"node app.js\"",
-    "netlify" : "concurrently \"npm run build:prod\" \"node app.js\"" 
+    "dev": "concurrently \"npm run deploy:dev\" \"node app.js\""
   },
   "eslintConfig": {
     "extends": [
