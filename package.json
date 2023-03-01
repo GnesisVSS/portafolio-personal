@@ -39,7 +39,7 @@
     "deploy:dev": "concurrently \"webpack-dev-server --mode development --hot --open --static\" \"node app.js\"",
     "docs:build": "documentation build src/** -f html -o docs",
     "build": "webpack --mode development",
-    "build:prod": "concurrently \"webpack --mode production\" \"node app.js\"",
+    "build:prod": "webpack --mode production",
     "deploy:prod": "netlify deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_AUTH_TOKEN --prod",
     "dev": "concurrently \"npm run deploy:dev\" \"node app.js\""
   },
