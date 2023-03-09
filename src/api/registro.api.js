@@ -42,7 +42,7 @@ const success = () => {
 }
 
 export const buscarCorreoLogin = async (ingreso) => {
-    await axios.get(url + ingreso.correo)
+    await axios.get(url + `/${ingreso.correo}`)
         .then(response => {
             if (response.data.message === "Usuario no registrado") {
                 errorUsuario();
@@ -59,7 +59,7 @@ export const buscarCorreoLogin = async (ingreso) => {
 
 export const buscarLogin = async (ingreso) => {
     // let correo = { correo: this.usuarios.correo }
-    await axios.get(url + ingreso.correo + `/${ingreso.contrasena}`)
+    await axios.get(url + `/${ingreso.correo}` + `/${ingreso.contrasena}`)
         .then(response => {
             if (response.data.message === "Credenciales correctas") {
                 success();
