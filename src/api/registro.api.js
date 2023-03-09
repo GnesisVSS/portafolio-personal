@@ -1,6 +1,6 @@
 import axios from "axios";
 
-let url = 'http://localhost:3001/api/usuarios/';
+let url = 'https://bdapirest.netlify.app/.netlify/functions/api/api/usuarios';
 
 // -------------------------------LOGIN-----------------------------------------
 
