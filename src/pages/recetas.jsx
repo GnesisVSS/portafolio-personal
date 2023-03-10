@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { mostrarRecetas } from '../api/receta.api';
 import { RecetasC } from '../models/recetas.class';
 import CardRecetas from './Elementos/cardRecetas';
