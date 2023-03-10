@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react';
+import { mostrarRecetas } from '../api/receta.api';
 import { RecetasC } from '../models/recetas.class';
 import CardRecetas from './Elementos/cardRecetas';
 import NavbarRecetas from './navbar-recetas';
@@ -31,7 +32,15 @@ const Recetas = () => {
     const defaultRec6 = new RecetasC('Receta3', 'Describiendo receta 3', 'preparando3', 'Categoria3', '1 hora 30 min', '30 porciones', 'dificil', 'img/salad.jpg');
 
     // use state para definir como estado inicial las tareas definidas como base
-    const [recetas, setRecetas] = useState([defaultRec1, defaultRec2, defaultRec3,defaultRec4, defaultRec5, defaultRec6])
+    const [recetas, setRecetas] = useState([])
+
+    useEffect(() => {
+        async function loadRecetas(){
+            const response = await mostrarRecetas()
+            setRecetas(response.data)
+        }
+        loadRecetas();
+    }, []);
 
     const Tarjetas = () => {
         return (

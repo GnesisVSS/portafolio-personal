@@ -100,9 +100,9 @@ export const crear = async (ingreso) => {
             alert("Usuario registrado exitosamente")
             window.location.reload();
         })
-
-
 }
+
+
 
 //Botones y formularios
 export const guardar = (ingreso) => {
