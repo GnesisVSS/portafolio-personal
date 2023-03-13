@@ -4,8 +4,6 @@ import { motion } from 'framer-motion';
 import { navAnimation } from '../animation';
 
 function Navbar() {
-    
-
     return (
         <nav className="navbar navbar-expand-lg sticky-top" id="contenido" style={{ backgroundColor: "#484554" }}>
             <div className="container">

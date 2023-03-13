@@ -29,7 +29,7 @@ const CardRecetas = ({ rec }) => {
 
             <div className="text-rec">
                 <p className="h3-rec"> {rec.nombre} </p>
-                <p className="p-rec"> {rec.porciones} - {rec.tiempoPreparacion} </p>
+                <p className="p-rec"> {rec.porciones} porciones - {rec.tiempoPreparacion} min. </p>
 
                 <div className="icon-box">
                     {/* Icono */}
