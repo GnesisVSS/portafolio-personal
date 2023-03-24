@@ -3,19 +3,19 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { useFormik } from 'formik';
 import NavbarRecetas from './navbar-recetas';
-import { TextField } from '@mui/material';
+import { Box, Button, Card, CardActionArea, CardContent, CardMedia, FormControl, IconButton, ImageList, ImageListItem, InputAdornment, InputLabel, OutlinedInput, TextField, Typography } from '@mui/material';
 import { cargarRecetaAdmin } from '../api/receta.api';
 import { createApi, toJson } from "unsplash-js";
-
+import SearchIcon from '@mui/icons-material/Search';
 
 
 const api = createApi({
     accessKey: '9KxZ83wJSwATi6Oz8ugG1mLA8UJuf_68ioepix-Q__I',
 });
 
+// const [urlImg, setUrlImg] = useState("");
 const PhotoComp = ({ photo }) => {
     const { user, urls } = photo;
-
     return (
         <Fragment>
             <img className="img" src={urls.regular} />
@@ -29,7 +29,9 @@ const PhotoComp = ({ photo }) => {
     );
 };
 
+
 const Photo = () => {
+
     const [data, setPhotosResponse] = useState(null);
     const [query, setQuery] = useState('');
 
@@ -47,7 +49,7 @@ const Photo = () => {
     const searchPhotos = async (e) => {
         e.preventDefault();
         api.search
-            .getPhotos({ query: query, orientation: 'landscape' })
+            .getPhotos({ query: query, orientation: 'landscape', perPage: 12, page: 1 })
             .then((result) => {
                 setPhotosResponse(result);
             })
@@ -67,31 +69,46 @@ const Photo = () => {
         );
     } else {
         return (
-            <div className="feed">
-                <ul className="columnUl">
-                    <form className="form" onSubmit={searchPhotos}>
-                        <label className="label" htmlFor="query">
-                            {' '}
-                            📷
-                        </label>
-                        <input
-                            type="text"
-                            name="query"
-                            className="input"
-                            placeholder={`Try "dog" or "apple"`}
-                            value={query}
-                            onChange={(e) => setQuery(e.target.value)}
-                        />
-                        <button type="submit" className="button">
-                            Search
-                        </button>
-                    </form>
+            <div className="input-group mb-3">
+                <FormControl variant="outlined" fullWidth>
+                    <InputLabel htmlFor="formPhotoInput">Busca tu imagen de referencia</InputLabel>
+                    <OutlinedInput
+                        name="query"
+                        className="input"
+                        value={query}
+                        id="formPhotoInput"
+                        label="Busca tu imagen de referencia"
+                        onChange={(e) => setQuery(e.target.value)} endAdornment={
+                            <InputAdornment position="end">
+                                <IconButton aria-label="delete" size="small" onClick={searchPhotos} name="photoSub" id="photoSub" value="photo">
+                                    <SearchIcon fontSize="small" />
+                                </IconButton>
+                            </InputAdornment>
+
+                        }
+                    />
+                </FormControl>
+
+                <ImageList cols={3} >
                     {data.response.results.map((photo) => (
-                        <li key={photo.id} className="li">
-                            <PhotoComp photo={photo} />
-                        </li>
+                        <Box key={photo.id}
+                            sx={{
+                                
+                                '&:hover': {
+                                    opacity: [0.9, 0.8, 0.7],
+                                },
+                            }}
+                        >
+                            <ImageListItem >
+                                <img
+                                    src={`${photo.urls.raw}?w=164&h=164&fit=crop&auto=format`}
+                                    srcSet={`${photo.urls.raw}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+                                    
+                                />
+                            </ImageListItem>
+                        </Box>
                     ))}
-                </ul>
+                </ImageList>
             </div>
         );
     }

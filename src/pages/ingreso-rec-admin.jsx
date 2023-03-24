@@ -88,26 +88,27 @@ const RegRecAdmin = () => {
                                                 <div className="input-group mb-3">
                                                     <TextField fullWidth sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }} name='dificultad' onChange={formik.handleChange} id="outlined-basic" label="Dificultad" variant="outlined" />
                                                 </div>
-                                                <div className="input-group mb-3">
-
-
+                                                <div >
+                                                    <Photo fullWidth/>
                                                 </div>
+
+
                                                 <div style={estilo2} className="py-2">
-                                                    <button type="submit" className="button-inicio" >
+                                                    <button type="submit" className="button-inicio" name="formSub" id="formSub" value="form" >
                                                         {/* <span >Loading...</span> */}
                                                         <div className="visually-hidden" id='loading' role="status" >
                                                             <div className="spinner-border spinner-border-sm" role="status" />
                                                         </div>
 
-                                                        <span className="" id='iniciar'>Iniciar sesión</span>
+                                                        <span className="" id='iniciar'>Cargar Receta</span>
                                                     </button>
                                                 </div>
 
                                             </form>
 
                                         </div>
-                                        
-                                        <Photo/>
+
+
                                     </div>
                                 </div>
                             </div>
