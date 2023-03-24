@@ -13,10 +13,7 @@ const port = process.env.PORT || 3000;
 
 // Exportar configuración de WebPack
 const options = {
-    extensions: ['js', 'jsx'],
-    exclude: [
-        '/node_modules/',
-    ], // these are the options we'd previously passed in
+    extensions: ['js', 'jsx']
 };
 module.exports = {
     entry: './src/index.jsx',

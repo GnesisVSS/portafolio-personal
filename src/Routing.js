@@ -6,6 +6,7 @@ import Recetas from './pages/recetas';
 import Registro from './pages/registro';
 import React from 'react';
 import RecetasPreLog from './pages/recetas-pre-log';
+import RegRecAdmin from './pages/ingreso-rec-admin';
 
 function Routing() {
     return (
@@ -17,6 +18,7 @@ function Routing() {
                 <Route path='/login' element={<Login />} />
                 <Route path='/registro' element={<Registro />} />
                 <Route path='/HomeLogin' element={<RecetasPreLog />} />
+                <Route path='/regRecAdmin' element={<RegRecAdmin />} />
             </Routes>
         </Router>
     )

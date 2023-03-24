@@ -7,11 +7,13 @@ import NavbarRecetas from './navbar-recetas';
 const Recetas = () => {
     // use state para definir como estado inicial las tareas definidas como base
     const [recetas, setRecetas] = useState([])
+    // const [image, setImage] = useState(null);
 
     useEffect(() => {
         async function loadRecetas() {
             const response = await mostrarRecetas()
             setRecetas(response.data)
+            // setImage(new Blob([response.data], { type: "image/jpeg" }));
         }
         loadRecetas()
     }, [])

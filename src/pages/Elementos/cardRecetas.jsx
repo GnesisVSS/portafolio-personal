@@ -1,17 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types'
 import { RecetasC } from '../../models/recetas.class';
 
 const CardRecetas = ({ rec }) => {
+    const [imageUrl, setImageUrl] = useState("");
+
+    useEffect(() => {
+        // Aquí obtienes la imagen desde la base de datos y la guardas como un blob en una variable
+        const blob = rec.imgUrl
+        console.log(rec.imgUrl)
+      // Conviertes el blob a una URL y lo guardas en el estado
+        // const url = URL.createObjectURL(blob);
+        setImageUrl(blob);
+
+        // Limpias la URL cuando se desmonta el componente para liberar memoria
+        return () => URL.revokeObjectURL(url);
+    }, []);
+
 
     return (
 
         <div className="card card-home-rec justify-content-center">
-            <div className="img" style={{backgroundImage:`url(${rec.imgUrl})`}}>
+            <div className="img" style={{ backgroundImage: `url(${imageUrl})` }}>
+                {imageUrl && <img src={imageUrl} alt="Image" />}
                 <div className="save">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 683 683" height="683" width="683" className="svg">
                         <g clipPath="url(#clip0_993_25)">
-                            <mask height="683" width="683" y="0" x="0" maskUnits="userSpaceOnUse" style={{"maskType":"luminance"}} id="mask0_993_25">
+                            <mask height="683" width="683" y="0" x="0" maskUnits="userSpaceOnUse" style={{ "maskType": "luminance" }} id="mask0_993_25">
                                 <path fill="white" d="M0 -0.00012207H682.667V682.667H0V-0.00012207Z"></path>
                             </mask>
                             <g mask="url(#mask0_993_25)">

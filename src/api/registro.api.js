@@ -47,7 +47,7 @@ export const buscarCorreoLogin = async (ingreso) => {
             if (response.data.message === "Usuario no registrado") {
                 errorUsuario();
                 // alert("No existe un usuario registrado con ese correo, revise nuevamente")
-                
+
             } else if (response.data.message === "Usuario ya registrado") {
                 // alert("Contraseña incorrecta,intente nuevamente")
                 errorContrasena();
@@ -67,8 +67,8 @@ export const buscarLogin = async (ingreso) => {
                 localStorage.setItem('credentials', [ingreso])
 
                 window.location.href = '/recetasHome';
-                
-            } else if (response.data.message === "Revisa los campos e intentalo de nuevo") { 
+
+            } else if (response.data.message === "Revisa los campos e intentalo de nuevo") {
                 buscarCorreoLogin(ingreso);
             } else {
                 alert("Algo salió mal!")
@@ -80,7 +80,7 @@ export const buscarLogin = async (ingreso) => {
 
 export const buscar = async (ingreso) => {
     // let correo = { correo: this.usuarios.correo }
-    await axios.get(url + ingreso.correo)
+    await axios.get(url + `/${ingreso.correo}`)
         .then(response => {
 
             if (response.data.message === "Usuario no registrado") {
@@ -94,13 +94,16 @@ export const buscar = async (ingreso) => {
         })
 }
 export const crear = async (ingreso) => {
-    // let parametros = { correo: correo, nombre: nombre, apellido: apellido, usuario: this.usuarios.usuario, contrasena: this.usuarios.contrasena };
-    await axios.post(url, ingreso)
+    // let parametros = { correo: ingreso.correo, nombre: ingreso.nombre, apellido: ingreso.apellido, usuario: ingreso.usuario, contrasena: ingreso.contrasena };
+
+    await axios.post(url + `/${ingreso.correo}` + `/${ingreso.nombre}` + `/${ingreso.apellido}` + `/${ingreso.usuario}` + `/${ingreso.contrasena}`)
         .then((response) => {
             alert("Usuario registrado exitosamente")
             window.location.reload();
         })
 }
+
+
 
 
 
