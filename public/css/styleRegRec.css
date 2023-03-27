@@ -1,0 +1,4 @@
+img.active {
+    border: 2px solid rgb(162, 129, 255);
+    box-shadow: 0 0 10px rgb(162, 129, 255);
+  }

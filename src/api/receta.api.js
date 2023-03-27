@@ -7,11 +7,12 @@ export const mostrarRecetas = async () =>
     await axios.get(urlr)
 
 export const cargarRecetaAdmin = async (ingreso) => {
-    
-    await axios.post(urlr + `/${ingreso.nombre}` + `/${ingreso.descripcion}` + `/${ingreso.preparacion}` + `/${ingreso.categoria}` + `/${ingreso.tiempoPreparacion}` + `/${ingreso.porciones}` + `/${ingreso.dificultad}` + `/${ingreso.imgUrl}`)
+    const encodedUrl = encodeURIComponent(ingreso.imgUrl);
+    await axios.post(urlr + `/${ingreso.nombre}` + `/${ingreso.descripcion}` + `/${ingreso.preparacion}` + `/${ingreso.categoria}` + `/${ingreso.tiempoPreparacion}` + `/${ingreso.porciones}` + `/${ingreso.dificultad}` + `/url=${encodedUrl}`)
         .then((response) => {
             alert("Receta registrada exitosamente")
             window.location.reload();
         })
+
 }
     
