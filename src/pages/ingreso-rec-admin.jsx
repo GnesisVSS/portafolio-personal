@@ -11,10 +11,6 @@ import Photo from './Photo';
 
 const RegRecAdmin = (props) => {
 
-    const estilo2 = {
-        textAlign: 'center'
-    }
-
     var fondo = document.getElementById('root');
     fondo.style.backgroundColor = "white";
 
@@ -100,7 +96,7 @@ const RegRecAdmin = (props) => {
                                                 {/* <ChildComponent onInfoChange={handleInfoChange} /> */}
                                                 <Photo onInfoChange={handleInfoChange}/>
 
-                                                <div style={estilo2} className="py-2">
+                                                <div style={{textAlign:"center"}} className="py-2">
                                                     <button type="submit" className="button-inicio" name="formSub" id="formSub" value="form" >
                                                         {/* <span >Loading...</span> */}
                                                         <div className="visually-hidden" id='loading' role="status" >

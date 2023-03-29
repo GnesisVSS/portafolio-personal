@@ -4,7 +4,10 @@
 }
 
 body{
-    background-color: #484554;
+    /* background-color: #484554; */
+    /* background-image: url("fondoHome.jpg"); */
+    background: linear-gradient(123deg, #FFFFFF 0%, #00B2FF 100%), linear-gradient(236deg, #BAFF99 0%, #005E64 100%), linear-gradient(180deg, #FFFFFF 0%, #002A5A 100%), linear-gradient(225deg, #0094FF 20%, #BFF4ED 45%, #280F34 45%, #280F34 70%, #FF004E 70%, #E41655 85%, #B30753 85%, #B30753 100%), linear-gradient(135deg, #0E0220 15%, #0E0220 35%, #E40475 35%, #E40475 60%, #48E0E4 60%, #48E0E4 68%, #D7FBF6 68%, #D7FBF6 100%);
+    background-blend-mode: overlay, overlay, overlay, darken, normal;;
     min-height: 100vh;
 }
 
@@ -12,7 +15,20 @@ body{
     font-family: 'Nunito', sans-serif;
 }
 
-
+#navbar{
+  background: rgba(63, 63, 63, 0.42);
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 1.5px );
+-webkit-backdrop-filter: blur( 1.5px );
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  transition: top 0.5s;
+}
 .btn-cssbuttons {
     --btn-color: rgb(67, 67, 67);
     position: relative;
@@ -557,3 +573,23 @@ a:link.cardt-button, a:visited.cardt-button, a:active.cardt-button {
       .save:hover .svg {
         fill: #ced8de;
       }
+
+
+      /* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #f9f871 #ffffff00;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 16px;
+  }
+
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #f9f871;
+    border-radius: 10px;
+    border: 3px solid #ffffff00;
+  }

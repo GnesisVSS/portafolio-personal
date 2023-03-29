@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useScroll } from './useScroll';
 import { motion } from 'framer-motion';
 import { navAnimation } from '../animation';
 
 function Navbar() {
+    
     return (
-        <nav className="navbar navbar-expand-lg sticky-top" id="contenido" style={{ backgroundColor: "#484554" }}>
+        <nav id="navbar" className={'navbar navbar-expand-lg'}>
             <div className="container">
                 <a className="navbar-brand" id="nav-titulo" style={{ color: "white" }} href="/#home">
                     <img src="img/portafolio.png" id="port" width="35" height="35" /> Portafolio
