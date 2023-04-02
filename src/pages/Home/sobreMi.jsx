@@ -41,25 +41,32 @@ const SobreMi = () => {
     }, [control, inView]);
 
     return (
-        <section id='sobreMi' style={{ minHeight: '101vh', backgroundColor: 'rgb(255 231 241)' }}>
-            <motion.div
+    <section id='sobreMi' style={{ backgroundColor: '#EDE6F1', color:'#162E36'}}>
+            
+                <div className='py-4'>
+                
+                    <div className="container col py-2 mx-auto">
+                   
+                        <div className="row justify-content-center py-5">
+                        <motion.div
                 ref={ref}
                 variants={boxVariant}
                 initial="hidden"
                 animate={control}
             >
-                <div className='py-4'>
-                    <div className="container col py-2 mx-auto" style={{ color: '#484554' }}>
-                        <strong><h1 className='p-5' style={{ textAlign: 'left' }}>Experiencia</h1></strong>
-                        <div className="row justify-content-center py-5">
-                            <div className="row justify-content-center">
+                            <div className="row justify-content-center" >
                                 <div className="col-sm-6 col-md-7 p-5 align-self-center" >
+
                                     <div className="col">
-                                        <img alt='' src='img/meditating.png' className='img-fluid' />
+                                        {/* <img alt='' src='img/pensando.gif' id='gifSobreMi' className='img-fluid' /> */}
+                                        <img alt='' src='img/Group40.png' id='gifSobreMi' className='img-fluid' />
                                     </div>
                                 </div>
                                 <div className="col-sm-8 col-md-5 px-5 align-self-center" >
+                                
                                     <div className="col" >
+                                    <strong><h1 style={{ textAlign: 'left', fontSize:'78px'}}>Experiencia</h1></strong>
+
                                         <div className='py-4'>
                                             <p style={estilo2}>
                                                 A la fecha he realizado las prácticas correspondientes a mi carrera realizando una
@@ -84,11 +91,14 @@ const SobreMi = () => {
                                         </div>
                                     </div>
                                 </div>
-                            </div>                        
+                            </div>
+                            </motion.div>
+                        
                         </div>
                     </div>
+                    
                 </div>
-            </motion.div>
+            
         </section>
     );
 }

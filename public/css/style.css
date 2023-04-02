@@ -1,18 +1,16 @@
-*{
+p,a{
     font-family: 'Nunito', sans-serif;
-    
 }
 
 body{
-    /* background-color: #484554; */
+    /* background-color: #feedff; */
     /* background-image: url("fondoHome.jpg"); */
-    background: linear-gradient(123deg, #FFFFFF 0%, #00B2FF 100%), linear-gradient(236deg, #BAFF99 0%, #005E64 100%), linear-gradient(180deg, #FFFFFF 0%, #002A5A 100%), linear-gradient(225deg, #0094FF 20%, #BFF4ED 45%, #280F34 45%, #280F34 70%, #FF004E 70%, #E41655 85%, #B30753 85%, #B30753 100%), linear-gradient(135deg, #0E0220 15%, #0E0220 35%, #E40475 35%, #E40475 60%, #48E0E4 60%, #48E0E4 68%, #D7FBF6 68%, #D7FBF6 100%);
-    background-blend-mode: overlay, overlay, overlay, darken, normal;;
+    background-color: #2A0253;
     min-height: 100vh;
 }
 
-.titulo-inicio{
-    font-family: 'Nunito', sans-serif;
+h1, h2{
+  font-family: 'Righteous', cursive;
 }
 
 #navbar{
@@ -21,7 +19,7 @@ box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
 backdrop-filter: blur( 1.5px );
 -webkit-backdrop-filter: blur( 1.5px );
   width: 100%;
-  height: 80px;
+  /* height: 80px; */
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -29,21 +27,21 @@ backdrop-filter: blur( 1.5px );
   top: 0;
   transition: top 0.5s;
 }
+
 .btn-cssbuttons {
-    --btn-color: rgb(67, 67, 67);
+    --btn-color: #EDE6F1;
     position: relative;
     padding: 16px 32px;
     font-family: Roboto, sans-serif;
     font-weight: 500;
     font-size: 16px;
     line-height: 1;
-    color: rgb(255, 255, 255);
+    color: #162E36;
     background: none;
     border: none;
     outline: none;
     overflow: hidden;
     cursor: pointer;
-    filter: drop-shadow(0 2px 8px rgba(201, 214, 255, 0.32));
     transition: 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 
@@ -330,14 +328,17 @@ a:link.cardt-button, a:visited.cardt-button, a:active.cardt-button {
         color: white;
     }
 
+    #imagencard{
+      border-bottom-left-radius: 30px;
+      border-bottom-right-radius: 30px;
 
+    }
     .card-prev-rec {
         
         margin: 0 auto;
-        background-color: #e8e8e8;
-        border-radius: 8px;
+        background-color: #162E36;
+        border-radius: 30px;
         z-index: 1;
-        border: 2px solid #e8e8e8;;
        }
        
        .tools {
@@ -381,9 +382,8 @@ a:link.cardt-button, a:visited.cardt-button, a:active.cardt-button {
         font-weight: 500;
         font-size: 17px;
         padding: 0.8em 1.3em 0.8em 0.9em;
-        color: white;
-        background: #ad5389;
-        background:  #554cfc;
+        color: #f9d613;
+        background:   #2a0253;
         border: none;
         letter-spacing: 0.05em;
         border-radius: 16px;
@@ -399,17 +399,18 @@ a:link.cardt-button, a:visited.cardt-button, a:active.cardt-button {
       .button-demo .span-demo {
         transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
         text-decoration: none;
-        color: rgb(255, 184, 225);
+        color: #f9d613;
       }
       
       .button-demo:hover .svg-demo {
         transform: translateX(5px) rotate(90deg);
         text-decoration: none;
-        color: white;
+        color: #fffef6;
       }
       
       .button-demo:hover .span-demo {
         transform: translateX(7px);
+        color: #fffef6;
       }
 
       .titulo-demo{
@@ -573,23 +574,3 @@ a:link.cardt-button, a:visited.cardt-button, a:active.cardt-button {
       .save:hover .svg {
         fill: #ced8de;
       }
-
-
-      /* ===== Scrollbar CSS ===== */
-  /* Firefox */
-  * {
-    scrollbar-width: thin;
-    scrollbar-color: #f9f871 #ffffff00;
-  }
-
-  /* Chrome, Edge, and Safari */
-  *::-webkit-scrollbar {
-    width: 16px;
-  }
-
-
-  *::-webkit-scrollbar-thumb {
-    background-color: #f9f871;
-    border-radius: 10px;
-    border: 3px solid #ffffff00;
-  }

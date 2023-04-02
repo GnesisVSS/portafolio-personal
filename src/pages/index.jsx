@@ -11,11 +11,11 @@ import Proyectos from './Home/proyectos';
 import SobreMi from './Home/sobreMi';
 function Index() {
     let ubicacionPrincipal = window.pageYOffset;
-    window.onscroll = function(){
+    window.onscroll = function () {
         let Desplazamiento_actual = window.pageYOffset;
-        if(ubicacionPrincipal >= Desplazamiento_actual){
+        if (ubicacionPrincipal >= Desplazamiento_actual) {
             document.getElementById('navbar').style.top = '0px';
-        }else{
+        } else {
             document.getElementById('navbar').style.top = '-100px';
         }
         ubicacionPrincipal = Desplazamiento_actual;
@@ -23,12 +23,16 @@ function Index() {
 
 
     return (
-        <div id='home'>
-            <Navbar />
-            <Home />
-            <SobreMi />
-            <Proyectos />
+        <div className="wrap">
+
+            <div id='wrap'>
+                <Navbar />
+                <section> <Home /> </section>
+                <section> <SobreMi /></section>
+                <section> <Proyectos /> </section>
+            </div>
         </div>
+
     );
 }
 

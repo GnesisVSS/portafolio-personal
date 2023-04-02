@@ -2,6 +2,7 @@ import { useAnimation, motion } from 'framer-motion';
 import React, { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import Navbar from '../navbar';
+import Typed from 'typed.js';
 
 const Home = () => {
     const estilo1 = {
@@ -30,12 +31,33 @@ const Home = () => {
         }
     }, [control, inView]);
 
-    
+    const el = React.useRef(null);
+    // Create reference to store the Typed instance itself
+    const typed = React.useRef(null);
+
+    React.useEffect(() => {
+        const options = {
+            strings: [
+                'Hola mundo! Soy Genesis, ingeniera en informática y desarrolladora frontend!'
+            ],
+            typeSpeed: 50,
+            backSpeed: 50,
+        };
+
+        // elRef refers to the <span> rendered below
+        typed.current = new Typed(el.current, options);
+
+        return () => {
+            // Make sure to destroy Typed instance during cleanup
+            // to prevent memory leaks
+            typed.current.destroy();
+        }
+    }, [])
 
     return (
-        <div id='home' style={{ minHeight: '100vh' }}>
-            
-            <div style={estilo1}>
+        <div id='home' style={{ minHeight: '100vh',alignItems:'center', display:'grid' }} >
+
+            <div>
 
                 <motion.div
                     ref={ref}
@@ -43,18 +65,17 @@ const Home = () => {
                     initial="hidden"
                     animate={control}
                 >
+
                     <div className="container col-sm-8 py-5 mx-auto">
-                        <div className="row align-items-center py-2">
-                            <div className="col-sm-8 col-md-5 px-5 text-white" >
-                                <h1 className="text-focus-in">Hola mundo! Soy Genesis, ingeniera en informática y desarrolladora
-                                    frontend!</h1>
+                        <div className="row justify-content-center">
+                            <div className="col-sm-8 col-md-6 text-white align-self-center" >
+                            <h1 style={{'fontSize':'48px'}}>
+                                <span ref={el} />
+                            </h1>
                             </div>
-                            <div
-                                className="col-sm-6 col-md-7 p-5"
-
-                            >
-                                <img src="img/composition-11.png" alt="" className='img-fluid rounded-circle' />
-
+                            
+                            <div className="col-sm-6 col-md-5 p-5 align-self-center" style={{'textAlign':'center'}}>
+                                <img src="img/gifHome.gif" alt="" className='rounded-circle'/>
                             </div>
 
                         </div>
