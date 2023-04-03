@@ -23,14 +23,11 @@ function Index() {
 
 
     return (
-        <div className="wrap">
-
-            <div id='wrap'>
+        <div id='home'>
                 <Navbar />
-                <section> <Home /> </section>
-                <section> <SobreMi /></section>
-                <section> <Proyectos /> </section>
-            </div>
+                <Home />
+                <SobreMi />
+                <Proyectos />
         </div>
 
     );

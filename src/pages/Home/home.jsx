@@ -55,7 +55,7 @@ const Home = () => {
     }, [])
 
     return (
-        <div id='home' style={{ minHeight: '100vh',alignItems:'center', display:'grid' }} >
+        <div id='home' style={{ minHeight: '100vh'}} className='align-items-center'>
 
             <div>
 
@@ -67,7 +67,7 @@ const Home = () => {
                 >
 
                     <div className="container col-sm-8 py-5 mx-auto">
-                        <div className="row justify-content-center">
+                        <div className="row justify-content-center ">
                             <div className="col-sm-8 col-md-6 text-white align-self-center" >
                             <h1 style={{'fontSize':'48px'}}>
                                 <span ref={el} />
@@ -75,7 +75,7 @@ const Home = () => {
                             </div>
                             
                             <div className="col-sm-6 col-md-5 p-5 align-self-center" style={{'textAlign':'center'}}>
-                                <img src="img/gifHome.gif" alt="" className='rounded-circle'/>
+                                <img src="img/gifHome.gif" alt="" className='img-fluid rounded-circle'/>
                             </div>
 
                         </div>

@@ -12,6 +12,12 @@ body{
 h1, h2{
   font-family: 'Righteous', cursive;
 }
+.row{
+  display: flex;
+  align-items: center;
+  height: 100vh;
+}
+
 
 #navbar{
   background: rgba(63, 63, 63, 0.42);
