@@ -5,7 +5,6 @@ import { Field, useFormik } from 'formik';
 import NavbarRecetas from './../../Elementos/navbar-recetas';
 import { TextField } from '@mui/material';
 import { cargarRecetaAdmin } from '../../../api/receta.api';
-import { createApi, toJson } from "unsplash-js";
 import Photo from '../Photo';
 
 

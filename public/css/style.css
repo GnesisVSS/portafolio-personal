@@ -1,593 +1,235 @@
+/* Fuente para los parrafos y links */
 p,a{
     font-family: 'Nunito', sans-serif;
 }
 
+/* Color de fondo base */
 body{
-    /* background-color: #feedff; */
-    /* background-image: url("fondoHome.jpg"); */
     background-color: #2A0253;
     
 }
 
+/* Para titulos de tipo h1 y h2 se especifica otro tipo de fuente */
 h1, h2{
   font-family: 'Righteous', cursive;
 }
-.rowhome{
-  display: flex;
-  align-items: center;
-  height: 100vh;
-}
 
+/* Para responsive en pantallas que tengan DESDE 601 px de ancho y mas 
+el tamaño de la fuente de los titulos será de 78px  */
 @media screen and (min-width: 601px) {
   .h1SobreMi,.h1Proyectos {
     font-size: 78px;
   }
 }
 
+/* Para responsive en pantallas que tengan HASTA 600 px de ancho y mas 
+el tamaño de la fuente de los titulos será de 61px  */
 @media screen and (max-width: 600px) {
   .h1SobreMi,.h1Proyectos {
     font-size: 61px;
   }
 }
+/* ------------------------------//////PORTAFOLIO//////-----------------------------------*/
 
+
+/* PORTAFOLIO-----------------------------HOME------------------------------------------- */
+/* para el row del home del portafolio se define de esta manera para que 
+los elementos se muestren centrados al ocupar el alto de toda la pantalla */
+.rowhome{
+  display: flex;
+  align-items: center;
+  height: 100vh;
+}
+
+/* PORTAFOLIO.........NAVBAR DE HOME......... */
+/* para la barra de navegacion del home del portafolio se le da un fondo determinado 
+y se especifica la transicion para el momento de hacer scroll */
 #navbar{
   background: rgba(63, 63, 63, 0.42);
-box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-backdrop-filter: blur( 1.5px );
--webkit-backdrop-filter: blur( 1.5px );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 1.5px );
+  -webkit-backdrop-filter: blur( 1.5px );
   width: 100%;
-  /* height: 80px; */
   display: flex;
   justify-content: space-around;
   align-items: center;
+  /* al dejarlo posicionado como fixed aparece en pantalla al hacer scroll hacia arriba */
   position: fixed;
   top: 0;
   transition: top 0.5s;
 }
 
+/* Botón de la barra de navegación con los links de contacto */
 .btn-cssbuttons {
-    --btn-color: #EDE6F1;
-    position: relative;
-    padding: 16px 32px;
-    font-family: Roboto, sans-serif;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 1;
-    color: #162E36;
-    background: none;
-    border: none;
-    outline: none;
-    overflow: hidden;
-    cursor: pointer;
-    transition: 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  --btn-color: #EDE6F1;
+  position: relative;
+  padding: 16px 32px;
+  font-family: Roboto, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1;
+  color: #162E36;
+  background: none;
+  border: none;
+  outline: none;
+  overflow: hidden;
+  cursor: pointer;
+  transition: 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
-
 .btn-cssbuttons::before {
-    position: absolute;
-    content: "";
-    top: 0;
-    left: 0;
-    z-index: -1;
-    width: 100%;
-    height: 100%;
-    background: var(--btn-color);
-    border-radius: 24px;
-    transition: 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  background: var(--btn-color);
+  border-radius: 24px;
+  transition: 0.3s cubic-bezier(0.215, 0.61, 0.355, 1); 
 }
-
-.btn-cssbuttons span,
-.btn-cssbuttons span span {
-    display: inline-flex;
-    vertical-align: middle;
-    transition: 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+.btn-cssbuttons span, .btn-cssbuttons span span {
+  display: inline-flex;
+  vertical-align: middle;
+  transition: 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);  
 }
-
 .btn-cssbuttons span {
-    transition-delay: 0.05s;
+  transition-delay: 0.05s;
 }
-
 .btn-cssbuttons span:first-child {
-    padding-right: 7px;
+  padding-right: 7px;
 }
-
 .btn-cssbuttons span span {
-    margin-left: 8px;
-    transition-delay: 0.1s;
+  margin-left: 8px;
+  transition-delay: 0.1s;
 }
-
 .btn-cssbuttons ul {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    display: flex;
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-    transform: translateY(-50%);
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  transform: translateY(-50%);       
 }
-
 .btn-cssbuttons ul li {
-    flex: 1;
+  flex: 1;
 }
-
 .btn-cssbuttons ul li a {
-    display: inline-flex;
-    vertical-align: middle;
-    transform: translateY(55px);
-    transition: 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  display: inline-flex;
+  vertical-align: middle;
+  transform: translateY(55px);
+  transition: 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);     
 }
-
 btn-cssbuttons ul li a:hover {
-    opacity: 0.5;
+  opacity: 0.5;
 }
-
-
-
-.btn-cssbuttons:hover span,
-.btn-cssbuttons:hover span span {
-    transform: translateY(-55px);
+.btn-cssbuttons:hover span, .btn-cssbuttons:hover span span {
+  transform: translateY(-55px);
 }
-
 .btn-cssbuttons:hover ul li a {
-    transform: translateY(0);
+  transform: translateY(0);
 }
-
 .btn-cssbuttons:hover ul li:nth-child(1) a {
-    transition-delay: 0.15s;
+  transition-delay: 0.15s;
 }
-
 .btn-cssbuttons:hover ul li:nth-child(2) a {
-    transition-delay: 0.2s;
+  transition-delay: 0.2s;
 }
-
 .btn-cssbuttons:hover ul li:nth-child(3) a {
-    transition-delay: 0.25s;
-}
-
-  /* Card */
-a:link.cardt-button, a:visited.cardt-button, a:active.cardt-button {
-    text-decoration:none;
-    color: #E50087;
-    text-align: center;
+  transition-delay: 0.25s;
 }
 
 
-  /* TITULO */
-.tracking-in-expand {
-    -webkit-animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
-    animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+
+/* PORTAFOLIO.....................PROYECTOS................. */
+
+
+/* ___Card de presentacion de proyecto____*/
+/* imagen del card, se establece el radio de los bordes izquierdo y derecho de la parte de abajo*/
+#imagencard{
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}   
+
+/* Estilo del card */
+.card-prev-rec {
+  margin: 0 auto;
+  background-color: #162E36;
+  border-radius: 30px;
+  z-index: 1;
+}
+.tools {
+  display: flex;
+  align-items: center;
+  padding: 9px;
+}
+.circle {
+  padding: 0 4px;
+}
+.box {
+  display: inline-block;
+  align-items: center;
+  width: 10px;
+  height: 10px;
+  padding: 1px;
+  border-radius: 50%;
+}
+.red {
+  background-color: #ff605c;
+}
+.yellow {
+  background-color: #ffbd44;
+}
+.green {
+  background-color: #00ca4e;
 }
 
-.text-focus-in {
-    -webkit-animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
-    animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
-}
-/* ----------------------------------------------
-   * Generated by Animista on 2022-11-16 22:6:58
-   * Licensed under FreeBSD License.
-   * See http://animista.net/license for more info. 
-   * w: http://animista.net, t: @cssanimista
-   * ---------------------------------------------- */
 
-/**
-   * ----------------------------------------
-   * animation tracking-in-expand
-   * ----------------------------------------
-   */
-@-webkit-keyframes tracking-in-expand {
-    0% {
-    letter-spacing: -0.5em;
-    opacity: 0;
-    }
-    40% {
-    opacity: 0.6;
-    }
-    100% {
-    opacity: 1;
-    }
-}
-@keyframes tracking-in-expand {
-    0% {
-    letter-spacing: -0.5em;
-    opacity: 0;
-    }
-    40% {
-    opacity: 0.6;
-    }
-    100% {
-    opacity: 1;
-    }
+/*Botón para ver el demo*/
+.button-demo {
+  display: inline-block;
+  align-items: center;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 17px;
+  padding: 0.8em 1.3em 0.8em 0.9em;
+  color: #f9d613;
+  background:   #2a0253;
+  border: none;
+  letter-spacing: 0.05em;
+  border-radius: 16px;
+  text-align: center;
 }
 
-/* ----------------------------------------------
-   * Generated by Animista on 2022-11-16 23:20:22
-   * Licensed under FreeBSD License.
-   * See http://animista.net/license for more info. 
-   * w: http://animista.net, t: @cssanimista
-   * ---------------------------------------------- */
-
-/**
-   * ----------------------------------------
-   * animation text-focus-in
-   * ----------------------------------------
-   */
-@-webkit-keyframes text-focus-in {
-    0% {
-    -webkit-filter: blur(12px);
-            filter: blur(12px);
-    opacity: 0;
-    }
-    100% {
-    -webkit-filter: blur(0px);
-            filter: blur(0px);
-    opacity: 1;
-    }
-}
-@keyframes text-focus-in {
-    0% {
-    -webkit-filter: blur(12px);
-            filter: blur(12px);
-    opacity: 0;
-    }
-    100% {
-    -webkit-filter: blur(0px);
-            filter: blur(0px);
-    opacity: 1;
-    }
+.button-demo .svg-demo {
+  margin-right: 3px;
+  transform: rotate(30deg);
+  transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
 }
 
-.cta {
-    border: none;
-    background: none;
+.button-demo .span-demo {
+  transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+  text-decoration: none;
+  color: #f9d613;
 }
 
-.cta span {
-    padding-bottom: 7px;
-    letter-spacing: 4px;
-    font-size: 14px;
-    padding-right: 15px;
-    text-transform: uppercase;
-    }
-    
-    .cta svg {
-    transform: translateX(-8px);
-    transition: all 0.3s ease;
-    }
-    
-    .cta:hover svg {
-    transform: translateX(0);
-    }
-    
-    .cta:active svg {
-    transform: scale(0.9);
-    }
-    
-    .hover-underline-animation {
-    position: relative;
-    color: black;
-    padding-bottom: 20px;
-    }
-    
-    .hover-underline-animation:after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    transform: scaleX(0);
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: #000000;
-    transform-origin: bottom right;
-    transition: transform 0.25s ease-out;
-    }
-    
-    .cta:hover .hover-underline-animation:after {
-    transform: scaleX(1);
-    transform-origin: bottom left;
-    }
+.button-demo:hover .svg-demo {
+  transform: translateX(5px) rotate(90deg);
+  text-decoration: none;
+  color: #fffef6;
+}
 
-/* Boton inicio login */
+.button-demo:hover .span-demo {
+  transform: translateX(7px);
+  color: #fffef6;
+}
 
-    .button-inicio {
-        --color: #F9A826;
-        font-family: inherit;
-        display: inline-block;
-        width: 8em;
-        height: 2.6em;
-        line-height: 2.5em;
-        margin: 20px;
-        position: relative;
-        overflow: hidden;
-        border: 2px solid var(--color);
-        transition: color .5s;
-        z-index: 1;
-        font-size: 17px;
-        border-radius: 6px;
-        font-weight: 600;
-        color: var(--color);
-        text-decoration: none;
-        text-align: center;
-    }
-    
-    .button-inicio:before {
-        content: "";
-        position: absolute;
-        z-index: -1;
-        background: var(--color);
-        height: 150px;
-        width: 200px;
-        border-radius: 50%;
-    }
-    
-    .button-inicio:hover {
-        color: #fff;
-    }
-    
-    .button-inicio:before {
-        top: 100%;
-        left: 100%;
-        transition: all .7s;
-    }
-    
-    .button-inicio:hover:before {
-        top: -30px;
-        left: -30px;
-    }
-    
-    .button-inicio:active:before {
-        background: #f98826;
-        transition: background 0s;
-    }
-
-    .icono{
-        background-color: #484554;
-        color: white;
-    }
-
-    #imagencard{
-      border-bottom-left-radius: 30px;
-      border-bottom-right-radius: 30px;
-
-    }
-    .card-prev-rec {
-        
-        margin: 0 auto;
-        background-color: #162E36;
-        border-radius: 30px;
-        z-index: 1;
-       }
-       
-       .tools {
-        display: flex;
-        align-items: center;
-        padding: 9px;
-       }
-       
-       .circle {
-        padding: 0 4px;
-       }
-       
-       .box {
-        display: inline-block;
-        align-items: center;
-        width: 10px;
-        height: 10px;
-        padding: 1px;
-        border-radius: 50%;
-       }
-       
-       .red {
-        background-color: #ff605c;
-       }
-       
-       .yellow {
-        background-color: #ffbd44;
-       }
-       
-       .green {
-        background-color: #00ca4e;
-       }
-       
-
-       /*-------------Boton para ver el demo-----------------------*/
-
-       .button-demo {
-        display: inline-block;
-        align-items: center;
-        font-family: inherit;
-        font-weight: 500;
-        font-size: 17px;
-        padding: 0.8em 1.3em 0.8em 0.9em;
-        color: #f9d613;
-        background:   #2a0253;
-        border: none;
-        letter-spacing: 0.05em;
-        border-radius: 16px;
-        text-align: center;
-      }
-      
-      .button-demo .svg-demo {
-        margin-right: 3px;
-        transform: rotate(30deg);
-        transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
-      }
-      
-      .button-demo .span-demo {
-        transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
-        text-decoration: none;
-        color: #f9d613;
-      }
-      
-      .button-demo:hover .svg-demo {
-        transform: translateX(5px) rotate(90deg);
-        text-decoration: none;
-        color: #fffef6;
-      }
-      
-      .button-demo:hover .span-demo {
-        transform: translateX(7px);
-        color: #fffef6;
-      }
-
-      .titulo-demo{
-        text-align: left;
-      }
-
-      .img-inicio {
-        /* display: inline-block; */
-        /* position: relative; */
-        width: 400px;
-        height: 400px;
-        /* overflow: hidden; */
-        /* border-radius: 50%; */
-      }
-
-      /*-----------------Boton iniciar sesion recetas-------------------------*/
-      .LogReg {
-        position: relative;
-        font-weight: 600;
-        height: 40px;
-        padding: 12px 20px;
-        outline: none;
-        border: 1px solid black;
-        background-color: transparent;
-        border-radius: 5px;
-        text-decoration: none;
-        color: black;
-      }
-      
-      .LogReg:after {
-        content: "";
-        position: absolute;
-        width: 100%;
-        top: 7px;
-        left: 7px;
-        height: 100%;
-        background-color: rgb(201, 184, 246);
-        z-index: -1;
-        transition: all 0.35s;
-        border-radius: inherit;
-        text-decoration: none;
-        color: black;
-      }
-      
-      .LogReg:hover:after {
-        top: 0px;
-        left: 0px;
-      }
-
-      .LogReg:hover {
-        color: black;
-      }
+.titulo-demo{
+  text-align: left;
+}
 
 
-      /*---------------Card para mostrar recetas----------------*/
-      .card-home-rec {
-        width: 252px;
-        height: 265px;
-        background: white;
-        border-radius: 30px;
-        box-shadow: 15px 15px 30px #bebebe,
-                   -15px -15px 30px #ffffff;
-        transition: 0.2s ease-in-out;
-        overflow: hidden;
-        display: inline-block;
-        margin-right: 32px;
-        /* margin-left: 32px; */
-        margin-top: 32px;
-        position: relative;
-      }
-      
-      .img {
-        width: 100%;
-        height: 50%;
-        /* background: linear-gradient(#e66465, #9198e5); */
-        display: flex;
-        align-items: top;
-        justify-content: right;
-        /* background-image:'img/pasta.jpg'; */
-        background-position: center; /* Center the image */
-        background-repeat: no-repeat; /* Do not repeat the image */
-        background-size: cover;
-      }
-      
-      .save {
-        transition: 0.2s ease-in-out;
-        border-radius: 10px;
-        margin: 20px;
-        width: 30px;
-        height: 30px;
-        background-color: #ffffff;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      
-      .text-rec {
-        margin: 20px;
-        display: flex;
-        flex-direction: column;
-        align-items: space-around;
-
-      }
-      
-      .save .svg {
-        transition: 0.2s ease-in-out;
-        width: 15px;
-        height: 15px;
-      }
-      
-      .icon-box {
-        margin-top: 15px;
-        width: 70%;
-        padding: 10px;
-        background-color: #e3fff9;
-        border-radius: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: left;
-      }
-      
-      .icon-box img {
-        width: 24px;
-      }
-      
-      .text-rec .h3-rec {
-        font-family: 'Lucida Sans' sans-serif;
-        font-size: 15px;
-        font-weight: 600;
-        padding: 0;
-        margin: 0;
-      }
-      
-      .text-rec .p-rec {
-        font-family: 'Lucida Sans' sans-serif;
-        color: #999999;
-        font-size: 13px;
-        padding: 0;
-        margin: 0;
-      }
-      
-      .icon-box .span-rec {
-        margin-left: 10px;
-        font-family: 'Lucida Sans' sans-serif;
-        font-size: 13px;
-        font-weight: light;
-        padding: 0;
-        margin-top: 0;
-        margin-bottom: 0;
-      }
-      
-      .card:hover {
-        cursor: pointer;
-        box-shadow: 0px 10px 20px rgba(0,0,0,0.1);
-      }
-      
-      .save:hover {
-        transform: scale(1.1) rotate(10deg);
-      }
-      
-      .save:hover .svg {
-        fill: #ced8de;
-      }
+     
