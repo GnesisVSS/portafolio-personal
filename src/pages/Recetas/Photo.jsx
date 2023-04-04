@@ -4,7 +4,7 @@ import React, {useEffect, useState } from 'react';
 import { FormControl, IconButton, ImageList, ImageListItem, InputAdornment, InputLabel, OutlinedInput, TextField, Typography } from '@mui/material';
 import { createApi } from "unsplash-js";
 import SearchIcon from '@mui/icons-material/Search';
-import './../../public/css/styleRegRec.css'
+import './../../../public/css/styleRegRec.css'
 
 // --------------------------------DEFINICION DE ACCESSKEY API---------------------------------
 

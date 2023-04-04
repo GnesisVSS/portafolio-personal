@@ -2,11 +2,11 @@
 /* eslint-disable react/prop-types */
 import React, { Fragment, useEffect, useState } from 'react';
 import { Field, useFormik } from 'formik';
-import NavbarRecetas from './navbar-recetas';
+import NavbarRecetas from './../../Elementos/navbar-recetas';
 import { TextField } from '@mui/material';
-import { cargarRecetaAdmin } from '../api/receta.api';
+import { cargarRecetaAdmin } from '../../../api/receta.api';
 import { createApi, toJson } from "unsplash-js";
-import Photo from './Photo';
+import Photo from '../Photo';
 
 
 const RegRecAdmin = (props) => {

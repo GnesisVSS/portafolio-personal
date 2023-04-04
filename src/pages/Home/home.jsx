@@ -1,7 +1,7 @@
 import { useAnimation, motion } from 'framer-motion';
 import React, { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
-import Navbar from '../navbar';
+import Navbar from '../Elementos/navbar';
 import Typed from 'typed.js';
 
 const Home = () => {

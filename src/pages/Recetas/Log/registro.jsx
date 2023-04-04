@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Form, Formik } from 'formik';
-import { guardar } from '../api/registro.api';
+import { guardar } from '../../../api/registro.api';
 
 const Registro = () => {
 

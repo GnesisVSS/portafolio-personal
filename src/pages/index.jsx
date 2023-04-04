@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import { motion, useAnimation } from "framer-motion";
 import { homeAnimation } from '../animation';
-import Navbar from './navbar';
+import Navbar from './Elementos/navbar';
 import { useInView } from 'react-intersection-observer';
 
 // Secciones para el Home
