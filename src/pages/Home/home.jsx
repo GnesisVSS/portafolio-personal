@@ -67,7 +67,7 @@ const Home = () => {
                 >
 
                     <div className="container col-sm-8 py-5 mx-auto">
-                        <div className="row justify-content-center ">
+                        <div className="row justify-content-center rowhome">
                             <div className="col-sm-8 col-md-6 text-white align-self-center" >
                             <h1 style={{'fontSize':'48px'}}>
                                 <span ref={el} />

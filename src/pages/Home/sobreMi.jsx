@@ -47,7 +47,7 @@ const SobreMi = () => {
 
                 <div className="container col py-2 mx-auto">
 
-                    <div className="row justify-content-center py-5">
+                    <div className="row justify-content-center">
                         <motion.div
                             ref={ref}
                             variants={boxVariant}
@@ -65,7 +65,7 @@ const SobreMi = () => {
                                 <div className="col-sm-8 col-md-5 px-5 align-self-center" >
 
                                     <div className="col" >
-                                        <strong><h1 style={{ textAlign: 'left', fontSize: '78px' }}>Experiencia</h1></strong>
+                                        <strong><h1 style={{ textAlign: 'left' }} className='h1SobreMi'>Experiencia</h1></strong>
 
                                         <div className='py-4'>
                                             <p style={estilo2}>

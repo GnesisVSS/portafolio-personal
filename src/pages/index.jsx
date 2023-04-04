@@ -23,11 +23,11 @@ function Index() {
 
 
     return (
-        <div id='home'>
-                <Navbar />
-                <Home />
-                <SobreMi />
-                <Proyectos />
+        <div>
+            <Navbar />
+            <Home />
+            <SobreMi />
+            <Proyectos />
         </div>
 
     );

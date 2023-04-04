@@ -47,12 +47,12 @@ const Proyectos = () => {
                 <div className='py-5'>
                     <div className="container col-sm-12 py-2 mx-auto">
 
-                        <div className="row justify-content-center py-5">
+                        <div className="row justify-content-center">
 
                             <div className="col-sm-8 col-md-6 p-5 align-self-center">
 
                                 <div className="col" style={{ lineHeight: '27px' }}>
-                                    <strong><h1 style={{ textAlign: 'left', color: '#162E36', fontSize: '78px' }}>Mis proyectos</h1></strong>
+                                    <strong><h1 style={{ textAlign: 'left', color: '#162E36' }} className='h1Proyectos'>Mis proyectos</h1></strong>
                                     <div className='py-4'>
                                         <h2 className='titulo-demo'>Web de recetas</h2>
                                         <p style={estilo2}>
