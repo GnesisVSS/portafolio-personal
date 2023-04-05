@@ -5,16 +5,7 @@ import Navbar from '../Elementos/navbar';
 import Typed from 'typed.js';
 
 const Home = () => {
-    const estilo1 = {
-        // backgroundColor: '#484554'
-    }
-
-    const estilo2 = {
-        backgroundColor: '#ADA9BB',
-        paddingTop: '52px',
-        paddingBottom: '52px'
-    }
-
+    
     const boxVariant = {
         visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } },
         hidden: { opacity: 0, scale: 0 },

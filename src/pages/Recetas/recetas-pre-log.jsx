@@ -1,10 +1,11 @@
 import React from 'react';
 import NavbarRecetas from './../Elementos/navbar-recetas';
+import Recetas from './recetas';
 
 const RecetasPreLog = () => {
 
     const estilo1 = {
-        color: '#F9A826'
+        color: '#514538'
     }
 
 
@@ -24,10 +25,11 @@ const RecetasPreLog = () => {
         
         <section id='rec-log'>
         <NavbarRecetas/>
+        
             <div className="container col-sm-12 py-5 mx-auto">
                 <div className="row justify-content-center py-5">
 
-                    <div className="col-sm-8 col-md-4 align-self-center">
+                    <div className="col-sm-8 col-md-5 px-4 align-self-center">
                         <h1 className="text-focus-in titulo-inicio" style={estilo1}>Bienvenido(a)!</h1>
                         <p>
                             Recetas dulces, saladas, saludables, para todos los gustos! Accede a estas y más recetas
@@ -43,16 +45,16 @@ const RecetasPreLog = () => {
                     </div>
 
 
-                    <div className="col-sm-8 col-md-8 px-5 py-4 align-self-center">
+                    <div className="col-sm-8 col-md-7 py-4 align-self-center">
                         <div className="col text-black">
-                            <img src="../img/coffee.gif" alt="" className='img-fluid' />
+                            <img src="../img/Shawarma.gif" alt="" className='img-fluid' />
                         </div>
                     </div>
 
                 </div>
 
             </div>
-
+            
         </section>
     );
 }

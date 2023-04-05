@@ -3,14 +3,14 @@ import PropTypes from 'prop-types'
 import { RecetasC } from '../../models/recetas.class';
 
 const CardRecetas = ({ rec }) => {
-    
+
 
 
     return (
 
         <div className="card card-home-rec justify-content-center">
             <div className="img" style={{ backgroundImage: `url(${rec.imgUrl})` }}>
-                <div className="save">
+                <button className="save">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 683 683" height="683" width="683" className="svg">
                         <g clipPath="url(#clip0_993_25)">
                             <mask height="683" width="683" y="0" x="0" maskUnits="userSpaceOnUse" style={{ "maskType": "luminance" }} id="mask0_993_25">
@@ -26,20 +26,30 @@ const CardRecetas = ({ rec }) => {
                             </clipPath>
                         </defs>
                     </svg>
-                </div>
+                </button>
             </div>
 
             <div className="text-rec">
                 <p className="h3-rec"> {rec.nombre} </p>
                 <p className="p-rec"> {rec.porciones} porciones - {rec.tiempoPreparacion} min. </p>
 
-                <div className="icon-box">
-                    {/* Icono */}
+                {/* <div className="icon-box">
+                    
                     <img src='img/maceta.png'></img>
-                    <p className="span-rec text-center">Ver Receta
-                    </p></div>
-            </div>
-        </div>
+                    <p className="span-rec text-center">Ver Receta</p>
+                </div> */}
+
+                {/* Icono */}
+                
+                    <button className="icon-box btn">
+                        <img src='img/maceta.png'></img>
+                        <p className="span-rec text-center">Ver Receta</p>
+                    </button>
+                
+
+
+            </div >
+        </div >
 
 
     )
