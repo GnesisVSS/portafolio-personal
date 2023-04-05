@@ -22,7 +22,7 @@ function NavbarRecetas() {
                         <div className="  collapse navbar-collapse  " id="navbarNav">
                             <ul className="navbar-nav text">
                                 <li className="nav-item ">
-                                    <strong><a className="nav-link" style={{ color: " #3a3228" }} id="nav-recetas" href="/recetas">Home</a></strong>
+                                    <strong><a className="nav-link" style={{ color: " #3a3228" }} id="nav-recetas" href="/HomeLogin">Home</a></strong>
                                 </li>
 
                             </ul>
@@ -30,7 +30,7 @@ function NavbarRecetas() {
                                 <li className="nav-item px-5">
                                     <a className="nav-link" style={{ color: "#60513f" }} id="nav-recetas" href="/#Home">Volver al portafolio</a>
                                 </li>
-                                <a className='LogReg' href='./HomeLogin' type='button'>Inicia Sesión/Registrate</a>
+                                <a className='LogReg' href='./login' type='button'>Inicia Sesión/Registrate</a>
                             </ul>
 
                         </div>

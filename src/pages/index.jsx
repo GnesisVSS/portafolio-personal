@@ -9,6 +9,7 @@ import { useInView } from 'react-intersection-observer';
 import Home from './Home/home';
 import Proyectos from './Home/proyectos';
 import SobreMi from './Home/sobreMi';
+import Footer from './Elementos/footer';
 function Index() {
     let ubicacionPrincipal = window.pageYOffset;
     window.onscroll = function () {
@@ -28,6 +29,7 @@ function Index() {
             <Home />
             <SobreMi />
             <Proyectos />
+            <Footer/>
         </div>
 
     );

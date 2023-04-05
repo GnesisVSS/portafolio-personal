@@ -40,7 +40,7 @@ const RecetasPreLog = () => {
                             para tener una mayor variedad.
                         </p>
                         <div style={estilo3}>
-                            <a href="/login" type="button" className="button-inicio">Inicia sesión</a>
+                            <a href="/recetas" type="button" className="button-inicio">Explorar recetas</a>
                         </div>
                     </div>
 
