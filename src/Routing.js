@@ -7,6 +7,7 @@ import Registro from './pages/Recetas/Log/registro';
 import React from 'react';
 import RecetasPreLog from './pages/Recetas/recetas-pre-log';
 import RegRecAdmin from './pages/Recetas/Admin/ingreso-rec-admin';
+import HomeUsuario from './pages/Recetas/UsuarioLogged/HomeUsuario';
 
 function Routing() {
     return (
@@ -19,6 +20,7 @@ function Routing() {
                 <Route path='/registro' element={<Registro />} />
                 <Route path='/HomeLogin' element={<RecetasPreLog />} />
                 <Route path='/regRecAdmin' element={<RegRecAdmin />} />
+                <Route path='/HomeUsuario' element={<HomeUsuario />} />
             </Routes>
         </Router>
     )

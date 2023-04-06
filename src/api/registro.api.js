@@ -64,10 +64,7 @@ export const buscarLogin = async (ingreso) => {
             if (response.data.message === "Credenciales correctas") {
                 success();
                 alert("Credenciales correctas!")
-                localStorage.setItem('credentials', [ingreso])
-
-                window.location.href = '/recetasHome';
-
+                obtenerUsuario(ingreso);
             } else if (response.data.message === "Revisa los campos e intentalo de nuevo") {
                 buscarCorreoLogin(ingreso);
             } else {
@@ -93,13 +90,12 @@ export const buscar = async (ingreso) => {
 
         })
 }
-export const crear = async (ingreso) => {
-    // let parametros = { correo: ingreso.correo, nombre: ingreso.nombre, apellido: ingreso.apellido, usuario: ingreso.usuario, contrasena: ingreso.contrasena };
 
-    await axios.post(url + `/${ingreso.correo}` + `/${ingreso.nombre}` + `/${ingreso.apellido}` + `/${ingreso.usuario}` + `/${ingreso.contrasena}`)
-        .then((response) => {
-            alert("Usuario registrado exitosamente")
-            window.location.reload();
+export const obtenerUsuario = async (ingreso) => {
+    await axios.get(url + `/${ingreso.correo}`)
+        .then(response => {
+            localStorage.setItem('credentials', response.data[0].usuario)
+            window.location.href = '/HomeUsuario';
         })
 }
 

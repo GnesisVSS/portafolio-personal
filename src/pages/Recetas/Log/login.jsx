@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { Form, Formik } from 'formik';
-import { useNavigate } from 'react-router-dom';
+import { UNSAFE_useScrollRestoration, useNavigate } from 'react-router-dom';
 import { carga } from '../../../funciones/carga';
 import NavbarRecetas from './../../Elementos/navbar-recetas';
 import { FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput, TextField } from '@mui/material';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import { obtenerUsuario } from '../../../api/registro.api';
 
 const Login = () => {
 
@@ -27,11 +28,20 @@ const Login = () => {
     const history = useNavigate();
 
 
+    const [usuario, setUsuario] = useState("");
+    async function loadRecetas() {
+        const response = await obtenerUsuario()
+        setUsuario(response.data)
+        
+        // setImage(new Blob([response.data], { type: "image/jpeg" }));
+    }
+    
+
     return (
 
         <section className='py-5'>
             <NavbarRecetas />
-            <div className="container col-sm-8 mx-auto">
+            <div className="container col-sm-8 mx-auto py-4">
                 <div className="row">
                     <div className="card mb-3 ps-0">
                         <div className="row g-0">
@@ -51,7 +61,6 @@ const Login = () => {
                                                 console.log(values)
                                                 try {
                                                     const response = await carga(values)
-                                                    // history('/recetasHome');
                                                     console.log(response)
                                                 } catch (error) {
                                                     console.log(error)
