@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Form, Formik } from 'formik';
 import { UNSAFE_useScrollRestoration, useNavigate } from 'react-router-dom';
 import { carga } from '../../../funciones/carga';
-import NavbarRecetas from './../../Elementos/navbar-recetas';
+import NavbarRecetas from './../Navs/navbar-recetas';
 import { FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput, TextField } from '@mui/material';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';

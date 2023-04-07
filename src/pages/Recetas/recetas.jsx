@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { consMostrar, mostrarRecetas } from '../../api/receta.api';
 import { RecetasC } from '../../models/recetas.class';
 import CardRecetas from '../Elementos/cardRecetas';
-import NavbarRecetas from '../Elementos/navbar-recetas';
+import NavbarRecetas from './Navs/navbar-recetas';
 
 const Recetas = () => {
     // use state para definir como estado inicial las tareas definidas como base

@@ -1,16 +1,22 @@
 /* eslint-disable react/react-in-jsx-scope */
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom'
 import Index from './pages';
 import Login from './pages/Recetas/Log/login';
-import Recetas from './pages/Recetas/recetas';
+import Recetas from './pages/Recetas/Recetas';
 import Registro from './pages/Recetas/Log/registro';
-import React from 'react';
-import RecetasPreLog from './pages/Recetas/recetas-pre-log';
+import React, { useEffect, useState } from 'react';
+import RecetasPreLog from './pages/Recetas/HomeRec.jsx';
 import RegRecAdmin from './pages/Recetas/Admin/ingreso-rec-admin';
 import HomeUsuario from './pages/Recetas/UsuarioLogged/HomeUsuario';
 
 function Routing() {
+
+    let datos = localStorage.getItem("nombreUsuario");;
+
+
     return (
+
+
         <Router>
             {/* Redirecciones para proteger nuestras rutas */}
             <Routes>
@@ -20,7 +26,7 @@ function Routing() {
                 <Route path='/registro' element={<Registro />} />
                 <Route path='/HomeLogin' element={<RecetasPreLog />} />
                 <Route path='/regRecAdmin' element={<RegRecAdmin />} />
-                <Route path='/HomeUsuario' element={<HomeUsuario />} />
+                <Route path='/HomeUsuario' element={datos ? <HomeUsuario /> : <Navigate to='/login' />} />
             </Routes>
         </Router>
     )

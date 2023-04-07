@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import NavbarRecetas from '../../Elementos/navbar-recetas';
+import NavbarRecetas from '../Navs/navbar-recetas';
 import CardRecetas from '../../Elementos/cardRecetas';
 import { mostrarRecetas } from '../../../api/receta.api';
+import NavbarUsuario from '../Navs/navbarUsuario';
 
 const HomeUsuario = () => {
     // use state para definir como estado inicial las tareas definidas como base
@@ -34,9 +35,7 @@ const HomeUsuario = () => {
         )
     }
 
-    const nombreUsuario = localStorage.getItem("credentials");
-
-    
+    const nombreUsuario = localStorage.getItem("nombreUsuario");
 
     let recetaInfo;
 
@@ -93,12 +92,12 @@ const HomeUsuario = () => {
 
         <section id='homeRecetas'>
 
-            <NavbarRecetas />
+            <NavbarUsuario />
 
             <div className='container mx-auto py-4'>
                 <div>
                     <div>
-                        <p className='py-4'>Bienvenido! {nombreUsuario} </p>
+                    <h1 className="text-focus-in titulo-inicio py-4">Bienvenido! {nombreUsuario}</h1>
                         {recetaInfo}
                     </div>
                 </div>

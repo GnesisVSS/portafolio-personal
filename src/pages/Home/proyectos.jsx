@@ -2,7 +2,7 @@ import { useAnimation, motion } from 'framer-motion';
 import React, { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { homeAnimation } from '../../animation';
-import Recetas from '../Recetas/recetas';
+import Recetas from '../Recetas/Recetas';
 
 const Proyectos = () => {
 

@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 import React, { Fragment, useEffect, useState } from 'react';
 import { Field, useFormik } from 'formik';
-import NavbarRecetas from './../../Elementos/navbar-recetas';
+import NavbarRecetas from './../Navs/navbar-recetas';
 import { TextField } from '@mui/material';
 import { cargarRecetaAdmin } from '../../../api/receta.api';
 import Photo from '../Photo';

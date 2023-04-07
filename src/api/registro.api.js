@@ -94,7 +94,8 @@ export const buscar = async (ingreso) => {
 export const obtenerUsuario = async (ingreso) => {
     await axios.get(url + `/${ingreso.correo}`)
         .then(response => {
-            localStorage.setItem('credentials', response.data[0].usuario)
+            localStorage.setItem('nombreUsuario', response.data[0].usuario)
+            localStorage.setItem('inicialesUsuario',response.data[0].inicialesUsuario)
             window.location.href = '/HomeUsuario';
         })
 }

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { useScroll } from '../useScroll';
 import { motion } from 'framer-motion';
-import { navAnimation } from '../../animation';
+import { navAnimation } from '../../../animation';
 
 function NavbarRecetas() {
 
