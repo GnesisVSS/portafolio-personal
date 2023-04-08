@@ -22,7 +22,7 @@ const NavbarUsuario = () => {
         if(index===0){
             // redirigir a pagina de perfil con toda la info del usuario mas sus recetas guardadas(vista previa) 
             // y sus recetas ingresadas
-            window.location.href = '#';
+            window.location.href = '/miPerfil';
         }else if(index===1){
             window.location.href = '#';
         }else if(index===2){
@@ -30,7 +30,7 @@ const NavbarUsuario = () => {
         }else if(index===3){
             localStorage.removeItem("nombreUsuario");
             localStorage.removeItem("inicialesUsuario");
-            window.location.href = '/HomeLogin';
+            window.location.href = '/RecetasHome';
         }else{
             console.log("Algo salio mal!")
         }
@@ -56,7 +56,7 @@ const NavbarUsuario = () => {
                         <div className="  collapse navbar-collapse  " id="navbarNav">
                             <ul className="navbar-nav text">
                                 <li className="nav-item ">
-                                    <strong><a className="nav-link" style={{ color: " #3a3228" }} id="nav-recetas" href="/HomeLogin">Home</a></strong>
+                                    <strong><a className="nav-link" style={{ color: " #3a3228" }} id="nav-recetas" href="/HomeUsuario">Home</a></strong>
                                 </li>
 
                             </ul>

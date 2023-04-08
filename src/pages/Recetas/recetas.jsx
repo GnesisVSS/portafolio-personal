@@ -3,6 +3,7 @@ import { consMostrar, mostrarRecetas } from '../../api/receta.api';
 import { RecetasC } from '../../models/recetas.class';
 import CardRecetas from '../Elementos/cardRecetas';
 import NavbarRecetas from './Navs/navbar-recetas';
+import VistaCards from './VistaCards';
 
 const Recetas = () => {
     // use state para definir como estado inicial las tareas definidas como base
@@ -88,14 +89,7 @@ const Recetas = () => {
 
         <section id='homeRecetas'>
             <NavbarRecetas />
-            
-            <div className='container mx-auto py-4'>
-                <div>
-                    <div>
-                        {recetaInfo}
-                    </div>
-                </div>
-            </div >
+            <VistaCards/>
         </section>
     );
 }
