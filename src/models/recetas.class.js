@@ -1,4 +1,5 @@
 export class RecetasC {
+    id = '';
     nombre = '';
     descripcion = '';
     preparacion = '';
@@ -8,7 +9,8 @@ export class RecetasC {
     dificultad = '';
     imgUrl = '';
 
-    constructor(nombre,descripcion,preparacion,categoria,tiempoPreparacion,porciones,dificultad,imgUrl){
+    constructor(id,nombre,descripcion,preparacion,categoria,tiempoPreparacion,porciones,dificultad,imgUrl){
+        this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.preparacion = preparacion;
