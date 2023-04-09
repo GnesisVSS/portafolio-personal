@@ -96,6 +96,7 @@ export const obtenerUsuario = async (ingreso) => {
         .then(response => {
             localStorage.setItem('nombreUsuario', response.data[0].usuario)
             localStorage.setItem('inicialesUsuario',response.data[0].inicialesUsuario)
+            localStorage.setItem('correoUsuario',response.data[0].correo)
             window.location.href = '/HomeUsuario';
         })
 }
