@@ -16,13 +16,14 @@ const VistaCards = () => {
         loadRecetas()
     }, [])
 
+
     const Tarjetas = () => {
         return (
             <section>
                 <div className='container'>
                     {recetas.map((rec, index) => {
                         return (
-                            <CardRecetas key={index} rec={rec} />
+                            <CardRecetas key={index} rec={rec} cont={index}/>
                         )
                     })}
                 </div>

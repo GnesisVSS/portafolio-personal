@@ -13,10 +13,25 @@ export const cargarRecetaAdmin = async (ingreso) => {
             alert("Receta registrada exitosamente")
             window.location.reload();
         })
-
 }
-    
+
 
 // Recetas guardadas
 export const mostrarRecetasGuardadas = async (ingreso) =>
     await axios.get(urlr + `/${ingreso}`)
+
+//insertar recetas guardadas
+export const cargarGuardados = async (idreceta, correousuario) => {
+    await axios.post(urlr + `/${idreceta}` + `/${correousuario}`)
+        .then((response) => {
+            alert("Receta guardada exitosamente")
+        })
+}
+
+//eliminar recetas guardadas
+export const eliminarGuardados = async (idreceta, correousuario) => {
+    await axios.delete(urlr + `/${idreceta}` + `/${correousuario}`)
+        .then((response) => {
+            alert("Receta eliminada exitosamente")
+        })
+}
