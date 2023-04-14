@@ -20,6 +20,9 @@ export const cargarRecetaAdmin = async (ingreso) => {
 export const mostrarRecetasGuardadas = async (ingreso) =>
     await axios.get(urlr + `/${ingreso}`)
 
+export const mostrarRecetasGuardadaslimit = async (ingreso,cant) =>
+    await axios.get(urlr + `/${ingreso}` + `/${cant}`)
+
 //insertar recetas guardadas
 export const cargarGuardados = async (idreceta, correousuario) => {
     await axios.post(urlr + `/${idreceta}` + `/${correousuario}`)

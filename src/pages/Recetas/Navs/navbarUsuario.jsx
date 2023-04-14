@@ -6,7 +6,7 @@ import { Avatar, Box, IconButton, Menu, MenuItem, Tooltip, Typography } from '@m
 const NavbarUsuario = () => {
     const InicialesUsuario = localStorage.getItem("inicialesUsuario");
 
-    const settings = ['Mi perfil', 'Mis recetas', 'Guardados', 'Cerrar Sesión'];
+    const settings = ['Mi perfil', 'Guardados','Mis recetas' , 'Cerrar Sesión'];
     const [anchorElUser, setAnchorElUser] = React.useState(null);
 
     const [selectedIndex, setSelectedIndex] = React.useState();
@@ -24,7 +24,7 @@ const NavbarUsuario = () => {
             // y sus recetas ingresadas
             window.location.href = '/miPerfil';
         }else if(index===1){
-            window.location.href = '#';
+            window.location.href = '/misGuardados';
         }else if(index===2){
             window.location.href = '#';
         }else if(index===3){

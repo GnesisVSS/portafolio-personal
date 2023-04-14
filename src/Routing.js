@@ -9,6 +9,7 @@ import RecetasPreLog from './pages/Recetas/HomeRec.jsx';
 import RegRecAdmin from './pages/Recetas/Admin/ingreso-rec-admin';
 import HomeUsuario from './pages/Recetas/UsuarioLogged/HomeUsuario';
 import MiPerfil from './pages/Recetas/Navs/MenuNav/miPerfil';
+import RecetasGuardadasCompletas from './pages/Recetas/Navs/MenuNav/RecetasGuardadasCompletas';
 
 function Routing() {
 
@@ -29,6 +30,7 @@ function Routing() {
                 <Route path='/regRecAdmin' element={<RegRecAdmin />} />
                 <Route path='/HomeUsuario' element={datos ? <HomeUsuario /> : <Navigate to='/login' />} />
                 <Route path='/miPerfil' element={datos ? <MiPerfil /> : <Navigate to='/login' />} />
+                <Route path='/misGuardados' element={datos ? <RecetasGuardadasCompletas /> : <Navigate to='/login' />} />
             </Routes>
         </Router>
     )

@@ -23,7 +23,7 @@ const VistaCards = () => {
                 <div className='container'>
                     {recetas.map((rec, index) => {
                         return (
-                            <CardRecetas key={index} rec={rec} cont={index}/>
+                            <CardRecetas key={index} rec={rec}/>
                         )
                     })}
                 </div>
