@@ -22,6 +22,9 @@ const MiPerfil = () => {
     }));
 
     const InicialesUsuario = localStorage.getItem("inicialesUsuario");
+    const correoUsuario = localStorage.getItem("correoUsuario");
+    const nombreUsuario = localStorage.getItem("nombreUsuario");
+    const nombreCompleto = localStorage.getItem("nombreCompleto");
 
 
     return (
@@ -46,13 +49,13 @@ const MiPerfil = () => {
                                     </Box>
                                     <Box component="ul" aria-labelledby="category-a" sx={{ pl: 2 }}>
                                         <p>
-                                            correo@correo.cl
+                                            {correoUsuario}
                                         </p>
                                         <p>
-                                            usuario
+                                            {nombreUsuario}
                                         </p>
                                         <p>
-                                            nombre apellido
+                                            {nombreCompleto}
                                         </p>
                                     </Box>
                                 </Grid>

@@ -63,7 +63,7 @@ export const buscarLogin = async (ingreso) => {
         .then(response => {
             if (response.data.message === "Credenciales correctas") {
                 success();
-                alert("Credenciales correctas!")
+                // alert("Credenciales correctas!")
                 obtenerUsuario(ingreso);
             } else if (response.data.message === "Revisa los campos e intentalo de nuevo") {
                 buscarCorreoLogin(ingreso);
@@ -97,6 +97,7 @@ export const obtenerUsuario = async (ingreso) => {
             localStorage.setItem('nombreUsuario', response.data.fila[0].usuario)
             localStorage.setItem('inicialesUsuario',response.data.fila[0].inicialesUsuario)
             localStorage.setItem('correoUsuario',response.data.fila[0].correo)
+            localStorage.setItem('nombreCompleto',response.data.fila[0].nombreCompleto)
             window.location.href = '/HomeUsuario';
             // console.log(response.data[0].fila)
         })
