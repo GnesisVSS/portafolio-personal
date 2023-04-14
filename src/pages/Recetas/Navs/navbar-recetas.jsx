@@ -21,7 +21,7 @@ function NavbarRecetas() {
                         <div className="  collapse navbar-collapse  " id="navbarNav">
                             <ul className="navbar-nav text">
                                 <li className="nav-item ">
-                                    <strong><a className="nav-link" style={{ color: " #3a3228" }} id="nav-recetas" href="/HomeLogin">Home</a></strong>
+                                    <strong><a className="nav-link" style={{ color: " #3a3228" }} id="nav-recetas" href="/recetas">Home</a></strong>
                                 </li>
 
                             </ul>

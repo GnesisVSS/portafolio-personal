@@ -12,7 +12,7 @@ import MiPerfil from './pages/Recetas/Navs/MenuNav/miPerfil';
 
 function Routing() {
 
-    let datos = localStorage.getItem("nombreUsuario");;
+    let datos = localStorage.getItem("nombreUsuario");
 
 
     return (
