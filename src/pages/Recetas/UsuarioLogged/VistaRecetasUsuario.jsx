@@ -1,30 +1,32 @@
 import React, { useEffect, useState } from 'react';
-import { mostrarRecetasGuardadaslimit } from '../../../api/receta.api';
-import RecetasGuard from './RecetasGuard';
+import RecetasUsuario from './RecetasUsuario';
+import { consultaRecetasUsuario } from '../../../api/receta.api';
 import Loading from '../ElementosRecetas/Loading';
 
-const VistaCardsGuardadas = () => {
+const VistaRecetasUsuario = () => {
+    var fondo = document.getElementById('root');
+    fondo.style.backgroundColor = "white";
     // use state para definir como estado inicial las tareas definidas como base
     const [recetas, setRecetas] = useState([])
-
+    const correo = localStorage.getItem("correoUsuario");
     useEffect(() => {
         async function loadRecetas() {
-            const correousuario = localStorage.getItem("correoUsuario");
-            const cant = 2;
-            const response = await mostrarRecetasGuardadaslimit(correousuario, cant)
+            // Al renderizar la pagina trae los datos de la consulta desde la API y la asigna como valor al state de recetas
+            const response = await consultaRecetasUsuario(correo)
             setRecetas(response.data)
-            // setImage(new Blob([response.data], { type: "image/jpeg" }));
         }
+        
         loadRecetas()
+        
     }, [])
-
     const Tarjetas = () => {
         return (
             <section>
                 <div className='container'>
                     {recetas.map((rec, index) => {
                         return (
-                            <RecetasGuard key={index} rec={rec} />
+                             //Para renderizar la informacion de las recetas se les entrega por props al componente de recetasUsuario
+                            <RecetasUsuario key={index} rec={rec} />
                         )
                     })}
                 </div>
@@ -34,28 +36,27 @@ const VistaCardsGuardadas = () => {
 
     let recetaInfo;
 
+
     if (recetas.length > 0) {
-        recetaInfo = <Tarjetas />
+        recetaInfo = <Tarjetas/>
     } else {
         recetaInfo = (
-            <Loading />
+            <Loading/>
         )
     }
     return (
-        <section >
+        <section>
             <div className='container mx-auto py-4'>
+            
                 <div>
                     <div>
                         {recetaInfo}
                     </div>
                 </div>
             </div >
-            <div className='text-end p-4'>
-                <a href='/MisGuardados'>Ver todo</a>
-            </div >
-
         </section>
     );
 }
 
-export default VistaCardsGuardadas;
+
+export default VistaRecetasUsuario;

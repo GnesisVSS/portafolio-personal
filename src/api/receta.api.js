@@ -42,13 +42,6 @@ export const eliminarGuardados = async (idreceta, correousuario) => {
 
 
 // recetas creadas por usuario
-export const consultaRecetasUsuario = async (correo) => {
+export const consultaRecetasUsuario = async (correo) => 
     await axios.get(url_rec_usuario + `/${correo}`)
-        .then(response => {
-            if(response.data[0] != undefined){
-                localStorage.setItem('recetasUsuario', "hay datos")
-            }else{
-                localStorage.setItem('recetasUsuario', "No hay datos")
-            }
-        })
-}
+        

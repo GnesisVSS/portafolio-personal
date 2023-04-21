@@ -1,20 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import NavbarUsuario from '../navbarUsuario';
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
 import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
-import VistaCardsGuardadas from '../../UsuarioLogged/VistaCardsGuardadas';
+import VistaRecetasUsuario from '../../UsuarioLogged/VistaRecetasUsuario';
+import { consultaRecetasUsuario } from '../../../../api/receta.api';
 
 const MisRecetas = () => {
-    // let url_rec_usuario = 'https://bdapirest.netlify.app/.netlify/functions/api/api/recetausuario';
-
+    
+    
     var fondo = document.getElementById('root');
     fondo.style.backgroundColor = "white";
-    const datosRecetas = localStorage.getItem("recetasUsuario");
+
+    // Se recupera de el local Storage el item que contiene el correo del usuario para pasarselo como props a la funcion de la API 
+    const correousuario = localStorage.getItem("correoUsuario");
+    const [recetaUsuario, setRecetaUsuario] = useState([]);
+
+    consultaRecetasUsuario(correousuario).then(response => {
+        // Se le da como valor al state lo retornado por la funcion
+        setRecetaUsuario(response.data[0])
+    })
+
 
     function alerta ()  {
-        if (datosRecetas === "No hay datos") {
+        // Se revisa que el array de la consulta de recetas del usuario traiga datos, en caso de estar como indefinido muestra una alerta
+        if (recetaUsuario === undefined) {
             return (
                 <Alert severity="warning">
                     <AlertTitle>Ooops!</AlertTitle>
@@ -24,7 +35,8 @@ const MisRecetas = () => {
 
         }else{
             return (
-                <VistaCardsGuardadas/>
+                // Llama a la vista de usuarios para mostrar las tarjetas con los datos de las recetas
+                <VistaRecetasUsuario/>
             )
         }
     }

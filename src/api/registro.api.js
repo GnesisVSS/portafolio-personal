@@ -66,7 +66,7 @@ export const buscarLogin = async (ingreso) => {
                 success();
                 // alert("Credenciales correctas!")
                 obtenerUsuario(ingreso);
-                consultaRecetasUsuario(ingreso.correo);
+                
             } else if (response.data.message === "Revisa los campos e intentalo de nuevo") {
                 buscarCorreoLogin(ingreso);
             } else {
@@ -97,9 +97,9 @@ export const obtenerUsuario = async (ingreso) => {
     await axios.get(url + `/${ingreso.correo}`)
         .then(response => {
             localStorage.setItem('nombreUsuario', response.data.fila[0].usuario)
-            localStorage.setItem('inicialesUsuario',response.data.fila[0].inicialesUsuario)
-            localStorage.setItem('correoUsuario',response.data.fila[0].correo)
-            localStorage.setItem('nombreCompleto',response.data.fila[0].nombreCompleto)
+            localStorage.setItem('inicialesUsuario', response.data.fila[0].inicialesUsuario)
+            localStorage.setItem('correoUsuario', response.data.fila[0].correo)
+            localStorage.setItem('nombreCompleto', response.data.fila[0].nombreCompleto)
             window.location.href = '/HomeUsuario';
             // console.log(response.data[0].fila)
         })

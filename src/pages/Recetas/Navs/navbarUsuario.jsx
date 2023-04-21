@@ -31,6 +31,7 @@ const NavbarUsuario = () => {
             localStorage.removeItem("nombreUsuario");
             localStorage.removeItem("inicialesUsuario");
             localStorage.removeItem("correoUsuario");
+            localStorage.removeItem("recetasUsuario");
             window.location.href = '/RecetasHome';
         }else{
             console.log("Algo salio mal!")
