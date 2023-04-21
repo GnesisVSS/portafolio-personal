@@ -1,4 +1,5 @@
 import axios from "axios";
+import { consultaRecetasUsuario } from "./receta.api";
 
 let url = 'https://bdapirest.netlify.app/.netlify/functions/api/api/usuarios';
 
@@ -65,6 +66,7 @@ export const buscarLogin = async (ingreso) => {
                 success();
                 // alert("Credenciales correctas!")
                 obtenerUsuario(ingreso);
+                consultaRecetasUsuario(ingreso.correo);
             } else if (response.data.message === "Revisa los campos e intentalo de nuevo") {
                 buscarCorreoLogin(ingreso);
             } else {
@@ -102,8 +104,6 @@ export const obtenerUsuario = async (ingreso) => {
             // console.log(response.data[0].fila)
         })
 }
-
-
 
 
 

@@ -26,7 +26,7 @@ const NavbarUsuario = () => {
         }else if(index===1){
             window.location.href = '/misGuardados';
         }else if(index===2){
-            window.location.href = '#';
+            window.location.href = '/misRecetas';
         }else if(index===3){
             localStorage.removeItem("nombreUsuario");
             localStorage.removeItem("inicialesUsuario");
