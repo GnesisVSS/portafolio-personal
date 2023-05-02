@@ -53,11 +53,8 @@ const FormIngredientes = () => {
             valFinal = [valuesIngr, valuesCant, valuesUnidad]
         }
 
-        values.forEach((value, index) => {
-            ingrextra = [...ingrextra, document.getElementById(`input${index}`).value]
-        });
 
-        setValues([...values, [valFinal, ingrextra]]);
+        setValues([...values, formValues,additionalInputs]);
         localStorage.setItem('formValues', JSON.stringify(formValues));
         localStorage.setItem('additionalInputs', JSON.stringify(additionalInputs));
     }
@@ -79,17 +76,19 @@ const FormIngredientes = () => {
         console.log(formData);
     };
 
-    const [formValues, setFormValues] = useState({
-        nombreInput1: '',
-        nombreInput2: '',
-        nombreInput3: '',
-        cantidadInput1: '',
-        cantidadInput2: '',
-        cantidadInput3: '',
-        unidadInput1: '',
-        unidadInput2: '',
-        unidadInput3: '',
-    });
+    const [formValues, setFormValues] = useState([
+        [{nombreInput1: ''},
+        {cantidadInput1: ''},
+        {unidadInput1: ''},],
+        {nombreInput2: ''},
+        {nombreInput3: ''},
+        
+        {cantidadInput2: ''},
+        {cantidadInput3: ''},
+        
+        {unidadInput2: ''},
+        {unidadInput3: ''}
+    ]);
     const [additionalInputs, setAdditionalInputs] = useState([
         { IngrExtra: '' },
         { CantidadExtra: '' },
@@ -233,7 +232,7 @@ const FormIngredientes = () => {
                 </button>
             </div>
 
-        </div> : <FormDetalles datosIngredientes={values} />
+        </div> : <FormDetalles datosIngredientes={values}/>
 
     );
 }
