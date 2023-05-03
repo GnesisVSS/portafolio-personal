@@ -5,34 +5,46 @@ import React, { useEffect, useState } from 'react';
 import { Field, useFormik } from 'formik';
 import FormIngredientes from './FormIngredientes';
 import Photo from '../../Photo';
-import { registroRecetasUsuario } from '../../../../api/receta.api';
+import { registroDetalleRecetaUsuario, registroRecetasUsuario } from '../../../../api/receta.api';
 
 const FormDetalles = (datosIngredientes, props) => {
     const [valorInput, setValorInput] = useState('');
     const correousuario = localStorage.getItem("correoUsuario");
 
-    const valuesDetalle = datosIngredientes.datosIngredientes.map((detalle,index) => detalle);
+    const valuesDetalle = datosIngredientes.datosIngredientes[0]
 
     useEffect(() => {
         setValorInput(props.valorInicial);
-        console.log(valuesDetalle)
+        console.log(valuesDetalle.length)
     }, [props.valorInicial]);
 
+    const [info, setInfo] = useState(valorInput);
+
+    const handleInfoChange = (newInfo) => {
+        setInfo(newInfo);
+    };
 
     const formik = useFormik({
         initialValues: {
             nombre: "",
-            cantidad: "",
-            unidad: "",
-            id_receta: ""
+            descripcion: "",
+            preparacion: "",
+            categoria: "",
+            tiempoPreparacion: "",
+            porciones: "",
+            dificultad: "",
+            imgUrl: ""
         },
-        onSubmit: async (datosIngredientes) => {
-            // values.imgUrl = info;
+        onSubmit: async (detallesIngredientes) => {
+            detallesIngredientes.imgUrl = info;
             try {
-                const response = await registroRecetasUsuario(datosIngredientes)
+                const response = await registroRecetasUsuario(valuesDetalle)
+                const responseDetalle = await registroDetalleRecetaUsuario(detallesIngredientes)
                 console.log(response)
+                console.log(responseDetalle)
             } catch (error) {
                 console.log(error)
+
             }
         },
     });
@@ -42,12 +54,6 @@ const FormDetalles = (datosIngredientes, props) => {
     }
     // console.log(datosIngredientes)
 
-    const [info, setInfo] = useState(valorInput);
-
-    const handleInfoChange = (newInfo) => {
-        setInfo(newInfo);
-    };
-
 
     return (
         page ? <FormIngredientes /> :
@@ -56,26 +62,27 @@ const FormDetalles = (datosIngredientes, props) => {
                     <h1 className='text-focus-in titulo-inicio'>Detalles</h1>
                     <div className='py-4'>
                         <div className="input-group mb-3">
-                            <TextField fullWidth sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }} name='nombre' id="outlined-basic" label="Nombre" variant="outlined" />
+                            <TextField fullWidth sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }} name='nombre' onChange={formik.handleChange} id="outlined-basic" label="Nombre" variant="outlined" />
                         </div>
                         <div className="input-group mb-3">
-                            <TextField fullWidth sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }} name='descripcion' id="outlined-basic" label="Descripcion" variant="outlined" />
+                            <TextField fullWidth sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }} name='descripcion' onChange={formik.handleChange} id="outlined-basic" label="Descripcion" variant="outlined" />
                         </div>
                         <div className="input-group mb-3">
-                            <TextField fullWidth sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }} name='preparacion' id="outlined-basic" label="Preparacion" variant="outlined" />
+                            <TextField fullWidth sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }} name='preparacion' onChange={formik.handleChange} id="outlined-basic" label="Preparacion" variant="outlined" />
                         </div>
                         <div className="input-group mb-3">
-                            <TextField fullWidth sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }} name='categoria' id="outlined-basic" label="Categoria" variant="outlined" />
+                            <TextField fullWidth sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }} name='categoria' onChange={formik.handleChange} id="outlined-basic" label="Categoria" variant="outlined" />
                         </div>
                         <div className="input-group mb-3">
-                            <TextField fullWidth sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }} name='tiempoPreparacion' id="outlined-basic" label="Tiempo Preparacion" variant="outlined" />
+                            <TextField fullWidth sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }} name='tiempoPreparacion' onChange={formik.handleChange} id="outlined-basic" label="Tiempo Preparacion" variant="outlined" />
                         </div>
                         <div className="input-group mb-3">
-                            <TextField fullWidth sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }} name='porciones' id="outlined-basic" label="Porciones" variant="outlined" />
+                            <TextField fullWidth sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }} name='porciones' onChange={formik.handleChange} id="outlined-basic" label="Porciones" variant="outlined" />
                         </div>
                         <div className="input-group mb-3">
-                            <TextField fullWidth sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }} name='dificultad' id="outlined-basic" label="Dificultad" variant="outlined" />
+                            <TextField fullWidth sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }} name='dificultad' onChange={formik.handleChange} id="outlined-basic" label="Dificultad" variant="outlined" />
                         </div>
+                        {/* <ChildComponent onInfoChange={handleInfoChange} /> */}
                         <Photo onInfoChange={handleInfoChange} />
                         <div style={{ textAlign: "center" }} className="py-2">
                             <button type="submit" className="button-inicio" name="formSub" id="formSub" value="form" >

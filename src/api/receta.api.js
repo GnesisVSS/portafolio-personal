@@ -47,14 +47,25 @@ export const consultaRecetasUsuario = async (correo) =>
 
 
 export const registroRecetasUsuario = async (ingreso) => {
-    const encodedUrl = encodeURIComponent(ingreso.imgUrl);
-    await axios.post(url_rec_usuario + `/${ingreso.nombre}` + `/${ingreso.cantidad}` + `/${ingreso.unidad}` + `/${ingreso.id_receta}`)
-        .then((response) => {
-            alert("Receta registrada exitosamente")
-            // window.location.reload();
-        })
+    for (let i = 0; i < ingreso.length; i++) {
+        await axios.post(url_rec_usuario + `/${ingreso[i].nombre}` + `/${ingreso[i].cantidad}` + `/${ingreso[i].unidad}`)
+            .then((response) => {
+                console.log("ingredientes registrados")
+            })
+    }
+
+
 }
 
+export const registroDetalleRecetaUsuario = async (ingreso) => {
+    const correo = localStorage.getItem("correoUsuario");
+    const encodedUrl = encodeURIComponent(ingreso.imgUrl);
+    await axios.post(url_rec_usuario + `/${ingreso.nombre}` + `/${ingreso.descripcion}` + `/${ingreso.preparacion}` + `/${ingreso.categoria}` + `/${ingreso.tiempoPreparacion}` + `/${ingreso.porciones}` + `/${ingreso.dificultad}` + `/url=${encodedUrl}` + `/${correo}`)
+        .then((response) => {
+            alert("Receta registrada exitosamente")
+            window.location.reload();
+        })
+}
 // // recetas creadas por usuario registro
 // export const registroRecetasUsuario = async (correo) =>
 //     await axios.post(url_rec_usuario + `/${correo}`)
