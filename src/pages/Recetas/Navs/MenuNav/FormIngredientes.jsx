@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { Field, setIn, useFormik } from 'formik';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import FormDetalles from './FormDetalles';
+import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 
 const FormIngredientes = () => {
     const formik = useFormik({
@@ -39,73 +40,62 @@ const FormIngredientes = () => {
 
     const handleClick = (event, index) => {
         setPage(!page);
-        let ingrextra = [];
         let valuesIngr = [];
         let valuesCant = [];
         let valuesUnidad = [];
         let valFinal = []
         for (let i = 0; i < 3; i++) {
-            valuesIngr = [...valuesIngr, document.getElementById(`nombreIngr${i}`).value]
+            valuesIngr = [...valuesIngr, document.getElementById('nombre').value]
 
-            valuesCant = [...valuesCant, document.getElementById(`Cantidad${i}`).value]
+            valuesCant = [...valuesCant, document.getElementById('cantidad').value]
 
-            valuesUnidad = [...valuesUnidad, document.getElementById(`unidad${i}`).value]
+            valuesUnidad = [...valuesUnidad, document.getElementById('unidad').value]
             valFinal = [valuesIngr, valuesCant, valuesUnidad]
         }
 
 
-        setValues([...values, formValues,additionalInputs]);
+        setValues([...values, formValues, additionalInputs]);
         localStorage.setItem('formValues', JSON.stringify(formValues));
         localStorage.setItem('additionalInputs', JSON.stringify(additionalInputs));
     }
 
-    const handleChange = (event, index) => {
-        const newValues = [...values];
-        newValues[index] = { ...newValues[index], value: event.target.value };;
-        setIngredienteExtra([...ingredienteExtra], newValues);
-        console.log(newValues)
-    };
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        setFormValues({ nombre: "", cantidad: "", unidad: "" });
         const formData = {};
         values.forEach((value, index) => {
             formData[`input-${index}`] = formData[`input-${index}`] || [];
             formData[`input-${index}`].push(value.value);
         });
-        console.log(formData);
+        console.log(formValues);
     };
 
-    const [formValues, setFormValues] = useState([
-        [{nombreInput1: ''},
-        {cantidadInput1: ''},
-        {unidadInput1: ''},],
-        {nombreInput2: ''},
-        {nombreInput3: ''},
-        
-        {cantidadInput2: ''},
-        {cantidadInput3: ''},
-        
-        {unidadInput2: ''},
-        {unidadInput3: ''}
-    ]);
+    const [formValues, setFormValues] = useState([]);
+
     const [additionalInputs, setAdditionalInputs] = useState([
-        { IngrExtra: '' },
-        { CantidadExtra: '' },
-        { UnidadExtra: '' }
+        { nombre: '' },
+        { cantidad: '' },
+        { unidad: '' }
     ]);
 
     const handleAddInput = () => {
-        setAdditionalInputs([...additionalInputs, '']);
-
+        setAdditionalInputs([...additionalInputs, {}]);
     };
     // 2. Crear un controlador de eventos para actualizar el estado cuando se cambie algún input
     const handleInputChange = (event) => {
         const { name, value } = event.target;
-        setFormValues((prevState) => ({
-            ...prevState,
-            [name]: value
-        }));
+        const index = parseInt(name.slice(-1)) - 1; // obtenemos el índice del objeto en el arreglo
+        const field = name.slice(0, -1); // obtenemos el nombre del campo del objeto
+        setFormValues((prevState) => {
+            const newState = [...prevState]; // creamos un nuevo arreglo
+            if (newState.length <= index) {
+                newState[index] = { [field]: value }; // si el objeto no existe, lo creamos
+            } else {
+                newState[index][field] = value; // si el objeto ya existe, actualizamos el campo correspondiente
+            }
+            return newState; // devolvemos el nuevo estado
+        });
     };
 
     // 3. Recuperar los valores del formulario del localStorage y actualizar el estado del componente con esos valores
@@ -122,7 +112,12 @@ const FormIngredientes = () => {
     }, []);
 
     // 4. Cuando el usuario hace clic en el botón "Siguiente", guardar el estado actual del formulario en localStorage
+    const handleRemoveInput = (indexToRemove) => {
+        const filteredInputs = additionalInputs.filter((input, index) => index !== indexToRemove);
+        setAdditionalInputs(filteredInputs);
+        localStorage.setItem('additionalInputs', JSON.stringify(filteredInputs));
 
+    };
 
     return (
         page ? <div>
@@ -130,52 +125,52 @@ const FormIngredientes = () => {
                 <h1 className='text-focus-in titulo-inicio'>Ingredientes</h1>
                 <div className='row py-4'>
                     <div className='col'>
-                        <TextField fullWidth sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }} name={'nombreInput1'} id="nombreIngr0" variant="outlined" label="Nombre del Ingrediente" value={formValues.nombreInput1}
+                        <TextField fullWidth sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }} name={'nombre1'} id="nombre" variant="outlined" label="Nombre del Ingrediente" value={formValues[0]?.nombre}
                             onChange={handleInputChange} />
 
                     </div>
                     <div className='col'>
-                        <TextField fullWidth sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }} name={'cantidadInput1'} id="Cantidad0" variant="outlined" label="Cantidad" value={formValues.cantidadInput1}
+                        <TextField fullWidth sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }} name={'cantidad1'} id="cantidad" variant="outlined" label="Cantidad" value={formValues[0]?.cantidad}
                             onChange={handleInputChange} />
 
                     </div>
                     <div className='col'>
-                        <TextField fullWidth sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }} name={'unidadInput1'} id="unidad0" variant="outlined" label="Unidad de Medida" value={formValues.unidadInput1}
+                        <TextField fullWidth sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }} name={'unidad1'} id="unidad" variant="outlined" label="Unidad de Medida" value={formValues[0]?.unidad}
                             onChange={handleInputChange} />
 
                     </div>
                 </div>
                 <div className='row py-4'>
                     <div className='col'>
-                        <TextField fullWidth sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }} value={formValues.nombreInput2}
-                            onChange={handleInputChange} name={'nombreInput2'} id="nombreIngr1" variant="outlined" label="Nombre del Ingrediente" />
+                        <TextField fullWidth sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }} value={formValues[1]?.nombre}
+                            onChange={handleInputChange} name={'nombre2'} id="nombreIngr1" variant="outlined" label="Nombre del Ingrediente" />
 
                     </div>
                     <div className='col'>
-                        <TextField fullWidth sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }} value={formValues.cantidadInput2}
-                            onChange={handleInputChange} name={'cantidadInput2'} id="Cantidad1" variant="outlined" label="Cantidad" />
+                        <TextField fullWidth sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }} value={formValues[1]?.cantidad}
+                            onChange={handleInputChange} name={'cantidad2'} id="Cantidad1" variant="outlined" label="Cantidad" />
 
                     </div>
                     <div className='col'>
-                        <TextField fullWidth sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }} value={formValues.unidadInput2}
-                            onChange={handleInputChange} name={'unidadInput2'} id="unidad1" variant="outlined" label="Unidad de Medida" />
+                        <TextField fullWidth sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }} value={formValues[1]?.unidad}
+                            onChange={handleInputChange} name={'unidad2'} id="unidad1" variant="outlined" label="Unidad de Medida" />
 
                     </div>
                 </div>
                 <div className='row py-4'>
                     <div className='col'>
-                        <TextField fullWidth sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }} value={formValues.nombreInput3}
-                            onChange={handleInputChange} name={'nombreInput3'} id="nombreIngr2" variant="outlined" label="Nombre del Ingrediente" />
+                        <TextField fullWidth sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }} value={formValues[2]?.nombre}
+                            onChange={handleInputChange} name={'nombre3'} id="nombreIngr2" variant="outlined" label="Nombre del Ingrediente" />
 
                     </div>
                     <div className='col'>
-                        <TextField fullWidth sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }} value={formValues.cantidadInput3}
-                            onChange={handleInputChange} name={'cantidadInput3'} id="Cantidad2" variant="outlined" label="Cantidad" />
+                        <TextField fullWidth sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }} value={formValues[2]?.cantidad}
+                            onChange={handleInputChange} name={'cantidad3'} id="Cantidad2" variant="outlined" label="Cantidad" />
 
                     </div>
                     <div className='col'>
-                        <TextField fullWidth sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }} value={formValues.unidadInput3}
-                            onChange={handleInputChange} name={'unidadInput3'} id="unidad2" variant="outlined" label="Unidad de Medida" />
+                        <TextField fullWidth sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }} value={formValues[2]?.unidad}
+                            onChange={handleInputChange} name={'unidad3'} id="unidad2" variant="outlined" label="Unidad de Medida" />
 
                     </div>
                 </div>
@@ -189,34 +184,40 @@ const FormIngredientes = () => {
                     // eslint-disable-next-line react/jsx-key
                     <div className='row py-4'>
                         <div className='col'>
-                            <TextField key={index} fullWidth sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }} value={input.IngrExtra}
+                            <TextField key={index} fullWidth sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }} value={input.nombre}
                                 onChange={(event) => {
                                     const updatedInputs = [...additionalInputs];
-                                    updatedInputs[index].IngrExtra = event.target.value;
+                                    updatedInputs[index].nombre = event.target.value;
                                     setAdditionalInputs(updatedInputs);
-                                }} variant="outlined" label="Nombre del Ingrediente" />
+                                }} variant="outlined" label="Nombre del Ingrediente" id={'extra'} />
 
                         </div>
                         <div className='col'>
-                            <TextField key={index} fullWidth sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }} value={input.CantidadExtra}
+                            <TextField key={index} fullWidth sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }} value={input.cantidad}
                                 onChange={(event) => {
                                     const updatedInputs = [...additionalInputs];
-                                    updatedInputs[index].CantidadExtra = event.target.value;
+                                    updatedInputs[index].cantidad = event.target.value;
                                     setAdditionalInputs(updatedInputs);
-                                }} variant="outlined" label="Cantidad" />
+                                }} variant="outlined" label="Cantidad" id={'extra'} />
 
                         </div>
                         <div className='col'>
-                            <TextField key={index} fullWidth sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }} value={input.UnidadExtra}
+                            <TextField key={index} fullWidth sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }} value={input.unidad}
                                 onChange={(event) => {
                                     const updatedInputs = [...additionalInputs];
-                                    updatedInputs[index].UnidadExtra = event.target.value;
+                                    updatedInputs[index].unidad = event.target.value;
                                     setAdditionalInputs(updatedInputs);
-                                }} variant="outlined" label="Unidad de Medida" />
+                                }} variant="outlined" label="Unidad de Medida" id={'extra'} />
+
 
                         </div>
+                        <div className='col-sm-1'>
+                            <Button variant="text" onClick={() => handleRemoveInput(index)} style={{ color: "#00A087" }} startIcon={<RemoveCircleIcon />}>Agregar otro</Button>
+
+
+                        </div>
+
                     </div>
-
                 ))}
                 <Button variant="text" onClick={handleAddInput} style={{ color: "#00A087" }} startIcon={<AddCircleIcon />}>Agregar otro</Button>
 
@@ -232,7 +233,7 @@ const FormIngredientes = () => {
                 </button>
             </div>
 
-        </div> : <FormDetalles datosIngredientes={values}/>
+        </div> : <FormDetalles datosIngredientes={values} />
 
     );
 }
