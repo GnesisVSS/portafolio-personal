@@ -11,11 +11,11 @@ const FormDetalles = (datosIngredientes, props) => {
     const [valorInput, setValorInput] = useState('');
     const correousuario = localStorage.getItem("correoUsuario");
 
-    // const valuesDetalle = datosIngredientes.datosIngredientes.map(detalle => [detalle.categoria, detalle.descripcion, detalle.dificultad, detalle.imgUrl, detalle.nombre, detalle.porciones, detalle.preparacion, detalle.tiempoPreparacion, detalle.usuario]);
+    const valuesDetalle = datosIngredientes.datosIngredientes.map((detalle,index) => detalle);
 
     useEffect(() => {
         setValorInput(props.valorInicial);
-        console.log(datosIngredientes)
+        console.log(valuesDetalle)
     }, [props.valorInicial]);
 
 

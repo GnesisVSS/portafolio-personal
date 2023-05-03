@@ -7,54 +7,16 @@ import FormDetalles from './FormDetalles';
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 
 const FormIngredientes = () => {
-    const formik = useFormik({
-        initialValues: {
-            nombre: "",
-            descripcion: "",
-            preparacion: "",
-            categoria: "",
-            tiempoPreparacion: "",
-            porciones: "",
-            dificultad: "",
-            imgUrl: ""
-        },
-        onSubmit: async (values) => {
-            console.log(values)
-            values.imgUrl = info;
-            try {
-                const response = await cargarRecetaAdmin(values)
-                console.log(response)
-            } catch (error) {
-                console.log(error)
-            }
-        },
-    });
 
     const [values, setValues] = useState([]);
     const [page, setPage] = useState(true);
-    const [ingredienteExtra, setIngredienteExtra] = useState([]);
-
-    const addInput = () => {
-        setValues([...values, { value: '' }]);
-    };
 
     const handleClick = (event, index) => {
         setPage(!page);
-        let valuesIngr = [];
-        let valuesCant = [];
-        let valuesUnidad = [];
         let valFinal = []
-        for (let i = 0; i < 3; i++) {
-            valuesIngr = [...valuesIngr, document.getElementById('nombre').value]
-
-            valuesCant = [...valuesCant, document.getElementById('cantidad').value]
-
-            valuesUnidad = [...valuesUnidad, document.getElementById('unidad').value]
-            valFinal = [valuesIngr, valuesCant, valuesUnidad]
-        }
-
-
-        setValues([...values, formValues, additionalInputs]);
+        
+        valFinal = formValues.concat(additionalInputs)
+        setValues([...values, valFinal]);
         localStorage.setItem('formValues', JSON.stringify(formValues));
         localStorage.setItem('additionalInputs', JSON.stringify(additionalInputs));
     }
@@ -72,12 +34,7 @@ const FormIngredientes = () => {
     };
 
     const [formValues, setFormValues] = useState([]);
-
-    const [additionalInputs, setAdditionalInputs] = useState([
-        { nombre: '' },
-        { cantidad: '' },
-        { unidad: '' }
-    ]);
+    const [additionalInputs, setAdditionalInputs] = useState([]);
 
     const handleAddInput = () => {
         setAdditionalInputs([...additionalInputs, {}]);
@@ -109,6 +66,7 @@ const FormIngredientes = () => {
         if (storedAdditionalInputs) {
             setAdditionalInputs(JSON.parse(storedAdditionalInputs));
         }
+        console.log(additionalInputs)
     }, []);
 
     // 4. Cuando el usuario hace clic en el botón "Siguiente", guardar el estado actual del formulario en localStorage
@@ -182,7 +140,7 @@ const FormIngredientes = () => {
                 {additionalInputs.map((input, index) => (
 
                     // eslint-disable-next-line react/jsx-key
-                    <div className='row py-4'>
+                    <div className='row py-4 align-items-center'>
                         <div className='col'>
                             <TextField key={index} fullWidth sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }} value={input.nombre}
                                 onChange={(event) => {
@@ -212,7 +170,7 @@ const FormIngredientes = () => {
 
                         </div>
                         <div className='col-sm-1'>
-                            <Button variant="text" onClick={() => handleRemoveInput(index)} style={{ color: "#00A087" }} startIcon={<RemoveCircleIcon />}>Agregar otro</Button>
+                            <Button variant="text" onClick={() => handleRemoveInput(index)} sx={{ color: "red"}} startIcon={<RemoveCircleIcon />}></Button>
 
 
                         </div>
