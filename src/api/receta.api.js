@@ -46,7 +46,9 @@ export const consultaRecetasUsuario = async (correo) =>
     await axios.get(url_rec_usuario + `/${correo}`)
 
 
+// registro de ingredientes para receta de usuario
 export const registroRecetasUsuario = async (ingreso) => {
+
     for (let i = 0; i < ingreso.length; i++) {
         await axios.post(url_rec_usuario + `/${ingreso[i].nombre}` + `/${ingreso[i].cantidad}` + `/${ingreso[i].unidad}`)
             .then((response) => {
@@ -54,18 +56,22 @@ export const registroRecetasUsuario = async (ingreso) => {
             })
     }
 
-
 }
 
+// registro de detalles de la receta para las recetas del usuario
 export const registroDetalleRecetaUsuario = async (ingreso) => {
+
     const correo = localStorage.getItem("correoUsuario");
     const encodedUrl = encodeURIComponent(ingreso.imgUrl);
     await axios.post(url_rec_usuario + `/${ingreso.nombre}` + `/${ingreso.descripcion}` + `/${ingreso.preparacion}` + `/${ingreso.categoria}` + `/${ingreso.tiempoPreparacion}` + `/${ingreso.porciones}` + `/${ingreso.dificultad}` + `/url=${encodedUrl}` + `/${correo}`)
         .then((response) => {
             alert("Receta registrada exitosamente")
-            window.location.reload();
+            window.location.href = '/misRecetas';
         })
+
 }
-// // recetas creadas por usuario registro
-// export const registroRecetasUsuario = async (correo) =>
-//     await axios.post(url_rec_usuario + `/${correo}`)
+
+
+// Limite de muestra de recetas del usuario para mi Perfil
+export const misRecetasLimit = async (ingreso, cant) => 
+    await axios.get(url_rec_usuario + `/${ingreso}` + `/${cant}`)

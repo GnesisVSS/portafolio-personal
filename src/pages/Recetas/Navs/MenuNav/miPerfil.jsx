@@ -7,6 +7,7 @@ import Grid from '@mui/material/Unstable_Grid2';
 import { Avatar } from '@mui/material';
 import VistaCards from '../../VistaCards';
 import VistaCardsGuardadas from '../../UsuarioLogged/VistaCardsGuardadas';
+import VistaMisRecPerfil from '../../UsuarioLogged/VistaMisRecPerfil';
 
 const MiPerfil = () => {
     var fondo = document.getElementById('root');
@@ -84,7 +85,7 @@ const MiPerfil = () => {
                                             </Box>
                                             <Box component="ul" aria-labelledby="category-c" sx={{ pl: 2 }}>
                                                 {/* Cards */}
-                                                <VistaCards></VistaCards>
+                                                <VistaMisRecPerfil></VistaMisRecPerfil>
                                             </Box>
                                         </Item>
                                     </Grid>

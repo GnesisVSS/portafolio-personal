@@ -9,7 +9,6 @@ import Photo from '../../Photo';
 import FormIngredientes from './FormIngredientes';
 import FormDetalles from './FormDetalles';
 
-
 const FormRecetas = (props) => {
 
     var fondo = document.getElementById('root');
