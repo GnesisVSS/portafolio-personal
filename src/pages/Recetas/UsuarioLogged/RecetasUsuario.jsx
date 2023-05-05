@@ -5,20 +5,6 @@ import { RecetasC } from '../../../models/recetas.class';
 import { consultaRecetasUsuario } from '../../../api/receta.api';
 
 const RecetasUsuario = ( rec ) => {
-    const [recetas, setRecetas] = useState([])
-
-    const correousuario = localStorage.getItem("correoUsuario");
-
-    useEffect(() => {
-
-        async function loadRecetasGuardadas() {
-            const response = await consultaRecetasUsuario(correousuario)
-            // Se le agrega como valor a las recetas que ya se encuentren en el state el valor de la respuesta de la API
-            setRecetas(...recetas, response.data)
-        }
-        loadRecetasGuardadas();
-    }, [])
-
 
     // Carga de datos que son recibidos por props, a lo que será la vista de las recetas
     return (

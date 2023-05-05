@@ -42,8 +42,11 @@ export const eliminarGuardados = async (idreceta, correousuario) => {
 
 
 // recetas creadas por usuario
-export const consultaRecetasUsuario = async (correo) =>
-    await axios.get(url_rec_usuario + `/${correo}`)
+export const consultaRecetasUsuario = async (correo) => {
+    const respuesta = await axios.get(url_rec_usuario + `/${correo}`)
+    return respuesta;
+}
+    
 
 
 // registro de ingredientes para receta de usuario
@@ -63,12 +66,23 @@ export const registroDetalleRecetaUsuario = async (ingreso) => {
 
     const correo = localStorage.getItem("correoUsuario");
     const encodedUrl = encodeURIComponent(ingreso.imgUrl);
-    await axios.post(url_rec_usuario + `/${ingreso.nombre}` + `/${ingreso.descripcion}` + `/${ingreso.preparacion}` + `/${ingreso.categoria}` + `/${ingreso.tiempoPreparacion}` + `/${ingreso.porciones}` + `/${ingreso.dificultad}` + `/url=${encodedUrl}` + `/${correo}`)
-        .then((response) => {
-            alert("Receta registrada exitosamente")
-            // window.location.href = '/misRecetas';
-        })
+    // await axios.post(url_rec_usuario + `/${ingreso.nombre}` + `/${ingreso.descripcion}` + `/${ingreso.preparacion}` + `/${ingreso.categoria}` + `/${ingreso.tiempoPreparacion}` + `/${ingreso.porciones}` + `/${ingreso.dificultad}` + `/url=${encodedUrl}` + `/${correo}`)
+    //     .then((response) => {
 
+    //     })
+    const respuesta = await axios.post(url_rec_usuario +
+        `/${ingreso.nombre}` +
+        `/${ingreso.descripcion}` +
+        `/${ingreso.preparacion}` +
+        `/${ingreso.categoria}` +
+        `/${ingreso.tiempoPreparacion}` +
+        `/${ingreso.porciones}` +
+        `/${ingreso.dificultad}` +
+        `/url=${encodedUrl}` +
+        `/${correo}`
+    );
+    return respuesta.data;
+    
 }
 // response.data
 

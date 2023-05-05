@@ -1,33 +1,48 @@
 import React, { useEffect, useState } from 'react';
 import RecetasUsuario from './RecetasUsuario';
-import { consultaRecetasUsuario } from '../../../api/receta.api';
+import { consultaRecetasUsuario, misRecetasLimit } from '../../../api/receta.api';
 import Loading from '../ElementosRecetas/Loading';
+import MisRecetasPerfil from './misRecetasPerfil';
+import MisRecetas from '../Navs/MenuNav/misRecetas';
+import NavbarUsuario from '../Navs/navbarUsuario';
 
 const VistaRecetasUsuario = () => {
     var fondo = document.getElementById('root');
     fondo.style.backgroundColor = "white";
-    // use state para definir como estado inicial las tareas definidas como base
+
     const [recetas, setRecetas] = useState([])
-    
+    const [isLoading, setIsLoading] = useState(true);
     useEffect(() => {
         async function loadRecetas() {
-            const correo = localStorage.getItem("correoUsuario");
-            // Al renderizar la pagina trae los datos de la consulta desde la API y la asigna como valor al state de recetas
-            const response = await consultaRecetasUsuario(correo)
-            setRecetas(response.data)
+            const correousuario = localStorage.getItem("correoUsuario");
+            const cant = 2;
+            try {
+                const response = await consultaRecetasUsuario(correousuario)
+                setRecetas(response.data)
+                setIsLoading(false);
+            } catch (error) {
+                // Manejar el error de manera adecuada
+                console.error(error);
+            }
+
+            // setImage(new Blob([response.data], { type: "image/jpeg" }));
         }
-        
         loadRecetas()
-        
     }, [])
+
+    if (isLoading) {
+        return <div>Cargando...</div>;
+    }
+
     const Tarjetas = () => {
         return (
             <section>
+                <NavbarUsuario />
+
                 <div className='container'>
                     {recetas.map((rec, index) => {
                         return (
-                             //Para renderizar la informacion de las recetas se les entrega por props al componente de recetasUsuario
-                            <RecetasUsuario key={index} rec={{rec}} />
+                            <MisRecetas key={index} rec={rec} />
                         )
                     })}
                 </div>
@@ -37,24 +52,26 @@ const VistaRecetasUsuario = () => {
 
     let recetaInfo;
 
-
     if (recetas.length > 0) {
-        recetaInfo = <Tarjetas/>
+        recetaInfo = <Tarjetas />
     } else {
         recetaInfo = (
-            <Loading/>
+            <Loading />
         )
     }
     return (
-        <section>
+        <section >
             <div className='container mx-auto py-4'>
-            
                 <div>
                     <div>
                         {recetaInfo}
                     </div>
                 </div>
             </div >
+            <div className='text-end p-4'>
+                <a href='/misRecetas'>Ver todo</a>
+            </div >
+
         </section>
     );
 }

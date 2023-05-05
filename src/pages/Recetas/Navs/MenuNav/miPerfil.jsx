@@ -69,9 +69,9 @@ const MiPerfil = () => {
                                             >
                                                 Recetas Guardadas
                                             </Box>
-                                            <Box component="ul" aria-labelledby="category-b" sx={{ pl: 2 }}>
+                                            <Box component="ul" aria-labelledby="category-c" sx={{ pl: 2 }}>
                                                 {/* Cards */}
-                                                <VistaCardsGuardadas></VistaCardsGuardadas>
+                                                <VistaMisRecPerfil></VistaMisRecPerfil>
                                             </Box>
                                         </Item>
                                     </Grid>
@@ -83,10 +83,11 @@ const MiPerfil = () => {
                                             >
                                                 Mis recetas
                                             </Box>
-                                            <Box component="ul" aria-labelledby="category-c" sx={{ pl: 2 }}>
+                                            <Box component="ul" aria-labelledby="category-b" sx={{ pl: 2 }}>
                                                 {/* Cards */}
-                                                <VistaMisRecPerfil></VistaMisRecPerfil>
+                                                <VistaCardsGuardadas></VistaCardsGuardadas>
                                             </Box>
+                                            
                                         </Item>
                                     </Grid>
                                 </Grid>
