@@ -2,7 +2,7 @@
   "name": "proyecto",
   "version": "0.1.0",
   "private": true,
-  "proxi": "http://localhost:3000",
+  "proxi": "https://portafoliogvss.netlify.app/",
   "dependencies": {
     "@azure/identity": "^3.1.3",
     "@azure/storage-blob": "^12.13.0",
