@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import NavbarUsuario from '../navbarUsuario';
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
@@ -14,18 +14,25 @@ const MisRecetas = () => {
     fondo.style.backgroundColor = "white";
 
     // Se recupera de el local Storage el item que contiene el correo del usuario para pasarselo como props a la funcion de la API 
-    const correousuario = localStorage.getItem("correoUsuario");
+    
     const [recetaUsuario, setRecetaUsuario] = useState([]);
-
-    consultaRecetasUsuario(correousuario).then(response => {
-        // Se le da como valor al state lo retornado por la funcion
-        setRecetaUsuario(response.data[0])
-    })
-
+    
+    useEffect(() => {
+        
+        async function loadRecetasUsu() {
+            const correousuario = localStorage.getItem("correoUsuario");
+            // Al renderizar la pagina trae los datos de la consulta desde la API y la asigna como valor al state de recetas
+            const response = await consultaRecetasUsuario(correousuario)
+            setRecetaUsuario(response.data)
+        }
+        
+        loadRecetasUsu()
+        
+    }, [])
 
     function alerta ()  {
         // Se revisa que el array de la consulta de recetas del usuario traiga datos, en caso de estar como indefinido muestra una alerta
-        if (recetaUsuario === undefined) {
+        if (recetaUsuario === []) {
             return (
                 <Alert severity="warning">
                     <AlertTitle>Ooops!</AlertTitle>

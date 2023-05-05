@@ -66,12 +66,15 @@ export const registroDetalleRecetaUsuario = async (ingreso) => {
     await axios.post(url_rec_usuario + `/${ingreso.nombre}` + `/${ingreso.descripcion}` + `/${ingreso.preparacion}` + `/${ingreso.categoria}` + `/${ingreso.tiempoPreparacion}` + `/${ingreso.porciones}` + `/${ingreso.dificultad}` + `/url=${encodedUrl}` + `/${correo}`)
         .then((response) => {
             alert("Receta registrada exitosamente")
-            window.location.href = '/misRecetas';
+            // window.location.href = '/misRecetas';
         })
 
 }
+// response.data
 
+// alert("Receta registrada exitosamente")
+// window.location.href = '/misRecetas';
 
 // Limite de muestra de recetas del usuario para mi Perfil
-export const misRecetasLimit = async (ingreso, cant) => 
+export const misRecetasLimit = async (ingreso, cant) =>
     await axios.get(url_rec_usuario + `/${ingreso}` + `/${cant}`)

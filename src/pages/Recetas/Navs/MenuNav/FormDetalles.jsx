@@ -1,18 +1,20 @@
 /* eslint-disable react/jsx-no-target-blank */
 /* eslint-disable react/prop-types */
-import { TextField } from '@mui/material';
+import { Box, Fade, Modal, TextField, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { Field, useFormik } from 'formik';
 import FormIngredientes from './FormIngredientes';
 import Photo from '../../Photo';
 import { registroDetalleRecetaUsuario, registroRecetasUsuario } from '../../../../api/receta.api';
+import { Navigate, useNavigate } from 'react-router-dom';
+import Backdrop from '@mui/material/Backdrop';
 
 const FormDetalles = (datosIngredientes, props) => {
     const [valorInput, setValorInput] = useState('');
     const correousuario = localStorage.getItem("correoUsuario");
 
     const valuesDetalle = datosIngredientes.datosIngredientes[0]
-
+    const [success, setSuccess] = useState(false);
     useEffect(() => {
         setValorInput(props.valorInicial);
         console.log(valuesDetalle.length)
@@ -24,6 +26,25 @@ const FormDetalles = (datosIngredientes, props) => {
         setInfo(newInfo);
     };
 
+    const [open, setOpen] = React.useState(false);
+
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
+
+    const style = {
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        bgcolor: 'background.paper',
+        boxShadow: 24,
+        p: 4,
+    };
+
+    const navigate = useNavigate();
     const formik = useFormik({
         initialValues: {
             nombre: "",
@@ -41,13 +62,18 @@ const FormDetalles = (datosIngredientes, props) => {
                 const response = await registroRecetasUsuario(valuesDetalle)
                 const responseDetalle = await registroDetalleRecetaUsuario(detallesIngredientes)
                 console.log(response)
+                setOpen(true);
                 console.log(responseDetalle)
+                setSuccess(true)
+
             } catch (error) {
                 console.log(error)
 
             }
         },
     });
+
+
     const [page, setPage] = useState(false);
     const handleClick = (event, index) => {
         setPage(!page);
@@ -85,13 +111,13 @@ const FormDetalles = (datosIngredientes, props) => {
                         {/* <ChildComponent onInfoChange={handleInfoChange} /> */}
                         <Photo onInfoChange={handleInfoChange} />
                         <div style={{ textAlign: "center" }} className="py-2">
-                            <button type="submit" className="button-inicio" name="formSub" id="formSub" value="form" >
+                            <button type="submit" className="button-inicio" name="formSub" id="formSub" value="form">
                                 {/* <span >Loading...</span> */}
                                 <div className="visually-hidden" id='loading' role="status" >
                                     <div className="spinner-border spinner-border-sm" role="status" />
                                 </div>
 
-                                <span className="" id='iniciar'>Cargar Receta</span>
+                                <a className="" id='iniciar' >Cargar Receta</a>
                             </button>
                         </div>
                     </div>
@@ -109,6 +135,44 @@ const FormDetalles = (datosIngredientes, props) => {
 
                         <span className="" id='iniciar'>Volver</span>
                     </button>
+                </div>
+                <div>
+                    <Modal
+                        aria-labelledby="transition-modal-title"
+                        aria-describedby="transition-modal-description"
+                        open={open}
+                        onClose={handleClose}
+                        closeAfterTransition
+                        slots={{ backdrop: Backdrop }}
+                        slotProps={{
+                            backdrop: {
+                                timeout: 500,
+                            },
+                        }}
+                    >
+                        <Fade in={open}>
+                            <Box sx={style}>
+                                <div className="container text-center">
+                                    <div className="row align-items-center">
+                                        <div className="col">
+                                            <img src="../img/ohno.svg" />
+                                        </div>
+                                        <div className="col">
+                                            <h1 className="card-title text-center fw-bold">Oh, no!</h1>
+                                            <Typography id="transition-modal-description" sx={{ mt: 2 }}>
+                                                Debes iniciar sesión para poder guardar tus recetas favoritas. Crea una cuenta gratis para acceder a esta función y más!
+                                            </Typography>
+                                            <a  href='./misRecetas'>
+                                                Volver
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </Box>
+                        </Fade>
+                    </Modal>
                 </div>
             </div>
 

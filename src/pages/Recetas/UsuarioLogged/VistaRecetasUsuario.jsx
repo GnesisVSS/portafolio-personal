@@ -8,9 +8,10 @@ const VistaRecetasUsuario = () => {
     fondo.style.backgroundColor = "white";
     // use state para definir como estado inicial las tareas definidas como base
     const [recetas, setRecetas] = useState([])
-    const correo = localStorage.getItem("correoUsuario");
+    
     useEffect(() => {
         async function loadRecetas() {
+            const correo = localStorage.getItem("correoUsuario");
             // Al renderizar la pagina trae los datos de la consulta desde la API y la asigna como valor al state de recetas
             const response = await consultaRecetasUsuario(correo)
             setRecetas(response.data)
@@ -26,7 +27,7 @@ const VistaRecetasUsuario = () => {
                     {recetas.map((rec, index) => {
                         return (
                              //Para renderizar la informacion de las recetas se les entrega por props al componente de recetasUsuario
-                            <RecetasUsuario key={index} rec={rec} />
+                            <RecetasUsuario key={index} rec={{rec}} />
                         )
                     })}
                 </div>

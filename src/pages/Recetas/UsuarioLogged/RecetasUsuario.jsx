@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { RecetasC } from '../../../models/recetas.class';
 import { consultaRecetasUsuario } from '../../../api/receta.api';
 
-const RecetasUsuario = ({ rec }) => {
+const RecetasUsuario = ( rec ) => {
     const [recetas, setRecetas] = useState([])
 
     const correousuario = localStorage.getItem("correoUsuario");
