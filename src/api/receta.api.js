@@ -42,10 +42,8 @@ export const eliminarGuardados = async (idreceta, correousuario) => {
 
 
 // recetas creadas por usuario
-export const consultaRecetasUsuario = async (correo) => {
-    const respuesta = await axios.get(url_rec_usuario + `/${correo}`)
-    return respuesta;
-}
+export const consultaRecetasUsuario = async (correo) => 
+    await axios.get(url_rec_usuario + `/${correo}`)
     
 
 

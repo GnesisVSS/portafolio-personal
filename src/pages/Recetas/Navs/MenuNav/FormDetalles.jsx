@@ -62,9 +62,8 @@ const FormDetalles = (datosIngredientes, props) => {
                 const response = await registroRecetasUsuario(valuesDetalle)
                 const responseDetalle = await registroDetalleRecetaUsuario(detallesIngredientes)
                 console.log(response)
-                setOpen(true);
                 console.log(responseDetalle)
-                setSuccess(true)
+                window.location.href = '/misRecetas';
 
             } catch (error) {
                 console.log(error)
@@ -135,44 +134,6 @@ const FormDetalles = (datosIngredientes, props) => {
 
                         <span className="" id='iniciar'>Volver</span>
                     </button>
-                </div>
-                <div>
-                    <Modal
-                        aria-labelledby="transition-modal-title"
-                        aria-describedby="transition-modal-description"
-                        open={open}
-                        onClose={handleClose}
-                        closeAfterTransition
-                        slots={{ backdrop: Backdrop }}
-                        slotProps={{
-                            backdrop: {
-                                timeout: 500,
-                            },
-                        }}
-                    >
-                        <Fade in={open}>
-                            <Box sx={style}>
-                                <div className="container text-center">
-                                    <div className="row align-items-center">
-                                        <div className="col">
-                                            <img src="../img/ohno.svg" />
-                                        </div>
-                                        <div className="col">
-                                            <h1 className="card-title text-center fw-bold">Oh, no!</h1>
-                                            <Typography id="transition-modal-description" sx={{ mt: 2 }}>
-                                                Debes iniciar sesión para poder guardar tus recetas favoritas. Crea una cuenta gratis para acceder a esta función y más!
-                                            </Typography>
-                                            <a  href='./misRecetas'>
-                                                Volver
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                            </Box>
-                        </Fade>
-                    </Modal>
                 </div>
             </div>
 

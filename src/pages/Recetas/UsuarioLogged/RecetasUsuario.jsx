@@ -3,8 +3,10 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types'
 import { RecetasC } from '../../../models/recetas.class';
 import { consultaRecetasUsuario } from '../../../api/receta.api';
+import { Fab } from '@mui/material';
+import AddIcon from '@mui/icons-material/Add';
 
-const RecetasUsuario = ( rec ) => {
+const RecetasUsuario = ({rec}) => {
 
     // Carga de datos que son recibidos por props, a lo que será la vista de las recetas
     return (
@@ -21,7 +23,6 @@ const RecetasUsuario = ( rec ) => {
                     <p className="span-rec text-center">Ver Receta</p>
                 </button>
             </div >
-
         </div >
 
     )

@@ -5,76 +5,154 @@ import Loading from '../ElementosRecetas/Loading';
 import MisRecetasPerfil from './misRecetasPerfil';
 import MisRecetas from '../Navs/MenuNav/misRecetas';
 import NavbarUsuario from '../Navs/navbarUsuario';
+import { Alert, AlertTitle, Fab } from '@mui/material';
+import AddIcon from '@mui/icons-material/Add';
+import { Visibility } from '@mui/icons-material';
 
 const VistaRecetasUsuario = () => {
     var fondo = document.getElementById('root');
     fondo.style.backgroundColor = "white";
 
     const [recetas, setRecetas] = useState([])
-    const [isLoading, setIsLoading] = useState(true);
+    const correousuario = localStorage.getItem("correoUsuario");
+    const [recetaUsuario, setRecetaUsuario] = useState([]);
+    // const [recetaUsuario, setRecetaUsuario] = useState([]);
+
     useEffect(() => {
-        async function loadRecetas() {
-            const correousuario = localStorage.getItem("correoUsuario");
-            const cant = 2;
-            try {
-                const response = await consultaRecetasUsuario(correousuario)
-                setRecetas(response.data)
-                setIsLoading(false);
-            } catch (error) {
-                // Manejar el error de manera adecuada
-                console.error(error);
-            }
-
-            // setImage(new Blob([response.data], { type: "image/jpeg" }));
+        consultaRecetasUsuario(correousuario).then(response => {
+            // Se le da como valor al state lo retornado por la funcion
+            setRecetas(response.data)
+            setRecetaUsuario(response.data[0])
         }
-        loadRecetas()
-    }, [])
+        )
+    });
+    function alerta() {
+        // Se revisa que el array de la consulta de recetas del usuario traiga datos, en caso de estar como indefinido muestra una alerta
+        if (recetaUsuario === undefined) {
+            return (
+                <Alert severity="warning">
+                    <AlertTitle>Ooops!</AlertTitle>
+                    No haz creado ninguna receta aún! <strong> Presiona el botón + para agregar tu primera receta</strong>
+                </Alert>
+            )
 
-    if (isLoading) {
-        return <div>Cargando...</div>;
+        }
+
+
     }
-
-    const Tarjetas = () => {
-        return (
-            <section>
+    return (
+        <section>
                 <NavbarUsuario />
+                <div className='container mx-auto py-5'>
+                    <div className='row'>
+                        <div className="col py-4">
+                            {alerta()}
+                        </div>
 
-                <div className='container'>
+                        <div className="col-3 py-4 text-end">
+
+                            <a href='/FormRecetas'>
+                                <Fab color="primary" aria-label="add" >
+                                    <AddIcon />
+                                </Fab>
+                            </a>
+
+                        </div>
+                    </div>
                     {recetas.map((rec, index) => {
                         return (
-                            <MisRecetas key={index} rec={rec} />
+                            <RecetasUsuario key={index} rec={rec} />
                         )
                     })}
                 </div>
             </section>
-        )
-    }
 
-    let recetaInfo;
-
-    if (recetas.length > 0) {
-        recetaInfo = <Tarjetas />
-    } else {
-        recetaInfo = (
-            <Loading />
-        )
-    }
-    return (
-        <section >
-            <div className='container mx-auto py-4'>
-                <div>
-                    <div>
-                        {recetaInfo}
-                    </div>
-                </div>
-            </div >
-            <div className='text-end p-4'>
-                <a href='/misRecetas'>Ver todo</a>
-            </div >
-
-        </section>
     );
 }
 
 
 export default VistaRecetasUsuario;
+
+
+
+
+
+
+
+
+
+// import React, { useEffect, useState } from 'react';
+// import NavbarUsuario from '../navbarUsuario';
+// import Alert from '@mui/material/Alert';
+// import AlertTitle from '@mui/material/AlertTitle';
+// import Fab from '@mui/material/Fab';
+// import AddIcon from '@mui/icons-material/Add';
+// import VistaRecetasUsuario from '../../UsuarioLogged/VistaRecetasUsuario';
+// import { consultaRecetasUsuario } from '../../../../api/receta.api';
+
+// const MisRecetas = () => {
+
+
+//     var fondo = document.getElementById('root');
+//     fondo.style.backgroundColor = "white";
+
+//     // Se recupera de el local Storage el item que contiene el correo del usuario para pasarselo como props a la funcion de la API
+//     const correousuario = localStorage.getItem("correoUsuario");
+//     const [recetaUsuario, setRecetaUsuario] = useState([]);
+
+//     useEffect(() => {
+
+//         async function loadRecetasUsu() {
+//             // Al renderizar la pagina trae los datos de la consulta desde la API y la asigna como valor al state de recetas
+//             const response = await consultaRecetasUsuario(correousuario)
+//             setRecetaUsuario(response.data[0])
+//         }
+
+//         loadRecetasUsu()
+
+//     }, [])
+
+//     function alerta ()  {
+//         // Se revisa que el array de la consulta de recetas del usuario traiga datos, en caso de estar como indefinido muestra una alerta
+//         if (recetaUsuario === undefined) {
+//             return (
+//                 <Alert severity="warning">
+//                     <AlertTitle>Ooops!</AlertTitle>
+//                     No haz creado ninguna receta aún! <strong> Presiona el botón + para agregar tu primera receta</strong>
+//                 </Alert>
+//             )
+
+//         }else{
+//             return (
+//                 // Llama a la vista de usuarios para mostrar las tarjetas con los datos de las recetas
+//                 <VistaRecetasUsuario/>
+//             )
+//         }
+//     }
+//     return (
+//         <section id='homeRecetas'>
+//             <NavbarUsuario />
+//             <div className='container mx-auto py-5'>
+//                 <div className='row'>
+//                     <div className="col py-4">
+//                         {alerta()}
+//                     </div>
+//                     <div className="col-3 py-4 text-end">
+//                     <a href='/FormRecetas'>
+//                         <Fab color="primary" aria-label="add" >
+//                             <AddIcon />
+//                         </Fab>
+//                     </a>
+
+//                     </div>
+//                 </div>
+//             </div>
+//         </section>
+
+
+//     );
+// }
+
+
+// export default MisRecetas;
+

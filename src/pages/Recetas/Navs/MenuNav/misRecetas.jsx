@@ -83,12 +83,13 @@ import { consultaRecetasUsuario, misRecetasLimit } from '../../../../api/receta.
 import MisRecetasPerfil from '../../UsuarioLogged/misRecetasPerfil';
 import Loading from '../../ElementosRecetas/Loading';
 import NavbarUsuario from '../navbarUsuario';
-import { Fab } from '@mui/material';
+import { Alert, AlertTitle, Fab } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import PropTypes from 'prop-types'
 import { RecetasC } from '../../../../models/recetas.class';
+import VistaRecetasUsuario from '../../UsuarioLogged/VistaRecetasUsuario';
 
-const MisRecetas = ({rec}) => {
+const MisRecetas = ({ rec }) => {
 
     const [recetas, setRecetas] = useState([])
     const correousuario = localStorage.getItem("correoUsuario");
@@ -102,7 +103,23 @@ const MisRecetas = ({rec}) => {
         }
         loadRecetasUsuarioPerfil();
     }, [])
+    function alerta() {
+        // Se revisa que el array de la consulta de recetas del usuario traiga datos, en caso de estar como indefinido muestra una alerta
+        if (recetaUsuario === undefined) {
+            return (
+                <Alert severity="warning">
+                    <AlertTitle>Ooops!</AlertTitle>
+                    No haz creado ninguna receta aún! <strong> Presiona el botón + para agregar tu primera receta</strong>
+                </Alert>
+            )
 
+        } else {
+            return (
+                // Llama a la vista de usuarios para mostrar las tarjetas con los datos de las recetas
+                <VistaRecetasUsuario />
+            )
+        }
+    }
 
 
     return (
@@ -115,14 +132,14 @@ const MisRecetas = ({rec}) => {
             <div className="text-rec">
                 <p className="h3-rec"> {rec.nombre} </p>
                 <p className="p-rec"> {rec.porciones} porciones - {rec.tiempoPreparacion} min. </p>
-                
+
 
             </div >
             <a href='/FormRecetas'>
-                    <Fab color="primary" aria-label="add" >
-                        <AddIcon />
-                    </Fab>
-                </a>
+                <Fab color="primary" aria-label="add" >
+                    <AddIcon />
+                </Fab>
+            </a>
         </div >
     );
 }
