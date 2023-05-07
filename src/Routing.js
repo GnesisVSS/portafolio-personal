@@ -13,7 +13,7 @@ import RecetasGuardadasCompletas from './pages/Recetas/Navs/MenuNav/RecetasGuard
 import MisRecetas from './pages/Recetas/Navs/MenuNav/misRecetas';
 import FormRecetas from './pages/Recetas/Navs/MenuNav/FormRecetas';
 import VistaRecetasUsuario from './pages/Recetas/UsuarioLogged/VistaRecetasUsuario';
-import RecetaUsuarioExito from './pages/Recetas/UsuarioLogged/RecetaUsuarioExito';
+import DetalleRecetas from './pages/Recetas/DetalleRecetas';
 
 function Routing() {
 
@@ -37,7 +37,8 @@ function Routing() {
                 <Route path='/misGuardados' element={datos ? <RecetasGuardadasCompletas /> : <Navigate to='/login' />} />
                 <Route path='/misRecetas' element={datos ? <VistaRecetasUsuario /> : <Navigate to='/login' />} />
                 <Route path='/FormRecetas' element={datos ? <FormRecetas /> : <Navigate to='/login' />} />
-                <Route path='/RecetaExito' element={<RecetaUsuarioExito />} />
+                <Route path='/DetalleRecetas' element={<DetalleRecetas />} />
+
             </Routes>
         </Router>
     )

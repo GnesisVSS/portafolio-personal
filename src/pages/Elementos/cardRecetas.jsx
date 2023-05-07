@@ -88,10 +88,10 @@ const CardRecetas = ({ rec }) => {
             <div className="text-rec">
                 <p className="h3-rec"> {rec.nombre} </p>
                 <p className="p-rec"> {rec.porciones} porciones - {rec.tiempoPreparacion} min. </p>
-                <button className="icon-box btn">
+                <a className="icon-box btn" type='button' href='/DetalleRecetas'>
                     <img src='img/maceta.png'></img>
                     <p className="span-rec text-center">Ver Receta</p>
-                </button>
+                </a>
             </div >
 
             <div>

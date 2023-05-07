@@ -156,6 +156,15 @@
   justify-content: left;
 }
 
+.icon-box:hover {
+  background-color: #56a493;
+}
+
+.icon-box:active {
+  background-color: #2d5d52 !important;
+  color: white !important;
+}
+
 .icon-box img {
   width: 24px;
 }
