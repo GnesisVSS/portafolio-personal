@@ -7,6 +7,9 @@ import { cargarGuardados, eliminarGuardados, mostrarRecetasGuardadas } from '../
 import { Box, Fade, Typography } from '@mui/material';
 import Modal from '@mui/material/Modal';
 import Backdrop from '@mui/material/Backdrop';
+import DetalleRecetas from '../Recetas/VistaDetalleRecetas';
+import { Link, useNavigate } from 'react-router-dom';
+
 
 const CardRecetas = ({ rec }) => {
 
@@ -61,6 +64,14 @@ const CardRecetas = ({ rec }) => {
         p: 4,
     };
 
+    const navigate = useNavigate();
+    const nombreReceta = rec.nombre
+    const redirigirADetalleRecetas = () => {
+        navigate('/DetalleRecetas', { state: { rec } }); // Redirige a '/detalle-recetas' y pasa 'receta' como prop
+        console.log(rec.nombre)
+    };
+
+
     return (
 
         <div className="card card-home-rec justify-content-center">
@@ -88,7 +99,7 @@ const CardRecetas = ({ rec }) => {
             <div className="text-rec">
                 <p className="h3-rec"> {rec.nombre} </p>
                 <p className="p-rec"> {rec.porciones} porciones - {rec.tiempoPreparacion} min. </p>
-                <a className="icon-box btn" type='button' href='/DetalleRecetas'>
+                <a className="icon-box btn" type='button' onClick={redirigirADetalleRecetas}>
                     <img src='img/maceta.png'></img>
                     <p className="span-rec text-center">Ver Receta</p>
                 </a>
@@ -116,7 +127,7 @@ const CardRecetas = ({ rec }) => {
                                         <img src="../img/ohno.svg" />
                                     </div>
                                     <div className="col">
-                                    <h1 className="card-title text-center fw-bold">Oh, no!</h1>
+                                        <h1 className="card-title text-center fw-bold">Oh, no!</h1>
                                         <Typography id="transition-modal-description" sx={{ mt: 2 }}>
                                             Debes iniciar sesión para poder guardar tus recetas favoritas. Crea una cuenta gratis para acceder a esta función y más!
                                         </Typography>
