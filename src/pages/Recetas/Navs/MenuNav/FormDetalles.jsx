@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { Field, useFormik } from 'formik';
 import FormIngredientes from './FormIngredientes';
 import Photo from '../../Photo';
-import { registroDetalleRecetaUsuario, registroRecetasUsuario } from '../../../../api/receta.api';
+import { registroDetalleRecetaUsuario, registroIngredientes, registroRecetasUsuario } from '../../../../api/receta.api';
 import { Navigate, useNavigate } from 'react-router-dom';
 import Backdrop from '@mui/material/Backdrop';
 
@@ -59,7 +59,7 @@ const FormDetalles = (datosIngredientes, props) => {
         onSubmit: async (detallesIngredientes) => {
             detallesIngredientes.imgUrl = info;
             try {
-                const response = await registroRecetasUsuario(valuesDetalle)
+                const response = await registroIngredientes(valuesDetalle)
                 const responseDetalle = await registroDetalleRecetaUsuario(detallesIngredientes)
                 console.log(response)
                 console.log(responseDetalle)

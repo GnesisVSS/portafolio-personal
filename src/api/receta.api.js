@@ -16,6 +16,24 @@ export const cargarRecetaAdmin = async (ingreso) => {
         })
 }
 
+// registro de detalles de la recetas generales desde admin
+export const registroDetalleRecetasGenerales = async (ingreso) => {
+
+    const encodedUrl = encodeURIComponent(ingreso.imgUrl);
+
+    const respuesta = await axios.post(url_recetas +
+        `/${ingreso.nombre}` +
+        `/${ingreso.descripcion}` +
+        `/${ingreso.preparacion}` +
+        `/${ingreso.categoria}` +
+        `/${ingreso.tiempoPreparacion}` +
+        `/${ingreso.porciones}` +
+        `/${ingreso.dificultad}` +
+        `/url=${encodedUrl}`
+    );
+    return respuesta.data;
+    
+}
 
 // Recetas guardadas
 export const mostrarRecetasGuardadas = async (ingreso) =>
@@ -48,7 +66,7 @@ export const consultaRecetasUsuario = async (correo) =>
 
 
 // registro de ingredientes para receta de usuario
-export const registroRecetasUsuario = async (ingreso) => {
+export const registroIngredientes = async (ingreso) => {
 
     for (let i = 0; i < ingreso.length; i++) {
         await axios.post(url_rec_usuario + `/${ingreso[i].nombre}` + `/${ingreso[i].cantidad}` + `/${ingreso[i].unidad}`)
@@ -82,10 +100,6 @@ export const registroDetalleRecetaUsuario = async (ingreso) => {
     return respuesta.data;
     
 }
-// response.data
-
-// alert("Receta registrada exitosamente")
-// window.location.href = '/misRecetas';
 
 // Limite de muestra de recetas del usuario para mi Perfil
 export const misRecetasLimit = async (ingreso, cant) =>

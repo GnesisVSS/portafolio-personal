@@ -4,7 +4,7 @@ import React, { Fragment, useEffect, useState } from 'react';
 import { Field, useFormik } from 'formik';
 import NavbarRecetas from './../Navs/navbar-recetas';
 import { TextField } from '@mui/material';
-import { cargarRecetaAdmin } from '../../../api/receta.api';
+import { cargarRecetaAdmin, registroDetalleRecetasGenerales, registroIngredientes } from '../../../api/receta.api';
 import Photo from '../Photo';
 import FormIngredientesAdmin from './FormIngredientesAdmin';
 import { useNavigate } from 'react-router';
@@ -60,11 +60,11 @@ const RegRecAdmin = (datosIngredientes, props) => {
         onSubmit: async (detallesIngredientes) => {
             detallesIngredientes.imgUrl = info;
             try {
-                const response = await registroRecetasUsuario(valuesDetalle)
-                const responseDetalle = await registroDetalleRecetaUsuario(detallesIngredientes)
+                const response = await registroIngredientes(valuesDetalle)
+                const responseDetalle = await registroDetalleRecetasGenerales(detallesIngredientes)
                 console.log(response)
                 console.log(responseDetalle)
-                window.location.href = '/misRecetas';
+                window.location.href = '/HomeUsuario';
 
             } catch (error) {
                 console.log(error)
