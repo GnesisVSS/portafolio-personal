@@ -416,3 +416,9 @@
     transform: rotateY(0deg);
   }
 }
+
+.tarjeta-detalle{
+  border-radius: 0px;
+  margin-left: 0.5px;
+  margin-right: 0.5px;
+}

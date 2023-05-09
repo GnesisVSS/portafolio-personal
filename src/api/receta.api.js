@@ -2,10 +2,23 @@ import axios from "axios";
 
 
 let url_recetas = 'https://bdapirest.netlify.app/.netlify/functions/api/api/receta';
+let url_ingr = 'https://bdapirest.netlify.app/.netlify/functions/api/api/ingredientes';
 let url_guardadas = 'https://bdapirest.netlify.app/.netlify/functions/api/api/recetaguardada';
 let url_rec_usuario = 'https://bdapirest.netlify.app/.netlify/functions/api/api/recetausuario';
+
+
+
+// Mostrar recetas
 export const mostrarRecetas = async () =>
     await axios.get(url_recetas)
+
+// Mostrar detalles de la receta general
+export const mostrarDetalleRecetas = async (ingreso) =>
+    await axios.get(url_recetas + `/${ingreso}`)
+
+    // Mostrar detalles de los ingredientes en detalle receta
+export const mostrarDetalleIngredientes = async (ingreso) =>
+await axios.get(url_ingr + `/${ingreso}`)
 
 export const cargarRecetaAdmin = async (ingreso) => {
     const encodedUrl = encodeURIComponent(ingreso.imgUrl);
@@ -100,6 +113,7 @@ export const registroDetalleRecetaUsuario = async (ingreso) => {
     return respuesta.data;
     
 }
+
 
 // Limite de muestra de recetas del usuario para mi Perfil
 export const misRecetasLimit = async (ingreso, cant) =>
