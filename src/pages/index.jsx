@@ -10,6 +10,8 @@ import Home from './Home/home';
 import Proyectos from './Home/proyectos';
 import SobreMi from './Home/sobreMi';
 import Footer from './Elementos/footer';
+import ContactForm from './Home/ContactForm';
+import Hr from './Home/Hr';
 function Index() {
     let ubicacionPrincipal = window.pageYOffset;
     window.onscroll = function () {
@@ -29,6 +31,8 @@ function Index() {
             <Home />
             <SobreMi />
             <Proyectos />
+            <Hr/>
+            <ContactForm/>
             <Footer/>
         </div>
 

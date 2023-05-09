@@ -206,7 +206,7 @@ btn-cssbuttons ul li a:hover {
 
 .button-demo .svg-demo {
   margin-right: 3px;
-  transform: rotate(30deg);
+  transform: rotate(0deg);
   transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
 }
 
@@ -231,5 +231,64 @@ btn-cssbuttons ul li a:hover {
   text-align: left;
 }
 
+/* Boton para enviar el correo */
+.butcorreo {
+  width: 150px;
+  height: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  background: #2a0253;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.15);
+  background: #2a0253;
+}
 
-     
+.butcorreo, .butcorreo .spanCorreo {
+  transition: 200ms;
+}
+
+.butcorreo .textCorreo {
+  transform: translateX(35px);
+  color: #f9d613;
+  font-weight: bold;
+}
+
+.butcorreo .iconCorreo {
+  position: absolute;
+  border-left: 1px solid #350367;
+  transform: translateX(100px);
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.butcorreo .svgCorreo {
+  width: 15px;
+  fill: #f9d613;
+}
+
+.butcorreo:hover {
+  background: #2a0253;
+}
+
+.butcorreo:hover .textCorreo {
+  color: transparent;
+}
+
+.butcorreo:hover .iconCorreo {
+  width: 150px;
+  border-left: none;
+  transform: translateX(0);
+}
+
+.butcorreo:focus {
+  outline: none;
+}
+
+.butcorreo:active .iconCorreo .svgCorreo {
+  transform: scale(0.8);
+}
