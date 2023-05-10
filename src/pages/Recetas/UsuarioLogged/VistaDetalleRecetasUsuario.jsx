@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import NavbarUsuario from './Navs/navbarUsuario';
-import PropTypes from 'prop-types'
-import { RecetasC } from '../../models/recetas.class';
-import { useLocation } from 'react-router-dom';
-import { mostrarDetalleIngredientes, mostrarDetalleRecetas } from '../../api/receta.api';
+import { mostrarDetalleRecetasUsuario } from '../../../api/receta.api';
+import { useLocation } from 'react-router';
+import NavbarUsuario from '../Navs/navbarUsuario';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import GroupIcon from '@mui/icons-material/Group';
 import { Chip } from '@mui/material';
+import GroupIcon from '@mui/icons-material/Group';
 
-const DetalleRecetas = () => {
+const VistaDetalleRecetasUsuario = () => {
     const location = useLocation();
     const { rec } = location.state;
     const [recetas, setRecetas] = useState([])
@@ -19,7 +17,9 @@ const DetalleRecetas = () => {
     useEffect(() => {
 
         async function loadRecetasDetalle() {
-            const response = await mostrarDetalleRecetas(rec.id)
+            const correousuario = localStorage.getItem("correoUsuario");
+
+            const response = await mostrarDetalleRecetasUsuario(rec)
             const responseIngr = await mostrarDetalleIngredientes(rec.id)
             // console.log(response.data[0].id)
             setRecetas(...recetas, response.data)
@@ -74,8 +74,8 @@ const DetalleRecetas = () => {
                         {recetas.map(objeto => (
                             <div key={objeto.id} className='py-5 row justify-content-center'>
                                 <div className='col-5 col-sm-6' style={{ textAlign: 'left' }}>
-                                    <div style={{border: '1px solid black'}}  className='p-5'>
-                                        <h1 style={{paddingBottom:'1.5rem'}}>Ingredientes</h1>
+                                    <div style={{ border: '1px solid black' }} className='p-5'>
+                                        <h1 style={{ paddingBottom: '1.5rem' }}>Ingredientes</h1>
                                         {ingr.map(objeto => (
                                             <div key={objeto.id}>
                                                 <p> <strong>{objeto.nombre}</strong>  {objeto.cantidad === 0 ? '' : objeto.cantidad} {objeto.unidad === 'na' ? '' : objeto.unidad} </p>
@@ -84,8 +84,8 @@ const DetalleRecetas = () => {
                                     </div>
                                 </div>
                                 <div className='col-5 col-sm-6'>
-                                    <div className='p-5' style={{border: '1px solid black'}}>
-                                    <h1>Preparación</h1>
+                                    <div className='p-5' style={{ border: '1px solid black' }}>
+                                        <h1>Preparación</h1>
                                         {recetas.map(objeto => {
                                             var parrafo = objeto.preparacion;
                                             var parrafosep = separarParrafoConNumeros(parrafo)
@@ -115,7 +115,7 @@ const DetalleRecetas = () => {
                         {/* <p className='py-4'>{recetas[0].nombre_receta}</p> */}
                     </div>
 
-                    
+
 
                 </div>
             </div >
@@ -123,5 +123,4 @@ const DetalleRecetas = () => {
     );
 }
 
-
-export default DetalleRecetas;
+export default VistaDetalleRecetasUsuario;

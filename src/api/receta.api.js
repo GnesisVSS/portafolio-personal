@@ -5,6 +5,8 @@ let url_recetas = 'https://bdapirest.netlify.app/.netlify/functions/api/api/rece
 let url_ingr = 'https://bdapirest.netlify.app/.netlify/functions/api/api/ingredientes';
 let url_guardadas = 'https://bdapirest.netlify.app/.netlify/functions/api/api/recetaguardada';
 let url_rec_usuario = 'https://bdapirest.netlify.app/.netlify/functions/api/api/recetausuario';
+let url_guardadasDet = 'https://bdapirest.netlify.app/.netlify/functions/api/api/recetaguardadaDet';
+let url_rec_usuarioDet = 'https://bdapirest.netlify.app/.netlify/functions/api/api/recetausuarioDet';
 
 
 
@@ -16,9 +18,15 @@ export const mostrarRecetas = async () =>
 export const mostrarDetalleRecetas = async (ingreso) =>
     await axios.get(url_recetas + `/${ingreso}`)
 
-    // Mostrar detalles de los ingredientes en detalle receta
+export const mostrarDetalleRecetasGuardadas = async (id,correo) =>
+    await axios.get(url_guardadasDet + `/${id}` + `/${correo}`)
+
+export const mostrarDetalleRecetasUsuario = async (id,correo) =>
+    await axios.get(url_rec_usuarioDet + `/${id}` + `/${correo}`)
+
+// Mostrar detalles de los ingredientes en detalle receta
 export const mostrarDetalleIngredientes = async (ingreso) =>
-await axios.get(url_ingr + `/${ingreso}`)
+    await axios.get(url_ingr + `/${ingreso}`)
 
 export const cargarRecetaAdmin = async (ingreso) => {
     const encodedUrl = encodeURIComponent(ingreso.imgUrl);
@@ -45,7 +53,7 @@ export const registroDetalleRecetasGenerales = async (ingreso) => {
         `/url=${encodedUrl}`
     );
     return respuesta.data;
-    
+
 }
 
 // Recetas guardadas
@@ -73,9 +81,9 @@ export const eliminarGuardados = async (idreceta, correousuario) => {
 
 
 // recetas creadas por usuario
-export const consultaRecetasUsuario = async (correo) => 
+export const consultaRecetasUsuario = async (correo) =>
     await axios.get(url_rec_usuario + `/${correo}`)
-    
+
 
 
 // registro de ingredientes para receta de usuario
@@ -111,7 +119,7 @@ export const registroDetalleRecetaUsuario = async (ingreso) => {
         `/${correo}`
     );
     return respuesta.data;
-    
+
 }
 
 

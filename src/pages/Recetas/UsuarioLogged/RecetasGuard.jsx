@@ -4,6 +4,7 @@ import { RecetasC } from '../../../models/recetas.class';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import { cargarGuardados, eliminarGuardados, mostrarRecetasGuardadas } from '../../../api/receta.api';
+import { useNavigate } from 'react-router';
 
 const RecetasGuard = ({ rec }) => {
     
@@ -37,7 +38,13 @@ const RecetasGuard = ({ rec }) => {
         setEstaguardado(!estaGuardado);
     };
     
-    
+    const navigate = useNavigate();
+    const nombreReceta = rec.nombre
+    const redirigirADetalleRecetas = () => {
+        navigate('/DetalleGuardados', { state: { rec } }); // Redirige a '/detalle-recetas' y pasa 'receta' como prop
+        console.log(rec)
+    };
+
     return (
         <div className="card card-home-rec justify-content-center">
             <div className="img" style={{ backgroundImage: `url(${rec.imgUrl})` }}>
@@ -64,10 +71,11 @@ const RecetasGuard = ({ rec }) => {
             <div className="text-rec">
                 <p className="h3-rec"> {rec.nombre} </p>
                 <p className="p-rec"> {rec.porciones} porciones - {rec.tiempoPreparacion} min. </p>
-                <button className="icon-box btn">
+                
+                <a className="icon-box btn" type='button' onClick={redirigirADetalleRecetas}>
                     <img src='img/maceta.png'></img>
                     <p className="span-rec text-center">Ver Receta</p>
-                </button>
+                </a>
             </div >
 
         </div >
