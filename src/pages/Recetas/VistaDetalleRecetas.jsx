@@ -91,7 +91,7 @@ const DetalleRecetas = () => {
                                             var parrafosep = separarParrafoConNumeros(parrafo)
                                             console.log(parrafosep);
                                             return (
-                                                <div key={objeto.id} className='py-4'>
+                                                <div key={objeto.id} className='py-4' style={{wordWrap: "break-word"}}>
                                                     {/* dividimos el párrafo en líneas utilizando el método split('\n'), que divide el texto en un arreglo de líneas en función del carácter de salto de línea \n. */}
                                                     <p>{parrafosep.split('\n').map((linea, index) => (
                                                         //Por cada línea, creamos un <span> con el contenido de la línea y una etiqueta <br /> al final para generar un salto de línea.

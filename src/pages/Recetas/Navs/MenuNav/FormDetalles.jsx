@@ -93,7 +93,15 @@ const FormDetalles = (datosIngredientes, props) => {
                             <TextField fullWidth sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }} name='descripcion' onChange={formik.handleChange} id="outlined-basic" label="Descripcion" variant="outlined" />
                         </div>
                         <div className="input-group mb-3">
-                            <TextField fullWidth sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }} name='preparacion' onChange={formik.handleChange} id="outlined-basic" label="Preparacion" variant="outlined" />
+                            {/* <TextField fullWidth sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }} name='preparacion' onChange={formik.handleChange} id="outlined-basic" label="Preparacion" variant="outlined" /> */}
+                            <TextField
+                                fullWidth sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }}
+                                name='preparacion'
+                                onChange={formik.handleChange}
+                                label="Preparacion"
+                                multiline
+                                rows={6}
+                            />
                         </div>
                         <div className="input-group mb-3">
                             <TextField fullWidth sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }} name='categoria' onChange={formik.handleChange} id="outlined-basic" label="Categoria" variant="outlined" />
