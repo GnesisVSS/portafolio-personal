@@ -1,5 +1,5 @@
 import { Photo } from '@mui/icons-material';
-import { Button, TextField } from '@mui/material';
+import { Button, FormControl, FormHelperText, InputLabel, MenuItem, Select, TextField } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { Field, setIn, useFormik } from 'formik';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
@@ -14,7 +14,7 @@ const FormIngredientes = () => {
     const handleClick = (event, index) => {
         setPage(!page);
         let valFinal = []
-        
+
         valFinal = formValues.concat(additionalInputs)
         setValues([...values, valFinal]);
         localStorage.setItem('formValues', JSON.stringify(formValues));
@@ -35,7 +35,7 @@ const FormIngredientes = () => {
 
     const [formValues, setFormValues] = useState([]);
     const [additionalInputs, setAdditionalInputs] = useState([]);
-
+    const [unidad, setUnidad] = React.useState('');
     const handleAddInput = () => {
         setAdditionalInputs([...additionalInputs, {}]);
     };
@@ -43,16 +43,22 @@ const FormIngredientes = () => {
     const handleInputChange = (event) => {
         const { name, value } = event.target;
         const index = parseInt(name.slice(-1)) - 1; // obtenemos el índice del objeto en el arreglo
-        const field = name.slice(0, -1); // obtenemos el nombre del campo del objeto
+        const field = name.slice(0, -1);
+        // obtenemos el nombre del campo del objeto
         setFormValues((prevState) => {
             const newState = [...prevState]; // creamos un nuevo arreglo
             if (newState.length <= index) {
-                newState[index] = { [field]: value }; // si el objeto no existe, lo creamos
+                newState[index] = { ...newState[index], [field]: value }; // actualizamos el campo correspondiente
             } else {
                 newState[index][field] = value; // si el objeto ya existe, actualizamos el campo correspondiente
             }
             return newState; // devolvemos el nuevo estado
         });
+    };
+
+    const handleInputSelect = (event) => {
+        const { name, value } = event.target;
+        setFormValues([{ ...formValues[0], [name]: value }]);
     };
 
     // 3. Recuperar los valores del formulario del localStorage y actualizar el estado del componente con esos valores
@@ -93,9 +99,28 @@ const FormIngredientes = () => {
 
                     </div>
                     <div className='col'>
-                        <TextField fullWidth sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }} name={'unidad1'} id="unidad" variant="outlined" label="Unidad de Medida" value={formValues[0]?.unidad}
-                            onChange={handleInputChange} />
-
+                        <Select
+                            fullWidth
+                            sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' } }}
+                            name={'unidad1'}
+                            id="unidad"
+                            variant="outlined"
+                            label="unidad"
+                            value={formValues[0]?.unidad || ''}
+                            onChange={handleInputChange}
+                        >
+                            <MenuItem value={"na"}><em>na</em></MenuItem>
+                            <MenuItem value={"l."}>Litro(l.)</MenuItem>
+                            <MenuItem value={"ml."}>Mililitro(ml.) </MenuItem>
+                            <MenuItem value={"c.c."}>Centímetros cúbicos(c.c.)</MenuItem>
+                            <MenuItem value={"kg."}>Kilogramos (kg.)</MenuItem>
+                            <MenuItem value={"g."}>Gramos (g.) </MenuItem>
+                            <MenuItem value={"lb."}>Libra (lb.)</MenuItem>
+                            <MenuItem value={"oz."}>Onza (oz.)</MenuItem>
+                            <MenuItem value={"c.s."}>Cucharada sopera(c.s.) </MenuItem>
+                            <MenuItem value={"c.c."}>Cucharadita de postre(c.c.) </MenuItem>
+                            {/* Agrega más opciones según sea necesario */}
+                        </Select>
                     </div>
                 </div>
                 <div className='row py-4'>
@@ -110,8 +135,31 @@ const FormIngredientes = () => {
 
                     </div>
                     <div className='col'>
-                        <TextField fullWidth sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }} value={formValues[1]?.unidad}
-                            onChange={handleInputChange} name={'unidad2'} id="unidad1" variant="outlined" label="Unidad de Medida" />
+                        <Select
+                            fullWidth
+                            sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' } }}
+                            name={'unidad2'} 
+                            id="unidad1"
+                            variant="outlined"
+                            label="unidad"
+                            value={formValues[1]?.unidad || ''}
+                            onChange={handleInputChange}
+                        >
+                            <MenuItem value="na">
+                                <em>na</em>
+                            </MenuItem>
+                            <MenuItem value={"l."}>Litro(l.)</MenuItem>
+                            <MenuItem value={"ml."}>Mililitro(ml.) </MenuItem>
+                            <MenuItem value={"c.c."}>Centímetros cúbicos(c.c.)</MenuItem>
+                            <MenuItem value={"kg."}>Kilogramos (kg.)</MenuItem>
+                            <MenuItem value={"g."}>Gramos (g.) </MenuItem>
+                            <MenuItem value={"lb."}>Libra (lb.)</MenuItem>
+                            <MenuItem value={"oz."}>Onza (oz.)</MenuItem>
+                            <MenuItem value={"c.s."}>Cucharada sopera(c.s.) </MenuItem>
+                            <MenuItem value={"c.c."}>Cucharadita de postre(c.c.) </MenuItem>
+                            <MenuItem value={"a gusto"}>A gusto</MenuItem>
+                            {/* Agrega más opciones según sea necesario */}
+                        </Select>
 
                     </div>
                 </div>
@@ -127,8 +175,30 @@ const FormIngredientes = () => {
 
                     </div>
                     <div className='col'>
-                        <TextField fullWidth sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }} value={formValues[2]?.unidad}
-                            onChange={handleInputChange} name={'unidad3'} id="unidad2" variant="outlined" label="Unidad de Medida" />
+                    <Select
+                            fullWidth
+                            sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' } }}
+                            name={'unidad3'} 
+                            id="unidad2"
+                            variant="outlined"
+                            label="unidad"
+                            value={formValues[2]?.unidad || ''}
+                            onChange={handleInputChange}
+                        >
+                            <MenuItem value="na">
+                                <em>na</em>
+                            </MenuItem>
+                            <MenuItem value={"l."}>Litro(l.)</MenuItem>
+                            <MenuItem value={"ml."}>Mililitro(ml.) </MenuItem>
+                            <MenuItem value={"c.c."}>Centímetros cúbicos(c.c.)</MenuItem>
+                            <MenuItem value={"kg."}>Kilogramos (kg.)</MenuItem>
+                            <MenuItem value={"g."}>Gramos (g.) </MenuItem>
+                            <MenuItem value={"lb."}>Libra (lb.)</MenuItem>
+                            <MenuItem value={"oz."}>Onza (oz.)</MenuItem>
+                            <MenuItem value={"c.s."}>Cucharada sopera(c.s.) </MenuItem>
+                            <MenuItem value={"c.c."}>Cucharadita de postre(c.c.) </MenuItem>
+                            {/* Agrega más opciones según sea necesario */}
+                        </Select>
 
                     </div>
                 </div>
@@ -170,7 +240,7 @@ const FormIngredientes = () => {
 
                         </div>
                         <div className='col-sm-1'>
-                            <Button variant="text" onClick={() => handleRemoveInput(index)} sx={{ color: "red"}} startIcon={<RemoveCircleIcon />}></Button>
+                            <Button variant="text" onClick={() => handleRemoveInput(index)} sx={{ color: "red" }} startIcon={<RemoveCircleIcon />}></Button>
 
 
                         </div>
