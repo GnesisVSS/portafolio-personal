@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import RecetasUsuario from './RecetasUsuario';
 import { consultaRecetasUsuario, misRecetasLimit } from '../../../api/receta.api';
 import Loading from '../ElementosRecetas/Loading';
-import MisRecetasPerfil from './misRecetasPerfil';
 import MisRecetas from '../Navs/MenuNav/misRecetas';
 import NavbarUsuario from '../Navs/navbarUsuario';
 import { Alert, AlertTitle, Fab } from '@mui/material';

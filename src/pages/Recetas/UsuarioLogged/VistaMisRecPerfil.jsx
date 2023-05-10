@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import MisRecetasPerfil from './misRecetasPerfil';
 import { misRecetasLimit } from '../../../api/receta.api';
 import Loading from '../ElementosRecetas/Loading';
+import RecetasUsuario from './RecetasUsuario';
 
 const VistaMisRecPerfil = () => {
     // use state para definir como estado inicial las tareas definidas como base
@@ -24,7 +24,7 @@ const VistaMisRecPerfil = () => {
                 <div className='container'>
                     {recetas.map((rec, index) => {
                         return (
-                            <MisRecetasPerfil key={index} rec={rec} />
+                            <RecetasUsuario key={index} rec={rec} />
                         )
                     })}
                 </div>

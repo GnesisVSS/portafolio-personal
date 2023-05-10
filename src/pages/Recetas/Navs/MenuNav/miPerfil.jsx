@@ -71,7 +71,7 @@ const MiPerfil = () => {
                                             </Box>
                                             <Box component="ul" aria-labelledby="category-c" sx={{ pl: 2 }}>
                                                 {/* Cards */}
-                                                <VistaMisRecPerfil></VistaMisRecPerfil>
+                                                <VistaCardsGuardadas></VistaCardsGuardadas>
                                             </Box>
                                         </Item>
                                     </Grid>
@@ -85,7 +85,7 @@ const MiPerfil = () => {
                                             </Box>
                                             <Box component="ul" aria-labelledby="category-b" sx={{ pl: 2 }}>
                                                 {/* Cards */}
-                                                <VistaCardsGuardadas></VistaCardsGuardadas>
+                                                <VistaMisRecPerfil></VistaMisRecPerfil>
                                             </Box>
                                             
                                         </Item>

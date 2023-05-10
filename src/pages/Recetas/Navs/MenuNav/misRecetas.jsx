@@ -80,7 +80,6 @@
 
 import React, { useEffect, useState } from 'react';
 import { consultaRecetasUsuario, misRecetasLimit } from '../../../../api/receta.api';
-import MisRecetasPerfil from '../../UsuarioLogged/misRecetasPerfil';
 import Loading from '../../ElementosRecetas/Loading';
 import NavbarUsuario from '../navbarUsuario';
 import { Alert, AlertTitle, Fab } from '@mui/material';
