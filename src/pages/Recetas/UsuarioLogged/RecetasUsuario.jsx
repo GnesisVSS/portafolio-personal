@@ -5,9 +5,14 @@ import { RecetasC } from '../../../models/recetas.class';
 import { consultaRecetasUsuario } from '../../../api/receta.api';
 import { Fab } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
+import { useNavigate } from 'react-router';
 
 const RecetasUsuario = ({rec}) => {
-
+    const navigate = useNavigate();
+    const redirigirADetalleRecetas = () => {
+        navigate('/DetalleMisRecetas', { state: { rec } }); // Redirige a '/detalle-recetas' y pasa 'receta' como prop
+        console.log(rec)
+    };
     // Carga de datos que son recibidos por props, a lo que será la vista de las recetas
     return (
 
@@ -18,10 +23,10 @@ const RecetasUsuario = ({rec}) => {
             <div className="text-rec">
                 <p className="h3-rec"> {rec.nombre} </p>
                 <p className="p-rec"> {rec.porciones} porciones - {rec.tiempoPreparacion} min. </p>
-                <button className="icon-box btn">
+                <a className="icon-box btn" type='button' onClick={redirigirADetalleRecetas}>
                     <img src='img/maceta.png'></img>
                     <p className="span-rec text-center">Ver Receta</p>
-                </button>
+                </a>
             </div >
         </div >
 

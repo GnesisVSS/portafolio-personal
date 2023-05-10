@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { mostrarDetalleRecetasUsuario } from '../../../api/receta.api';
+import { mostrarDetalleIngredientes, mostrarDetalleRecetasUsuario } from '../../../api/receta.api';
 import { useLocation } from 'react-router';
 import NavbarUsuario from '../Navs/navbarUsuario';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
@@ -19,7 +19,7 @@ const VistaDetalleRecetasUsuario = () => {
         async function loadRecetasDetalle() {
             const correousuario = localStorage.getItem("correoUsuario");
 
-            const response = await mostrarDetalleRecetasUsuario(rec)
+            const response = await mostrarDetalleRecetasUsuario(rec.id, correousuario)
             const responseIngr = await mostrarDetalleIngredientes(rec.id)
             // console.log(response.data[0].id)
             setRecetas(...recetas, response.data)
