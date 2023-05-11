@@ -55,7 +55,7 @@ const VistaDetalleGuardados = () => {
                         {recetas.map(objeto => (
                             <div key={objeto.id} className='py-5 row justify-content-center'>
                                 <div className='col-5 col-sm-6' style={{ textAlign: 'center' }}>
-                                    <img src={objeto.imgUrl} style={{ maxHeight: 400, maxWidth: 500 }} />
+                                    <img src={objeto.imgUrl==="" ? 'img/FondoDefecto.svg' : objeto.imgUrl} style={{ maxHeight: 400, maxWidth: 500 }}/>
                                 </div>
                                 <div className='col-5 col-sm-6'>
                                     <h1> {objeto.nombre}</h1>

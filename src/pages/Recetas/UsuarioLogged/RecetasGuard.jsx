@@ -47,7 +47,7 @@ const RecetasGuard = ({ rec }) => {
 
     return (
         <div className="card card-home-rec justify-content-center">
-            <div className="img" style={{ backgroundImage: `url(${rec.imgUrl})` }}>
+            <div className="img" style={rec.imgUrl === "" ? { backgroundImage: 'url(../img/FondoDefecto.svg)' } : { backgroundImage: `url(${rec.imgUrl})` }}>
                 {
                     correousuario ? <button
                         className="save"
