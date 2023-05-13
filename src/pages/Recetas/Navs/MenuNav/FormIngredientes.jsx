@@ -5,6 +5,8 @@ import { Field, setIn, useFormik } from 'formik';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import FormDetalles from './FormDetalles';
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
+import * as Yup from 'yup';
+
 
 const FormIngredientes = () => {
 
@@ -83,44 +85,115 @@ const FormIngredientes = () => {
 
     };
 
+    const hola = "nombre"
+    const valSchema = Yup.object().shape({
+        nombre1: Yup.string()
+            .required('El nombre del ingrediente es obligatorio')
+            .min(5, 'El nombre es muy corto')
+            .max(120, 'El nombre excede el máximo de caracteres'),
+        cantidad1: Yup.number()
+            .required('La cantidad es obligatoria')
+            .min(1, 'La cantidad es de minimo 1'),
+        unidad1: Yup.string()
+            .required('La unidad es obligatoria'),
+        nombre2: Yup.string()
+            .required('El nombre del ingrediente es obligatorio')
+            .min(5, 'El nombre es muy corto')
+            .max(120, 'El nombre excede el máximo de caracteres'),
+        cantidad2: Yup.number()
+            .required('La cantidad es obligatoria')
+            .min(1, 'La cantidad es de minimo 1'),
+        unidad2: Yup.string()
+            .required('La unidad es obligatoria'),
+        nombre3: Yup.string()
+            .required('El nombre del ingrediente es obligatorio')
+            .min(5, 'El nombre es muy corto')
+            .max(120, 'El nombre excede el máximo de caracteres'),
+        cantidad3: Yup.number()
+            .required('La cantidad es obligatoria')
+            .min(1, 'La cantidad es de minimo 1'),
+        unidad3: Yup.string()
+            .required('La unidad es obligatoria')
+    })
+
+    const formik = useFormik({
+        initialValues: {
+            nombre1: "",
+            cantidad1: "",
+            unidad1: "",
+            nombre2: "",
+            cantidad2: "",
+            unidad2: "",
+            nombre3: "",
+            cantidad3: "",
+            unidad3: "",
+        },
+        validationSchema: valSchema,
+        onSubmit: () => {
+            try {
+                setPage(!page);
+                let valFinal = []
+
+                valFinal = formValues.concat(additionalInputs)
+                setValues([...values, valFinal]);
+                localStorage.setItem('formValues', JSON.stringify(formValues));
+                localStorage.setItem('additionalInputs', JSON.stringify(additionalInputs));
+
+            } catch (error) {
+                console.log(error)
+
+            }
+        }
+    });
+
     return (
         page ? <div>
             <form onSubmit={handleSubmit}>
                 <h1 className='text-focus-in titulo-inicio'>Ingredientes</h1>
                 <div className='row py-4'>
                     <div className='col'>
-                        <TextField fullWidth sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }} name={'nombre1'} id="nombre" variant="outlined" label="Nombre del Ingrediente" value={formValues[0]?.nombre}
+                        <TextField error={formik.touched.nombre1 && Boolean(formik.errors.nombre1)} onBlur={formik.handleBlur}
+                            helperText={formik.touched.nombre1 && formik.errors.nombre1}
+                            fullWidth sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }} name={'nombre1'} id="nombre" variant="outlined" label="Nombre del Ingrediente" value={formValues[0]?.nombre}
                             onChange={handleInputChange} />
 
                     </div>
                     <div className='col'>
-                        <TextField fullWidth sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }} name={'cantidad1'} id="cantidad" variant="outlined" label="Cantidad" value={formValues[0]?.cantidad}
+                        <TextField error={formik.touched.cantidad1 && Boolean(formik.errors.cantidad1)} onBlur={formik.handleBlur}
+                            helperText={formik.touched.cantidad1 && formik.errors.cantidad1} fullWidth sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }} name={'cantidad1'} id="cantidad" variant="outlined" label="Cantidad" value={formValues[0]?.cantidad}
                             onChange={handleInputChange} />
 
                     </div>
                     <div className='col'>
-                        <Select
-                            fullWidth
-                            sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' } }}
-                            name={'unidad1'}
-                            id="unidad"
-                            variant="outlined"
-                            label="unidad"
-                            value={formValues[0]?.unidad || ''}
-                            onChange={handleInputChange}
-                        >
-                            <MenuItem value={"na"}><em>na</em></MenuItem>
-                            <MenuItem value={"l."}>Litro(l.)</MenuItem>
-                            <MenuItem value={"ml."}>Mililitro(ml.) </MenuItem>
-                            <MenuItem value={"c.c."}>Centímetros cúbicos(c.c.)</MenuItem>
-                            <MenuItem value={"kg."}>Kilogramos (kg.)</MenuItem>
-                            <MenuItem value={"g."}>Gramos (g.) </MenuItem>
-                            <MenuItem value={"lb."}>Libra (lb.)</MenuItem>
-                            <MenuItem value={"oz."}>Onza (oz.)</MenuItem>
-                            <MenuItem value={"c.s."}>Cucharada sopera(c.s.) </MenuItem>
-                            <MenuItem value={"c.c."}>Cucharadita de postre(c.c.) </MenuItem>
-                            {/* Agrega más opciones según sea necesario */}
-                        </Select>
+                        <FormControl fullWidth>
+                            <InputLabel id="Select1">Unidad de Medida</InputLabel>
+                            <Select
+                                fullWidth
+                                sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' } }}
+                                name={'unidad1'}
+                                id="unidad"
+                                variant="outlined"
+                                label={"Unidad de medida"}
+                                labelId="Select1"
+                                value={formValues[0]?.unidad || ''}
+                                onChange={handleInputChange}
+                                error={formik.touched.unidad1 && Boolean(formik.errors.unidad1)} onBlur={formik.handleBlur}
+                                helperText={formik.touched.unidad1 && formik.errors.unidad1}
+                            >
+                                <MenuItem value={"na"}><em>na</em></MenuItem>
+                                <MenuItem value={"l."}>Litro(l.)</MenuItem>
+                                <MenuItem value={"ml."}>Mililitro(ml.) </MenuItem>
+                                <MenuItem value={"c.c."}>Centímetros cúbicos(c.c.)</MenuItem>
+                                <MenuItem value={"kg."}>Kilogramos (kg.)</MenuItem>
+                                <MenuItem value={"g."}>Gramos (g.) </MenuItem>
+                                <MenuItem value={"lb."}>Libra (lb.)</MenuItem>
+                                <MenuItem value={"oz."}>Onza (oz.)</MenuItem>
+                                <MenuItem value={"c.s."}>Cucharada sopera(c.s.) </MenuItem>
+                                <MenuItem value={"c.c."}>Cucharadita de postre(c.c.) </MenuItem>
+                                {/* Agrega más opciones según sea necesario */}
+                            </Select>
+                        </FormControl>
+
                     </div>
                 </div>
                 <div className='row py-4'>
@@ -135,31 +208,36 @@ const FormIngredientes = () => {
 
                     </div>
                     <div className='col'>
-                        <Select
-                            fullWidth
-                            sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' } }}
-                            name={'unidad2'} 
-                            id="unidad1"
-                            variant="outlined"
-                            label="unidad"
-                            value={formValues[1]?.unidad || ''}
-                            onChange={handleInputChange}
-                        >
-                            <MenuItem value="na">
-                                <em>na</em>
-                            </MenuItem>
-                            <MenuItem value={"l."}>Litro(l.)</MenuItem>
-                            <MenuItem value={"ml."}>Mililitro(ml.) </MenuItem>
-                            <MenuItem value={"c.c."}>Centímetros cúbicos(c.c.)</MenuItem>
-                            <MenuItem value={"kg."}>Kilogramos (kg.)</MenuItem>
-                            <MenuItem value={"g."}>Gramos (g.) </MenuItem>
-                            <MenuItem value={"lb."}>Libra (lb.)</MenuItem>
-                            <MenuItem value={"oz."}>Onza (oz.)</MenuItem>
-                            <MenuItem value={"c.s."}>Cucharada sopera(c.s.) </MenuItem>
-                            <MenuItem value={"c.c."}>Cucharadita de postre(c.c.) </MenuItem>
-                            <MenuItem value={"a gusto"}>A gusto</MenuItem>
-                            {/* Agrega más opciones según sea necesario */}
-                        </Select>
+                        <FormControl fullWidth>
+                            <InputLabel id="Select2">Unidad de Medida</InputLabel>
+                            <Select
+                                fullWidth
+                                sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' } }}
+                                name={'unidad2'}
+                                id="unidad1"
+                                variant="outlined"
+                                label="Unidad de Medida"
+                                value={formValues[1]?.unidad || ''}
+                                onChange={handleInputChange}
+                                labelId="Select2"
+                            >
+                                <MenuItem value="na">
+                                    <em>na</em>
+                                </MenuItem>
+                                <MenuItem value={"l."}>Litro(l.)</MenuItem>
+                                <MenuItem value={"ml."}>Mililitro(ml.) </MenuItem>
+                                <MenuItem value={"c.c."}>Centímetros cúbicos(c.c.)</MenuItem>
+                                <MenuItem value={"kg."}>Kilogramos (kg.)</MenuItem>
+                                <MenuItem value={"g."}>Gramos (g.) </MenuItem>
+                                <MenuItem value={"lb."}>Libra (lb.)</MenuItem>
+                                <MenuItem value={"oz."}>Onza (oz.)</MenuItem>
+                                <MenuItem value={"c.s."}>Cucharada sopera(c.s.) </MenuItem>
+                                <MenuItem value={"c.c."}>Cucharadita de postre(c.c.) </MenuItem>
+                                <MenuItem value={"a gusto"}>A gusto</MenuItem>
+                                {/* Agrega más opciones según sea necesario */}
+                            </Select>
+                        </FormControl>
+
 
                     </div>
                 </div>
@@ -175,30 +253,35 @@ const FormIngredientes = () => {
 
                     </div>
                     <div className='col'>
-                    <Select
-                            fullWidth
-                            sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' } }}
-                            name={'unidad3'} 
-                            id="unidad2"
-                            variant="outlined"
-                            label="unidad"
-                            value={formValues[2]?.unidad || ''}
-                            onChange={handleInputChange}
-                        >
-                            <MenuItem value="na">
-                                <em>na</em>
-                            </MenuItem>
-                            <MenuItem value={"l."}>Litro(l.)</MenuItem>
-                            <MenuItem value={"ml."}>Mililitro(ml.) </MenuItem>
-                            <MenuItem value={"c.c."}>Centímetros cúbicos(c.c.)</MenuItem>
-                            <MenuItem value={"kg."}>Kilogramos (kg.)</MenuItem>
-                            <MenuItem value={"g."}>Gramos (g.) </MenuItem>
-                            <MenuItem value={"lb."}>Libra (lb.)</MenuItem>
-                            <MenuItem value={"oz."}>Onza (oz.)</MenuItem>
-                            <MenuItem value={"c.s."}>Cucharada sopera(c.s.) </MenuItem>
-                            <MenuItem value={"c.c."}>Cucharadita de postre(c.c.) </MenuItem>
-                            {/* Agrega más opciones según sea necesario */}
-                        </Select>
+                        <FormControl fullWidth>
+                            <InputLabel id="Select3">Unidad de Medida</InputLabel>
+                            <Select
+                                fullWidth
+                                sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' } }}
+                                name={'unidad3'}
+                                id="unidad2"
+                                variant="outlined"
+                                label="unidad"
+                                value={formValues[2]?.unidad || ''}
+                                onChange={handleInputChange}
+                                labelId="Select3"
+                            >
+                                <MenuItem value="na">
+                                    <em>na</em>
+                                </MenuItem>
+                                <MenuItem value={"l."}>Litro(l.)</MenuItem>
+                                <MenuItem value={"ml."}>Mililitro(ml.) </MenuItem>
+                                <MenuItem value={"c.c."}>Centímetros cúbicos(c.c.)</MenuItem>
+                                <MenuItem value={"kg."}>Kilogramos (kg.)</MenuItem>
+                                <MenuItem value={"g."}>Gramos (g.) </MenuItem>
+                                <MenuItem value={"lb."}>Libra (lb.)</MenuItem>
+                                <MenuItem value={"oz."}>Onza (oz.)</MenuItem>
+                                <MenuItem value={"c.s."}>Cucharada sopera(c.s.) </MenuItem>
+                                <MenuItem value={"c.c."}>Cucharadita de postre(c.c.) </MenuItem>
+                                {/* Agrega más opciones según sea necesario */}
+                            </Select>
+                        </FormControl>
+
 
                     </div>
                 </div>

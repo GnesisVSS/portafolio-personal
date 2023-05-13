@@ -77,6 +77,14 @@ export const buscarLogin = async (ingreso) => {
 
 // -------------------------------REGISTRO---------------------------------
 
+export const crear = async (ingreso) => {
+    // let parametros = { correo: correo, nombre: nombre, apellido: apellido, usuario: this.usuarios.usuario, contrasena: this.usuarios.contrasena };
+    await axios.post(url + `/${ingreso.correo}` + `/${ingreso.nombre}` + `/${ingreso.apellido}` + `/${ingreso.usuario}` + `/${ingreso.contrasena}`)
+        .then((response) => {
+            alert("Usuario registrado exitosamente")
+            window.location.reload();
+        })
+}
 export const buscar = async (ingreso) => {
     // let correo = { correo: this.usuarios.correo }
     await axios.get(url + `/${ingreso.correo}`)
