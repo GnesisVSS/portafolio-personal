@@ -75,7 +75,7 @@ const CardRecetas = ({ rec }) => {
     return (
 
         <div className="card card-home-rec justify-content-center">
-            <div className="img" style={ rec.imgUrl === "" ? { backgroundImage: 'url(/img/FondoDefecto.svg)' } : { backgroundImage: `url(${rec.imgUrl})` }}>
+            <div className="img" style={rec.imgUrl === "" ? { backgroundImage: 'url(/img/FondoDefecto.svg)' } : { backgroundImage: `url(${rec.imgUrl})` }}>
                 {
                     correousuario ? <button
                         className="save"
@@ -126,16 +126,36 @@ const CardRecetas = ({ rec }) => {
                                     <div className="col">
                                         <img src="../img/ohno.svg" />
                                     </div>
-                                    <div className="col">
+                                    <div className="col align-self-center">
                                         <h1 className="card-title text-center fw-bold">Oh, no!</h1>
                                         <Typography id="transition-modal-description" sx={{ mt: 2 }}>
                                             Debes iniciar sesión para poder guardar tus recetas favoritas. Crea una cuenta gratis para acceder a esta función y más!
                                         </Typography>
+                                        <p className="text-muted text-center">
+                                            Al ser un demo, las credenciales principales son:
+                                            
+                                            <div className='row'>
+                                                <div className='col-4'>
+                                                </div>
+                                                <div className='col-4'>
+                                                    <li style={{textAlign:'start'}}> <strong>Pass:</strong> root</li>
+                                                    <li style={{textAlign:'start'}}><strong>Usuario:</strong> root</li>
+                                                </div>
+                                                <div className='col-4'>
+                                                </div>
+                                            </div>
+
+
+
+                                        </p>
+
                                         <a className="button-inicio" type='button' href='./login'>
                                             <span className="" id='iniciar'>Iniciar sesión</span>
                                         </a>
                                     </div>
+
                                 </div>
+
                             </div>
 
 

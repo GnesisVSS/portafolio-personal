@@ -3,7 +3,7 @@ import { Form, Formik } from 'formik';
 import { UNSAFE_useScrollRestoration, useNavigate } from 'react-router-dom';
 import { carga } from '../../../funciones/carga';
 import NavbarRecetas from './../Navs/navbar-recetas';
-import { FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput, TextField } from '@mui/material';
+import { Alert, FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput, TextField } from '@mui/material';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { obtenerUsuario } from '../../../api/registro.api';
@@ -32,10 +32,10 @@ const Login = () => {
     async function loadRecetas() {
         const response = await obtenerUsuario()
         setUsuario(response.data)
-        
+
         // setImage(new Blob([response.data], { type: "image/jpeg" }));
     }
-    
+
 
     return (
 
@@ -93,12 +93,17 @@ const Login = () => {
                                                                     </InputAdornment>
                                                                 }
                                                                 label="Contraseña"
-                                                                
+
                                                             />
                                                         </FormControl>
                                                     </div>
                                                     <div style={estilo2} className="py-2">
-
+                                                        <Alert severity="info">Al ser un demo las credenciales son:
+                                                                <div className='col'>
+                                                                    <li style={{ textAlign: 'start' }}> <strong>Pass:</strong> root</li>
+                                                                    <li style={{ textAlign: 'start' }}><strong>Usuario:</strong> root</li>
+                                                                </div>
+                                                        </Alert>
                                                         <button type="submit" className="button-inicio" >
                                                             {/* <span >Loading...</span> */}
                                                             <div className="visually-hidden" id='loading' role="status" >
