@@ -53,7 +53,7 @@ const Login = () => {
                                     <h3 className="card-title text-center fw-bold">Inicia sesión</h3>
                                     <Alert severity="info">Al ser un demo las credenciales son:
                                         <div className='col'>
-                                            <li style={{ textAlign: 'start' }}><strong>Correo Electrónico:</strong> root</li>
+                                            <li style={{ textAlign: 'start' }}><strong>Correo Electrónico:</strong> root@root.cl</li>
                                             <li style={{ textAlign: 'start' }}> <strong>Pass:</strong> root</li>
                                         </div>
                                     </Alert>

@@ -42,7 +42,7 @@ const MiPerfil = () => {
                                 <Avatar
                                     sx={{ width: 56, height: 56 }}
                                 >{InicialesUsuario}</Avatar>
-                                <Grid xs={6} lg={3}>
+                                <Grid xs={6} lg={4}>
                                     <Box
                                         id="category-a"
                                         sx={{ fontSize: '12px', textTransform: 'uppercase' }}
@@ -50,13 +50,13 @@ const MiPerfil = () => {
                                     </Box>
                                     <Box component="ul" aria-labelledby="category-a" sx={{ pl: 2 }}>
                                         <p>
-                                            {correoUsuario}
+                                            <strong>Correo: </strong> {correoUsuario}
                                         </p>
                                         <p>
-                                            {nombreUsuario}
+                                            <strong>Nombre de Usuario: </strong> {nombreUsuario}
                                         </p>
                                         <p>
-                                            {nombreCompleto}
+                                            <strong>Nombre Completo: </strong> {nombreCompleto}
                                         </p>
                                     </Box>
                                 </Grid>
@@ -65,7 +65,7 @@ const MiPerfil = () => {
                                         <Item>
                                             <Box
                                                 id="category-b"
-                                                sx={{ fontSize: '12px', textTransform: 'uppercase', textAlign: 'left'}}
+                                                sx={{ fontSize: '12px', textTransform: 'uppercase', textAlign: 'left' }}
                                             >
                                                 Recetas Guardadas
                                             </Box>
@@ -87,11 +87,11 @@ const MiPerfil = () => {
                                                 {/* Cards */}
                                                 <VistaMisRecPerfil></VistaMisRecPerfil>
                                             </Box>
-                                            
+
                                         </Item>
                                     </Grid>
                                 </Grid>
-                                
+
                             </Grid>
                         </Box>
                     </div>
