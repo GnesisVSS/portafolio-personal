@@ -51,6 +51,12 @@ const Login = () => {
                             <div className="col-md-5">
                                 <div className="card-body p-4">
                                     <h3 className="card-title text-center fw-bold">Inicia sesión</h3>
+                                    <Alert severity="info">Al ser un demo las credenciales son:
+                                        <div className='col'>
+                                            <li style={{ textAlign: 'start' }}><strong>Correo Electrónico:</strong> root</li>
+                                            <li style={{ textAlign: 'start' }}> <strong>Pass:</strong> root</li>
+                                        </div>
+                                    </Alert>
                                     <div className="card-text p-4">
                                         <Formik
                                             initialValues={{
@@ -98,12 +104,7 @@ const Login = () => {
                                                         </FormControl>
                                                     </div>
                                                     <div style={estilo2} className="py-2">
-                                                        <Alert severity="info">Al ser un demo las credenciales son:
-                                                                <div className='col'>
-                                                                    <li style={{ textAlign: 'start' }}> <strong>Pass:</strong> root</li>
-                                                                    <li style={{ textAlign: 'start' }}><strong>Usuario:</strong> root</li>
-                                                                </div>
-                                                        </Alert>
+
                                                         <button type="submit" className="button-inicio" >
                                                             {/* <span >Loading...</span> */}
                                                             <div className="visually-hidden" id='loading' role="status" >

@@ -139,7 +139,7 @@ const CardRecetas = ({ rec }) => {
                                                 </div>
                                                 <div className='col-4'>
                                                     <li style={{textAlign:'start'}}> <strong>Pass:</strong> root</li>
-                                                    <li style={{textAlign:'start'}}><strong>Usuario:</strong> root</li>
+                                                    <li style={{textAlign:'start'}}><strong>Correo:</strong> root</li>
                                                 </div>
                                                 <div className='col-4'>
                                                 </div>
