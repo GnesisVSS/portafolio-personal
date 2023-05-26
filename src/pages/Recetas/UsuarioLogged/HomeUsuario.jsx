@@ -16,7 +16,6 @@ const HomeUsuario = () => {
         <section id='homeRecetas'>
 
             <NavbarUsuario />
-
             <VistaCards />
         </section>
     );

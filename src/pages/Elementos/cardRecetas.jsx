@@ -34,6 +34,7 @@ const CardRecetas = ({ rec }) => {
         if (estaGuardado === false && save === false) {
             setSave(true);
             cargarGuardados(rec.id, correousuario);
+            localStorage.setItem('guardado', rec.nombre)
 
         } else {
             setSave(false);
@@ -75,6 +76,7 @@ const CardRecetas = ({ rec }) => {
     return (
 
         <div className="card card-home-rec justify-content-center">
+        
             <div className="img" style={rec.imgUrl === "" ? { backgroundImage: 'url(/img/FondoDefecto.svg)' } : { backgroundImage: `url(${rec.imgUrl})` }}>
                 {
                     correousuario ? <button

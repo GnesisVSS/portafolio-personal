@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react';
 import CardRecetas from '../Elementos/cardRecetas';
 import { consMostrar, mostrarRecetas } from '../../api/receta.api';
 import Loading from './ElementosRecetas/Loading';
+import { Alert } from '@mui/material';
+
 
 const VistaCards = () => {
     // use state para definir como estado inicial las tareas definidas como base
     const [recetas, setRecetas] = useState([])
-    // const [image, setImage] = useState(null);
+    const [guardadoLocal, setGuardadoLocal] = useState("");
 
     useEffect(() => {
         async function loadRecetas() {
@@ -17,12 +19,28 @@ const VistaCards = () => {
         loadRecetas()
     }, [])
 
+    // Función para verificar el cambio en el localStorage
+    function checkLocalStorage() {
+        var currentValue = localStorage.getItem("guardado");
+        if (currentValue !== null && currentValue !== previousValue) {
+            // Aquí puedes realizar las acciones necesarias cuando cambia el valor de "guardado"
+            console.log("El valor de 'guardado' ha cambiado:", currentValue);
+            setGuardadoLocal(currentValue)
+            previousValue = currentValue; // Actualizar el valor anterior
+        }
+    }
+
+    var previousValue = localStorage.getItem("guardado"); // Valor inicial
+
+    // Verificar el cambio cada segundo (puedes ajustar el intervalo según tus necesidades)
+    setInterval(checkLocalStorage, 500);
 
     const Tarjetas = () => {
         return (
             <section>
                 <div className='container'>
                     {recetas.map((rec, index) => {
+
                         return (
                             <CardRecetas key={index} rec={rec} />
                         )
@@ -43,11 +61,17 @@ const VistaCards = () => {
             <Loading />
         )
     }
+
+
     return (
         <section>
             <div className='container mx-auto py-4'>
                 <div>
                     <div>
+                        {/* <Alert severity="info">
+                            {guardadoLocal}
+                            
+                        </Alert> */}
                         {recetaInfo}
                     </div>
                 </div>

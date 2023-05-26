@@ -27,6 +27,7 @@ const RecetasGuardadasCompletas = () => {
                 <div className='container'>
                     {recetas.map((rec, index) => {
                         return (
+                            
                             <RecetasGuard key={index} rec={rec} />
                         )
                     })}

@@ -18,7 +18,6 @@ const FormDetalles = (datosIngredientes, props) => {
     const valuesDetalle = datosIngredientes.datosIngredientes[0]
     useEffect(() => {
         setValorInput(props.valorInicial);
-        console.log(valuesDetalle.length)
     }, [props.valorInicial]);
 
     const [info, setInfo] = useState(valorInput);
@@ -78,6 +77,7 @@ const FormDetalles = (datosIngredientes, props) => {
                 await registroIngredientes(valuesDetalle)
                 await registroDetalleRecetaUsuario(detallesIngredientes)
                 localStorage.removeItem("formValues");
+                localStorage.removeItem("additionalInputs");
                 window.location.href = '/misRecetas';
 
             } catch (error) {
