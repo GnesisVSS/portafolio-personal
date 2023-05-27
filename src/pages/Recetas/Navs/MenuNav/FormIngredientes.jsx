@@ -443,7 +443,7 @@ const FormIngredientes = () => {
                                 type="text"
                                 name="nombre3"
                                 id="nombre3"
-                                value={formValues[3]?.nombre}
+                                value={formValues[2]?.nombre}
                                 onChange={handleChange}
                                 placeholder="Nombre del ingrediente"
                                 minLength="3"
@@ -458,7 +458,7 @@ const FormIngredientes = () => {
                                 type="number"
                                 name={'cantidad3'}
                                 id="cantidad3"
-                                value={formValues[3]?.cantidad}
+                                value={formValues[2]?.cantidad}
                                 onChange={handleChange}
                                 placeholder="Cantidad"
                                 required
@@ -579,7 +579,7 @@ const FormIngredientes = () => {
                                     <div className="spinner-border spinner-border-sm" role="status" />
                                 </div>
 
-                                <a className="" id='iniciar' onClick={handleClick}>Cargar Receta</a>
+                                <span className="" id='iniciar' onClick={handleClick}>Siguiente</span>
                             </button>
                         </div>
                     </div>
