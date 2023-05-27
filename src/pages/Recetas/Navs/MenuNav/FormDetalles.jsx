@@ -146,7 +146,7 @@ const FormDetalles = (datosIngredientes, props) => {
                                     <div className="spinner-border spinner-border-sm" role="status" />
                                 </div>
 
-                                <a className="" id='iniciar' >Cargar Receta</a>
+                                <span className="" id='iniciar' >Cargar Receta</span>
                             </button>
                         </div>
                     </div>

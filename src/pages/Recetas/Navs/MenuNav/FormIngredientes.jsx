@@ -13,7 +13,7 @@ const FormIngredientes = () => {
     const [values, setValues] = useState([]);
     const [page, setPage] = useState(true);
 
-    const handleClick = (event, index) => {
+    const handleClick = () => {
         setPage(!page);
         let valFinal = []
 
@@ -84,10 +84,23 @@ const FormIngredientes = () => {
     }, []);
 
     // 4. Cuando el usuario hace clic en el botón "Siguiente", guardar el estado actual del formulario en localStorage
+    // const handleRemoveInput = (indexToRemove) => {
+    //     const filteredInputs = additionalInputs.filter((input, index) => index !== indexToRemove);
+    //     setAdditionalInputs(filteredInputs);
+    //     localStorage.setItem('additionalInputs', JSON.stringify(filteredInputs));
+
+    // };
+
     const handleRemoveInput = (indexToRemove) => {
+        // const filteredInputs = additionalInputs.filter((input, index) => index !== indexToRemove);
+        // setAdditionalInputs(filteredInputs);
+        // localStorage.setItem('additionalInputs', JSON.stringify(filteredInputs));
+
         const filteredInputs = additionalInputs.filter((input, index) => index !== indexToRemove);
         setAdditionalInputs(filteredInputs);
-        localStorage.setItem('additionalInputs', JSON.stringify(filteredInputs));
+        const storedData = JSON.parse(localStorage.getItem('additionalInputs'));
+        storedData.splice(1, indexToRemove); // Elimina 1 elemento en la posición 1
+        localStorage.setItem('additionalInputs', JSON.stringify(storedData));
 
     };
 
@@ -246,7 +259,7 @@ const FormIngredientes = () => {
         const index = name.split('-')[1];
         // ------------------------------------SECCIÓN NOMBRES--------------------------------------------------
         if (name === 'nombre1' || name === 'nombre2' || name === 'nombre3' || name.startsWith('nombreExtra-')) {
-            
+
             if (value.length < 3 && value.length > 0) {
                 // se evalua si el nombre es nombre1, si no es se evalua si es nombre2 y asi sucesivamente
                 name === 'nombre1' ? newErrors.nombre1 = mensajeNombreErrorComun
@@ -309,11 +322,16 @@ const FormIngredientes = () => {
 
     }
 
+    function handleFormSubmit(event) {
+        
+            handleClick();
+    }
+
     //!Validacion con bootstrap
     return (
         page ?
             <div>
-                <form className="row g-3 needs-validation" noValidate>
+                <form className="row g-3 needs-validation" noValidate onSubmit={handleFormSubmit}>
                     <h1 className='text-focus-in titulo-inicio'>Ingredientes</h1>
 
                     {/*---------------------------------------------------------------------------------------------*/}
@@ -471,7 +489,7 @@ const FormIngredientes = () => {
                             <select className="form-select form-select-lg" name={'unidad3'}
                                 id="unidad3" value={formValues[2]?.unidad || ''}
                                 onChange={handleChange} required>
-                                <option selected disabled value="" >Unidad de Medida</option>
+                                <option selected disabled value="">Unidad de Medida</option>
                                 <option value={"na"}><em>na</em></option>
                                 <option value={"l."}>Litro(l.)</option>
                                 <option value={"ml."}>Mililitro(ml.) </option>
@@ -528,7 +546,7 @@ const FormIngredientes = () => {
                                         name={`cantidadExtra-${index}`}
                                         id={`cantidadExtra-${index}`}
                                         value={input.cantidad || ''}
-                                        placeholder="Nombre del ingrediente"
+                                        placeholder="Cantidad"
                                         min={1}
                                         required
                                         onChange={(event) => {
@@ -579,7 +597,7 @@ const FormIngredientes = () => {
                                     <div className="spinner-border spinner-border-sm" role="status" />
                                 </div>
 
-                                <span className="" id='iniciar' onClick={handleClick}>Siguiente</span>
+                                <span className="" id='iniciar' >Siguiente</span>
                             </button>
                         </div>
                     </div>
