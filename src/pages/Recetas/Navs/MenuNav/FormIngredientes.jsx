@@ -302,10 +302,32 @@ const FormIngredientes = () => {
         setMensajeError(newErrors);
     }
 
+    const handleChangeSelect = (event) => {
+        const { name, value } = event.target;
+
+        const selectElement = document.getElementsByName(name)[0]; // Obtener el elemento select del formulario
+
+        // Recorrer las opciones y buscar el índice correspondiente al valor seleccionado
+        for (let i = 0; i < selectElement.options.length; i++) {
+            if (selectElement.options[i].value === value) {
+                const selectedIndex = i;
+                if (selectedIndex !== 0) {
+                    selectElement.options[0].style.display = 'none';
+                }
+                break;
+            }
+        }
+
+        handleChange(event);
+
+
+    }
+
     const handleChange = (event) => {
 
         // se obtiene el nombre y valor de cada campo
         const { name, value } = event.target;
+
         const index = parseInt(name.slice(-1)) - 1; // obtenemos el índice del objeto en el arreglo
         const field = name.slice(0, -1);
         formik.handleChange(event);
@@ -323,8 +345,8 @@ const FormIngredientes = () => {
     }
 
     function handleFormSubmit(event) {
-        
-            handleClick();
+
+        handleClick();
     }
 
     //!Validacion con bootstrap
@@ -372,7 +394,7 @@ const FormIngredientes = () => {
                         <div className='col'>
                             <select className="form-select form-select-lg" name={'unidad1'}
                                 id="unidad" value={formValues[0]?.unidad || ''}
-                                onChange={handleChange} required>
+                                onChange={handleChangeSelect} required>
                                 <option selected disabled value="" >Unidad de Medida</option>
                                 <option value={"na"}><em>na</em></option>
                                 <option value={"l."}>Litro(l.)</option>
@@ -430,7 +452,7 @@ const FormIngredientes = () => {
                         <div className='col'>
                             <select className="form-select form-select-lg" name={'unidad2'}
                                 id="unidad1" value={formValues[1]?.unidad || ''}
-                                onChange={handleChange} required>
+                                onChange={handleChangeSelect} required>
                                 <option selected disabled value="" >Unidad de Medida</option>
                                 <option value={"na"}><em>na</em></option>
                                 <option value={"l."}>Litro(l.)</option>
@@ -488,7 +510,7 @@ const FormIngredientes = () => {
                         <div className='col'>
                             <select className="form-select form-select-lg" name={'unidad3'}
                                 id="unidad3" value={formValues[2]?.unidad || ''}
-                                onChange={handleChange} required>
+                                onChange={handleChangeSelect} required>
                                 <option selected disabled value="">Unidad de Medida</option>
                                 <option value={"na"}><em>na</em></option>
                                 <option value={"l."}>Litro(l.)</option>
@@ -566,6 +588,20 @@ const FormIngredientes = () => {
                                             const updatedInputs = [...additionalInputs];
                                             updatedInputs[index].unidad = event.target.value;
                                             setAdditionalInputs(updatedInputs);
+                                            const { name, value } = event.target;
+
+                                            const selectElement = document.getElementsByName(name)[0]; // Obtener el elemento select del formulario
+
+                                            // Recorrer las opciones y buscar el índice correspondiente al valor seleccionado
+                                            for (let i = 0; i < selectElement.options.length; i++) {
+                                                if (selectElement.options[i].value === value) {
+                                                    const selectedIndex = i;
+                                                    if (selectedIndex !== 0) {
+                                                        selectElement.options[0].style.display = 'none';
+                                                    }
+                                                    break;
+                                                }
+                                            }
                                         }} required>
                                         <option selected disabled value="" >Unidad de Medida</option>
                                         <option value={"na"}><em>na</em></option>
