@@ -10,244 +10,94 @@ import * as Yup from 'yup';
 
 const FormIngredientes = () => {
 
+    const [formValues, setFormValues] = useState([]);
+    const [additionalInputs, setAdditionalInputs] = useState([]);
     const [values, setValues] = useState([]);
     const [page, setPage] = useState(true);
+    const [mensajeError, setMensajeError] = useState({});
 
+    // Manejo del click del botón "siguente"
     const handleClick = () => {
+        //  cambio de pagina, se toma el valor de page(true) y cambia a falso para que en el return condicional de mas abajo llame al componente FormDetalles
         setPage(!page);
+
+        // se inicializa el valor final de el form en un arreglo vacío para almacenar cada valor de los inputs ingresados por el usuario
         let valFinal = []
 
+        // el valor final, toma el valor de lo obtenido del formValues (arreglo con los valores ingresados por el usuario) concatenado a los valores de los inputs adicionales
         valFinal = formValues.concat(additionalInputs)
+
+        // se le da como valor al Values, los elementos que ya tenia en el arreglo, mas, lo que hay en valFinal declarado anteriormente
+        // este proceso es para luego enviarle estos valores finales al componente FormDetalles como props, se dejan en un valor a parte ya que solo en esta variable se juntan los valores en un solo arreglo de los inputs adicionales y los inputs por defecto
         setValues([...values, valFinal]);
+
+        // se crean las keys con sus values en el localStorage para mantener los datos desde el FormValues (sus valores se determinan en el HandleChange) y los additionalInputs (sus valores se determinan en handleAddInput)
         localStorage.setItem('formValues', JSON.stringify(formValues));
         localStorage.setItem('additionalInputs', JSON.stringify(additionalInputs));
     }
 
-
-    const handleSubmit = () => {
-        additionalInputs.forEach((input, index) => {
-            // Validar el campo "nombreExtra"
-            const nombreError = validateNombreExtra(input.nombre);
-            formik.setFieldError(`nombreExtra-${index}`, nombreError);
-
-            // Validar el campo "cantidadExtra"
-            const cantidadError = validateCantidadExtra(input.cantidad);
-            formik.setFieldError(`cantidadExtra-${index}`, cantidadError);
-
-            // Validar el campo "unidadExtra"
-            const unidadError = validateUnidadExtra(input.unidad);
-            formik.setFieldError(`unidadExtra-${index}`, unidadError);
-        });
-
-        if (Object.keys(formik.errors).length === 0) {
-            formik.handleSubmit(); // Envía el formulario utilizando el método handleSubmit de Formik
-        }
-    };
-
-    const [formValues, setFormValues] = useState([]);
-    const [additionalInputs, setAdditionalInputs] = useState([]);
-    const [unidad, setUnidad] = React.useState('');
     const handleAddInput = () => {
+        // se le da como valor al additionalInputs los valores que ya tenia, mas los valores ingresados después como un objeto dentro de un arreglo
         setAdditionalInputs([...additionalInputs, {}]);
     };
-    // 2. Crear un controlador de eventos para actualizar el estado cuando se cambie algún input
-    const handleInputChange = (event) => {
-        const { name, value } = event.target;
-        const index = parseInt(name.slice(-1)) - 1; // obtenemos el índice del objeto en el arreglo
-        const field = name.slice(0, -1);
-        formik.handleChange(event);
-        // obtenemos el nombre del campo del objeto
-        setFormValues((prevState) => {
-            const newState = [...prevState]; // creamos un nuevo arreglo
-            if (newState.length <= index) {
-                newState[index] = { ...newState[index], [field]: value }; // actualizamos el campo correspondiente
-            } else {
-                newState[index][field] = value; // si el objeto ya existe, actualizamos el campo correspondiente
-            }
-            return newState; // devolvemos el nuevo estado
-        });
-    };
 
-
-    // 3. Recuperar los valores del formulario del localStorage y actualizar el estado del componente con esos valores
     useEffect(() => {
-
+        // Se obtienen los valores de lo que haya en el localStorage en estas dos keys, para que al volver desde la pagina dos (formDetalles) se muestren los valores previamente ingresados por el usuario
         const storedValues = localStorage.getItem('formValues');
         const storedAdditionalInputs = localStorage.getItem('additionalInputs');
+
+        // se evalua si en las keys recuperadas anteriormente hay datos, en caso de haber datos se les asigna a los inputs correspondientes al valor ingresado
         if (storedValues) {
             setFormValues(JSON.parse(storedValues));
         }
         if (storedAdditionalInputs) {
             setAdditionalInputs(JSON.parse(storedAdditionalInputs));
         }
-        console.log(additionalInputs)
     }, []);
 
-    // 4. Cuando el usuario hace clic en el botón "Siguiente", guardar el estado actual del formulario en localStorage
-    // const handleRemoveInput = (indexToRemove) => {
-    //     const filteredInputs = additionalInputs.filter((input, index) => index !== indexToRemove);
-    //     setAdditionalInputs(filteredInputs);
-    //     localStorage.setItem('additionalInputs', JSON.stringify(filteredInputs));
-
-    // };
-
+    // funcion para remover los inputs generados por el usuario al presionar el boton para eliminarlos
+    // recibe el index en el que se encuentra el input extra(esto se obtendrá al recorrer la variable additionalInputs)
     const handleRemoveInput = (indexToRemove) => {
-        // const filteredInputs = additionalInputs.filter((input, index) => index !== indexToRemove);
-        // setAdditionalInputs(filteredInputs);
-        // localStorage.setItem('additionalInputs', JSON.stringify(filteredInputs));
-
+        // se filtra el arreglo de los inputs adicionales recibiendo el valor del input y el indice del input
+        // para filtrar verifica si el indice es diferente a el indice recibido al llamar a la función
         const filteredInputs = additionalInputs.filter((input, index) => index !== indexToRemove);
+        // en caso de ser diferente se le da este valor del filter al additionalInputs para que lo elimine de la vista también
         setAdditionalInputs(filteredInputs);
         const storedData = JSON.parse(localStorage.getItem('additionalInputs'));
-        storedData.splice(1, indexToRemove); // Elimina 1 elemento en la posición 1
-        localStorage.setItem('additionalInputs', JSON.stringify(storedData));
-
+        storedData.splice(1, indexToRemove); // Elimina 1 elemento en la posición 1 del arreglo obtenido del key "additionalInputs"
+        localStorage.setItem('additionalInputs', JSON.stringify(storedData)); //se le da como valor a esta key el nuevo arreglo luego de eliminar el input necesario
     };
-
-    const [inputErrorMessages, setInputErrorMessages] = useState(Array(additionalInputs.length).fill(''));
-    const [inputErrorMessagesCantidad, setInputErrorMessagesCantidad] = useState(Array(additionalInputs.length).fill(''));
-    const [inputErrorMessagesUnidad, setInputErrorMessagesUnidad] = useState(Array(additionalInputs.length).fill(''));
-
-
-
-    const valSchema = Yup.object().shape({
-        nombre1: Yup.string()
-            .required('El nombre del ingrediente es obligatorio')
-            .min(1, 'El nombre es muy corto')
-            .max(120, 'El nombre excede el máximo de caracteres'),
-        cantidad1: Yup.number()
-            .required('La cantidad es obligatoria')
-            .min(1, 'La cantidad es de minimo 1'),
-        unidad1: Yup.string()
-            .required('La unidad es obligatoria'),
-        nombre2: Yup.string()
-            .required('El nombre del ingrediente es obligatorio')
-            .min(1, 'El nombre es muy corto')
-            .max(120, 'El nombre excede el máximo de caracteres'),
-        cantidad2: Yup.number()
-            .required('La cantidad es obligatoria')
-            .min(1, 'La cantidad es de minimo 1'),
-        unidad2: Yup.string()
-            .required('La unidad es obligatoria'),
-        nombre3: Yup.string()
-            .required('El nombre del ingrediente es obligatorio')
-            .min(1, 'El nombre es muy corto')
-            .max(120, 'El nombre excede el máximo de caracteres'),
-        cantidad3: Yup.number()
-            .required('La cantidad es obligatoria')
-            .min(1, 'La cantidad es de minimo 1'),
-        unidad3: Yup.string()
-            .required('La unidad es obligatoria'),
-
-        // nombreExtra: Yup.string()
-        //     .required('El nombre del ingrediente es obligatorio')
-        //     .min(1, 'El nombre es muy corto')
-        //     .max(120, 'El nombre excede el máximo de caracteres'),
-    })
-
-    const formik = useFormik({
-        initialValues: {
-            nombre: "",
-            nombre1: "",
-            cantidad1: "",
-            unidad1: "",
-            nombre2: "",
-            cantidad2: "",
-            unidad2: "",
-            nombre3: "",
-            cantidad3: "",
-            unidad3: "",
-            // nombreExtra: ""
-        },
-        validationSchema: valSchema,
-
-        onSubmit: () => {
-            try {
-                setPage(!page);
-                let valFinal = []
-
-                valFinal = formValues.concat(additionalInputs)
-                setValues([...values, valFinal]);
-                localStorage.setItem('formValues', JSON.stringify(formValues));
-                localStorage.setItem('additionalInputs', JSON.stringify(additionalInputs));
-
-            } catch (error) {
-                console.log(error)
-
-            }
-        }
-    });
-
-    const ChangeNombre = (index, name, event, value) => {
-        console.log(event.target.value)
-        // Dependiendo del nombre del input cambia el error
-
-        if (name === `nombreExtra-${index}`) {
-            const updatedErrorMessages = [...inputErrorMessages];
-
-            if (event.target.value.length < 2 && event.target.value.length > 0) {
-                updatedErrorMessages[index] = 'El nombre del ingrediente es muy corto'
-            } else if (event.target.value.length > 120) {
-                updatedErrorMessages[index] = 'El nombre del ingrediente es muy largo'
-            } else if (event.target.value.length <= 120 && event.target.value.length > 0) {
-                updatedErrorMessages[index] = ''
-            } else {
-                updatedErrorMessages[index] = 'El nombre del ingrediente es obligatorio'
-            }
-            setInputErrorMessages(updatedErrorMessages);
-        }
-        else if (name === `cantidadExtra-${index}`) {
-            const updatedErrorMessages = [...inputErrorMessagesCantidad];
-            if (event.target.value < 1 && event.target.value.length > 0) {
-                updatedErrorMessages[index] = 'La cantidad es de minimo 1'
-            } else if (event.target.value.length > 0) {
-                updatedErrorMessages[index] = ''
-            } else {
-                updatedErrorMessages[index] = 'La cantidad es obligatoria'
-            }
-            setInputErrorMessagesCantidad(updatedErrorMessages);
-        } else if (name === `unidadExtra-${index}`) {
-            const updatedErrorMessages = [...inputErrorMessagesUnidad];
-
-
-            if (value) {
-                updatedErrorMessages[index] = '';
-
-            } else {
-                updatedErrorMessages[index] = 'Debe seleccionar una unidad';
-
-
-            }
-            setInputErrorMessagesUnidad(updatedErrorMessages);
-        }
-    }
-
-    const [touchedUnidadExtra, setTouchedUnidadExtra] = useState(false);
 
     (() => {
         'use strict'
 
-        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        // Se seleccionan todas las clases .needs-validation y se guardan en una variable
         const forms = document.querySelectorAll('.needs-validation')
 
-        // Loop over them and prevent submission
+        // Convierte en forms en un arreglo
         Array.from(forms).forEach(form => {
+            // por cada uno de los elementos dentro del forms se le añade un evento submit (para que valide al hacer el submit)
             form.addEventListener('submit', event => {
+                // se verifica si el formulario es valido, en caso de no ser valido entra en el ciclo if
                 if (!form.checkValidity()) {
+                    // esto evita que se envíe el formulario
                     event.preventDefault()
+                    // evita la propagación del evento, no se propaga a los elementos del DOM
                     event.stopPropagation()
                 }
 
+                // Al pasar la validacion se les añade la clase was-validated para definir el estilo correspondiente de bootstrap
                 form.classList.add('was-validated')
+                // se define false para que primero valide cada elemento del formulario de manera individual y solo se ejecute esta validacion primero
+                // esto lo define como la fase de burbugeo y no de captura, es decir,evita que se ejecuten todas las funciones del padre de una vez
             }, false)
         })
     })()
 
-    const [mensajeError, setMensajeError] = useState({});
-
     // Validaciones de los campos (se genera en esta parte y no automaticamente con formik o la validacion de bootstrap ya que al generar campos extra, para validarlos todos juntos se debe hacer a mano)
 
     const validaciones = (event) => {
+        // se llama al nombre y al valor del elemento del DOM, en este caso de cada input
         const { name, value } = event.target;
 
         // se definen los errores y se copia lo que hay en mensaje error
@@ -256,12 +106,16 @@ const FormIngredientes = () => {
         // Se definen los errores en comun para las distintas variables (nombre,cantidad y unidad de medida)
         const mensajeNombreErrorComun = 'Por favor, ingresa un nombre válido';
         const mensajeCantidadErrorComun = 'Por favor, ingresa un valor de cantidad válido';
+        // para los campos extra se define el index como el nombre del input, que se separa al encontrar un -, y accede al primer elemento del array
+        // se accede al elemento 1, ya que el split genera un arreglo con las separaciones, es decir queda como por ejemplo[nombreExtra,1]
         const index = name.split('-')[1];
+        
         // ------------------------------------SECCIÓN NOMBRES--------------------------------------------------
         if (name === 'nombre1' || name === 'nombre2' || name === 'nombre3' || name.startsWith('nombreExtra-')) {
 
             if (value.length < 3 && value.length > 0) {
                 // se evalua si el nombre es nombre1, si no es se evalua si es nombre2 y asi sucesivamente
+                // en caso de cumplir la validacion, el error del nombre1 es igual al mensajeNombreErrorComun
                 name === 'nombre1' ? newErrors.nombre1 = mensajeNombreErrorComun
                     :
                     name === 'nombre2' ? newErrors.nombre2 = mensajeNombreErrorComun
@@ -269,7 +123,8 @@ const FormIngredientes = () => {
                         name === 'nombre3' ? newErrors.nombre3 = mensajeNombreErrorComun
                             :
                             newErrors[`nombreExtra-${index}`] = mensajeNombreErrorComun;
-            } else {
+                            
+            } else { //En caso de no cumplirse ninguno de los errores de arriba, el error se asigna a vacío para que no muestre nada
                 name === 'nombre1' ? newErrors.nombre1 = newErrors.nombre1 = ''
                     :
                     name === 'nombre2' ? newErrors.nombre2 = newErrors.nombre2 = ''
@@ -302,6 +157,7 @@ const FormIngredientes = () => {
         setMensajeError(newErrors);
     }
 
+    // funcion para controlar el cambio de valores del Select
     const handleChangeSelect = (event) => {
         const { name, value } = event.target;
 
@@ -309,18 +165,20 @@ const FormIngredientes = () => {
 
         // Recorrer las opciones y buscar el índice correspondiente al valor seleccionado
         for (let i = 0; i < selectElement.options.length; i++) {
+            // si el valor de la opcion seleccionada es igual al valor traido anteriormente entra en el ciclo
             if (selectElement.options[i].value === value) {
+                // se define como el indexSeleccionado a i (valor que se define para el for)
                 const selectedIndex = i;
+                // si este numero es diferente de 0 entra en el ciclo
                 if (selectedIndex !== 0) {
+                    // se esconde el primer elemento del select al seleccionar un valor diferente al default que es de indice 0
                     selectElement.options[0].style.display = 'none';
                 }
                 break;
             }
         }
-
+        // se llama a la funcion handleChange 
         handleChange(event);
-
-
     }
 
     const handleChange = (event) => {
@@ -328,32 +186,32 @@ const FormIngredientes = () => {
         // se obtiene el nombre y valor de cada campo
         const { name, value } = event.target;
 
-        const index = parseInt(name.slice(-1)) - 1; // obtenemos el índice del objeto en el arreglo
+        // se define como index a el numero dentro de name, se extrae el ultimo caracter de la cadena name (que es un numero) y se le resta 1 a este numero
+        const index = parseInt(name.slice(-1)) - 1; 
+        // se define como field a el nombre, comenzando por el primer elemento de nombre y excluyendo el ultimo caracter de la cadena de texto
         const field = name.slice(0, -1);
-        formik.handleChange(event);
-        // obtenemos el nombre del campo del objeto
+
+        //  se define como valor del formVlues tomando el estado anterior y actualizandolo
         setFormValues((prevState) => {
-            const newState = [...prevState]; // creamos un nuevo arreglo
+            // se define como newState el estado anterior dentro de un arreglo
+            const newState = [...prevState]; 
+            // si el largo del arreglo newState es menor o igual al index creado anteriormente, entra en el ciclo
+            // verifica si existe un objeto en esta posicion
             if (newState.length <= index) {
                 newState[index] = {}; // inicializamos el objeto en el índice si aún no existe
             }
             newState[index][field] = value; // actualizamos el campo correspondiente
             return newState; // devolvemos el nuevo estado
         });
+        // se llama a validaciones
         validaciones(event);
-
     }
 
-    function handleFormSubmit(event) {
-
-        handleClick();
-    }
-
-    //!Validacion con bootstrap
     return (
+        // se verifica si page es verdadero, si no, cambia a la siguente pagina
         page ?
             <div>
-                <form className="row g-3 needs-validation" noValidate onSubmit={handleFormSubmit}>
+                <form className="row g-3 needs-validation" noValidate onSubmit={handleClick}>
                     <h1 className='text-focus-in titulo-inicio'>Ingredientes</h1>
 
                     {/*---------------------------------------------------------------------------------------------*/}
