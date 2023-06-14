@@ -307,7 +307,10 @@ a:link.cardt-button, a:visited.cardt-button, a:active.cardt-button {
         background: #f98826;
         transition: background 0s;
        }
-    
+       input:focus {
+        outline: none !important;
+        box-shadow: none
+      }
     
     
     

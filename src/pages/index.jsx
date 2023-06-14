@@ -12,6 +12,9 @@ import SobreMi from './Home/sobreMi';
 import Footer from './Elementos/footer';
 import ContactForm from './Home/ContactForm';
 import Hr from './Home/Hr';
+import { ParallaxProvider } from 'react-scroll-parallax';
+
+
 function Index() {
     let ubicacionPrincipal = window.pageYOffset;
     window.onscroll = function () {
@@ -26,15 +29,19 @@ function Index() {
 
 
     return (
-        <div>
-            <Navbar />
-            <Home />
-            <SobreMi />
-            <Proyectos />
-            <Hr/>
-            <ContactForm/>
-            <Footer/>
-        </div>
+
+        <ParallaxProvider>
+            <div>
+                <Navbar />
+                <Home />
+                <SobreMi />
+                <Proyectos />
+                <Hr />
+                <ContactForm />
+                <Footer />
+            </div>
+        </ParallaxProvider>
+
 
     );
 }

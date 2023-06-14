@@ -13,7 +13,6 @@ import Cleave from 'cleave.js/react';
 
 const FormDetalles = (datosIngredientes, props) => {
     const [valorInput, setValorInput] = useState('');
-    const correousuario = localStorage.getItem("correoUsuario");
 
     const valuesDetalle = datosIngredientes.datosIngredientes[0]
     useEffect(() => {
@@ -59,6 +58,71 @@ const FormDetalles = (datosIngredientes, props) => {
             .max(100, 'El maximo de porciones es de 100'),
     })
 
+    const validaciones = (event) => {
+        // se llama al nombre y al valor del elemento del DOM, en este caso de cada input
+        const { name, value } = event.target;
+
+        // se definen los errores y se copia lo que hay en mensaje error
+        const newErrors = { ...mensajeError };
+        
+        // para los campos extra se define el index como el nombre del input, que se separa al encontrar un -, y accede al primer elemento del array
+        // se accede al elemento 1, ya que el split genera un arreglo con las separaciones, es decir queda como por ejemplo[nombreExtra,1]
+        const index = name.split('-')[1];
+        //!!TODO REVISAR LAS VALIDACIONES EN CUANTO A NUMERO O STRING
+        // ------------------------------------SECCIÓN NOMBRE--------------------------------------------------
+        if (name === 'nombre') {
+            if (value.length < 3 && value.length > 0) {
+                newErrors.nombre = "Por favor, ingresa un nombre válido"
+            } else { //En caso de no cumplirse ninguno de los errores de arriba, el error se asigna a vacío para que no muestre nada
+                newErrors.nombre = newErrors.nombre = ''     
+            }
+        // ------------------------------------SECCIÓN DESCRIPCIÓN--------------------------------------------------
+        }else if(name === 'descripcion') {
+            if (value.length < 3 && value.length > 0) {
+                newErrors.descripcion = "Por favor, ingresa una descripción válida"
+            } else { //En caso de no cumplirse ninguno de los errores de arriba, el error se asigna a vacío para que no muestre nada
+                newErrors.descripcion = newErrors.descripcion = ''     
+            }
+        // ------------------------------------SECCIÓN PREPARACIÓN--------------------------------------------------
+        }else if(name === 'preparacion') {
+            if (value.length < 3 && value.length > 0) {
+                newErrors.preparacion = "Por favor, ingresa una preparación válida"
+            } else { //En caso de no cumplirse ninguno de los errores de arriba, el error se asigna a vacío para que no muestre nada
+                newErrors.preparacion = newErrors.preparacion = ''     
+            }
+        // ------------------------------------SECCIÓN CATEGORÍA--------------------------------------------------
+        }else if(name === 'categoria') {
+            if (value.length < 3 && value.length > 0) {
+                newErrors.categoria = "Por favor, ingresa una categoría válida"
+            } else { //En caso de no cumplirse ninguno de los errores de arriba, el error se asigna a vacío para que no muestre nada
+                newErrors.categoria = newErrors.categoria = ''     
+            }
+        // ------------------------------------SECCIÓN TIEMPO DE PREPARACIÓN--------------------------------------------------
+        }else if(name === 'tiempoPreparacion') {
+            if (value.length < 3 && value.length > 0) {
+                newErrors.tiempoPreparacion = "Por favor, ingresa un tiempo de preparación válido"
+            } else { //En caso de no cumplirse ninguno de los errores de arriba, el error se asigna a vacío para que no muestre nada
+                newErrors.tiempoPreparacion = newErrors.tiempoPreparacion = ''     
+            }
+        // ------------------------------------SECCIÓN PORCIONES--------------------------------------------------
+        }else if(name === 'porciones') {
+            if (value.length < 3 && value.length > 0) {
+                newErrors.porciones = "Por favor, ingresa una porción válida"
+            } else { //En caso de no cumplirse ninguno de los errores de arriba, el error se asigna a vacío para que no muestre nada
+                newErrors.porciones = newErrors.porciones = ''     
+            }
+        // ------------------------------------SECCIÓN DIFICULTAD--------------------------------------------------
+        }else if(name === 'dificultad') {
+            if (value.length < 3 && value.length > 0) {
+                newErrors.dificultad = "Por favor, ingresa una dificultad válida"
+            } else { //En caso de no cumplirse ninguno de los errores de arriba, el error se asigna a vacío para que no muestre nada
+                newErrors.dificultad = newErrors.dificultad = ''     
+            }
+        }
+        // Se asigna a MensajeError el newError (esto significa que, al obtener por ejemplo el error de mensajeNombreErrorValidoComun, este mensaje se asigna a mensajeError)
+        setMensajeError(newErrors);
+    }
+
     const formik = useFormik({
         initialValues: {
             nombre: "",
@@ -102,8 +166,8 @@ const FormDetalles = (datosIngredientes, props) => {
                     <h1 className='text-focus-in titulo-inicio'>Detalles</h1>
                     <div className='py-4'>
                         <div className="input-group mb-3">
-                            <TextField error={formik.touched.nombre && Boolean(formik.errors.nombre)} onBlur={formik.handleBlur}
-                                helperText={formik.touched.nombre && formik.errors.nombre} fullWidth sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }} name='nombre' onChange={formik.handleChange} id="nombre" label="Nombre" variant="outlined" />
+                            <TextField variant="filled" error={formik.touched.nombre && Boolean(formik.errors.nombre)} onBlur={formik.handleBlur}
+                                helperText={formik.touched.nombre && formik.errors.nombre} fullWidth sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }} name='nombre' onChange={formik.handleChange} id="nombre" label="Nombre" />
                         </div>
                         <div className="input-group mb-3">
                             <TextField error={formik.touched.descripcion && Boolean(formik.errors.descripcion)} onBlur={formik.handleBlur}
@@ -118,7 +182,7 @@ const FormDetalles = (datosIngredientes, props) => {
                                 label="Preparacion"
                                 multiline
                                 rows={6}
-                                error={formik.touched.preparacion && Boolean(formik.errors.preparacion)} 
+                                error={formik.touched.preparacion && Boolean(formik.errors.preparacion)}
                                 onBlur={formik.handleBlur}
                                 helperText={formik.touched.preparacion && formik.errors.preparacion}
                             />

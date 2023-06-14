@@ -16,10 +16,13 @@ h1, h2{
 
 /* Para responsive en pantallas que tengan DESDE 601 px de ancho y mas 
 el tamaño de la fuente de los titulos será de 78px  */
+
+
 @media screen and (min-width: 601px) {
   .h1SobreMi,.h1Proyectos {
     font-size: 78px;
   }
+
 }
 
 /* Para responsive en pantallas que tengan HASTA 600 px de ancho y mas 
@@ -27,6 +30,28 @@ el tamaño de la fuente de los titulos será de 61px  */
 @media screen and (max-width: 600px) {
   .h1SobreMi,.h1Proyectos {
     font-size: 61px;
+  }
+
+}
+
+.mobile {
+  display: none; /* Ocultar por defecto en dispositivos móviles */
+}
+.pantalla {
+  display: none; /* Ocultar por defecto en dispositivos móviles */
+}
+@media (min-width: 768px) {
+  /* Estilos para pantallas grandes (768px o más) */
+  .pantalla {
+      display: block; 
+      
+}
+}
+
+@media (max-width: 767px) {
+  /* Estilos para dispositivos móviles (767px o menos) */
+  .mobile {
+      display: block; /* Mostrar en dispositivos móviles */
   }
 }
 /* ------------------------------//////PORTAFOLIO//////-----------------------------------*/
@@ -157,7 +182,7 @@ btn-cssbuttons ul li a:hover {
 /* Estilo del card */
 .card-prev-rec {
   margin: 0 auto;
-  background-color: #162E36;
+  background-color: white;
   border-radius: 30px;
   z-index: 1;
 }
@@ -165,6 +190,9 @@ btn-cssbuttons ul li a:hover {
   display: flex;
   align-items: center;
   padding: 9px;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  background-color: #162E36;
 }
 .circle {
   padding: 0 4px;
@@ -292,3 +320,18 @@ btn-cssbuttons ul li a:hover {
 .butcorreo:active .iconCorreo .svgCorreo {
   transform: scale(0.8);
 }
+.card__background:hover {
+  /* Agrega aquí los estilos que deseas aplicar cuando el elemento está en hover */
+  /* Por ejemplo, cambiar el color de fondo o añadir una sombra */
+  opacity: 0.7;
+
+}
+
+.card__content:hover .card__background {
+  opacity: 0.7;
+}
+
+/* @media screen and (min-width: 600px) {
+  
+} */
+

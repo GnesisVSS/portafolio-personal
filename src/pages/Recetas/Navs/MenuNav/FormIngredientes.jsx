@@ -109,7 +109,7 @@ const FormIngredientes = () => {
         // para los campos extra se define el index como el nombre del input, que se separa al encontrar un -, y accede al primer elemento del array
         // se accede al elemento 1, ya que el split genera un arreglo con las separaciones, es decir queda como por ejemplo[nombreExtra,1]
         const index = name.split('-')[1];
-        
+
         // ------------------------------------SECCIÓN NOMBRES--------------------------------------------------
         if (name === 'nombre1' || name === 'nombre2' || name === 'nombre3' || name.startsWith('nombreExtra-')) {
 
@@ -123,7 +123,7 @@ const FormIngredientes = () => {
                         name === 'nombre3' ? newErrors.nombre3 = mensajeNombreErrorComun
                             :
                             newErrors[`nombreExtra-${index}`] = mensajeNombreErrorComun;
-                            
+
             } else { //En caso de no cumplirse ninguno de los errores de arriba, el error se asigna a vacío para que no muestre nada
                 name === 'nombre1' ? newErrors.nombre1 = newErrors.nombre1 = ''
                     :
@@ -187,14 +187,14 @@ const FormIngredientes = () => {
         const { name, value } = event.target;
 
         // se define como index a el numero dentro de name, se extrae el ultimo caracter de la cadena name (que es un numero) y se le resta 1 a este numero
-        const index = parseInt(name.slice(-1)) - 1; 
+        const index = parseInt(name.slice(-1)) - 1;
         // se define como field a el nombre, comenzando por el primer elemento de nombre y excluyendo el ultimo caracter de la cadena de texto
         const field = name.slice(0, -1);
 
         //  se define como valor del formVlues tomando el estado anterior y actualizandolo
         setFormValues((prevState) => {
             // se define como newState el estado anterior dentro de un arreglo
-            const newState = [...prevState]; 
+            const newState = [...prevState];
             // si el largo del arreglo newState es menor o igual al index creado anteriormente, entra en el ciclo
             // verifica si existe un objeto en esta posicion
             if (newState.length <= index) {
@@ -220,54 +220,65 @@ const FormIngredientes = () => {
                     <div className='row py-4'>
 
                         <div className='col'>
-                            <input
-                                className="form-control form-control-lg"
-                                type="text"
-                                name="nombre1"
-                                id="nombre1"
-                                value={formValues[0]?.nombre}
-                                onChange={handleChange}
-                                placeholder="Nombre del ingrediente"
-                                minLength="3"
-                                required
-                            />
-                            {mensajeError.nombre1 ? <div className="invalid-feedback">{mensajeError.nombre1}</div> : <div className="invalid-feedback">Por favor,ingrese un nombre</div>}
-                        </div>
-
-                        <div className='col'>
-                            <input
-                                className='form-control form-control-lg'
-                                type="number"
-                                name={'cantidad1'}
-                                id="cantidad"
-                                value={formValues[0]?.cantidad}
-                                onChange={handleChange}
-                                placeholder="Cantidad"
-                                required
-                                min={1}
-                            />
-                            {mensajeError.cantidad1 ? <div className="invalid-feedback">{mensajeError.cantidad1}</div> : <div className="invalid-feedback">Por favor, ingrese una cantidad</div>}
-                        </div>
-
-                        <div className='col'>
-                            <select className="form-select form-select-lg" name={'unidad1'}
-                                id="unidad" value={formValues[0]?.unidad || ''}
-                                onChange={handleChangeSelect} required>
-                                <option selected disabled value="" >Unidad de Medida</option>
-                                <option value={"na"}><em>na</em></option>
-                                <option value={"l."}>Litro(l.)</option>
-                                <option value={"ml."}>Mililitro(ml.) </option>
-                                <option value={"c.c."}>Centímetros cúbicos(c.c.)</option>
-                                <option value={"kg."}>Kilogramos (kg.)</option>
-                                <option value={"g."}>Gramos (g.) </option>
-                                <option value={"lb."}>Libra (lb.)</option>
-                                <option value={"oz."}>Onza (oz.)</option>
-                                <option value={"c.s."}>Cucharada sopera(c.s.) </option>
-                                <option value={"c.c."}>Cucharadita de postre(c.c.) </option>
-                            </select>
-                            <div className="invalid-feedback">
-                                Por favor, selecciona una unidad de medida
+                            <div className='form-floating'>
+                                <input
+                                    className="form-control"
+                                    type="text"
+                                    name="nombre1"
+                                    id="nombre1"
+                                    value={formValues[0]?.nombre}
+                                    onChange={handleChange}
+                                    placeholder="Nombre del ingrediente"
+                                    minLength="3"
+                                    required
+                                />
+                                <label htmlFor="nombre1" style={{color: 'grey'}}>Nombre Ingrediente</label>
+                                {mensajeError.nombre1 ? <div className="invalid-feedback">{mensajeError.nombre1}</div> : <div className="invalid-feedback">Por favor,ingrese un nombre</div>}
                             </div>
+                        </div>
+
+
+                        <div className='col'>
+                            <div className='form-floating'>
+                                <input
+                                    className='form-control'
+                                    type="number"
+                                    name={'cantidad1'}
+                                    id="cantidad1"
+                                    value={formValues[0]?.cantidad}
+                                    onChange={handleChange}
+                                    placeholder="Cantidad"
+                                    required
+                                    min={1}
+                                />
+                                <label htmlFor="cantidad1" style={{color: 'grey'}}>Cantidad</label>
+                                {mensajeError.cantidad1 ? <div className="invalid-feedback">{mensajeError.cantidad1}</div> : <div className="invalid-feedback">Por favor, ingrese una cantidad</div>}
+                            </div>
+                        </div>
+
+                        <div className='col'>
+                            <div className='form-floating'>
+                                <select className="form-select" name={'unidad1'}
+                                    id="unidad1" value={formValues[0]?.unidad || ''}
+                                    onChange={handleChangeSelect} required>
+                                    <option selected disabled value="" >Unidad de Medida</option>
+                                    <option value={"na"}><em>na</em></option>
+                                    <option value={"l."}>Litro(l.)</option>
+                                    <option value={"ml."}>Mililitro(ml.) </option>
+                                    <option value={"c.c."}>Centímetros cúbicos(c.c.)</option>
+                                    <option value={"kg."}>Kilogramos (kg.)</option>
+                                    <option value={"g."}>Gramos (g.) </option>
+                                    <option value={"lb."}>Libra (lb.)</option>
+                                    <option value={"oz."}>Onza (oz.)</option>
+                                    <option value={"c.s."}>Cucharada sopera(c.s.) </option>
+                                    <option value={"c.c."}>Cucharadita de postre(c.c.) </option>
+                                </select>
+                                <div className="invalid-feedback">
+                                    Por favor, selecciona una unidad de medida
+                                </div>
+                                <label htmlFor="unidad1" style={{color: 'grey'}}>Unidad de Medida</label>
+                            </div>
+
                         </div>
 
                     </div>
@@ -278,54 +289,64 @@ const FormIngredientes = () => {
                     <div className='row py-4'>
 
                         <div className='col'>
-                            <input
-                                className='form-control form-control-lg'
-                                type="text"
-                                name="nombre2"
-                                id="nombre2"
-                                value={formValues[1]?.nombre}
-                                onChange={handleChange}
-                                placeholder="Nombre del ingrediente"
-                                minLength="3"
-                                required
-                            />
-                            {mensajeError.nombre2 ? <div className="invalid-feedback">{mensajeError.nombre2}</div> : <div className="invalid-feedback">Por favor,ingrese un nombre</div>}
-                        </div>
-
-                        <div className='col'>
-                            <input
-                                className='form-control form-control-lg'
-                                type="number"
-                                name={'cantidad2'}
-                                id="cantidad2"
-                                value={formValues[1]?.cantidad}
-                                onChange={handleChange}
-                                placeholder="Cantidad"
-                                required
-                                min={1}
-                            />
-                            {mensajeError.cantidad2 ? <div className="invalid-feedback">{mensajeError.cantidad2}</div> : <div className="invalid-feedback">Por favor, ingrese una cantidad</div>}
-                        </div>
-
-                        <div className='col'>
-                            <select className="form-select form-select-lg" name={'unidad2'}
-                                id="unidad1" value={formValues[1]?.unidad || ''}
-                                onChange={handleChangeSelect} required>
-                                <option selected disabled value="" >Unidad de Medida</option>
-                                <option value={"na"}><em>na</em></option>
-                                <option value={"l."}>Litro(l.)</option>
-                                <option value={"ml."}>Mililitro(ml.) </option>
-                                <option value={"c.c."}>Centímetros cúbicos(c.c.)</option>
-                                <option value={"kg."}>Kilogramos (kg.)</option>
-                                <option value={"g."}>Gramos (g.) </option>
-                                <option value={"lb."}>Libra (lb.)</option>
-                                <option value={"oz."}>Onza (oz.)</option>
-                                <option value={"c.s."}>Cucharada sopera(c.s.) </option>
-                                <option value={"c.c."}>Cucharadita de postre(c.c.) </option>
-                            </select>
-                            <div className="invalid-feedback">
-                                Por favor, selecciona una unidad de medida
+                            <div className='form-floating'>
+                                <input
+                                    className='form-control'
+                                    type="text"
+                                    name="nombre2"
+                                    id="nombre2"
+                                    value={formValues[1]?.nombre}
+                                    onChange={handleChange}
+                                    placeholder="Nombre del ingrediente"
+                                    minLength="3"
+                                    required
+                                />
+                                <label htmlFor="nombre2" style={{color: 'grey'}}>Nombre Ingrediente</label>
+                                {mensajeError.nombre2 ? <div className="invalid-feedback">{mensajeError.nombre2}</div> : <div className="invalid-feedback">Por favor,ingrese un nombre</div>}
                             </div>
+                        </div>
+
+                        <div className='col'>
+                            <div className='form-floating'>
+                                <input
+                                    className='form-control'
+                                    type="number"
+                                    name={'cantidad2'}
+                                    id="cantidad2"
+                                    value={formValues[1]?.cantidad}
+                                    onChange={handleChange}
+                                    placeholder="Cantidad"
+                                    required
+                                    min={1}
+                                />
+                                <label htmlFor="cantidad2" style={{color: 'grey'}}>Cantidad</label>
+                                {mensajeError.cantidad2 ? <div className="invalid-feedback">{mensajeError.cantidad2}</div> : <div className="invalid-feedback">Por favor, ingrese una cantidad</div>}
+                            </div>
+                        </div>
+
+                        <div className='col'>
+                            <div className='form-floating'>
+                                <select className="form-select" name={'unidad2'}
+                                    id="unidad2" value={formValues[1]?.unidad || ''}
+                                    onChange={handleChangeSelect} required>
+                                    <option selected disabled value="" >Unidad de Medida</option>
+                                    <option value={"na"}><em>na</em></option>
+                                    <option value={"l."}>Litro(l.)</option>
+                                    <option value={"ml."}>Mililitro(ml.) </option>
+                                    <option value={"c.c."}>Centímetros cúbicos(c.c.)</option>
+                                    <option value={"kg."}>Kilogramos (kg.)</option>
+                                    <option value={"g."}>Gramos (g.) </option>
+                                    <option value={"lb."}>Libra (lb.)</option>
+                                    <option value={"oz."}>Onza (oz.)</option>
+                                    <option value={"c.s."}>Cucharada sopera(c.s.) </option>
+                                    <option value={"c.c."}>Cucharadita de postre(c.c.) </option>
+                                </select>
+                                <div className="invalid-feedback">
+                                    Por favor, selecciona una unidad de medida
+                                </div>
+                                <label htmlFor="unidad2" style={{color: 'grey'}}>Unidad de Medida</label>
+                            </div>
+
                         </div>
 
                     </div>
@@ -336,53 +357,62 @@ const FormIngredientes = () => {
                     <div className='row py-4'>
 
                         <div className='col'>
-                            <input
-                                className='form-control form-control-lg'
-                                type="text"
-                                name="nombre3"
-                                id="nombre3"
-                                value={formValues[2]?.nombre}
-                                onChange={handleChange}
-                                placeholder="Nombre del ingrediente"
-                                minLength="3"
-                                required
-                            />
-                            {mensajeError.nombre3 ? <div className="invalid-feedback">{mensajeError.nombre3}</div> : <div className="invalid-feedback">Por favor,ingrese un nombre</div>}
+                            <div className='form-floating'>
+                                <input
+                                    className='form-control'
+                                    type="text"
+                                    name="nombre3"
+                                    id="nombre3"
+                                    value={formValues[2]?.nombre}
+                                    onChange={handleChange}
+                                    placeholder="Nombre del ingrediente"
+                                    minLength="3"
+                                    required
+                                />
+                                <label htmlFor="nombre3" style={{color: 'grey'}}>Nombre Ingrediente</label>
+                                {mensajeError.nombre3 ? <div className="invalid-feedback">{mensajeError.nombre3}</div> : <div className="invalid-feedback">Por favor,ingrese un nombre</div>}
+                            </div>
                         </div>
 
                         <div className='col'>
-                            <input
-                                className='form-control form-control-lg'
-                                type="number"
-                                name={'cantidad3'}
-                                id="cantidad3"
-                                value={formValues[2]?.cantidad}
-                                onChange={handleChange}
-                                placeholder="Cantidad"
-                                required
-                                min={1}
-                            />
-                            {mensajeError.cantidad3 ? <div className="invalid-feedback">{mensajeError.cantidad3}</div> : <div className="invalid-feedback">Por favor, ingrese una cantidad</div>}
+                            <div className='form-floating'>
+                                <input
+                                    className='form-control'
+                                    type="number"
+                                    name={'cantidad3'}
+                                    id="cantidad3"
+                                    value={formValues[2]?.cantidad}
+                                    onChange={handleChange}
+                                    placeholder="Cantidad"
+                                    required
+                                    min={1}
+                                />
+                                <label htmlFor="cantidad3" style={{color: 'grey'}}>Cantidad</label>
+                                {mensajeError.cantidad3 ? <div className="invalid-feedback">{mensajeError.cantidad3}</div> : <div className="invalid-feedback">Por favor, ingrese una cantidad</div>}
+                            </div>
                         </div>
 
                         <div className='col'>
-                            <select className="form-select form-select-lg" name={'unidad3'}
-                                id="unidad3" value={formValues[2]?.unidad || ''}
-                                onChange={handleChangeSelect} required>
-                                <option selected disabled value="">Unidad de Medida</option>
-                                <option value={"na"}><em>na</em></option>
-                                <option value={"l."}>Litro(l.)</option>
-                                <option value={"ml."}>Mililitro(ml.) </option>
-                                <option value={"c.c."}>Centímetros cúbicos(c.c.)</option>
-                                <option value={"kg."}>Kilogramos (kg.)</option>
-                                <option value={"g."}>Gramos (g.) </option>
-                                <option value={"lb."}>Libra (lb.)</option>
-                                <option value={"oz."}>Onza (oz.)</option>
-                                <option value={"c.s."}>Cucharada sopera(c.s.) </option>
-                                <option value={"c.c."}>Cucharadita de postre(c.c.) </option>
-                            </select>
-                            <div className="invalid-feedback">
-                                Por favor, selecciona una unidad de medida
+                            <div className='form-floating'>
+                                <select className="form-select" name={'unidad3'}
+                                    id="unidad3" value={formValues[2]?.unidad || ''}
+                                    onChange={handleChangeSelect} required>
+                                    <option selected disabled value="">Unidad de Medida</option>
+                                    <option value={"na"}><em>na</em></option>
+                                    <option value={"l."}>Litro(l.)</option>
+                                    <option value={"ml."}>Mililitro(ml.) </option>
+                                    <option value={"c.c."}>Centímetros cúbicos(c.c.)</option>
+                                    <option value={"kg."}>Kilogramos (kg.)</option>
+                                    <option value={"g."}>Gramos (g.) </option>
+                                    <option value={"lb."}>Libra (lb.)</option>
+                                    <option value={"oz."}>Onza (oz.)</option>
+                                    <option value={"c.s."}>Cucharada sopera(c.s.) </option>
+                                    <option value={"c.c."}>Cucharadita de postre(c.c.) </option>
+                                </select>
+                                <div className="invalid-feedback">
+                                    Por favor, selecciona una unidad de medida
+                                </div>
+                                <label htmlFor="unidad3" style={{color: 'grey'}}>Unidad de Medida</label>
                             </div>
                         </div>
 
@@ -399,82 +429,95 @@ const FormIngredientes = () => {
                             <div className='row py-4 align-items-center'>
 
                                 <div className='col'>
-                                    <input
-                                        key={index}
-                                        className='form-control form-control-lg'
-                                        type="text"
-                                        name={`nombreExtra-${index}`}
-                                        value={input.nombre || ''}
-                                        placeholder="Nombre del ingrediente"
-                                        minLength="3"
-                                        required
-                                        onChange={(event) => {
-                                            validaciones(event);
-                                            const updatedInputs = [...additionalInputs];
-                                            updatedInputs[index].nombre = event.target.value;
-                                            setAdditionalInputs(updatedInputs);
-                                        }}
-                                    />
-                                    {mensajeError[`nombreExtra-${index}`] ? <div className="invalid-feedback">{mensajeError[`nombreExtra-${index}`]}</div> : <div className="invalid-feedback">Por favor,ingrese un nombre</div>}
+                                    <div className='form-floating'>
+                                        <input
+                                            key={index}
+                                            className='form-control'
+                                            type="text"
+                                            name={`nombreExtra-${index}`}
+                                            id={`nombreExtra-${index}`}
+                                            value={input.nombre || ''}
+                                            placeholder="Nombre del ingrediente"
+                                            minLength="3"
+                                            required
+                                            onChange={(event) => {
+                                                validaciones(event);
+                                                const updatedInputs = [...additionalInputs];
+                                                updatedInputs[index].nombre = event.target.value;
+                                                setAdditionalInputs(updatedInputs);
+                                            }}
+                                        />
+                                        <label htmlFor={`nombreExtra-${index}`} style={{color: 'grey'}}>Nombre Ingrediente</label>
+                                        {mensajeError[`nombreExtra-${index}`] ? <div className="invalid-feedback">{mensajeError[`nombreExtra-${index}`]}</div> : <div className="invalid-feedback">Por favor,ingrese un nombre</div>}
+                                    </div>
                                 </div>
 
                                 <div className='col'>
-                                    <input
-                                        key={index}
-                                        className='form-control form-control-lg'
-                                        type="number"
-                                        name={`cantidadExtra-${index}`}
-                                        id={`cantidadExtra-${index}`}
-                                        value={input.cantidad || ''}
-                                        placeholder="Cantidad"
-                                        min={1}
-                                        required
-                                        onChange={(event) => {
-                                            validaciones(event);
-                                            const updatedInputs = [...additionalInputs];
-                                            updatedInputs[index].cantidad = event.target.value;
-                                            setAdditionalInputs(updatedInputs);
-                                        }}
-                                    />
-                                    {mensajeError[`cantidadExtra-${index}`] ? <div className="invalid-feedback">{mensajeError[`cantidadExtra-${index}`]}</div> : <div className="invalid-feedback">Por favor,ingrese un nombre</div>}
+                                    <div className='form-floating'>
+                                        <input
+                                            key={index}
+                                            className='form-control'
+                                            type="number"
+                                            name={`cantidadExtra-${index}`}
+                                            id={`cantidadExtra-${index}`}
+                                            value={input.cantidad || ''}
+                                            placeholder="Cantidad"
+                                            min={1}
+                                            required
+                                            onChange={(event) => {
+                                                validaciones(event);
+                                                const updatedInputs = [...additionalInputs];
+                                                updatedInputs[index].cantidad = event.target.value;
+                                                setAdditionalInputs(updatedInputs);
+                                            }}
+                                        />
+                                        <label htmlFor={`cantidadExtra-${index}`} style={{color: 'grey'}}>Cantidad</label>
+                                        {mensajeError[`cantidadExtra-${index}`] ? <div className="invalid-feedback">{mensajeError[`cantidadExtra-${index}`]}</div> : <div className="invalid-feedback">Por favor,ingrese un nombre</div>}
+                                    </div>
                                 </div>
                                 <div className='col'>
-                                    <select className="form-select form-select-lg" name={`unidadExtra-${index}`}
-                                        value={input.unidad || ''}
-                                        onChange={(event) => {
-                                            validaciones(event);
-                                            const updatedInputs = [...additionalInputs];
-                                            updatedInputs[index].unidad = event.target.value;
-                                            setAdditionalInputs(updatedInputs);
-                                            const { name, value } = event.target;
+                                    <div className='form-floating'>
+                                        <select
+                                            className="form-select"
+                                            name={`unidadExtra-${index}`}
+                                            id={`unidadExtra-${index}`}
+                                            value={input.unidad || ''}
+                                            onChange={(event) => {
+                                                validaciones(event);
+                                                const updatedInputs = [...additionalInputs];
+                                                updatedInputs[index].unidad = event.target.value;
+                                                setAdditionalInputs(updatedInputs);
+                                                const { name, value } = event.target;
 
-                                            const selectElement = document.getElementsByName(name)[0]; // Obtener el elemento select del formulario
+                                                const selectElement = document.getElementsByName(name)[0]; // Obtener el elemento select del formulario
 
-                                            // Recorrer las opciones y buscar el índice correspondiente al valor seleccionado
-                                            for (let i = 0; i < selectElement.options.length; i++) {
-                                                if (selectElement.options[i].value === value) {
-                                                    const selectedIndex = i;
-                                                    if (selectedIndex !== 0) {
-                                                        selectElement.options[0].style.display = 'none';
+                                                // Recorrer las opciones y buscar el índice correspondiente al valor seleccionado
+                                                for (let i = 0; i < selectElement.options.length; i++) {
+                                                    if (selectElement.options[i].value === value) {
+                                                        const selectedIndex = i;
+                                                        if (selectedIndex !== 0) {
+                                                            selectElement.options[0].style.display = 'none';
+                                                        }
+                                                        break;
                                                     }
-                                                    break;
                                                 }
-                                            }
-                                        }} required>
-                                        <option selected disabled value="" >Unidad de Medida</option>
-                                        <option value={"na"}><em>na</em></option>
-                                        <option value={"l."}>Litro(l.)</option>
-                                        <option value={"ml."}>Mililitro(ml.) </option>
-                                        <option value={"c.c."}>Centímetros cúbicos(c.c.)</option>
-                                        <option value={"kg."}>Kilogramos (kg.)</option>
-                                        <option value={"g."}>Gramos (g.) </option>
-                                        <option value={"lb."}>Libra (lb.)</option>
-                                        <option value={"oz."}>Onza (oz.)</option>
-                                        <option value={"c.s."}>Cucharada sopera(c.s.) </option>
-                                        <option value={"c.c."}>Cucharadita de postre(c.c.) </option>
-                                    </select>
-                                    <div className="invalid-feedback">
-                                        Por favor, selecciona una unidad de medida
+                                            }} required>
+                                            <option selected disabled value="" >Unidad de Medida</option>
+                                            <option value={"na"}><em>na</em></option>
+                                            <option value={"l."}>Litro(l.)</option>
+                                            <option value={"ml."}>Mililitro(ml.) </option>
+                                            <option value={"c.c."}>Centímetros cúbicos(c.c.)</option>
+                                            <option value={"kg."}>Kilogramos (kg.)</option>
+                                            <option value={"g."}>Gramos (g.) </option>
+                                            <option value={"lb."}>Libra (lb.)</option>
+                                            <option value={"oz."}>Onza (oz.)</option>
+                                            <option value={"c.s."}>Cucharada sopera(c.s.) </option>
+                                            <option value={"c.c."}>Cucharadita de postre(c.c.) </option>
+                                        </select>
+                                        <label htmlFor={`unidadExtra-${index}`} style={{color: 'grey'}}>Cantidad</label>
+                                        <div className="invalid-feedback">
+                                            Por favor, selecciona una unidad de medida
+                                        </div>
                                     </div>
                                 </div>
                                 <div className='col-sm-1'>
