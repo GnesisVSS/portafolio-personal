@@ -4,21 +4,14 @@ import { useInView } from 'react-intersection-observer';
 import { homeAnimation } from '../../animation';
 import Recetas from '../Recetas/Recetas';
 import Atropos from 'atropos/react';
-
+import { IconBrandCss3, IconBrandGit, IconBrandHtml5, IconBrandJavascript, IconBrandReact } from '@tabler/icons-react';
+import { Box, Button, FormControlLabel, Grow, Switch, Tooltip } from '@mui/material';
+import Zoom from '@mui/material/Zoom';
 const Proyectos = () => {
-
-    const estilo1 = {
-        color: '#F9A826'
-    }
 
     const estilo2 = {
         fontSize: '18px'
     }
-
-    const estilo3 = {
-        textAlign: 'center'
-    }
-
 
     const boxVariant = {
         visible: { x: 0, opacity: 1, transition: { duration: 1 } },
@@ -36,6 +29,11 @@ const Proyectos = () => {
         }
     }, [control, inView]);
 
+    const [checked, setChecked] = React.useState(false);
+
+    const handleChange = () => {
+        setChecked((prev) => !prev);
+    };
     return (
         <section id='recetas' style={{ backgroundColor: '#EDE6F1', color: '#162E36' }}>
             <motion.div
@@ -57,11 +55,26 @@ const Proyectos = () => {
                                     <div className='py-4'>
                                         <h2 className='titulo-demo'>Web de recetas</h2>
                                         <p style={estilo2}>
-                                            Recetas dulces, saladas, saludables, para todos los gustos! Accede a estas y más recetas
-                                            iniciando sesión, si no tienes una cuenta puedes registrarte gratis, para acceder al listado
-                                            completo de resetas que tenemos para ti. Además tambien puedes crear tus propias recetas y guardarlas
-                                            junto a las que te entregamos para tener una mayor variedad.
+                                            Página web ficticia que permite la visualización de recetas con sus ingredientes, tiempo de preparación, detalle, porciones, dificultad y categoría; Ademas de una cuenta de usuario en donde se permite ingresar recetas propias como tambien guardar las que ya vienen para visualizar por defecto y eliminarlas de los elementos guardados cuando se guste.
                                         </p>
+                                        <div className='py-3' id='iconos'>
+                                            {/* 
+                                            <FormControlLabel
+                                                control={<Switch checked={checked} onChange={handleChange} />}
+                                                label="Show"
+                                            />
+                                            <Box sx={{ display: 'flex' }}>
+                                            
+                                                
+                                                <Grow
+                                                    in={checked}
+                                                    style={{ transformOrigin: '0 0 0' }}
+                                                    {...(checked ? { timeout: 1000 } : {})}
+                                                >
+                                                    <IconBrandReact width='50px' height='50px' style={{ color: '#61DBFB', margin: '18px', backgroundColor: 'white', borderRadius: '15px' }} />
+                                                </Grow>
+                                            </Box> */}
+                                        </div>
 
                                     </div>
 
