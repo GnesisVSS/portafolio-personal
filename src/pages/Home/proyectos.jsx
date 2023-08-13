@@ -5,8 +5,14 @@ import { homeAnimation } from '../../animation';
 import Recetas from '../Recetas/Recetas';
 import Atropos from 'atropos/react';
 import { IconBrandCss3, IconBrandGit, IconBrandHtml5, IconBrandJavascript, IconBrandReact } from '@tabler/icons-react';
-import { Box, Button, FormControlLabel, Grow, Switch, Tooltip } from '@mui/material';
+import { Box, Button, Divider, FormControlLabel, Grow, Switch, Tooltip } from '@mui/material';
 import Zoom from '@mui/material/Zoom';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemText from '@mui/material/ListItemText';
+import { FixedSizeList } from 'react-window';
+
+
 const Proyectos = () => {
 
     const estilo2 = {
@@ -58,6 +64,32 @@ const Proyectos = () => {
                                             Página web ficticia que permite la visualización de recetas con sus ingredientes, tiempo de preparación, detalle, porciones, dificultad y categoría; Ademas de una cuenta de usuario en donde se permite ingresar recetas propias como tambien guardar las que ya vienen para visualizar por defecto y eliminarlas de los elementos guardados cuando se guste.
                                         </p>
                                         <div className='py-3' id='iconos'>
+                                            <h4>Lenguaje, frameworks y herramientas utilizadas</h4>
+                                            {/* Icono React */}
+                                            <Tooltip TransitionComponent={Zoom} title="ReactJS (Utilizado para funciones y acciones detonadas por el usuario)">
+                                                <IconBrandReact width='50px' height='50px' style={{ color: '#61DBFB', margin: '18px', backgroundColor: 'white', borderRadius: '15px' }} />
+                                            </Tooltip>
+
+                                            {/* Icono JavaScript */}
+                                            <IconBrandJavascript width='50px' height='50px' style={{ color: '#ffd630', margin: '18px', backgroundColor: 'white', borderRadius: '15px' }} />
+
+                                            {/* Icono Git */}
+                                            <IconBrandGit width='50px' height='50px' style={{ color: '#f96926', margin: '18px', backgroundColor: 'white', borderRadius: '15px' }} />
+
+                                            {/* Icono CSS */}
+                                            <IconBrandCss3 width='50px' height='50px' style={{ color: '#61DBFB', margin: '18px', backgroundColor: 'white', borderRadius: '15px' }} />
+
+                                            {/* Icono HTML */}
+                                            <IconBrandHtml5 width='50px' height='50px' style={{ color: '#f96926', margin: '18px', backgroundColor: 'white', borderRadius: '15px' }} />
+                                            <ul className="list-group list-group-flush">
+                                                <li className="list-group-item">
+                                                    <button type="button" style={{border: 'none'}} className="list-group-item list-group-item-action">A second button item</button>
+                                                </li>
+                                                <li className="list-group-item">A second item</li>
+                                                <li className="list-group-item">A third item</li>
+                                                <li className="list-group-item">A fourth item</li>
+                                                <li className="list-group-item">And a fifth one</li>
+                                            </ul>
                                             {/* 
                                             <FormControlLabel
                                                 control={<Switch checked={checked} onChange={handleChange} />}
