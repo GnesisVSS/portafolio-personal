@@ -448,3 +448,18 @@ input:not(.error):focus, .form-select:focus{
   box-shadow: none;
 }
 
+#imagen.col {
+  display: none;
+}
+
+#imagenD.col {
+  display: block;
+}
+
+.menuProyectos{
+  color: #162E36,
+}
+
+.menuProyectos:hover{
+  color: #3f6875,
+}
