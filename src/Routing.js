@@ -18,6 +18,7 @@ import FormIngredientesAdmin from './pages/Recetas/Admin/FormIngredientesAdmin';
 import FormRecetasAdmin from './pages/Recetas/Admin/FormRecetasAdmin';
 import VistaDetalleGuardados from './pages/Recetas/UsuarioLogged/VistaDetalleGuardados';
 import VistaDetalleRecetasUsuario from './pages/Recetas/UsuarioLogged/VistaDetalleRecetasUsuario';
+import VistaPreDemo from './pages/Recetas/VistaPreDemo';
 
 function Routing() {
 
@@ -44,6 +45,8 @@ function Routing() {
                 <Route path='/DetalleRecetas' element={<DetalleRecetas />} />
                 <Route path='/DetalleGuardados' element={<VistaDetalleGuardados />} />
                 <Route path='/DetalleMisRecetas' element={<VistaDetalleRecetasUsuario />} />
+                <Route path='/DemoRecetas' element={<VistaPreDemo />} />
+
             </Routes>
         </Router>
     )

@@ -10,7 +10,7 @@ import { IconChefHat } from '@tabler/icons-react';
 import { useState } from "react";
 
 const menu = ["Página web de recetas", "Rick y Morty"]
-const links = ["/RecetasHome", "#"]
+const links = ["/DemoRecetas", "#"]
 const imagen = ["/img/Shawarma.gif", "/img/rickymorty.jpg"]
 
 const show = {
