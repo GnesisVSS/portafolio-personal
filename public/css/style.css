@@ -70,16 +70,13 @@ los elementos se muestren centrados al ocupar el alto de toda la pantalla */
 /* para la barra de navegacion del home del portafolio se le da un fondo determinado 
 y se especifica la transicion para el momento de hacer scroll */
 #navbar{
-  background: rgba(63, 63, 63, 0.42);
-  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-  backdrop-filter: blur( 1.5px );
-  -webkit-backdrop-filter: blur( 1.5px );
+  background: #2A0253;
   width: 100%;
   display: flex;
   justify-content: space-around;
   align-items: center;
   /* al dejarlo posicionado como fixed aparece en pantalla al hacer scroll hacia arriba */
-  position: fixed;
+  /* position: fixed; */
   top: 0;
   transition: top 0.5s;
 }
@@ -334,4 +331,3 @@ btn-cssbuttons ul li a:hover {
 /* @media screen and (min-width: 600px) {
   
 } */
-

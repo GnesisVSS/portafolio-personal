@@ -10,7 +10,7 @@
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.11.11",
     "@mui/joy": "^5.0.0-beta.1",
-    "@mui/material": "^5.11.12",
+    "@mui/material": "^5.14.5",
     "@netlify/planetscale": "^1.0.0",
     "@planetscale/database": "^1.5.0",
     "@popperjs/core": "^2.11.6",
