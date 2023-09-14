@@ -65,7 +65,7 @@ const RickAndMortyPages = () => {
     }, []); //se ejecuta cada vez que el loading cambia
 
     return (
-        <div style={{ backgroundColor: 'white' }}>
+        <div style={{ backgroundColor: 'white' }} className='RM'>
             <link rel="preconnect" href="https://fonts.googleapis.com" />
             <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
             <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Righteous&display=swap" rel="stylesheet"></link>

@@ -1,4 +1,4 @@
-*{
+.RM{
     text-align: center;
 }
 .card {
@@ -248,7 +248,7 @@
      /* Cambia la opacidad según tu preferencia */
   }
   
-  h1{
+  .h1RandM{
     font-family: 'Archivo Black', sans-serif;
   }
   

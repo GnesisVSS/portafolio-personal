@@ -56,7 +56,7 @@ const InfoFavoritosVista = () => {
 
     // recorre el arreglo de datos final
     return datos_final.map(({ name, image, id }) => (
-        <div key={id} className='col py-5' style={{ flex: '0.20',backgroundColor:'white' }}>
+        <div key={id} className='col py-5 RM' style={{ flex: '0.20',backgroundColor:'white' }}>
             <link rel="preconnect" href="https://fonts.googleapis.com" />
             <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
             <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Righteous&display=swap" rel="stylesheet"></link>

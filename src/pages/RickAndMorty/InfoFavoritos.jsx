@@ -32,7 +32,7 @@ const InfoFavoritos = () => {
     dispatch({ type: 'MOSTRAR_DATOS_GQL_FAVORITOS', payload: datos });
 
     return (
-        <div style={{ backgroundColor: 'white' }}>
+        <div style={{ backgroundColor: 'white' }} className='RM'>
             <link rel="preconnect" href="https://fonts.googleapis.com" />
             <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
             <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Righteous&display=swap" rel="stylesheet"></link>

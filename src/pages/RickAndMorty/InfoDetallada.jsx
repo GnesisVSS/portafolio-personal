@@ -111,7 +111,7 @@ const InfoDetallada = () => {
                     <img src={datosFinal.image} alt='' style={{ borderRadius: '50%' }}></img>
                 </div>
                 <div className='col-8'>
-                    <h1 style={{ textAlign: 'left', fontSize: '84px' }} className='px-5'>{datosFinal.name}</h1>
+                    <h1 style={{ textAlign: 'left', fontSize: '84px' }} className='px-5 h1RandM'>{datosFinal.name}</h1>
                 </div>
             </div>
             {/* <img src='/img/portal-rick-and-morty.gif' alt='' className='img1'></img> */}
