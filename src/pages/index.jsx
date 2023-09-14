@@ -16,16 +16,7 @@ import { ParallaxProvider } from 'react-scroll-parallax';
 
 
 function Index() {
-    let ubicacionPrincipal = window.pageYOffset;
-    window.onscroll = function () {
-        let Desplazamiento_actual = window.pageYOffset;
-        if (ubicacionPrincipal >= Desplazamiento_actual) {
-            document.getElementById('navbar').style.top = '0px';
-        } else {
-            document.getElementById('navbar').style.top = '-100px';
-        }
-        ubicacionPrincipal = Desplazamiento_actual;
-    }
+    
 
 
     return (
