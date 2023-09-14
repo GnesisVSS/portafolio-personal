@@ -11,7 +11,7 @@ import { useState } from "react";
 
 const menu = ["Página web de recetas", "Rick y Morty"]
 const links = ["/DemoRecetas", "/RickYMorty"]
-const imagen = ["/img/Shawarma.gif", "/img/rickymorty.jpg"]
+const imagen = ["/img/Shawarma.gif", "/img/RickAndMorty/ReYG.gif"]
 
 const show = {
     opacity: 1,
