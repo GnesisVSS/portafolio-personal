@@ -4,10 +4,10 @@ p,a{
 }
 
 /* Color de fondo base */
-body{
+/* body{
     background-color: #2A0253;
     
-}
+} */
 
 /* Para titulos de tipo h1 y h2 se especifica otro tipo de fuente */
 h1, h2{
@@ -63,7 +63,7 @@ los elementos se muestren centrados al ocupar el alto de toda la pantalla */
 .rowhome{
   display: flex;
   align-items: center;
-  height: 100vh;
+  height: 90vh;
 }
 
 /* PORTAFOLIO.........NAVBAR DE HOME......... */

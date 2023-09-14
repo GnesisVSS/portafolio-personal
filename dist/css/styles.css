@@ -38,7 +38,7 @@ los elementos se muestren centrados al ocupar el alto de toda la pantalla */
 .rowhome {
   display: flex;
   align-items: center;
-  height: 100vh;
+  height: 90vh;
 }
 
 /* PORTAFOLIO.........NAVBAR DE HOME......... */
@@ -248,7 +248,7 @@ btn-cssbuttons ul li a:hover {
 /*!**********************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./public/css/styleRecetas.css ***!
   \**********************************************************************************************************************/
-@charset "UTF-8";
+
 #phot.active {
   border: 2px solid rgb(162, 129, 255);
   box-shadow: 0 0 10px rgb(162, 129, 255);

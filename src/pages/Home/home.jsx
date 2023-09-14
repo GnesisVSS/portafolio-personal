@@ -55,11 +55,11 @@ const Home = () => {
     }, [])
 
     return (
-        <div id='home' style={{ minHeight: '100vh' }} className='align-items-center'>
+        <div id='home' style={{ minHeight: '90vh',backgroundColor: '#2A0253' }} className='align-items-center'>
 
             <div>
 
-                <div className="container col-sm-8 py-5 mx-auto">
+                <div className="container col-sm-8 mx-auto">
 
                     <div className="row justify-content-center rowhome">
                         <div className="col-sm-8 col-md-6 text-white align-self-center" >

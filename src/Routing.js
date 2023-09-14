@@ -73,7 +73,7 @@ function Routing() {
                     {/* RUTAS RICK Y MORTY */}
                     <Route path='/RickYMorty' element={<ApolloProvider client={client}>
                         <RickAndMortyPages client={client} />
-                    </ApolloProvider>} />
+                    </ApolloProvider>} style={{backgroundColor: 'white'}}/>
                     <Route path='/InfoDetallada' element={<ApolloProvider client={client}>
                         <InfoDetalladaId />
                     </ApolloProvider>} />
