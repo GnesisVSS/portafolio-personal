@@ -165,10 +165,10 @@ const Proyectos = () => {
                                             >
                                                 <FixedSizeList
                                                     height={400}
-                                                    width={500}
                                                     itemSize={80}
                                                     itemCount={menu.length}
                                                     overscanCount={5}
+                                                    className='lista-proyectos'
                                                 >
                                                     {renderRow}
                                                 </FixedSizeList>
@@ -183,12 +183,12 @@ const Proyectos = () => {
                             <div className='col-sm-6 col-md-6  align-self-center' >
                                 <motion.div animate={isVisible ? hide : show} >
                                     <div className="col" >
-                                        <img src={imagen[indexImagen[0]]} style={{ borderRadius: '40px', height: '600px', width: '600px' }} id='imagen' />
+                                        <img src={imagen[indexImagen[0]]} style={{ borderRadius: '40px', height: '600px', width: '600px' }} id='imagen' className='img-fluid' />
                                     </div>
                                 </motion.div>
                                 <motion.div animate={isVisible ? show : hide} >
                                     <div className="col">
-                                        <img src='/img/proyectos.gif' style={{ borderRadius: '40px', height: '600px', width: '600px' }} id='imagenDefecto' />
+                                        <img src='/img/proyectos.gif' style={{ borderRadius: '40px', height: '600px', width: '600px' }} id='imagenDefecto' className='img-fluid' />
                                     </div>
                                 </motion.div>
 
