@@ -7,24 +7,10 @@ import { useInView } from 'react-intersection-observer';
 
 const SobreMi = () => {
 
-    const estilo1 = {
-        color: '#F9A826'
-    }
-
     const estilo2 = {
         fontSize: '18px'
     }
-
-    const estilo3 = {
-        textAlign: 'center',
-        color: '#61DBFB'
-    }
-
-    const estilo4 = {
-        height: '578px',
-        width: '578px'
-    }
-
+    
     const boxVariant = {
         visible: { x: 0, opacity: 1, transition: { duration: 1 } },
         hidden: { x: -400, opacity: 0 },
@@ -86,6 +72,7 @@ const SobreMi = () => {
                                         <div className="col">
                                             {/* <img alt='' src='img/pensando.gif' id='gifSobreMi' className='img-fluid' /> */}
                                             <img alt='' src='img/Group40.png' id='gifSobreMi' className='img-fluid' />
+                                            
                                         </div>
                                     </div>
                                     <div className="col-sm-8 col-md-5 px-5 align-self-center" >
@@ -94,6 +81,7 @@ const SobreMi = () => {
                                             <strong><h1 style={{ textAlign: 'left' }} className='h1SobreMi'>Experiencia</h1></strong>
 
                                             <div className='py-4'>
+                                            
                                                 <p style={estilo2}>
                                                     A la fecha he realizado las prácticas correspondientes a mi carrera realizando una
                                                     página web con wordpress y una integración de Transbank con webpay plus y One
