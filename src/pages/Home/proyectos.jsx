@@ -161,7 +161,7 @@ const Proyectos = () => {
                                                 </Grow>
                                             </Box> */}
                                             <Box
-                                                sx={{ width: '100%', height: 400, maxWidth: 500, bgcolor: 'none' }}
+                                                sx={{ width: '100%', maxWidth: 500, bgcolor: 'none' }}
                                             >
                                                 <FixedSizeList
                                                     height={400}

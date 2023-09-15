@@ -330,5 +330,19 @@ btn-cssbuttons ul li a:hover {
 
 .lista-proyectos{
   width: auto;
+  
 }
 
+@media screen and (max-width: 600px) {
+  .lista-proyectos {
+    height: auto !important;
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  #imagenDefecto, #imagen {
+    height: auto !important;
+    width: auto !important;
+  }
+}
