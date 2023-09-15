@@ -272,3 +272,16 @@
   }
   @keyframes l7 {to{background-position: left}}
 
+@media screen and (max-width: 768px) {
+    .imagenRM{
+      height: auto !important;
+      width: auto !important;
+    }
+  }
+
+  @media screen and (max-width: 425px) {
+    .vista-personajes{
+      display: grid;
+      place-content: center;
+  }
+  }
