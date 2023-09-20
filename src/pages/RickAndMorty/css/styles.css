@@ -285,3 +285,35 @@
       place-content: center;
   }
   }
+
+
+  @media screen and (max-width: 425px) {
+    .MuiListItem-root.MuiListItem-gutters.MuiListItem-padding.MuiListItem-alignItemsFlexStart.css-hhvo2v-MuiListItem-root {
+      height: 70px; 
+      padding: 0px;
+    }
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1024px){
+    .MuiListItem-root.MuiListItem-gutters.MuiListItem-padding.MuiListItem-alignItemsFlexStart.css-hhvo2v-MuiListItem-root {
+      height: 65px; 
+      padding: 0px;
+    }
+
+    .contenedor-row{
+        padding: 0px !important;
+    }
+  }
+
+
+  @media screen and (max-width: 768px) {
+    .controls {
+      margin-top: 12px; 
+      margin-bottom: 12px; 
+    }
+  }
+
+
+  .css-uls1yk-MuiDivider-root{
+    margin-left: 0px !important;
+  }

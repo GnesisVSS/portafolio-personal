@@ -127,39 +127,17 @@ const Proyectos = () => {
                 animate={control}
 
             >
-                <div className='py-5'>
+                <div>
                     <div className="container col-sm-12 py-2 mx-auto">
 
                         <div className="row justify-content-center">
 
-                            <div className="col-sm-8 col-md-6 p-5 align-self-center">
+                            <div className="col-sm-8 col-md-6 p-5 align-self-center contenedor-row">
 
                                 <div className="col" style={{ lineHeight: '27px' }}>
                                     <strong><h1 style={{ textAlign: 'left', color: '#162E36' }} className='h1Proyectos'>Mis proyectos</h1></strong>
                                     <div className='py-4'>
-                                        {/* <h2 className='titulo-demo'>Web de recetas</h2>
-                                        <p style={estilo2}>
-                                            Página web ficticia que permite la visualización de recetas con sus ingredientes, tiempo de preparación, detalle, porciones, dificultad y categoría; Ademas de una cuenta de usuario en donde se permite ingresar recetas propias como tambien guardar las que ya vienen para visualizar por defecto y eliminarlas de los elementos guardados cuando se guste.
-                                        </p> */}
                                         <div className='py-3' id='iconos'>
-                                            {/* <h4>Lenguaje, frameworks y herramientas utilizadas</h4> */}
-                                            {/* Icono React */}
-                                            {/* 
-                                            <FormControlLabel
-                                                control={<Switch checked={checked} onChange={handleChange} />}
-                                                label="Show"
-                                            />
-                                            <Box sx={{ display: 'flex' }}>
-                                            
-                                                
-                                                <Grow
-                                                    in={checked}
-                                                    style={{ transformOrigin: '0 0 0' }}
-                                                    {...(checked ? { timeout: 1000 } : {})}
-                                                >
-                                                    <IconBrandReact width='50px' height='50px' style={{ color: '#61DBFB', margin: '18px', backgroundColor: 'white', borderRadius: '15px' }} />
-                                                </Grow>
-                                            </Box> */}
                                             <Box
                                                 sx={{ width: '100%', maxWidth: 500, bgcolor: 'none' }}
                                             >
