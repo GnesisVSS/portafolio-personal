@@ -29,10 +29,10 @@ const ContactForm = () => {
     return (
         <section  style={{ backgroundColor: '#EDE6F1', color: '#162E36' }} className='align-items-center'>
 
-            <div>
-                <div className="container col-sm-8 mx-auto">
+            <div className='py-4 '>
+                <div className="container col p-4 mx-auto">
                     <div className="row justify-content-center">
-                        <div className="col-sm-8 col-md-8 text-white align-self-center" >
+                        <div className="col-sm-8 col-md-8 text-white align-self-center col-contact" >
                             <form onSubmit={handleSubmit} >
 
                                 <strong><h1 style={{ textAlign: 'left', color: '#162E36' }} className='h1Proyectos'>Contactame</h1></strong>

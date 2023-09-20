@@ -13,24 +13,27 @@ import Footer from './Elementos/footer';
 import ContactForm from './Home/ContactForm';
 import Hr from './Home/Hr';
 import { ParallaxProvider } from 'react-scroll-parallax';
+import HeaderExperiencia from './Elementos/headerExperiencia';
 
 
 function Index() {
-    
+
 
 
     return (
 
         <ParallaxProvider>
-            <div>
+            <div style={{backgroundColor:'#2A0253'}}>
                 <Navbar />
                 <Home />
-                <SobreMi />
-                <Proyectos />
-                <Hr />
-                <ContactForm />
-                <Footer />
             </div>
+
+            <HeaderExperiencia />
+            <SobreMi />
+            <Proyectos />
+            <Hr />
+            <ContactForm />
+            <Footer />
         </ParallaxProvider>
 
 

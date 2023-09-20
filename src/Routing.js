@@ -50,41 +50,53 @@ function Routing() {
         cache: new InMemoryCache(),
     });
     return (
+        <div>
+            <section style={{backgroundColor:'#EDE6F1'}}>
+                <Router>
+                    {/* Redirecciones para proteger nuestras rutas */}
+                    <Routes>
+                        <Route path='/' element={<Index />} />
+                        <Route path='/recetas' element={<Recetas />} />
+                        <Route path='/login' element={<Login />} />
+                        <Route path='/registro' element={<Registro />} />
+                        <Route path='/RecetasHome' element={datos ? <Navigate to='/HomeUsuario' /> : <RecetasPreLog />} />
+                        <Route path='/regRecAdmin' element={<FormRecetasAdmin />} />
+                        <Route path='/HomeUsuario' element={datos ? <HomeUsuario /> : <Navigate to='/login' />} />
+                        <Route path='/miPerfil' element={datos ? <MiPerfil /> : <Navigate to='/login' />} />
+                        <Route path='/misGuardados' element={datos ? <RecetasGuardadasCompletas /> : <Navigate to='/login' />} />
+                        <Route path='/misRecetas' element={datos ? <VistaRecetasUsuario /> : <Navigate to='/login' />} />
+                        <Route path='/FormRecetas' element={datos ? <FormRecetas /> : <Navigate to='/login' />} />
+                        <Route path='/DetalleRecetas' element={<DetalleRecetas />} />
+                        <Route path='/DetalleGuardados' element={<VistaDetalleGuardados />} />
+                        <Route path='/DetalleMisRecetas' element={<VistaDetalleRecetasUsuario />} />
+                        <Route path='/DemoRecetas' element={<VistaPreDemo />} />
+                    </Routes>
+                </Router>
+            </section>
+            <section>
+                <Provider store={store}>
+                    <Router>
+                        {/* Redirecciones para proteger nuestras rutas */}
+                        <Routes>
+                            {/* RUTAS RICK Y MORTY */}
+                            <Route path='/RickYMorty' element={<ApolloProvider client={client}>
+                                <RickAndMortyPages client={client} />
+                            </ApolloProvider>} style={{ backgroundColor: 'white' }} />
+                            <Route path='/InfoDetallada' element={<ApolloProvider client={client}>
+                                <InfoDetalladaId />
+                            </ApolloProvider>} />
+                            <Route path='/MisFavoritos' element={<ApolloProvider client={client}>
+                                <InfoFavoritos />
+                            </ApolloProvider>} />
 
-        <Provider store={store}>
-            <Router>
-                {/* Redirecciones para proteger nuestras rutas */}
-                <Routes>
-                    <Route path='/' element={<Index />} />
-                    <Route path='/recetas' element={<Recetas />} />
-                    <Route path='/login' element={<Login />} />
-                    <Route path='/registro' element={<Registro />} />
-                    <Route path='/RecetasHome' element={datos ? <Navigate to='/HomeUsuario' /> : <RecetasPreLog />} />
-                    <Route path='/regRecAdmin' element={<FormRecetasAdmin />} />
-                    <Route path='/HomeUsuario' element={datos ? <HomeUsuario /> : <Navigate to='/login' />} />
-                    <Route path='/miPerfil' element={datos ? <MiPerfil /> : <Navigate to='/login' />} />
-                    <Route path='/misGuardados' element={datos ? <RecetasGuardadasCompletas /> : <Navigate to='/login' />} />
-                    <Route path='/misRecetas' element={datos ? <VistaRecetasUsuario /> : <Navigate to='/login' />} />
-                    <Route path='/FormRecetas' element={datos ? <FormRecetas /> : <Navigate to='/login' />} />
-                    <Route path='/DetalleRecetas' element={<DetalleRecetas />} />
-                    <Route path='/DetalleGuardados' element={<VistaDetalleGuardados />} />
-                    <Route path='/DetalleMisRecetas' element={<VistaDetalleRecetasUsuario />} />
-                    <Route path='/DemoRecetas' element={<VistaPreDemo />} />
-                    {/* RUTAS RICK Y MORTY */}
-                    <Route path='/RickYMorty' element={<ApolloProvider client={client}>
-                        <RickAndMortyPages client={client} />
-                    </ApolloProvider>} style={{backgroundColor: 'white'}}/>
-                    <Route path='/InfoDetallada' element={<ApolloProvider client={client}>
-                        <InfoDetalladaId />
-                    </ApolloProvider>} />
-                    <Route path='/MisFavoritos' element={<ApolloProvider client={client}>
-                        <InfoFavoritos />
-                    </ApolloProvider>} />
-                    
-                    
-                </Routes>
-            </Router>
-        </Provider>
+
+                        </Routes>
+                    </Router>
+                </Provider>
+            </section>
+        </div>
+
+
 
     )
 }

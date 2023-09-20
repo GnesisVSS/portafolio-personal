@@ -158,7 +158,7 @@ const Proyectos = () => {
 
                                 </div>
                             </div>
-                            <div className='col-sm-6 col-md-6  align-self-center' >
+                            <div className='col-sm-6 col-md-6  align-self-center contenedor-imagen' >
                                 <motion.div animate={isVisible ? hide : show} >
                                     <div className="col" >
                                         <img src={imagen[indexImagen[0]]} style={{ borderRadius: '40px', height: '600px', width: '600px' }} id='imagen' className='img-fluid' />

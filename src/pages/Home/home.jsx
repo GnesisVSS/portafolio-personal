@@ -5,6 +5,7 @@ import Navbar from '../Elementos/navbar';
 import Typed from 'typed.js';
 import { Parallax } from "react-scroll-parallax";
 import styles from '../../../public/css/Home.module.scss';
+import HeaderExperiencia from '../Elementos/headerExperiencia';
 
 
 const copy = "HolaMundo".split("");
@@ -53,6 +54,10 @@ const Home = () => {
             typed.current.destroy();
         }
     }, [])
+    const [screenSize, setScreenSize] = useState(window.innerWidth);
+
+    const headerClass = screenSize < 767 ? 'mobile' : 'pantalla';
+
 
     return (
         <div id='home' style={{ minHeight: '90vh',backgroundColor: '#2A0253' }} className='align-items-center'>
@@ -62,7 +67,7 @@ const Home = () => {
                 <div className="container col-sm-8 mx-auto">
 
                     <div className="row justify-content-center rowhome">
-                        <div className="col-sm-8 col-md-6 text-white align-self-center" >
+                        <div className="col-sm-8 col-md-6 text-white align-self-center col-titulo-home" >
                             <div className='pantalla'>
                                 <Parallax
                                     easing={[1, -0.75, 1, 1.34]}
@@ -90,7 +95,7 @@ const Home = () => {
                         </div>
 
 
-                        <div className="col-sm-6 col-md-5 p-5 align-self-center" style={{ 'textAlign': 'center' }}>
+                        <div className="col-sm-6 col-md-5 p-5 align-self-center col-img-home" style={{ 'textAlign': 'center' }}>
                             <div className='pantalla'>
                                 <Parallax
                                     easing={[1, -0.75, 1, 1.34]}
@@ -115,7 +120,6 @@ const Home = () => {
                     </div>
                 </div>
             </div >
-
 
         </div >
     );

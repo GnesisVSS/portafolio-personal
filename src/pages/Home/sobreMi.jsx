@@ -41,19 +41,7 @@ const SobreMi = () => {
 
     return (
         <section id='sobreMi' style={{ backgroundColor: '#EDE6F1', color: '#162E36' }}>
-            <div className={headerClass}>
-                {headerClass === "pantalla" ? <div style={{ overflow: "hidden" }}>
-                    <svg
-                        preserveAspectRatio="none"
-                        viewBox="0 0 1200 120"
-                        xmlns="http://www.w3.org/2000/svg"
-                        style={{ fill: "#2A0253", width: "100%", height: "110px", transform: "scaleX(-1)" }}
-                    >
-                        <path d="M1200 120L0 16.48V0h1200v120z" />
-                    </svg>
-                </div> : ''}
-                
-            </div>
+            
 
             <div className='py-4 '>
                 <div className="container col py-2 mx-auto">
@@ -67,7 +55,7 @@ const SobreMi = () => {
                                 animate={control}
                             >
                                 <div className="row justify-content-center" >
-                                    <div className="col-sm-6 col-md-7 p-5 align-self-center" >
+                                    <div className="col-sm-6 col-md-7 p-5 align-self-center col-imagen" >
 
                                         <div className="col">
                                             {/* <img alt='' src='img/pensando.gif' id='gifSobreMi' className='img-fluid' /> */}
@@ -75,7 +63,7 @@ const SobreMi = () => {
                                             
                                         </div>
                                     </div>
-                                    <div className="col-sm-8 col-md-5 px-5 align-self-center" >
+                                    <div className="col-sm-8 col-md-5 px-5 align-self-center col-texto" >
 
                                         <div className="col" >
                                             <strong><h1 style={{ textAlign: 'left' }} className='h1SobreMi'>Experiencia</h1></strong>
