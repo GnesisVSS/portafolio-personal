@@ -69,7 +69,7 @@ const RickAndMortyPages = () => {
             <link rel="preconnect" href="https://fonts.googleapis.com" />
             <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
             <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Righteous&display=swap" rel="stylesheet"></link>
-            <div className='sticky-top'>
+            <div>
                 <Nav />
             </div>
             <div className='px-4'>
