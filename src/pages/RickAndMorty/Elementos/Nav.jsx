@@ -17,11 +17,14 @@ const Nav = () => {
                         </div>
                         <div className="offcanvas-body">
                             <ul className="navbar-nav justify-content-start flex-grow-1 pe-3">
-                                <li className="nav-item">
+                                <li className="nav-item text-start">
                                     <a className="nav-link" aria-current="page" href="/RickYMorty">Todos</a>
                                 </li>
-                                <li className="nav-item">
+                                <li className="nav-item text-start">
                                     <a className="nav-link" href="/MisFavoritos">Favoritos <FavoriteIcon /></a>
+                                </li>
+                                <li className="nav-item text-start">
+                                    <a className="nav-link" aria-current="page" href="/">Volver al Portafolio</a>
                                 </li>
                             </ul>
 

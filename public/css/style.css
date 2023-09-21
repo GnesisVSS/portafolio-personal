@@ -392,6 +392,17 @@ btn-cssbuttons ul li a:hover {
   }
 }
 
+@media screen and (max-width: 397px){
+  .contenedor-row, .contenedor-imagen{
+    padding: 2rem !important;
+  }
+}
+
+@media screen and (max-width: 320px){
+  .contenedor-row, .contenedor-imagen{
+    padding: 0rem !important;
+  }
+}
 
 
 .css-uls1yk-MuiDivider-root{
