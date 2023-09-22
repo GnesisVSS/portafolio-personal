@@ -29,7 +29,8 @@ const InfoDetallada = () => {
     // se actualiza el localStorage obteniendo los datos y definiendolos en el useState
     const updateLocalStorageData = () => {
         const dataFromLocalStorage = JSON.parse(localStorage.getItem("favoritos"));
-        setLocalStorageData(dataFromLocalStorage);
+        dataFromLocalStorage ? setLocalStorageData(dataFromLocalStorage) : setLocalStorageData([]);
+
     };
     // al renderizar el componente carga los datos iniciales del localstorage definidos anteriormente
     useEffect(() => {
@@ -52,6 +53,7 @@ const InfoDetallada = () => {
     // 
     // 
     // se filtra la infomacion buscando si el id existe en el localStorage(retorna true o false)
+    // console.log(localStorageData.datosId.some((id) => id === datosFinal.id))
     const filtro = localStorageData.some((id) => id === datosFinal.id);
 
     // obtiene como parametro el id y verifica despues si existe informacion en el localstorage y si incluye el id
@@ -102,7 +104,7 @@ const InfoDetallada = () => {
     };
 
     return (
-        <div style={{backgroundColor:'white'}} className='RM'>
+        <div style={{ backgroundColor: 'white' }} className='RM'>
             <link rel="preconnect" href="https://fonts.googleapis.com" />
             <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
             <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Righteous&display=swap" rel="stylesheet"></link>

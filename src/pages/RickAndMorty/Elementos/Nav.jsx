@@ -23,11 +23,13 @@ const Nav = () => {
                                 <li className="nav-item text-start">
                                     <a className="nav-link" href="/MisFavoritos">Favoritos <FavoriteIcon /></a>
                                 </li>
+
+                            </ul>
+                            <ul className="navbar-nav flex-row flex-wrap ms-md-auto">
                                 <li className="nav-item text-start">
                                     <a className="nav-link" aria-current="page" href="/">Volver al Portafolio</a>
                                 </li>
                             </ul>
-
                             {/* <form className="d-flex mt-3" role="search">
                                 <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
                                 <button className="btn btn-success" type="submit">Search</button>
