@@ -386,7 +386,14 @@ btn-cssbuttons ul li a:hover {
   }
 }
 
-@media screen and (min-width: 768px) and (max-width: 1023px) {
+
+@media screen and (min-width: 320px) and (max-width: 700px) {
+  .col-imagen, .col-texto, .contenedor-row, .contenedor-imagen, .col-img-home, .col-titulo-home, .col-contact{
+    width: 100.666667%;;
+  }
+}
+
+@media screen and (min-width: 701px) and (max-width: 1023px) {
   .col-imagen, .col-texto, .contenedor-row, .contenedor-imagen, .col-img-home, .col-titulo-home, .col-contact{
     width: 66.66666667%;
   }
