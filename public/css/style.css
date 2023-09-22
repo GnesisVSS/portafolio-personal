@@ -355,7 +355,7 @@ btn-cssbuttons ul li a:hover {
 
 @media screen and (min-width: 180px) and (max-width: 767px){
   .MuiListItem-root.MuiListItem-gutters.MuiListItem-padding.MuiListItem-alignItemsFlexStart.css-14owld3 {
-    height: 83px !important; 
+    height: 70px !important; 
     padding: 0px;
   }
 }
@@ -412,6 +412,6 @@ btn-cssbuttons ul li a:hover {
 }
 
 
-.css-uls1yk-MuiDivider-root{
+.MuiDivider-root .MuiDivider-inset .css-el7kb1{
   margin-left: 0px !important;
 }
