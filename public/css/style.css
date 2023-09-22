@@ -353,6 +353,13 @@ btn-cssbuttons ul li a:hover {
   }
 }
 
+@media screen and (min-width: 180px) and (max-width: 766px){
+  .MuiListItem-root.MuiListItem-gutters.MuiListItem-padding.MuiListItem-alignItemsFlexStart.css-hhvo2v-MuiListItem-root {
+    height: 83px; 
+    padding: 0px;
+  }
+}
+
 
 @media screen and (max-width: 767px) {
   .MuiListItem-root.MuiListItem-gutters.MuiListItem-padding.MuiListItem-alignItemsFlexStart.css-hhvo2v-MuiListItem-root {
