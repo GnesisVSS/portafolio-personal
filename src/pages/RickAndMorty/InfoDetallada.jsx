@@ -108,11 +108,11 @@ const InfoDetallada = () => {
             <link rel="preconnect" href="https://fonts.googleapis.com" />
             <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
             <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Righteous&display=swap" rel="stylesheet"></link>
-            <div className='row py-5 align-items-center justify-content-start'>
-                <div className='col-3'>
-                    <img src={datosFinal.image} alt='' style={{ borderRadius: '50%' }}></img>
+            <div className='row py-5 align-items-center justify-content-start row-detalles-rm'>
+                <div className='col-3 col-img-detalle-rm'>
+                    <img src={datosFinal.image} alt='' style={{ borderRadius: '50%' }} className='img-detalle-rm'></img>
                 </div>
-                <div className='col-8'>
+                <div className='col-8 col-nombre-detalle-rm'>
                     <h1 style={{ textAlign: 'left', fontSize: '84px' }} className='px-5 h1RandM'>{datosFinal.name}</h1>
                 </div>
             </div>
