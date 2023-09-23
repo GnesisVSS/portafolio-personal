@@ -320,16 +320,16 @@
     }
 
     .col-img-detalle-rm{
-      width: 33.33333333%;
+      width: 33.33333333% !important;
     }
 
     .col-nombre-detalle-rm{
-      width: 50%;
+      width: 50% !important;
     }
   }
 
   @media screen and (max-width: 991px) and (min-width: 768px) {
     .col-menu-lateral-info-rm{
-      width: 33.33333333%;
+      width: 33.33333333% !important;
     }
   }
