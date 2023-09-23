@@ -42,7 +42,7 @@ const InfoFavoritos = () => {
             <div className='px-4'>
 
                 <div className='container'>
-                    <img src='/img/RickAndMorty/Rick-and-Morty.jpg' style={{ height: '400px', width: '712px' }} alt='' />
+                <img src='/img/RickAndMorty/Rick-and-Morty.jpg' style={{ height: '400px', width: '712px' }} alt='' className='imagenRM img-fluid'/>
                     <div className='row px-2'>
                         <InfoFavoritosVista />
                     </div>

@@ -18,7 +18,7 @@ const InfoDetalladaId = () => {
     });
 
 
-    if (loading) return (<div className="loader" style={{ display: 'flex', justifyContent: 'center' }}></div>);
+    if (loading) return (<div className="loaderRM" style={{ display: 'flex', justifyContent: 'center' }}></div>);
     if (error) return `Error! ${error.message}`;
 
     // se dispara la accion para mostrar los datos desde la consulta con el payload de los datos del personaje
