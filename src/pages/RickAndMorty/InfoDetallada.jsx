@@ -238,130 +238,132 @@ const InfoDetallada = () => {
                 </div>
                 :
                 //vista mobile
-
-                <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-                    <div className='col-8 col-nombre-detalle-rm'>
-                        <h3 style={{ textAlign: 'left' }} className='px-3 h1RandM'>Información General</h3>
-                    </div>
-                    <ListItem>
-                        <ListItemAvatar>
-                            <Avatar>
-                                {datosFinal.status === 'Alive' ? <CircleIcon color="success" /> : datosFinal.status === 'Dead' ? <CircleIcon style={{ color: 'red' }} /> : <CircleIcon style={{ color: 'grey' }} />}
-                            </Avatar>
-                        </ListItemAvatar>
-                        <ListItemText primary="Status" secondary={datosFinal.status === 'Alive' ? ' Vivo(a)' : datosFinal.status === 'Dead' ? ' Muerto(a)' : 'Desconocido'}
-                        />
-                    </ListItem>
-                    <Divider variant="inset" component="li" />
-                    <ListItem>
-                        <ListItemAvatar>
-                            <Avatar>
-                                <EmojiPeopleIcon />
-                            </Avatar>
-                        </ListItemAvatar>
-                        <ListItemText primary="Especie" secondary={datosFinal.species} />
-                    </ListItem>
-                    <Divider variant="inset" component="li" />
-                    <ListItem>
-                        <ListItemAvatar>
-                            <Avatar>
-                                <FaceRetouchingNaturalIcon />
-                            </Avatar>
-                        </ListItemAvatar>
-                        <ListItemText primary="Género" secondary={datosFinal.gender} />
-                    </ListItem>
-                    <Divider variant="inset" component="li" />
-                    <ListItem>
-                        <ListItemAvatar>
-                            <Avatar>
-                                <CakeIcon />
-                            </Avatar>
-                        </ListItemAvatar>
-                        <ListItemText primary="Creado en" secondary={datosFinal.created} />
-                    </ListItem>
-                    <Divider variant="inset" component="li" />
-                    <ListItem>
-                        <ListItemAvatar>
-                            <Avatar>
-                                <HomeIcon />
-                            </Avatar>
-                        </ListItemAvatar>
-                        <ListItemText primary="Origen" secondary={datosFinal.origin.name} />
-                    </ListItem>
-
-                    <div className='col-8 col-nombre-detalle-rm'>
-                        <h3 style={{ textAlign: 'left' }} className='p-3 h1RandM'>Episodios</h3>
-                    </div>
-                    <div>
-                        {/* <strong>Episodios:</strong> */}
-                        <div className='px-3'>
-                            {/* obtiene una parte del arreglo inicial de episodios desde indexOfFirstItem hasta  indexOfLastItem y lo recorre*/}
-                            {doubles.slice(indexOfFirstItem, indexOfLastItem).map((item, index) => (
-                                <div key={index}>
-                                    <ol className="list-group list-group-flush text-start" style={{ borderBottom: '1px solid gray' }}>
-                                        <li className="list-group-item d-flex justify-content-between align-items-start">
-                                            <div className="ms-2 me-auto">
-                                                <div className="fw-bold">{item.name}</div>
-                                                <span
-                                                    dangerouslySetInnerHTML={{
-                                                        __html: replaceSeason(replaceEpisode(item.episode)),
-                                                    }}
-                                                    style={{ fontSize: '12px', color: '#7B7B7B' }}
-                                                />
-                                            </div>
-                                        </li>
-                                    </ol>
-
-                                </div>
-                            ))}
+                <div>
+                    <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+                        <div className='col-8 col-nombre-detalle-rm'>
+                            <h3 style={{ textAlign: 'left' }} className='px-3 h1RandM'>Información General</h3>
                         </div>
-
-                        <div>
-                            <Pagination
-                                count={Math.ceil(doubles.length / itemsPerPage)}
-                                page={currentPage}
-                                onChange={(event, page) => handlePageChange(page)}
-                                color="primary"
-                                className='py-4'
-                                style={{ justifyContent: 'center', display: 'flex' }}
+                        <ListItem>
+                            <ListItemAvatar>
+                                <Avatar>
+                                    {datosFinal.status === 'Alive' ? <CircleIcon color="success" /> : datosFinal.status === 'Dead' ? <CircleIcon style={{ color: 'red' }} /> : <CircleIcon style={{ color: 'grey' }} />}
+                                </Avatar>
+                            </ListItemAvatar>
+                            <ListItemText primary="Status" secondary={datosFinal.status === 'Alive' ? ' Vivo(a)' : datosFinal.status === 'Dead' ? ' Muerto(a)' : 'Desconocido'}
                             />
-                        </div>
-                    </div>
-                    <div className='col-8 col-nombre-detalle-rm'>
-                        <h3 style={{ textAlign: 'left' }} className='p-3 h1RandM'>Localización</h3>
-                    </div>
-                    <ListItem>
-                        <ListItemAvatar>
-                            <Avatar>
-                                <LocationOnIcon />
-                            </Avatar>
-                        </ListItemAvatar>
-                        <ListItemText primary="Localización" secondary={datosFinal.location.name}
-                        />
-                    </ListItem>
-                    <Divider variant="inset" component="li" />
-                    <ListItem>
-                        <ListItemAvatar>
-                            <Avatar>
-                                <TerrainIcon />
-                            </Avatar>
-                        </ListItemAvatar>
-                        <ListItemText primary="Tipo de Localización" secondary={datosFinal.location.type} />
-                    </ListItem>
-                    <Divider variant="inset" component="li" />
-                    <ListItem>
-                        <ListItemAvatar>
-                            <Avatar>
-                                <RocketLaunchIcon />
-                            </Avatar>
-                        </ListItemAvatar>
-                        <ListItemText primary="Dimensión" secondary={datosFinal.location.dimension} />
-                    </ListItem>
+                        </ListItem>
+                        <Divider variant="inset" component="li" />
+                        <ListItem>
+                            <ListItemAvatar>
+                                <Avatar>
+                                    <EmojiPeopleIcon />
+                                </Avatar>
+                            </ListItemAvatar>
+                            <ListItemText primary="Especie" secondary={datosFinal.species} />
+                        </ListItem>
+                        <Divider variant="inset" component="li" />
+                        <ListItem>
+                            <ListItemAvatar>
+                                <Avatar>
+                                    <FaceRetouchingNaturalIcon />
+                                </Avatar>
+                            </ListItemAvatar>
+                            <ListItemText primary="Género" secondary={datosFinal.gender} />
+                        </ListItem>
+                        <Divider variant="inset" component="li" />
+                        <ListItem>
+                            <ListItemAvatar>
+                                <Avatar>
+                                    <CakeIcon />
+                                </Avatar>
+                            </ListItemAvatar>
+                            <ListItemText primary="Creado en" secondary={datosFinal.created} />
+                        </ListItem>
+                        <Divider variant="inset" component="li" />
+                        <ListItem>
+                            <ListItemAvatar>
+                                <Avatar>
+                                    <HomeIcon />
+                                </Avatar>
+                            </ListItemAvatar>
+                            <ListItemText primary="Origen" secondary={datosFinal.origin.name} />
+                        </ListItem>
 
-                </List>}
-            <Button onClick={() => toggleVisible(datosFinal.id)} variant="outlined" style={{ margin: '12px' }} color="secondary" startIcon={filtro ? <Favorite /> : <FavoriteBorderIcon />}>
-                {filtro ? <div>Ya estoy entre tus favoritos!</div> : <div>Agregame a tus favoritos!</div>}
-            </Button>
+                        <div className='col-8 col-nombre-detalle-rm'>
+                            <h3 style={{ textAlign: 'left' }} className='p-3 h1RandM'>Episodios</h3>
+                        </div>
+                        <div>
+                            {/* <strong>Episodios:</strong> */}
+                            <div className='px-3'>
+                                {/* obtiene una parte del arreglo inicial de episodios desde indexOfFirstItem hasta  indexOfLastItem y lo recorre*/}
+                                {doubles.slice(indexOfFirstItem, indexOfLastItem).map((item, index) => (
+                                    <div key={index}>
+                                        <ol className="list-group list-group-flush text-start" style={{ borderBottom: '1px solid gray' }}>
+                                            <li className="list-group-item d-flex justify-content-between align-items-start">
+                                                <div className="ms-2 me-auto">
+                                                    <div className="fw-bold">{item.name}</div>
+                                                    <span
+                                                        dangerouslySetInnerHTML={{
+                                                            __html: replaceSeason(replaceEpisode(item.episode)),
+                                                        }}
+                                                        style={{ fontSize: '12px', color: '#7B7B7B' }}
+                                                    />
+                                                </div>
+                                            </li>
+                                        </ol>
+
+                                    </div>
+                                ))}
+                            </div>
+
+                            <div>
+                                <Pagination
+                                    count={Math.ceil(doubles.length / itemsPerPage)}
+                                    page={currentPage}
+                                    onChange={(event, page) => handlePageChange(page)}
+                                    color="primary"
+                                    className='py-4'
+                                    style={{ justifyContent: 'center', display: 'flex' }}
+                                />
+                            </div>
+                        </div>
+                        <div className='col-8 col-nombre-detalle-rm'>
+                            <h3 style={{ textAlign: 'left' }} className='p-3 h1RandM'>Localización</h3>
+                        </div>
+                        <ListItem>
+                            <ListItemAvatar>
+                                <Avatar>
+                                    <LocationOnIcon />
+                                </Avatar>
+                            </ListItemAvatar>
+                            <ListItemText primary="Localización" secondary={datosFinal.location.name}
+                            />
+                        </ListItem>
+                        <Divider variant="inset" component="li" />
+                        <ListItem>
+                            <ListItemAvatar>
+                                <Avatar>
+                                    <TerrainIcon />
+                                </Avatar>
+                            </ListItemAvatar>
+                            <ListItemText primary="Tipo de Localización" secondary={datosFinal.location.type} />
+                        </ListItem>
+                        <Divider variant="inset" component="li" />
+                        <ListItem>
+                            <ListItemAvatar>
+                                <Avatar>
+                                    <RocketLaunchIcon />
+                                </Avatar>
+                            </ListItemAvatar>
+                            <ListItemText primary="Dimensión" secondary={datosFinal.location.dimension} />
+                        </ListItem>
+
+                    </List>
+                    <Button onClick={() => toggleVisible(datosFinal.id)} variant="outlined" style={{ margin: '12px' }} color="secondary" startIcon={filtro ? <Favorite /> : <FavoriteBorderIcon />}>
+                        {filtro ? <div>Ya estoy entre tus favoritos!</div> : <div>Agregame a tus favoritos!</div>}
+                    </Button>
+                </div>
+            }
         </div>
     );
 }
