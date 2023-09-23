@@ -4,13 +4,20 @@ import HomeIcon from '@mui/icons-material/Home';
 import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
 import FaceRetouchingNaturalIcon from '@mui/icons-material/FaceRetouchingNatural';
 import CakeIcon from '@mui/icons-material/Cake';
-import { Button, Pagination } from '@mui/material';
+import { Button, Divider, Pagination } from '@mui/material';
 import TerrainIcon from '@mui/icons-material/Terrain';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { useDispatch, useSelector } from 'react-redux';
 import { Favorite } from '@mui/icons-material';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import Avatar from '@mui/material/Avatar';
+import Typography from '@mui/joy/Typography';
+
 import './css/styles.css';
 
 const InfoDetallada = () => {
@@ -49,6 +56,11 @@ const InfoDetallada = () => {
             window.removeEventListener('storage', handleStorageChange);
         };
     }, []);
+
+    const [screenSize, setScreenSize] = useState(window.innerWidth);
+
+    const headerClass = screenSize < 767 ? 'mobile' : 'pantalla';
+
     // ----------------------------PARA BOTÓN PARA AGREGAR A FAVORITOS-------------------------------------
     // 
     // 
@@ -102,6 +114,19 @@ const InfoDetallada = () => {
     const replaceEpisode = (episode) => {
         return episode.replace('E', '<strong> Episodio </strong>');
     };
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setWindowWidth(window.innerWidth);
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
 
     return (
         <div style={{ backgroundColor: 'white' }} className='RM'>
@@ -117,48 +142,159 @@ const InfoDetallada = () => {
                 </div>
             </div>
             {/* <img src='/img/portal-rick-and-morty.gif' alt='' className='img1'></img> */}
-            <div className="d-flex align-items-start p-3  text-center" style={{ border: 'solid 1px gray', borderRadius: '10px', height: '440px' }}>
-                <div className="nav flex-column nav-pills nav-fill me-4 col-3" id="v-pills-tab" role="tablist" aria-orientation="vertical" style={{ height: '100%' }}>
+            {windowWidth > 767 ?
+                <div className="d-flex align-items-start p-3  text-center" style={{ border: 'solid 1px gray', borderRadius: '10px', height: '440px' }}>
+                    <div className="nav flex-column nav-pills nav-fill me-4 col-3" id="v-pills-tab" role="tablist" aria-orientation="vertical" style={{ height: '100%' }}>
 
-                    <button className="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Información General</button>
-                    <button className="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Episodios</button>
-                    <button className="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Localización</button>
-                    <Button onClick={() => toggleVisible(datosFinal.id)} variant="outlined" style={{ marginTop: '240px' }} color="secondary" startIcon={filtro ? <Favorite /> : <FavoriteBorderIcon />}>
-                        {filtro ? <div>Ya estoy entre tus favoritos!</div> : <div>Agregame a tus favoritos!</div>}
-                    </Button>
-                </div>
-                <div className="tab-content col-8 px-5 py-3" id="v-pills-tabContent" style={{ overflowWrap: 'break-word', borderLeft: '1px solid grey', height: '100%' }}>
-                    <div className="tab-pane fade show active px-3" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab" tabIndex="0" style={{ overflowWrap: 'break-word' }}>
-                        <p className='text-start py-2' style={{ borderBottom: '1px solid gray' }}>
-                            {datosFinal.status === 'Alive' ? <CircleIcon color="success" /> : datosFinal.status === 'Dead' ? <CircleIcon style={{ color: 'red' }} /> : <CircleIcon style={{ color: 'grey' }} />}
-                            {/* <CircleIcon color="success" /> */}
-                            <strong> Status </strong>
-                            {datosFinal.status === 'Alive' ? ' Vivo(a)' : datosFinal.status === 'Dead' ? ' Muerto(a)' : 'Desconocido'}
-                        </p>
-                        <p className='text-start py-2' style={{ borderBottom: '1px solid gray' }}>
-                            <EmojiPeopleIcon />
-                            <strong> Especie </strong>
-                            <span translate="yes">{datosFinal.species}</span>
-                        </p>
-                        <p className='text-start py-2' style={{ borderBottom: '1px solid gray' }}>
-                            <FaceRetouchingNaturalIcon />
-                            <strong> Genero </strong>
-                            {datosFinal.gender}
-                        </p>
-                        <p className='text-start py-2' style={{ borderBottom: '1px solid gray' }}>
-                            <CakeIcon />
-                            <strong> Creado en </strong>
-                            {datosFinal.created}
-                        </p>
-                        <p className='text-start py-2' style={{ borderBottom: '1px solid gray' }}>
-                            <HomeIcon />
-                            <strong> Origen </strong>
-                            {datosFinal.origin.name}
-                        </p>
+                        <button className="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Información General</button>
+                        <button className="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Episodios</button>
+                        <button className="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Localización</button>
+                        <Button onClick={() => toggleVisible(datosFinal.id)} variant="outlined" style={{ marginTop: '240px' }} color="secondary" startIcon={filtro ? <Favorite /> : <FavoriteBorderIcon />}>
+                            {filtro ? <div>Ya estoy entre tus favoritos!</div> : <div>Agregame a tus favoritos!</div>}
+                        </Button>
                     </div>
-                    <div className="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab" tabIndex="0">
+                    <div className="tab-content col-8 px-5 py-3" id="v-pills-tabContent" style={{ overflowWrap: 'break-word', borderLeft: '1px solid grey', height: '100%' }}>
+                        <div className="tab-pane fade show active px-3" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab" tabIndex="0" style={{ overflowWrap: 'break-word' }}>
+                            <p className='text-start py-2' style={{ borderBottom: '1px solid gray' }}>
+                                {datosFinal.status === 'Alive' ? <CircleIcon color="success" /> : datosFinal.status === 'Dead' ? <CircleIcon style={{ color: 'red' }} /> : <CircleIcon style={{ color: 'grey' }} />}
+                                {/* <CircleIcon color="success" /> */}
+                                <strong> Status </strong>
+                                {datosFinal.status === 'Alive' ? ' Vivo(a)' : datosFinal.status === 'Dead' ? ' Muerto(a)' : 'Desconocido'}
+                            </p>
+                            <p className='text-start py-2' style={{ borderBottom: '1px solid gray' }}>
+                                <EmojiPeopleIcon />
+                                <strong> Especie </strong>
+                                <span translate="yes">{datosFinal.species}</span>
+                            </p>
+                            <p className='text-start py-2' style={{ borderBottom: '1px solid gray' }}>
+                                <FaceRetouchingNaturalIcon />
+                                <strong> Genero </strong>
+                                {datosFinal.gender}
+                            </p>
+                            <p className='text-start py-2' style={{ borderBottom: '1px solid gray' }}>
+                                <CakeIcon />
+                                <strong> Creado en </strong>
+                                {datosFinal.created}
+                            </p>
+                            <p className='text-start py-2' style={{ borderBottom: '1px solid gray' }}>
+                                <HomeIcon />
+                                <strong> Origen </strong>
+                                {datosFinal.origin.name}
+                            </p>
+                        </div>
+                        <div className="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab" tabIndex="0">
+                            {/* <strong>Episodios:</strong> */}
+                            <div className=''>
+                                {/* obtiene una parte del arreglo inicial de episodios desde indexOfFirstItem hasta  indexOfLastItem y lo recorre*/}
+                                {doubles.slice(indexOfFirstItem, indexOfLastItem).map((item, index) => (
+                                    <div key={index}>
+                                        <ol className="list-group list-group-flush text-start" style={{ borderBottom: '1px solid gray' }}>
+                                            <li className="list-group-item d-flex justify-content-between align-items-start">
+                                                <div className="ms-2 me-auto">
+                                                    <div className="fw-bold">{item.name}</div>
+                                                    <span
+                                                        dangerouslySetInnerHTML={{
+                                                            __html: replaceSeason(replaceEpisode(item.episode)),
+                                                        }}
+                                                        style={{ fontSize: '12px', color: '#7B7B7B' }}
+                                                    />
+                                                </div>
+                                            </li>
+                                        </ol>
+
+                                    </div>
+                                ))}
+                            </div>
+
+                            <div>
+                                <Pagination
+                                    count={Math.ceil(doubles.length / itemsPerPage)}
+                                    page={currentPage}
+                                    onChange={(event, page) => handlePageChange(page)}
+                                    color="primary"
+                                    className='py-4'
+                                    style={{ justifyContent: 'center', display: 'flex' }}
+                                />
+                            </div>
+                        </div>
+                        <div className="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab" tabIndex="0">
+                            <p className='text-start py-2' style={{ borderBottom: '1px solid gray' }}>
+                                <LocationOnIcon />
+                                <strong> Localización </strong>
+                                <span translate="yes">{datosFinal.location.name}</span>
+                            </p>
+                            <p className='text-start py-2' style={{ borderBottom: '1px solid gray' }}>
+                                <TerrainIcon />
+                                <strong> Tipo de Localización </strong>
+                                <span translate="yes">{datosFinal.location.type}</span>
+                            </p>
+                            <p className='text-start py-2' style={{ borderBottom: '1px solid gray' }}>
+                                <RocketLaunchIcon />
+                                <strong> Dimensión </strong>
+                                {datosFinal.location.dimension}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                :
+                //vista mobile
+
+                <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+                    <div className='col-8 col-nombre-detalle-rm'>
+                        <h3 style={{ textAlign: 'left' }} className='px-3 h1RandM'>Información General</h3>
+                    </div>
+                    <ListItem>
+                        <ListItemAvatar>
+                            <Avatar>
+                                {datosFinal.status === 'Alive' ? <CircleIcon color="success" /> : datosFinal.status === 'Dead' ? <CircleIcon style={{ color: 'red' }} /> : <CircleIcon style={{ color: 'grey' }} />}
+                            </Avatar>
+                        </ListItemAvatar>
+                        <ListItemText primary="Status" secondary={datosFinal.status === 'Alive' ? ' Vivo(a)' : datosFinal.status === 'Dead' ? ' Muerto(a)' : 'Desconocido'}
+                        />
+                    </ListItem>
+                    <Divider variant="inset" component="li" />
+                    <ListItem>
+                        <ListItemAvatar>
+                            <Avatar>
+                                <EmojiPeopleIcon />
+                            </Avatar>
+                        </ListItemAvatar>
+                        <ListItemText primary="Especie" secondary={datosFinal.species} />
+                    </ListItem>
+                    <Divider variant="inset" component="li" />
+                    <ListItem>
+                        <ListItemAvatar>
+                            <Avatar>
+                                <FaceRetouchingNaturalIcon />
+                            </Avatar>
+                        </ListItemAvatar>
+                        <ListItemText primary="Género" secondary={datosFinal.gender} />
+                    </ListItem>
+                    <Divider variant="inset" component="li" />
+                    <ListItem>
+                        <ListItemAvatar>
+                            <Avatar>
+                                <CakeIcon />
+                            </Avatar>
+                        </ListItemAvatar>
+                        <ListItemText primary="Creado en" secondary={datosFinal.created} />
+                    </ListItem>
+                    <Divider variant="inset" component="li" />
+                    <ListItem>
+                        <ListItemAvatar>
+                            <Avatar>
+                                <HomeIcon />
+                            </Avatar>
+                        </ListItemAvatar>
+                        <ListItemText primary="Origen" secondary={datosFinal.origin.name} />
+                    </ListItem>
+
+                    <div className='col-8 col-nombre-detalle-rm'>
+                        <h3 style={{ textAlign: 'left' }} className='p-3 h1RandM'>Episodios</h3>
+                    </div>
+                    <div>
                         {/* <strong>Episodios:</strong> */}
-                        <div className=''>
+                        <div className='px-3'>
                             {/* obtiene una parte del arreglo inicial de episodios desde indexOfFirstItem hasta  indexOfLastItem y lo recorre*/}
                             {doubles.slice(indexOfFirstItem, indexOfLastItem).map((item, index) => (
                                 <div key={index}>
@@ -191,25 +327,38 @@ const InfoDetallada = () => {
                             />
                         </div>
                     </div>
-                    <div className="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab" tabIndex="0">
-                        <p className='text-start py-2' style={{ borderBottom: '1px solid gray' }}>
-                            <LocationOnIcon />
-                            <strong> Localización </strong>
-                            <span translate="yes">{datosFinal.location.name}</span>
-                        </p>
-                        <p className='text-start py-2' style={{ borderBottom: '1px solid gray' }}>
-                            <TerrainIcon />
-                            <strong> Tipo de Localización </strong>
-                            <span translate="yes">{datosFinal.location.type}</span>
-                        </p>
-                        <p className='text-start py-2' style={{ borderBottom: '1px solid gray' }}>
-                            <RocketLaunchIcon />
-                            <strong> Dimensión </strong>
-                            {datosFinal.location.dimension}
-                        </p>
+                    <div className='col-8 col-nombre-detalle-rm'>
+                        <h3 style={{ textAlign: 'left' }} className='p-3 h1RandM'>Localización</h3>
                     </div>
-                </div>
-            </div>
+                    <ListItem>
+                        <ListItemAvatar>
+                            <Avatar>
+                            <LocationOnIcon />
+                            </Avatar>
+                        </ListItemAvatar>
+                        <ListItemText primary="Localización" secondary={datosFinal.location.name}
+                        />
+                    </ListItem>
+                    <Divider variant="inset" component="li" />
+                    <ListItem>
+                        <ListItemAvatar>
+                            <Avatar>
+                            <TerrainIcon />
+                            </Avatar>
+                        </ListItemAvatar>
+                        <ListItemText primary="Tipo de Localización" secondary={datosFinal.location.type} />
+                    </ListItem>
+                    <Divider variant="inset" component="li" />
+                    <ListItem>
+                        <ListItemAvatar>
+                            <Avatar>
+                            <RocketLaunchIcon />
+                            </Avatar>
+                        </ListItemAvatar>
+                        <ListItemText primary="Dimensión" secondary={datosFinal.location.dimension} />
+                    </ListItem>
+                </List>}
+
         </div>
     );
 }
