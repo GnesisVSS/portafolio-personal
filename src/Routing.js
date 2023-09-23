@@ -27,6 +27,7 @@ import store from './pages/RickAndMorty/Redux/store/store';
 import { Provider } from 'react-redux';
 import InfoDetalladaId from './pages/RickAndMorty/InfoDetalladaId';
 import InfoFavoritos from './pages/RickAndMorty/InfoFavoritos';
+import VistaPreDemoRickyMorty from './pages/RickAndMorty/VistaPreDemoRickyMorty';
 
 
 function Routing() {
@@ -70,6 +71,7 @@ function Routing() {
                         <Route path='/DetalleGuardados' element={<VistaDetalleGuardados />} />
                         <Route path='/DetalleMisRecetas' element={<VistaDetalleRecetasUsuario />} />
                         <Route path='/DemoRecetas' element={<VistaPreDemo />} />
+                        <Route path='/DemoRickyMorty' element={<VistaPreDemoRickyMorty />} />
                     </Routes>
                 </Router>
             </section>
