@@ -143,13 +143,13 @@ const InfoDetallada = () => {
             </div>
             {/* <img src='/img/portal-rick-and-morty.gif' alt='' className='img1'></img> */}
             {windowWidth > 767 ?
-                <div className="d-flex align-items-start p-3  text-center" style={{ border: 'solid 1px gray', borderRadius: '10px', height: '440px' }}>
-                    <div className="nav flex-column nav-pills nav-fill me-4 col-3" id="v-pills-tab" role="tablist" aria-orientation="vertical" style={{ height: '100%' }}>
+                <div className="d-flex align-items-start p-3  text-center" style={{ border: 'solid 1px gray', borderRadius: '10px', height: '440px',marginBottom: '32px' }}>
+                    <div className="nav flex-column nav-pills nav-fill me-4 col-3 col-menu-lateral-info-rm" id="v-pills-tab" role="tablist" aria-orientation="vertical" style={{ height: '100%' }}>
 
                         <button className="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Información General</button>
                         <button className="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Episodios</button>
                         <button className="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Localización</button>
-                        <Button onClick={() => toggleVisible(datosFinal.id)} variant="outlined" style={{ marginTop: '240px' }} color="secondary" startIcon={filtro ? <Favorite /> : <FavoriteBorderIcon />}>
+                        <Button id='button-favoritos-pantallaGrande' onClick={() => toggleVisible(datosFinal.id)} variant="outlined" style={{ marginTop: '240px' }} color="secondary" startIcon={filtro ? <Favorite /> : <FavoriteBorderIcon />}>
                             {filtro ? <div>Ya estoy entre tus favoritos!</div> : <div>Agregame a tus favoritos!</div>}
                         </Button>
                     </div>
