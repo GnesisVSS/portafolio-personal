@@ -60,13 +60,13 @@ const InfoFavoritosVista = () => {
             <link rel="preconnect" href="https://fonts.googleapis.com" />
             <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
             <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Righteous&display=swap" rel="stylesheet"></link>
-            <div className="card">
+            <div className="card-rm">
                 {/* si existen datos en el localStorage y estos incluyen el id del personaje en cuestión se marcará como favorito, en caso de que no haya coincidencias se desmarca */}
                 {localStorageData && localStorageData.includes(id) ? <FavoriteIcon style={{ alignSelf: 'end', marginTop: '7px', marginRight: '7px', color: 'red' }} /> : <FavoriteIcon style={{ alignSelf: 'end', marginTop: '7px', marginRight: '7px', visibility: 'hidden' }} />}
-                <div className="card-photo" style={{ backgroundImage: `url(${image})`, backgroundRepeat: "no-repeat" }}></div>
-                <div className="card-title"> {name} <br />
+                <div className="card-rm-photo" style={{ backgroundImage: `url(${image})`, backgroundRepeat: "no-repeat" }}></div>
+                <div className="card-rm-title"> {name} <br />
                 </div>
-                <div className="card-socials">
+                <div className="card-rm-socials">
 
                     <a type='button' className="btn-mas" href={'/InfoDetallada'} onClick={() => handleClick(id)}>
                         Ver más
