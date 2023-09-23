@@ -333,7 +333,7 @@ const InfoDetallada = () => {
                     <ListItem>
                         <ListItemAvatar>
                             <Avatar>
-                            <LocationOnIcon />
+                                <LocationOnIcon />
                             </Avatar>
                         </ListItemAvatar>
                         <ListItemText primary="Localización" secondary={datosFinal.location.name}
@@ -343,7 +343,7 @@ const InfoDetallada = () => {
                     <ListItem>
                         <ListItemAvatar>
                             <Avatar>
-                            <TerrainIcon />
+                                <TerrainIcon />
                             </Avatar>
                         </ListItemAvatar>
                         <ListItemText primary="Tipo de Localización" secondary={datosFinal.location.type} />
@@ -352,13 +352,16 @@ const InfoDetallada = () => {
                     <ListItem>
                         <ListItemAvatar>
                             <Avatar>
-                            <RocketLaunchIcon />
+                                <RocketLaunchIcon />
                             </Avatar>
                         </ListItemAvatar>
                         <ListItemText primary="Dimensión" secondary={datosFinal.location.dimension} />
                     </ListItem>
-                </List>}
 
+                </List>}
+            <Button onClick={() => toggleVisible(datosFinal.id)} variant="outlined" style={{ margin: '12px' }} color="secondary" startIcon={filtro ? <Favorite /> : <FavoriteBorderIcon />}>
+                {filtro ? <div>Ya estoy entre tus favoritos!</div> : <div>Agregame a tus favoritos!</div>}
+            </Button>
         </div>
     );
 }
