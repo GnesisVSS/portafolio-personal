@@ -52,7 +52,7 @@ function Routing() {
     });
     return (
         <div>
-            <section style={{backgroundColor:'#EDE6F1'}}>
+            <section style={{backgroundColor:'white'}}>
                 <Router>
                     {/* Redirecciones para proteger nuestras rutas */}
                     <Routes>
