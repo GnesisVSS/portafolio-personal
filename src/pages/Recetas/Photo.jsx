@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-target-blank */
 /* eslint-disable react/prop-types */
-import React, {useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FormControl, IconButton, ImageList, ImageListItem, InputAdornment, InputLabel, OutlinedInput, TextField, Typography } from '@mui/material';
 import { createApi } from "unsplash-js";
 import SearchIcon from '@mui/icons-material/Search';
@@ -26,7 +26,7 @@ const Photo = (props) => {
     const [imgUrl, setImgUrl] = useState("");
     //useState para definir la variable que pasará como prop al componente padre   
     const [childInfo, setChildInfo] = useState('');
-    
+
     // UseEffect para que luego de renderizarse el componente obtenga las fotos desde la api
     // Se ejecuta solo una vez despues del renderizado inicial
     useEffect(() => {
@@ -44,10 +44,10 @@ const Photo = (props) => {
     const searchPhotos = async (e) => {
         e.preventDefault();
         api.search
-        // query(consulta realizada a la api) : query(obtenida del useState, valor dado en el formulario)
-        // orientation(orientacion de la foto generada) : squarish, para obtener una forma cuadrada
-        // perPage(fotos por pagina) : 12
-        // page(numero de paginas que mostrará) : 1 
+            // query(consulta realizada a la api) : query(obtenida del useState, valor dado en el formulario)
+            // orientation(orientacion de la foto generada) : squarish, para obtener una forma cuadrada
+            // perPage(fotos por pagina) : 12
+            // page(numero de paginas que mostrará) : 1 
             .getPhotos({ query: query, orientation: 'squarish', perPage: 12, page: 1 })
             .then((result) => {
                 setPhotosResponse(result);
@@ -71,7 +71,7 @@ const Photo = (props) => {
     // si la data recibida de la api de unsplash es nula se muestra cargando
     if (data === null) {
         return <div>Loading...</div>;
-    // En caso de que la data recibida contenga errores
+        // En caso de que la data recibida contenga errores
     } else if (data.errors) {
         return (
             <div>
@@ -81,57 +81,63 @@ const Photo = (props) => {
         );
     } else {
         return (
-            <div className="input-group mb-3">
-                <FormControl variant="outlined" fullWidth>
-                    <InputLabel htmlFor="formPhotoInput">Busca tu imagen de referencia</InputLabel>
-                    {/* Tiene como nombre y valor query para definir que en este campo se
-                    encuentra la consulta que se realiza a la api */}
-                    <OutlinedInput
-                        name="query"
-                        className="input"
-                        value={query}
-                        id="formPhotoInput"
-                        label="Busca tu imagen de referencia"
-                        // se especifica que al cambiar el campo la query es lo ingresado por el usuario
-                        onChange={(e) => setQuery(e.target.value)} endAdornment={
-                            <InputAdornment position="end">
-                            {/* Al hacer click llama a la funcion para buscar Fotos */}
-                                <IconButton aria-label="delete" size="small" onClick={searchPhotos} name="photoSub" id="photoSub" value="photo">
-                                    <SearchIcon fontSize="small" />
-                                </IconButton>
-                            </InputAdornment>
+            <div>
 
-                        }
-                    />
-                </FormControl>
-
-                {/* Lista de imagenes que se muestran en 3 columnas */}
-                <ImageList cols={3} >
-                {/* Se recorre el array con los resultados de la query */}
-                    {data.response.results.map((photo, index) => (
-                        //se tiene como key el id de la foto rescatada del array
-                        <ImageListItem id="imgList" key={photo.id}>
+                <div className="input-group mb-3">
+                    
+                    <div className="form-floating">
+                    <input
+                            name="query"
+                            type="text"
+                            className="form-control"
+                            value={query}
+                            id="formPhotoInput"
+                            placeholder="Busca tu imagen de referencia (opcional)"
+                            onChange={(e) => setQuery(e.target.value)}
+                        />
+                        <label htmlFor="formPhotoInput">Busca tu imagen de referencia(opcional)</label>
+                    </div>
+                    <button className="btn btn-outline-secondary input-group-text" type="button" onClick={searchPhotos} name="photoSub" id="photoSub" value="photo">
+                        <SearchIcon fontSize="small" />
+                    </button>
+                </div>
+                <div className="input-group mb-3">
+                    <div className="form-floating">
+                        
+                    </div>
 
 
-                            <img
-                                src={`${photo.urls.raw}?w=164&h=164&fit=crop&auto=format`}
-                                srcSet={`${photo.urls.raw}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
-                                onClick={() => cambiarParrafo(photo, index)}
-                                id="phot"
-                                //Si la imagen es seleccionada (definido en la funcion
-                                //cambiar parrafo, si este valor coincide con el index seleccionado
-                                //el className queda como active para tener el estilo definido
-                                //en css, de lo contrario queda sin esta clase aplicada)
-                                className={selectedImageIndex === index ? "active" : ""}
-                            />
-                            
+                </div>
+
+                <div className="input-group mb-3">
+                    {/* Lista de imagenes que se muestran en 3 columnas */}
+                    <ImageList cols={3} >
+                        {/* Se recorre el array con los resultados de la query */}
+                        {data.response.results.map((photo, index) => (
+                            //se tiene como key el id de la foto rescatada del array
+                            <ImageListItem id="imgList" key={photo.id}>
+
+
+                                <img
+                                    src={`${photo.urls.raw}?w=164&h=164&fit=crop&auto=format`}
+                                    srcSet={`${photo.urls.raw}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+                                    onClick={() => cambiarParrafo(photo, index)}
+                                    id="phot"
+                                    //Si la imagen es seleccionada (definido en la funcion
+                                    //cambiar parrafo, si este valor coincide con el index seleccionado
+                                    //el className queda como active para tener el estilo definido
+                                    //en css, de lo contrario queda sin esta clase aplicada)
+                                    className={selectedImageIndex === index ? "active" : ""}
+                                />
 
 
 
-                        </ImageListItem>
 
-                    ))}
-                </ImageList>
+                            </ImageListItem>
+
+                        ))}
+                    </ImageList>
+                </div>
             </div>
         );
     }

@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { Form, Formik } from 'formik';
 import { guardar } from '../../../api/registro.api';
+import NavbarRecetas from '../Navs/navbar-recetas';
+import { FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput, TextField } from '@mui/material';
+import { Visibility, VisibilityOff } from '@mui/icons-material';
 
 const Registro = () => {
 
@@ -13,8 +16,17 @@ const Registro = () => {
     var fondo = document.getElementById('root');
     fondo.style.backgroundColor = "white";
 
+    const [showPassword, setShowPassword] = React.useState(false);
+
+    const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+    const handleMouseDownPassword = (event) => {
+        event.preventDefault();
+    };
+
     return (
         <section className='py-5'>
+            <NavbarRecetas />
             <div className="container col-sm-8 mx-auto">
                 <div className="row">
                     <div className="card mb-3 ps-0">
@@ -48,63 +60,73 @@ const Registro = () => {
                                                 <Form onSubmit={handleSubmit}>
                                                     {/* <label>nombre</label> */}
                                                     <div className="input-group mb-3">
-                                                        <input
-                                                            className="form-control"
-                                                            type="text"
+                                                        <TextField fullWidth sx={{ m: 1 }}
                                                             name='nombre'
-                                                            placeholder="Ingresa tu nombre"
                                                             onChange={handleChange}
-                                                        />
+                                                            id="outlined-basic"
+                                                            label="Nombre"
+                                                            variant="outlined" />
                                                     </div>
 
 
                                                     {/* <label>apellido</label> */}
                                                     <div className="input-group mb-3">
-                                                        <input
-                                                            className="form-control"
-                                                            type="text"
+                                                        <TextField fullWidth sx={{ m: 1 }}
                                                             name='apellido'
-                                                            placeholder="Ingresa tu apellido"
                                                             onChange={handleChange}
-                                                        />
+                                                            id="outlined-basic"
+                                                            label="Apellido"
+                                                            variant="outlined" />
+
                                                     </div>
 
 
                                                     {/* <label>correo</label> */}
                                                     <div className="input-group mb-3">
-                                                        <input
-                                                            className="form-control"
-                                                            type="text"
+                                                        <TextField fullWidth sx={{ m: 1 }}
                                                             name='correo'
-                                                            placeholder="Ingresa tu correo"
                                                             onChange={handleChange}
-                                                        />
+                                                            id="outlined-basic"
+                                                            label="Correo Electrónico"
+                                                            variant="outlined" />
                                                     </div>
 
 
                                                     {/* <label>usuario</label> */}
                                                     <div className="input-group mb-3">
-                                                        <input
-                                                            className="form-control"
-                                                            type="text"
+                                                        <TextField fullWidth sx={{ m: 1 }}
                                                             name='usuario'
-                                                            placeholder="Ingresa tu nombre de usuario"
-                                                            onChange={handleChange} />
+                                                            onChange={handleChange}
+                                                            id="outlined-basic"
+                                                            label="Nombre de Usuario"
+                                                            variant="outlined" />
                                                     </div>
 
 
                                                     {/* <label>contrasena</label> */}
                                                     <div className="input-group mb-3">
-                                                        <input
-                                                            className="form-control form-icono"
-                                                            type={mostrarPass ? "text" : "password"}
-                                                            name='contrasena'
-                                                            placeholder="Ingresa tu contraseña"
-                                                            onChange={handleChange} />
-                                                        <span className='input-group-text icono pointer' role="button" onClick={() =>
-                                                            setMostrarPass(!mostrarPass)}>
-                                                            {mostrarPass ? <i className="bi bi-eye-fill"></i> : <i className="bi bi-eye-slash-fill"></i>}
-                                                        </span>
+                                                        <FormControl fullWidth sx={{ m: 1 }} variant="outlined">
+                                                            <InputLabel name='contrasena' htmlFor="contrasena">Contraseña</InputLabel>
+                                                            <OutlinedInput
+                                                                id="contrasena"
+                                                                type={showPassword ? 'text' : 'password'}
+                                                                onChange={handleChange}
+                                                                endAdornment={
+                                                                    <InputAdornment position="end">
+                                                                        <IconButton
+                                                                            aria-label="toggle password visibility"
+                                                                            onClick={handleClickShowPassword}
+                                                                            onMouseDown={handleMouseDownPassword}
+                                                                            edge="end"
+                                                                        >
+                                                                            {showPassword ? <VisibilityOff /> : <Visibility />}
+                                                                        </IconButton>
+                                                                    </InputAdornment>
+                                                                }
+                                                                label="Contraseña"
+
+                                                            />
+                                                        </FormControl>
                                                     </div>
 
                                                     <div style={estilo2} className="py-2">

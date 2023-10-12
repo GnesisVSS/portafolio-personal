@@ -428,21 +428,21 @@
 }
 
 /* Estilos para los campos con clase "error" */
-.was-validated .form-control:invalid:focus, .was-validated .form-select:invalid:focus {
-  outline: none;
+.form-detalles-val .was-validated .form-control:invalid:focus, .was-validated .form-select:invalid:focus {
+  /* outline: none; */
   border: solid 2px red;
   box-shadow: none; /* Estilo de enfoque personalizado en caso de error */
 }
 
-.was-validated .form-control:valid:focus, .was-validated .form-select:valid:focus{
-  outline: none;
+.form-detalles-val .was-validated .form-control:valid:focus, .was-validated .form-select:valid:focus{
+  /* outline: none; */
   border: solid 2px green;
   box-shadow: none; 
 }
 
 /* Estilos para los campos sin clase "error" */
-input:not(.error):focus, .form-select:focus{
-  outline: none; /* Eliminar estilo de enfoque en otros casos */
+.form-detalles-val input:not(.error):focus, .form-select:focus{
+  /* outline: none; Eliminar estilo de enfoque en otros casos */
   
   border: solid 2px rgb(51, 153, 255);
   box-shadow: none;

@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
 import { Form, Formik } from 'formik';
-import { UNSAFE_useScrollRestoration, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { carga } from '../../../funciones/carga';
 import NavbarRecetas from './../Navs/navbar-recetas';
-import { Alert, FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput, TextField } from '@mui/material';
+import { Alert, Box, IconButton } from '@mui/material';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import InputLabel from '@mui/material/InputLabel';
+import InputAdornment from '@mui/material/InputAdornment';
+import FormHelperText from '@mui/material/FormHelperText';
+import FormControl from '@mui/material/FormControl';
+import TextField from '@mui/material/TextField';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { obtenerUsuario } from '../../../api/registro.api';
-
 const Login = () => {
 
     const [showPassword, setShowPassword] = React.useState(false);
@@ -57,78 +62,82 @@ const Login = () => {
                                             <li style={{ textAlign: 'start' }}> <strong>Pass:</strong> root</li>
                                         </div>
                                     </Alert>
-                                    <div className="card-text p-4">
-                                        <Formik
-                                            initialValues={{
-                                                correo: "",
-                                                contrasena: ""
-                                            }}
-                                            onSubmit={async (values) => {
-                                                console.log(values)
-                                                try {
-                                                    const response = await carga(values)
-                                                    console.log(response)
-                                                } catch (error) {
-                                                    console.log(error)
-                                                }
-                                            }}
-                                        >
-                                            {({ handleChange, handleSubmit }) => (
-                                                <Form onSubmit={handleSubmit} >
-                                                    <div className="input-group mb-3">
-                                                        <TextField fullWidth sx={{ m: 1 }} name='correo' onChange={handleChange} id="outlined-basic" label="Correo electrónico" variant="outlined" />
-                                                    </div>
-
-                                                    <div className="input-group mb-3">
-                                                        <FormControl fullWidth sx={{ m: 1 }} variant="outlined">
-                                                            <InputLabel name='contrasena' htmlFor="contrasena">Contraseña</InputLabel>
-                                                            <OutlinedInput
-                                                                id="contrasena"
-                                                                type={showPassword ? 'text' : 'password'}
-                                                                onChange={handleChange}
-                                                                endAdornment={
-                                                                    <InputAdornment position="end">
-                                                                        <IconButton
-                                                                            aria-label="toggle password visibility"
-                                                                            onClick={handleClickShowPassword}
-                                                                            onMouseDown={handleMouseDownPassword}
-                                                                            edge="end"
-                                                                        >
-                                                                            {showPassword ? <VisibilityOff /> : <Visibility />}
-                                                                        </IconButton>
-                                                                    </InputAdornment>
-                                                                }
-                                                                label="Contraseña"
-
-                                                            />
-                                                        </FormControl>
-                                                    </div>
-                                                    <div style={estilo2} className="py-2">
-
-                                                        <button type="submit" className="button-inicio" >
-                                                            {/* <span >Loading...</span> */}
-                                                            <div className="visually-hidden" id='loading' role="status" >
-                                                                <div className="spinner-border spinner-border-sm" role="status" />
+                                        <div>
+                                            <div className="card-text p-4">
+                                                <Formik
+                                                    initialValues={{
+                                                        correo: "",
+                                                        contrasena: ""
+                                                    }}
+                                                    onSubmit={async (values) => {
+                                                        console.log(values)
+                                                        try {
+                                                            const response = await carga(values)
+                                                            console.log(response)
+                                                        } catch (error) {
+                                                            console.log(error)
+                                                        }
+                                                    }}
+                                                >
+                                                    {({ handleChange, handleSubmit }) => (
+                                                        <Form onSubmit={handleSubmit} >
+                                                            <div className="input-group mb-3">
+                                                                <TextField fullWidth sx={{ m: 1 }} name='correo' onChange={handleChange} id="outlined-basic" label="Correo electrónico" variant="outlined" />
                                                             </div>
 
-                                                            <span className="" id='iniciar'>Iniciar sesión</span>
-                                                        </button>
-                                                    </div>
-                                                </Form>
-                                            )}
-                                        </Formik>
-                                        <hr />
-                                        <div className='visually-hidden' id='alerta'>
-                                            <p className="text-danger" ><small>La contraseña no es correcta. Compruébala.</small></p>
+                                                            <div className="input-group mb-3">
+                                                                <FormControl fullWidth sx={{ m: 1 }} variant="outlined">
+                                                                    <InputLabel name='contrasena' htmlFor="contrasena">Contraseña</InputLabel>
+                                                                    <OutlinedInput
+                                                                        id="contrasena"
+                                                                        type={showPassword ? 'text' : 'password'}
+                                                                        onChange={handleChange}
+                                                                        endAdornment={
+                                                                            <InputAdornment position="end">
+                                                                                <IconButton
+                                                                                    aria-label="toggle password visibility"
+                                                                                    onClick={handleClickShowPassword}
+                                                                                    onMouseDown={handleMouseDownPassword}
+                                                                                    edge="end"
+                                                                                >
+                                                                                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                                                                                </IconButton>
+                                                                            </InputAdornment>
+                                                                        }
+                                                                        label="Contraseña"
+
+                                                                    />
+                                                                </FormControl>
+                                                            </div>
+                                                            <div style={estilo2} className="py-2">
+
+                                                                <button type="submit" className="button-inicio" >
+                                                                    {/* <span >Loading...</span> */}
+                                                                    <div className="visually-hidden" id='loading' role="status" >
+                                                                        <div className="spinner-border spinner-border-sm" role="status" />
+                                                                    </div>
+
+                                                                    <span className="" id='iniciar'>Iniciar sesión</span>
+                                                                </button>
+                                                            </div>
+                                                        </Form>
+                                                    )}
+                                                </Formik>
+                                                
+                                                <hr />
+                                                <div className='visually-hidden' id='alerta'>
+                                                    <p className="text-danger" ><small>La contraseña no es correcta. Compruébala.</small></p>
+                                                </div>
+                                                <div className='visually-hidden' id='alerta-2'>
+                                                    <p className="text-danger" ><small>El usuario no existe, por favor comprueba el correo electronico y vuelve a intentarlo.</small></p>
+                                                </div>
+                                                <div className="card-text text-center">
+                                                    <small><a href="/registro" htmlFor="basic-url" className="form-label">¿No tienes una cuenta? Registrate
+                                                        aquí</a></small>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div className='visually-hidden' id='alerta-2'>
-                                            <p className="text-danger" ><small>El usuario no existe, por favor comprueba el correo electronico y vuelve a intentarlo.</small></p>
-                                        </div>
-                                        <div className="card-text text-center">
-                                            <small><a href="/registro" htmlFor="basic-url" className="form-label">¿No tienes una cuenta? Registrate
-                                                aquí</a></small>
-                                        </div>
-                                    </div>
+
 
                                 </div>
                             </div>

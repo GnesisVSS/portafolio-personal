@@ -199,8 +199,10 @@ const FormIngredientes = () => {
             // verifica si existe un objeto en esta posicion
             if (newState.length <= index) {
                 newState[index] = {}; // inicializamos el objeto en el índice si aún no existe
+            } else {
+                newState[index][field] = value; // actualizamos el campo correspondiente
             }
-            newState[index][field] = value; // actualizamos el campo correspondiente
+
             return newState; // devolvemos el nuevo estado
         });
         // se llama a validaciones
@@ -232,7 +234,7 @@ const FormIngredientes = () => {
                                     minLength="3"
                                     required
                                 />
-                                <label htmlFor="nombre1" style={{color: 'grey'}}>Nombre Ingrediente</label>
+                                <label htmlFor="nombre1" style={{ color: 'grey' }}>Nombre Ingrediente</label>
                                 {mensajeError.nombre1 ? <div className="invalid-feedback">{mensajeError.nombre1}</div> : <div className="invalid-feedback">Por favor,ingrese un nombre</div>}
                             </div>
                         </div>
@@ -251,7 +253,7 @@ const FormIngredientes = () => {
                                     required
                                     min={1}
                                 />
-                                <label htmlFor="cantidad1" style={{color: 'grey'}}>Cantidad</label>
+                                <label htmlFor="cantidad1" style={{ color: 'grey' }}>Cantidad</label>
                                 {mensajeError.cantidad1 ? <div className="invalid-feedback">{mensajeError.cantidad1}</div> : <div className="invalid-feedback">Por favor, ingrese una cantidad</div>}
                             </div>
                         </div>
@@ -276,7 +278,7 @@ const FormIngredientes = () => {
                                 <div className="invalid-feedback">
                                     Por favor, selecciona una unidad de medida
                                 </div>
-                                <label htmlFor="unidad1" style={{color: 'grey'}}>Unidad de Medida</label>
+                                <label htmlFor="unidad1" style={{ color: 'grey' }}>Unidad de Medida</label>
                             </div>
 
                         </div>
@@ -301,7 +303,7 @@ const FormIngredientes = () => {
                                     minLength="3"
                                     required
                                 />
-                                <label htmlFor="nombre2" style={{color: 'grey'}}>Nombre Ingrediente</label>
+                                <label htmlFor="nombre2" style={{ color: 'grey' }}>Nombre Ingrediente</label>
                                 {mensajeError.nombre2 ? <div className="invalid-feedback">{mensajeError.nombre2}</div> : <div className="invalid-feedback">Por favor,ingrese un nombre</div>}
                             </div>
                         </div>
@@ -319,7 +321,7 @@ const FormIngredientes = () => {
                                     required
                                     min={1}
                                 />
-                                <label htmlFor="cantidad2" style={{color: 'grey'}}>Cantidad</label>
+                                <label htmlFor="cantidad2" style={{ color: 'grey' }}>Cantidad</label>
                                 {mensajeError.cantidad2 ? <div className="invalid-feedback">{mensajeError.cantidad2}</div> : <div className="invalid-feedback">Por favor, ingrese una cantidad</div>}
                             </div>
                         </div>
@@ -344,7 +346,7 @@ const FormIngredientes = () => {
                                 <div className="invalid-feedback">
                                     Por favor, selecciona una unidad de medida
                                 </div>
-                                <label htmlFor="unidad2" style={{color: 'grey'}}>Unidad de Medida</label>
+                                <label htmlFor="unidad2" style={{ color: 'grey' }}>Unidad de Medida</label>
                             </div>
 
                         </div>
@@ -369,7 +371,7 @@ const FormIngredientes = () => {
                                     minLength="3"
                                     required
                                 />
-                                <label htmlFor="nombre3" style={{color: 'grey'}}>Nombre Ingrediente</label>
+                                <label htmlFor="nombre3" style={{ color: 'grey' }}>Nombre Ingrediente</label>
                                 {mensajeError.nombre3 ? <div className="invalid-feedback">{mensajeError.nombre3}</div> : <div className="invalid-feedback">Por favor,ingrese un nombre</div>}
                             </div>
                         </div>
@@ -387,7 +389,7 @@ const FormIngredientes = () => {
                                     required
                                     min={1}
                                 />
-                                <label htmlFor="cantidad3" style={{color: 'grey'}}>Cantidad</label>
+                                <label htmlFor="cantidad3" style={{ color: 'grey' }}>Cantidad</label>
                                 {mensajeError.cantidad3 ? <div className="invalid-feedback">{mensajeError.cantidad3}</div> : <div className="invalid-feedback">Por favor, ingrese una cantidad</div>}
                             </div>
                         </div>
@@ -412,7 +414,7 @@ const FormIngredientes = () => {
                                 <div className="invalid-feedback">
                                     Por favor, selecciona una unidad de medida
                                 </div>
-                                <label htmlFor="unidad3" style={{color: 'grey'}}>Unidad de Medida</label>
+                                <label htmlFor="unidad3" style={{ color: 'grey' }}>Unidad de Medida</label>
                             </div>
                         </div>
 
@@ -447,7 +449,7 @@ const FormIngredientes = () => {
                                                 setAdditionalInputs(updatedInputs);
                                             }}
                                         />
-                                        <label htmlFor={`nombreExtra-${index}`} style={{color: 'grey'}}>Nombre Ingrediente</label>
+                                        <label htmlFor={`nombreExtra-${index}`} style={{ color: 'grey' }}>Nombre Ingrediente</label>
                                         {mensajeError[`nombreExtra-${index}`] ? <div className="invalid-feedback">{mensajeError[`nombreExtra-${index}`]}</div> : <div className="invalid-feedback">Por favor,ingrese un nombre</div>}
                                     </div>
                                 </div>
@@ -471,7 +473,7 @@ const FormIngredientes = () => {
                                                 setAdditionalInputs(updatedInputs);
                                             }}
                                         />
-                                        <label htmlFor={`cantidadExtra-${index}`} style={{color: 'grey'}}>Cantidad</label>
+                                        <label htmlFor={`cantidadExtra-${index}`} style={{ color: 'grey' }}>Cantidad</label>
                                         {mensajeError[`cantidadExtra-${index}`] ? <div className="invalid-feedback">{mensajeError[`cantidadExtra-${index}`]}</div> : <div className="invalid-feedback">Por favor,ingrese un nombre</div>}
                                     </div>
                                 </div>
@@ -514,7 +516,7 @@ const FormIngredientes = () => {
                                             <option value={"c.s."}>Cucharada sopera(c.s.) </option>
                                             <option value={"c.c."}>Cucharadita de postre(c.c.) </option>
                                         </select>
-                                        <label htmlFor={`unidadExtra-${index}`} style={{color: 'grey'}}>Cantidad</label>
+                                        <label htmlFor={`unidadExtra-${index}`} style={{ color: 'grey' }}>Cantidad</label>
                                         <div className="invalid-feedback">
                                             Por favor, selecciona una unidad de medida
                                         </div>
