@@ -101,13 +101,6 @@ const Photo = (props) => {
                         <SearchIcon fontSize="small" />
                     </button>
                 </div>
-                <div className="input-group mb-3">
-                    <div className="form-floating">
-                        
-                    </div>
-
-
-                </div>
 
                 <div className="input-group mb-3">
                     {/* Lista de imagenes que se muestran en 3 columnas */}

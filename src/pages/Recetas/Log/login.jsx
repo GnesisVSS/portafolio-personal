@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Formik } from 'formik';
+import { Field, Form, Formik, useFormik } from 'formik';
 import { useNavigate } from 'react-router-dom';
 import { carga } from '../../../funciones/carga';
 import NavbarRecetas from './../Navs/navbar-recetas';
@@ -13,6 +13,9 @@ import TextField from '@mui/material/TextField';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { obtenerUsuario } from '../../../api/registro.api';
+import * as Yup from 'yup';
+
+
 const Login = () => {
 
     const [showPassword, setShowPassword] = React.useState(false);
@@ -41,6 +44,28 @@ const Login = () => {
         // setImage(new Blob([response.data], { type: "image/jpeg" }));
     }
 
+    const valSchema = Yup.object().shape({
+        correo: Yup.string()
+            .required('El correo es obligatorio'),
+        contrasena: Yup.string()
+            .required('La contraseña es obligatoria'),
+    })
+
+    const formik = useFormik({
+        initialValues: {
+            correo: "",
+            contrasena: ""
+        },
+        validationSchema: valSchema,
+        onSubmit: async (values) => {
+            console.log(values)
+            try {
+                await carga(values)
+            } catch (error) {
+                console.log(error)
+            }
+        }
+    });
 
     return (
 
@@ -62,81 +87,105 @@ const Login = () => {
                                             <li style={{ textAlign: 'start' }}> <strong>Pass:</strong> root</li>
                                         </div>
                                     </Alert>
-                                        <div>
-                                            <div className="card-text p-4">
-                                                <Formik
-                                                    initialValues={{
-                                                        correo: "",
-                                                        contrasena: ""
-                                                    }}
-                                                    onSubmit={async (values) => {
-                                                        console.log(values)
-                                                        try {
-                                                            const response = await carga(values)
-                                                            console.log(response)
-                                                        } catch (error) {
-                                                            console.log(error)
-                                                        }
-                                                    }}
-                                                >
-                                                    {({ handleChange, handleSubmit }) => (
-                                                        <Form onSubmit={handleSubmit} >
-                                                            <div className="input-group mb-3">
-                                                                <TextField fullWidth sx={{ m: 1 }} name='correo' onChange={handleChange} id="outlined-basic" label="Correo electrónico" variant="outlined" />
+                                    <div>
+                                        <div className="card-text p-4">
+                                            <Formik>
+                                                <Form noValidate onSubmit={formik.handleSubmit} >
+                                                    <div className="form-floating mb-3">
+                                                        <Field className={formik.touched.correo && Boolean(formik.errors.correo) ? 'form-control is-invalid' : 'form-control'} name='correo' onChange={formik.handleChange} id="outlined-basic" placeholder='Correo electrónico' variant="outlined" />
+                                                        <div className="invalid-feedback">{formik.errors.correo}</div>
+                                                        <label htmlFor="correo">Correo electrónico</label>
+                                                    </div>
+
+                                                    <div className="input-group has-validation mb-3 ">
+
+                                                        <div className={formik.touched.contrasena && Boolean(formik.errors.contrasena) ? 'form-floating is-invalid' : 'form-floating'}>
+                                                            <input
+                                                                name='contrasena'
+                                                                className={formik.touched.contrasena && Boolean(formik.errors.contrasena) ? 'form-control is-invalid' : 'form-control'}
+                                                                id="contrasena"
+                                                                type={showPassword ? 'text' : 'password'}
+                                                                onChange={formik.handleChange}
+                                                                placeholder='contraseña'
+                                                            />
+                                                            
+                                                            <label htmlFor="contrasena">Contraseña</label>
+                                                        </div>
+                                                        <button className="btn btn-outline-secondary input-group-text" type="button" onClick={handleClickShowPassword}
+                                                            onMouseDown={handleMouseDownPassword}>
+                                                            <IconButton
+                                                                aria-label="toggle password visibility"
+                                                            >
+                                                                {showPassword ? <VisibilityOff/> : <Visibility />}
+                                                            </IconButton>
+                                                        </button>
+                                                        <div className="invalid-feedback">{formik.errors.contrasena}</div>
+                                                    </div>
+
+                                                    {/* <div className="input-group has-validation ">
+                                                        
+                                                        <div className={formik.touched.contrasena && Boolean(formik.errors.contrasena) ? 'form-floating is-invalid' : 'form-floating'}>
+                                                            <input type="text" className={formik.touched.contrasena && Boolean(formik.errors.contrasena) ? 'form-control is-invalid' : 'form-control'} id="floatingInputGroup2" placeholder="Username" required/>
+                                                                <label htmlFor="floatingInputGroup2">Username</label>
+                                                        </div>
+                                                        <span className="input-group-text">@</span>
+                                                        <div className="invalid-feedback">
+                                                            Please choose a username.
+                                                        </div>
+                                                    </div> */}
+
+                                                    {/* 
+                                                        <div className="input-group mb-3">
+                                                            <FormControl fullWidth sx={{ m: 1 }} variant="outlined">
+                                                                <InputLabel name='contrasena' htmlFor="contrasena">Contraseña</InputLabel>
+                                                                <OutlinedInput
+                                                                    id="contrasena"
+                                                                    type={showPassword ? 'text' : 'password'}
+                                                                    onChange={handleChange}
+                                                                    endAdornment={
+                                                                        <InputAdornment position="end">
+                                                                            <IconButton
+                                                                                aria-label="toggle password visibility"
+                                                                                onClick={handleClickShowPassword}
+                                                                                onMouseDown={handleMouseDownPassword}
+                                                                                edge="end"
+                                                                            >
+                                                                                {showPassword ? <VisibilityOff /> : <Visibility />}
+                                                                            </IconButton>
+                                                                        </InputAdornment>
+                                                                    }
+                                                                    label="Contraseña"
+
+                                                                />
+                                                            </FormControl>
+                                                        </div> */}
+                                                    <div style={estilo2} className="py-2">
+
+                                                        <button type="submit" className="button-inicio" >
+                                                            {/* <span >Loading...</span> */}
+                                                            <div className="visually-hidden" id='loading' role="status" >
+                                                                <div className="spinner-border spinner-border-sm" role="status" />
                                                             </div>
 
-                                                            <div className="input-group mb-3">
-                                                                <FormControl fullWidth sx={{ m: 1 }} variant="outlined">
-                                                                    <InputLabel name='contrasena' htmlFor="contrasena">Contraseña</InputLabel>
-                                                                    <OutlinedInput
-                                                                        id="contrasena"
-                                                                        type={showPassword ? 'text' : 'password'}
-                                                                        onChange={handleChange}
-                                                                        endAdornment={
-                                                                            <InputAdornment position="end">
-                                                                                <IconButton
-                                                                                    aria-label="toggle password visibility"
-                                                                                    onClick={handleClickShowPassword}
-                                                                                    onMouseDown={handleMouseDownPassword}
-                                                                                    edge="end"
-                                                                                >
-                                                                                    {showPassword ? <VisibilityOff /> : <Visibility />}
-                                                                                </IconButton>
-                                                                            </InputAdornment>
-                                                                        }
-                                                                        label="Contraseña"
+                                                            <span className="" id='iniciar'>Iniciar sesión</span>
+                                                        </button>
+                                                    </div>
+                                                </Form>
+                                            </Formik>
 
-                                                                    />
-                                                                </FormControl>
-                                                            </div>
-                                                            <div style={estilo2} className="py-2">
-
-                                                                <button type="submit" className="button-inicio" >
-                                                                    {/* <span >Loading...</span> */}
-                                                                    <div className="visually-hidden" id='loading' role="status" >
-                                                                        <div className="spinner-border spinner-border-sm" role="status" />
-                                                                    </div>
-
-                                                                    <span className="" id='iniciar'>Iniciar sesión</span>
-                                                                </button>
-                                                            </div>
-                                                        </Form>
-                                                    )}
-                                                </Formik>
-                                                
-                                                <hr />
-                                                <div className='visually-hidden' id='alerta'>
-                                                    <p className="text-danger" ><small>La contraseña no es correcta. Compruébala.</small></p>
-                                                </div>
-                                                <div className='visually-hidden' id='alerta-2'>
-                                                    <p className="text-danger" ><small>El usuario no existe, por favor comprueba el correo electronico y vuelve a intentarlo.</small></p>
-                                                </div>
-                                                <div className="card-text text-center">
-                                                    <small><a href="/registro" htmlFor="basic-url" className="form-label">¿No tienes una cuenta? Registrate
-                                                        aquí</a></small>
-                                                </div>
+                                            <hr />
+                                            <div className='visually-hidden' id='alerta'>
+                                                <p className="text-danger" ><small>La contraseña no es correcta. Compruébala.</small></p>
+                                            </div>
+                                            <div className='visually-hidden' id='alerta-2'>
+                                                <p className="text-danger" ><small>El usuario no existe, por favor comprueba el correo electronico y vuelve a intentarlo.</small></p>
+                                            </div>
+                                            <div className="card-text text-center">
+                                                <small><a href="/registro" htmlFor="basic-url" className="form-label">¿No tienes una cuenta? Registrate
+                                                    aquí</a></small>
                                             </div>
                                         </div>
+                                    </div>
 
 
                                 </div>
