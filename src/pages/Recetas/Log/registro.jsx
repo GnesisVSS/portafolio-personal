@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Form, Formik } from 'formik';
+import { Field, Form, Formik, useFormik } from 'formik';
 import { guardar } from '../../../api/registro.api';
 import NavbarRecetas from '../Navs/navbar-recetas';
 import { FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput, TextField } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
+import * as Yup from 'yup';
 
 const Registro = () => {
 
@@ -24,6 +25,41 @@ const Registro = () => {
         event.preventDefault();
     };
 
+
+    const valSchema = Yup.object().shape({
+        nombre: Yup.string()
+            .required('El nombre es obligatorio'),
+        apellido: Yup.string()
+            .required('El apellido es obligatorio'),
+        correo: Yup.string()
+            .email('Ingresa un correo válido')
+            .required('El correo es obligatorio'),
+        usuario: Yup.string()
+            .required('El usuario es obligatorio'),
+        contrasena: Yup.string()
+            .required('La contraseña es obligatoria'),
+    })
+
+    const formik = useFormik({
+        initialValues: {
+            nombre: "",
+            apellido: "",
+            correo: "",
+            usuario: "",
+            contrasena: ""
+        },
+        validationSchema: valSchema,
+        onSubmit: async (values) => {
+            console.log(values)
+            try {
+                const response = await guardar(values)
+                console.log(response)
+            } catch (error) {
+                console.log(error)
+            }
+        }
+    });
+
     return (
         <section className='py-5'>
             <NavbarRecetas />
@@ -38,102 +74,69 @@ const Registro = () => {
                                 <div className="card-body p-4">
                                     <h3 className="card-title text-center fw-bold">Registrate</h3>
                                     <div className="card-text p-4">
-                                        <Formik
-                                            initialValues={{
-                                                nombre: "",
-                                                apellido: "",
-                                                correo: "",
-                                                usuario: "",
-                                                contrasena: ""
-                                            }}
-                                            onSubmit={async (values) => {
-                                                console.log(values)
-                                                try {
-                                                    const response = await guardar(values)
-                                                    console.log(response)
-                                                } catch (error) {
-                                                    console.log(error)
-                                                }
-                                            }}
-                                        >
-                                            {({ handleChange, handleSubmit }) => (
-                                                <Form onSubmit={handleSubmit}>
-                                                    {/* <label>nombre</label> */}
-                                                    <div className="input-group mb-3">
-                                                        <TextField fullWidth sx={{ m: 1 }}
-                                                            name='nombre'
-                                                            onChange={handleChange}
-                                                            id="outlined-basic"
-                                                            label="Nombre"
-                                                            variant="outlined" />
+                                        <Formik>
+                                            <Form noValidate onSubmit={formik.handleSubmit}>
+                                                {/* NOMBRE */}
+                                                <div className="form-floating mb-3">
+                                                    <Field className={formik.touched.nombre && Boolean(formik.errors.nombre) ? 'form-control is-invalid' : 'form-control'} name='nombre' onChange={formik.handleChange} id="outlined-basic" placeholder='Nombre' variant="outlined" />
+                                                    <div className="invalid-feedback">{formik.errors.nombre}</div>
+                                                    <label htmlFor="nombre">Nombre</label>
+                                                </div>
+
+                                                {/* APELLIDO */}
+                                                <div className="form-floating mb-3">
+                                                    <Field className={formik.touched.apellido && Boolean(formik.errors.apellido) ? 'form-control is-invalid' : 'form-control'} name='apellido' onChange={formik.handleChange} id="outlined-basic" placeholder='Apellido' variant="outlined" />
+                                                    <div className="invalid-feedback">{formik.errors.apellido}</div>
+                                                    <label htmlFor="apellido">Apellido</label>
+                                                </div>
+
+                                                {/* CORREO */}
+                                                <div className="form-floating mb-3">
+                                                    <Field className={formik.touched.correo && Boolean(formik.errors.correo) ? 'form-control is-invalid' : 'form-control'} name='correo' onChange={formik.handleChange} id="outlined-basic" placeholder='Correo electrónico' variant="outlined" />
+                                                    <div className="invalid-feedback">{formik.errors.correo}</div>
+                                                    <label htmlFor="correo">Correo Electrónico</label>
+                                                </div>
+
+                                                {/* NOMBRE USUARIO */}
+                                                <div className="form-floating mb-3">
+                                                    <Field className={formik.touched.usuario && Boolean(formik.errors.usuario) ? 'form-control is-invalid' : 'form-control'} name='usuario' onChange={formik.handleChange} id="outlined-basic" placeholder='Nombre de Usuario' variant="outlined" />
+                                                    <div className="invalid-feedback">{formik.errors.correo}</div>
+                                                    <label htmlFor="usuario">Nombre de Usuario</label>
+                                                </div>
+
+                                                {/* CONTRASEÑA */}
+
+
+                                                <div className="input-group has-validation mb-3 ">
+
+                                                    <div className={formik.touched.contrasena && Boolean(formik.errors.contrasena) ? 'form-floating is-invalid' : 'form-floating'}>
+                                                        <input
+                                                            name='contrasena'
+                                                            className={formik.touched.contrasena && Boolean(formik.errors.contrasena) ? 'form-control is-invalid' : 'form-control'}
+                                                            id="contrasena"
+                                                            type={showPassword ? 'text' : 'password'}
+                                                            onChange={formik.handleChange}
+                                                            placeholder='contraseña'
+                                                        />
+
+                                                        <label htmlFor="contrasena">Contraseña</label>
                                                     </div>
+                                                    <button className="btn btn-outline-secondary input-group-text" type="button" onClick={handleClickShowPassword}
+                                                        onMouseDown={handleMouseDownPassword}>
+                                                        <IconButton
+                                                            aria-label="toggle password visibility"
+                                                        >
+                                                            {showPassword ? <VisibilityOff /> : <Visibility />}
+                                                        </IconButton>
+                                                    </button>
+                                                    <div className="invalid-feedback">{formik.errors.contrasena}</div>
+                                                </div>
 
+                                                <div style={estilo2} className="py-2">
+                                                    <button type="submit" className="button-inicio">Registrarse</button>
+                                                </div>
+                                            </Form>
 
-                                                    {/* <label>apellido</label> */}
-                                                    <div className="input-group mb-3">
-                                                        <TextField fullWidth sx={{ m: 1 }}
-                                                            name='apellido'
-                                                            onChange={handleChange}
-                                                            id="outlined-basic"
-                                                            label="Apellido"
-                                                            variant="outlined" />
-
-                                                    </div>
-
-
-                                                    {/* <label>correo</label> */}
-                                                    <div className="input-group mb-3">
-                                                        <TextField fullWidth sx={{ m: 1 }}
-                                                            name='correo'
-                                                            onChange={handleChange}
-                                                            id="outlined-basic"
-                                                            label="Correo Electrónico"
-                                                            variant="outlined" />
-                                                    </div>
-
-
-                                                    {/* <label>usuario</label> */}
-                                                    <div className="input-group mb-3">
-                                                        <TextField fullWidth sx={{ m: 1 }}
-                                                            name='usuario'
-                                                            onChange={handleChange}
-                                                            id="outlined-basic"
-                                                            label="Nombre de Usuario"
-                                                            variant="outlined" />
-                                                    </div>
-
-
-                                                    {/* <label>contrasena</label> */}
-                                                    <div className="input-group mb-3">
-                                                        <FormControl fullWidth sx={{ m: 1 }} variant="outlined">
-                                                            <InputLabel name='contrasena' htmlFor="contrasena">Contraseña</InputLabel>
-                                                            <OutlinedInput
-                                                                id="contrasena"
-                                                                type={showPassword ? 'text' : 'password'}
-                                                                onChange={handleChange}
-                                                                endAdornment={
-                                                                    <InputAdornment position="end">
-                                                                        <IconButton
-                                                                            aria-label="toggle password visibility"
-                                                                            onClick={handleClickShowPassword}
-                                                                            onMouseDown={handleMouseDownPassword}
-                                                                            edge="end"
-                                                                        >
-                                                                            {showPassword ? <VisibilityOff /> : <Visibility />}
-                                                                        </IconButton>
-                                                                    </InputAdornment>
-                                                                }
-                                                                label="Contraseña"
-
-                                                            />
-                                                        </FormControl>
-                                                    </div>
-
-                                                    <div style={estilo2} className="py-2">
-                                                        <button type="submit" className="button-inicio">Registrarse</button>
-                                                    </div>
-                                                </Form>
-                                            )}
                                         </Formik>
                                         <div className="card-text text-center">
                                             <small><a href="/login" htmlFor="basic-url" className="form-label">¿Ya tienes una cuenta? Inicia sesión

@@ -46,6 +46,7 @@ const Login = () => {
 
     const valSchema = Yup.object().shape({
         correo: Yup.string()
+            .email('Ingresa un correo válido')
             .required('El correo es obligatorio'),
         contrasena: Yup.string()
             .required('La contraseña es obligatoria'),
@@ -108,7 +109,7 @@ const Login = () => {
                                                                 onChange={formik.handleChange}
                                                                 placeholder='contraseña'
                                                             />
-                                                            
+
                                                             <label htmlFor="contrasena">Contraseña</label>
                                                         </div>
                                                         <button className="btn btn-outline-secondary input-group-text" type="button" onClick={handleClickShowPassword}
@@ -116,7 +117,7 @@ const Login = () => {
                                                             <IconButton
                                                                 aria-label="toggle password visibility"
                                                             >
-                                                                {showPassword ? <VisibilityOff/> : <Visibility />}
+                                                                {showPassword ? <VisibilityOff /> : <Visibility />}
                                                             </IconButton>
                                                         </button>
                                                         <div className="invalid-feedback">{formik.errors.contrasena}</div>
