@@ -16,7 +16,7 @@ const options = {
     extensions: ['js', 'jsx', 'ts', 'tsx']
 };
 module.exports = {
-    entry: './src/index.jsx',
+    entry: './src/index.tsx',
     output: {
         path: path.join(__dirname, '/dist'),
         filename: 'bundle.[hash].js',

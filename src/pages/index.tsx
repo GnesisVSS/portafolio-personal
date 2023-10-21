@@ -19,10 +19,8 @@ import {
   useTransform,
   MotionValue,
 } from "framer-motion";
-import { ParallaxProvider } from "react-scroll-parallax";
-import { Diversity2Outlined } from "@mui/icons-material";
 
-function useParallax(value: MotionValue<number>, distance: number) {
+function useParallax(value : MotionValue<number>, distance: number) {
   return useTransform(value, [0, 1], [-distance, distance]);
 }
 
