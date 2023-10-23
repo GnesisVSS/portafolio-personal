@@ -94,10 +94,6 @@ const Proyectos = () => {
         fontSize: '18px'
     }
 
-    const boxVariant = {
-        visible: { x: 0, opacity: 1, transition: { duration: 1 } },
-        hidden: { x: 0, opacity: 0 },
-    }
 
     const control = useAnimation()
     const [ref, inView] = useInView()
@@ -118,8 +114,19 @@ const Proyectos = () => {
 
     const [isVisible, setIsVisible] = useState(true);
 
+    const boxVariant = {
+        visible: { y: 0, opacity: 1, transition: { duration: 1 } },
+        hidden: { y: 400, opacity: 0 },
+    }
+
+    const boxVariantMobile = {
+        visible: { x: 0, opacity: 1, transition: { duration: 1 } },
+        hidden: { x: -200, opacity: 0 },
+    }
+
+
     return (
-        <section id='recetas' style={{ backgroundColor: '#EDE6F1', color: '#162E36' }}>
+        <section id='recetas' style={{ backgroundColor: '#EDE6F1', color: '#162E36',height:'100vh' }}>
             <motion.div
                 ref={ref}
                 variants={boxVariant}

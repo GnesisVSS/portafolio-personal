@@ -19,23 +19,36 @@ import {
   useTransform,
   MotionValue,
 } from "framer-motion";
+import { ParallaxProvider } from "react-scroll-parallax";
 
-function useParallax(value : MotionValue<number>, distance: number) {
+function useParallax(value, distance) {
   return useTransform(value, [0, 1], [-distance, distance]);
 }
+const arrCon = ["Home","SobreMi", "Proyectos","ContactForm"];
 
-function Image() {
+function Image(id) {
+
   const ref = useRef(null);
+  
   const { scrollYProgress } = useScroll({ target: ref });
   const y = useParallax(scrollYProgress, 300);
 
+  const componentMappings = {
+    "Home": Home,
+    "SobreMi":SobreMi,
+    "Proyectos": Proyectos,
+    "ContactForm":ContactForm
+  };
+
+
+
+  const ComponentToRender = componentMappings[arrCon[JSON.stringify(id.id)]];
   return (
-    <section>
-      <div ref={ref}>
-        <Navbar />
-        <Home />
-      </div>
-    </section>
+    <ParallaxProvider>
+      <section className="section-home">
+        <div ref={ref}>{ComponentToRender && <ComponentToRender/>}</div>
+      </section>
+    </ParallaxProvider>
   );
 }
 
@@ -49,9 +62,11 @@ export default function Index() {
 
   return (
     <>
-      <Image />
-
-      <motion.div className="progress" style={{ scaleX }} />
+      {arrCon.map((image,index) => (
+        <Image id={index} key={image}/>
+      ))}
+      
+      <motion.div className="progress-home" style={{ scaleX }} />
     </>
   );
 }

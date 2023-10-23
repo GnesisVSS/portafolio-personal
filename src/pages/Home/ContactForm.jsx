@@ -2,6 +2,7 @@ import { TextField } from '@mui/material';
 import axios from 'axios';
 import React, { useState } from 'react';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
+import Footer from '../Elementos/footer';
 const ContactForm = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -27,10 +28,10 @@ const ContactForm = () => {
     };
 
     return (
-        <section  style={{ backgroundColor: '#EDE6F1', color: '#162E36' }} className='align-items-center'>
+        <section style={{ backgroundColor: '#EDE6F1', color: '#162E36', height: '100vh', display:'grid' }} className='align-items-center'>
 
-            <div>
-                <div className="container col-sm-8 mx-auto">
+            <div className='py-4'>
+                <div className="container col-sm-8 py-2 mx-auto">
                     <div className="row justify-content-center">
                         <div className="col-sm-8 col-md-8 text-white align-self-center" >
                             <form onSubmit={handleSubmit} >
@@ -89,9 +90,14 @@ const ContactForm = () => {
                         </div>
 
                     </div>
+
+
                 </div>
             </div >
+            <div className={'align-self-end'}>
+            <Footer></Footer>
 
+            </div>
 
         </section >
     );

@@ -332,3 +332,25 @@ btn-cssbuttons ul li a:hover {
   width: auto;
 }
 
+.progress-home {
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: #3a0370;
+  bottom: 40px;
+}
+
+html {
+  scroll-snap-type: y mandatory;
+}
+
+.section-home {
+  /* height: 100vh; */
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  scroll-snap-align: center;
+  /* perspective: 500px; */
+}

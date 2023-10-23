@@ -12,8 +12,8 @@ const SobreMi = () => {
     }
     
     const boxVariant = {
-        visible: { x: 0, opacity: 1, transition: { duration: 1 } },
-        hidden: { x: -400, opacity: 0 },
+        visible: { y: 0, opacity: 1, transition: { duration: 1 } },
+        hidden: { y: -400, opacity: 0 },
     }
 
     const boxVariantMobile = {
@@ -40,7 +40,7 @@ const SobreMi = () => {
     const headerClass = screenSize < 767 ? 'mobile' : 'pantalla';
 
     return (
-        <section id='sobreMi' style={{ backgroundColor: '#EDE6F1', color: '#162E36' }}>
+        <section id='sobreMi' style={{ backgroundColor: '#EDE6F1', color: '#162E36',height:'100vh'  }}>
             <div className={headerClass}>
                 {headerClass === "pantalla" ? <div style={{ overflow: "hidden" }}>
                     <svg

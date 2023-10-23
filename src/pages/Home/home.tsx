@@ -55,8 +55,8 @@ const Home = () => {
     }, [])
 
     return (
-        <div id='home' style={{ minHeight: '90vh',backgroundColor: '#2A0253' }} className='align-items-center'>
-
+        <div id='home' style={{ minHeight: '100vh',backgroundColor: '#2A0253' }} className='align-items-center'>
+<Navbar/>
             <div>
 
                 <div className="container col-sm-8 mx-auto">

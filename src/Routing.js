@@ -27,6 +27,7 @@ import store from './pages/RickAndMorty/Redux/store/store';
 import { Provider } from 'react-redux';
 import InfoDetalladaId from './pages/RickAndMorty/InfoDetalladaId';
 import InfoFavoritos from './pages/RickAndMorty/InfoFavoritos';
+import Proyectos from './pages/Home/proyectos';
 
 
 function Routing() {
@@ -56,6 +57,7 @@ function Routing() {
                 {/* Redirecciones para proteger nuestras rutas */}
                 <Routes>
                     <Route path='/' element={<Index />} />
+                    <Route path='/Proyectos' element={<Proyectos />} />
                     <Route path='/recetas' element={<Recetas />} />
                     <Route path='/login' element={<Login />} />
                     <Route path='/registro' element={<Registro />} />
