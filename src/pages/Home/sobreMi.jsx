@@ -7,7 +7,13 @@ import { useInView } from 'react-intersection-observer';
 
 const SobreMi = () => {
     const [ref, inView] = useInView()
-
+    useEffect(() => {
+        if (inView) {
+            control.start("visible");
+        } else {
+            control.start("hidden");
+        }
+    }, [control, inView]);
     const estilo2 = {
         fontSize: '18px'
     }
