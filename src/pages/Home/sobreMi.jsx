@@ -6,6 +6,7 @@ import { useInView } from 'react-intersection-observer';
 
 
 const SobreMi = () => {
+    const [ref, inView] = useInView()
 
     const estilo2 = {
         fontSize: '18px'
