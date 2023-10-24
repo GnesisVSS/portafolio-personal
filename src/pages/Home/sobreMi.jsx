@@ -22,27 +22,11 @@ const SobreMi = () => {
     }
 
     const control = useAnimation()
-    const [ref, inView] = useInView()
-    const [screenSize, setScreenSize] = useState(window.innerWidth);
-
-    useEffect(() => {
-        if (inView) {
-            control.start("visible");
-        } else {
-            control.start("hidden");
-        }
-
-        setScreenSize(window.innerWidth);
-
-
-    }, [control, inView]);
-
-    const headerClass = screenSize < 767 ? 'mobile' : 'pantalla';
 
     return (
         <section id='sobreMi' style={{ backgroundColor: '#EDE6F1', color: '#162E36',height:'100vh'  }}>
-            <div className={headerClass}>
-                {headerClass === "pantalla" ? <div style={{ overflow: "hidden" }}>
+            <div>
+                <div style={{ overflow: "hidden" }}>
                     <svg
                         preserveAspectRatio="none"
                         viewBox="0 0 1200 120"
@@ -51,7 +35,7 @@ const SobreMi = () => {
                     >
                         <path d="M1200 120L0 16.48V0h1200v120z" />
                     </svg>
-                </div> : ''}
+                </div>
                 
             </div>
 
