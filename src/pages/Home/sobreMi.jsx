@@ -47,7 +47,7 @@ const SobreMi = () => {
                         <div>
                             <motion.div
                                 ref={ref}
-                                variants={headerClass === "pantalla" ? boxVariant : boxVariantMobile}
+                                variants={boxVariant}
                                 initial="hidden"
                                 animate={control}
                             >
