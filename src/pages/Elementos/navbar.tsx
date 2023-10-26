@@ -90,7 +90,7 @@ export default function Navbar() {
                   </li>
 
                   <li>
-                    <a href="https://www.linkedin.com/in/genesis-saez-soto/">
+                    <a href="https://www.linkedin.com/in/genesis-saez/">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="20"
