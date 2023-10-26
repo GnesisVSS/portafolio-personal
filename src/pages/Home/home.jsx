@@ -53,15 +53,7 @@ const Home = () => {
             typed.current.destroy();
         }
     }, [])
-<<<<<<< HEAD
-    const [screenSize, setScreenSize] = useState(window.innerWidth);
-
     const headerClass = screenSize < 767 ? 'mobile' : 'pantalla';
-
-
-=======
-    const headerClass = screenSize < 767 ? 'mobile' : 'pantalla';
->>>>>>> cambiosPostPublicacion
     return (
         <div id='home' style={{ minHeight: '100vh', backgroundColor: '#2A0253' }} className='align-items-center'>
             <Navbar />
