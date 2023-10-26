@@ -13,10 +13,10 @@ const port = process.env.PORT || 3000;
 
 // Exportar configuración de WebPack
 const options = {
-    extensions: ['js', 'jsx']
+    extensions: ['js', 'jsx', 'ts', 'tsx']
 };
 module.exports = {
-    entry: './src/index.jsx',
+    entry: './src/index.tsx',
     output: {
         path: path.join(__dirname, '/dist'),
         filename: 'bundle.[hash].js',
@@ -33,7 +33,7 @@ module.exports = {
             // Reglas para archivos JS y JSX
             // Reglas de Babel ES y JSX
             {
-                test: /\.(js|jsx)$/,
+                test: /\.(js|jsx|ts|tsx)$/,
                 exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader',
@@ -84,7 +84,7 @@ module.exports = {
         new ESLintPlugin(options),
     ],
     resolve: {
-        extensions: ['.js', '.jsx', '.css', '.scss'],
+        extensions: ['.js', '.jsx', '.css', '.scss', '.ts', '.tsx'],
         modules: [
             'node_modules',
         ],

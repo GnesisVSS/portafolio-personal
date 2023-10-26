@@ -415,3 +415,40 @@ btn-cssbuttons ul li a:hover {
 .css-el7kb1{
   margin-left: 0px !important;
 }
+.progress-home {
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: #3a0370;
+  bottom: 40px;
+}
+
+html {
+  scroll-snap-type: y mandatory;
+}
+
+.section-home {
+  height: 100vh;
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  scroll-snap-align: center;
+  /* perspective: 500px; */
+}
+
+::-webkit-scrollbar {
+  height: 5px;
+  width: 5px;
+  background: #3a0370;
+}
+
+::-webkit-scrollbar-thumb {
+  background: white;
+  -webkit-border-radius: 1ex;
+}
+
+::-webkit-scrollbar-corner {
+  background: #3a0370;
+}

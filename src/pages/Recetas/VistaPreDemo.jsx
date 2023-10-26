@@ -10,7 +10,7 @@ import { IconBrandJavascript } from '@tabler/icons-react';
 import { IconBrandGit } from '@tabler/icons-react';
 import { IconBrandCss3 } from '@tabler/icons-react';
 import { IconBrandHtml5 } from '@tabler/icons-react';
-import Navbar from '../Elementos/navbar';
+import Navbar from '../Elementos/navbar.tsx';
 import Footer from '../Elementos/footer';
 
 const VistaPreDemo = () => {
