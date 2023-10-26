@@ -146,35 +146,13 @@ const Proyectos = () => {
 
                                     <div className="col" style={{ lineHeight: '27px' }}>
                                         <strong><h1 style={{ textAlign: 'left', color: '#162E36' }} className='h1Proyectos'>Mis proyectos</h1></strong>
-                                        <div className='py-4'>
-                                            {/* <h2 className='titulo-demo'>Web de recetas</h2>
-                                        <p style={estilo2}>
-                                            Página web ficticia que permite la visualización de recetas con sus ingredientes, tiempo de preparación, detalle, porciones, dificultad y categoría; Ademas de una cuenta de usuario en donde se permite ingresar recetas propias como tambien guardar las que ya vienen para visualizar por defecto y eliminarlas de los elementos guardados cuando se guste.
-                                        </p> */}
+                                        <div className='py-4'> 
                                             <div className='py-3' id='iconos'>
-                                                {/* <h4>Lenguaje, frameworks y herramientas utilizadas</h4> */}
-                                                {/* Icono React */}
-                                                {/* 
-                                            <FormControlLabel
-                                                control={<Switch checked={checked} onChange={handleChange} />}
-                                                label="Show"
-                                            />
-                                            <Box sx={{ display: 'flex' }}>
-                                            
-                                                
-                                                <Grow
-                                                    in={checked}
-                                                    style={{ transformOrigin: '0 0 0' }}
-                                                    {...(checked ? { timeout: 1000 } : {})}
-                                                >
-                                                    <IconBrandReact width='50px' height='50px' style={{ color: '#61DBFB', margin: '18px', backgroundColor: 'white', borderRadius: '15px' }} />
-                                                </Grow>
-                                            </Box> */}
                                                 <Box
-                                                    sx={{ width: '100%', height: 400, maxWidth: 500, bgcolor: 'none' }}
+                                                    sx={{ width: '100%', height: 100, maxWidth: 500, bgcolor: 'none' }}
                                                 >
                                                     <FixedSizeList
-                                                        height={400}
+                                                        height={168}
                                                         itemSize={80}
                                                         itemCount={menu.length}
                                                         overscanCount={5}
