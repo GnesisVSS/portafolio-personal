@@ -149,10 +149,10 @@ const Proyectos = () => {
                                         <div className='py-4'> 
                                             <div className='py-3' id='iconos'>
                                                 <Box
-                                                    sx={{ width: '100%', height: 100, maxWidth: 500, bgcolor: 'none' }}
+                                                    sx={{ width: '100%', height: headerClass === "pantalla" ? 400 : 100, maxWidth: 500, bgcolor: 'none' }}
                                                 >
                                                     <FixedSizeList
-                                                        height={168}
+                                                        height={headerClass === "pantalla" ? 400 : 168}
                                                         itemSize={80}
                                                         itemCount={menu.length}
                                                         overscanCount={5}
@@ -171,12 +171,12 @@ const Proyectos = () => {
                                 <div className='col-sm-6 col-md-6  align-self-center' >
                                     <motion.div animate={isVisible ? hide : show} >
                                         <div className="col" >
-                                            <img src={imagen[indexImagen[0]]} style={{ borderRadius: '40px', height: '600px', width: '600px' }} id='imagen' className='img-fluid' />
+                                            <img src={imagen[indexImagen[0]]} style={ headerClass === "pantalla" ? { borderRadius: '40px', height: '600px', width: '600px'} : { borderRadius: '40px', height: '300px', width: '300px'}} id='imagen' className='img-fluid' />
                                         </div>
                                     </motion.div>
                                     <motion.div animate={isVisible ? show : hide} >
                                         <div className="col">
-                                            <img src='/img/proyectos.gif' style={{ borderRadius: '40px', height: '600px', width: '600px' }} id='imagenDefecto' className='img-fluid' />
+                                            <img src='/img/proyectos.gif'  style={ headerClass === "pantalla" ? { borderRadius: '40px', height: '600px', width: '600px'} : { borderRadius: '40px', height: '300px', width: '300px'}} id='imagenDefecto' className='img-fluid' />
                                         </div>
                                     </motion.div>
 
