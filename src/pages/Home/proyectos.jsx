@@ -44,7 +44,7 @@ const Proyectos = () => {
         imagenD.style.display = 'block';
 
     }
-    const handleListItemClick = (index,e) => {
+    const handleListItemClick = (index, e) => {
         e.preventDefault();
         window.location.href = links[index];
     };
@@ -68,9 +68,9 @@ const Proyectos = () => {
                 }}
             >
                 <List style={style} key={index} component="div" disablePadding>
-                    <ListItem alignItems="flex-start" style={{ textDecoration: 'none',color:'#162E36',cursor:'pointer' }}  onClick={(e) => handleListItemClick(index, e)}> 
+                    <ListItem alignItems="flex-start" style={{ textDecoration: 'none', color: '#162E36', cursor: 'pointer' }} onClick={(e) => handleListItemClick(index, e)}>
                         <div className="controls">
-                        
+
                             <a >
                                 <h2
                                     className='titulo-demo'
@@ -94,6 +94,7 @@ const Proyectos = () => {
         fontSize: '18px'
     }
 
+    const [screenSize, setScreenSize] = useState(window.innerWidth);
 
     const control = useAnimation()
     const [ref, inView] = useInView()
@@ -104,6 +105,7 @@ const Proyectos = () => {
         } else {
             control.start("hidden");
         }
+        setScreenSize(window.innerWidth);
     }, [control, inView]);
 
     const [checked, setChecked] = React.useState(false);
@@ -115,43 +117,44 @@ const Proyectos = () => {
     const [isVisible, setIsVisible] = useState(true);
 
     const boxVariant = {
-        visible: { y: 0, opacity: 1, transition: { duration: 1 } },
-        hidden: { y: 400, opacity: 0 },
+        visible: { y: 0, opacity: 1, transition: { duration: 0.5 } },
+        hidden: { y: 300, opacity: 0 },
     }
 
     const boxVariantMobile = {
         visible: { x: 0, opacity: 1, transition: { duration: 1 } },
         hidden: { x: -200, opacity: 0 },
     }
-
+    const headerClass = screenSize < 767 ? 'mobile' : 'pantalla';
 
     return (
-        <section id='recetas' style={{ backgroundColor: '#EDE6F1', color: '#162E36',height:'100vh' }}>
-            <motion.div
-                ref={ref}
-                variants={boxVariant}
-                initial="hidden"
-                animate={control}
+        <section id='recetas' style={{ backgroundColor: '#EDE6F1', color: '#162E36', height: '100vh' }}>
+            <div className={headerClass}>
+                <motion.div
+                    ref={ref}
+                    variants={headerClass === "pantalla" ? boxVariant : ''}
+                    initial="hidden"
+                    animate={control}
 
-            >
-                <div className='py-5'>
-                    <div className="container col-sm-12 py-2 mx-auto">
+                >
+                    <div className='py-5'>
+                        <div className="container col-sm-12 py-2 mx-auto">
 
-                        <div className="row justify-content-center">
+                            <div className="row justify-content-center">
 
-                            <div className="col-sm-8 col-md-6 p-5 align-self-center">
+                                <div className="col-sm-8 col-md-6 p-5 align-self-center">
 
-                                <div className="col" style={{ lineHeight: '27px' }}>
-                                    <strong><h1 style={{ textAlign: 'left', color: '#162E36' }} className='h1Proyectos'>Mis proyectos</h1></strong>
-                                    <div className='py-4'>
-                                        {/* <h2 className='titulo-demo'>Web de recetas</h2>
+                                    <div className="col" style={{ lineHeight: '27px' }}>
+                                        <strong><h1 style={{ textAlign: 'left', color: '#162E36' }} className='h1Proyectos'>Mis proyectos</h1></strong>
+                                        <div className='py-4'>
+                                            {/* <h2 className='titulo-demo'>Web de recetas</h2>
                                         <p style={estilo2}>
                                             Página web ficticia que permite la visualización de recetas con sus ingredientes, tiempo de preparación, detalle, porciones, dificultad y categoría; Ademas de una cuenta de usuario en donde se permite ingresar recetas propias como tambien guardar las que ya vienen para visualizar por defecto y eliminarlas de los elementos guardados cuando se guste.
                                         </p> */}
-                                        <div className='py-3' id='iconos'>
-                                            {/* <h4>Lenguaje, frameworks y herramientas utilizadas</h4> */}
-                                            {/* Icono React */}
-                                            {/* 
+                                            <div className='py-3' id='iconos'>
+                                                {/* <h4>Lenguaje, frameworks y herramientas utilizadas</h4> */}
+                                                {/* Icono React */}
+                                                {/* 
                                             <FormControlLabel
                                                 control={<Switch checked={checked} onChange={handleChange} />}
                                                 label="Show"
@@ -167,43 +170,45 @@ const Proyectos = () => {
                                                     <IconBrandReact width='50px' height='50px' style={{ color: '#61DBFB', margin: '18px', backgroundColor: 'white', borderRadius: '15px' }} />
                                                 </Grow>
                                             </Box> */}
-                                            <Box
-                                                sx={{ width: '100%', height: 400, maxWidth: 500, bgcolor: 'none' }}
-                                            >
-                                                <FixedSizeList
-                                                    height={400}
-                                                    itemSize={80}
-                                                    itemCount={menu.length}
-                                                    overscanCount={5}
-                                                    className='lista-proyectos'
+                                                <Box
+                                                    sx={{ width: '100%', height: 400, maxWidth: 500, bgcolor: 'none' }}
                                                 >
-                                                    {renderRow}
-                                                </FixedSizeList>
+                                                    <FixedSizeList
+                                                        height={400}
+                                                        itemSize={80}
+                                                        itemCount={menu.length}
+                                                        overscanCount={5}
+                                                        className='lista-proyectos'
+                                                    >
+                                                        {renderRow}
+                                                    </FixedSizeList>
 
-                                            </Box>
+                                                </Box>
+                                            </div>
+
                                         </div>
 
                                     </div>
+                                </div>
+                                <div className='col-sm-6 col-md-6  align-self-center' >
+                                    <motion.div animate={isVisible ? hide : show} >
+                                        <div className="col" >
+                                            <img src={imagen[indexImagen[0]]} style={{ borderRadius: '40px', height: '600px', width: '600px' }} id='imagen' className='img-fluid' />
+                                        </div>
+                                    </motion.div>
+                                    <motion.div animate={isVisible ? show : hide} >
+                                        <div className="col">
+                                            <img src='/img/proyectos.gif' style={{ borderRadius: '40px', height: '600px', width: '600px' }} id='imagenDefecto' className='img-fluid' />
+                                        </div>
+                                    </motion.div>
 
                                 </div>
                             </div>
-                            <div className='col-sm-6 col-md-6  align-self-center' >
-                                <motion.div animate={isVisible ? hide : show} >
-                                    <div className="col" >
-                                        <img src={imagen[indexImagen[0]]} style={{ borderRadius: '40px', height: '600px', width: '600px' }} id='imagen' className='img-fluid' />
-                                    </div>
-                                </motion.div>
-                                <motion.div animate={isVisible ? show : hide} >
-                                    <div className="col">
-                                        <img src='/img/proyectos.gif' style={{ borderRadius: '40px', height: '600px', width: '600px' }} id='imagenDefecto' className='img-fluid' />
-                                    </div>
-                                </motion.div>
-
-                            </div>
                         </div>
                     </div>
-                </div>
-            </motion.div>
+                </motion.div>
+            </div>
+
         </section>
     );
 }

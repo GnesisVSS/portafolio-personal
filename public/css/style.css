@@ -346,11 +346,26 @@ html {
 }
 
 .section-home {
-  /* height: 100vh; */
+  height: 100vh;
   /* display: flex; */
   justify-content: center;
   align-items: center;
   position: relative;
   scroll-snap-align: center;
   /* perspective: 500px; */
+}
+
+::-webkit-scrollbar {
+  height: 5px;
+  width: 5px;
+  background: #3a0370;
+}
+
+::-webkit-scrollbar-thumb {
+  background: white;
+  -webkit-border-radius: 1ex;
+}
+
+::-webkit-scrollbar-corner {
+  background: #3a0370;
 }

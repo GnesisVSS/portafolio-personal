@@ -6,6 +6,8 @@ import { useInView } from 'react-intersection-observer';
 
 
 const SobreMi = () => {
+
+    const [screenSize, setScreenSize] = useState(window.innerWidth); 
     const [ref, inView] = useInView()
     useEffect(() => {
         if (inView) {
@@ -13,27 +15,30 @@ const SobreMi = () => {
         } else {
             control.start("hidden");
         }
+        setScreenSize(window.innerWidth);
     }, [control, inView]);
+
+
+    const boxVariant = {
+        visible: { y: 0, opacity: 1, transition: { duration: 0.5 } },
+        hidden: { y: 300, opacity: 0 },
+    }
+
+    // const boxVariantMobile = {
+    //     visible: { x: 0, opacity: 1, transition: { duration: 1 } },
+    //     hidden: { x: -200, opacity: 0 },
+    // }
+    
     const estilo2 = {
         fontSize: '18px'
     }
-    
-    const boxVariant = {
-        visible: { y: 0, opacity: 1, transition: { duration: 1 } },
-        hidden: { y: -400, opacity: 0 },
-    }
-
-    const boxVariantMobile = {
-        visible: { x: 0, opacity: 1, transition: { duration: 1 } },
-        hidden: { x: -200, opacity: 0 },
-    }
-
     const control = useAnimation()
+    const headerClass = screenSize < 767 ? 'mobile' : 'pantalla';
 
     return (
-        <section id='sobreMi' style={{ backgroundColor: '#EDE6F1', color: '#162E36',height:'100vh'  }}>
-            <div>
-                <div style={{ overflow: "hidden" }}>
+        <section id='sobreMi' style={{ backgroundColor: '#EDE6F1', color: '#162E36', height: '100vh' }}>
+            <div className={headerClass}>
+                {headerClass === "pantalla" ? <div style={{ overflow: "hidden" }}>
                     <svg
                         preserveAspectRatio="none"
                         viewBox="0 0 1200 120"
@@ -42,8 +47,8 @@ const SobreMi = () => {
                     >
                         <path d="M1200 120L0 16.48V0h1200v120z" />
                     </svg>
-                </div>
-                
+                </div> : ''}
+
             </div>
 
             <div className='py-4 '>
@@ -53,7 +58,7 @@ const SobreMi = () => {
                         <div>
                             <motion.div
                                 ref={ref}
-                                variants={boxVariant}
+                                variants={headerClass === "pantalla" ? boxVariant : ''}
                                 initial="hidden"
                                 animate={control}
                             >
@@ -63,7 +68,7 @@ const SobreMi = () => {
                                         <div className="col">
                                             {/* <img alt='' src='img/pensando.gif' id='gifSobreMi' className='img-fluid' /> */}
                                             <img alt='' src='img/Group40.png' id='gifSobreMi' className='img-fluid' />
-                                            
+
                                         </div>
                                     </div>
                                     <div className="col-sm-8 col-md-5 px-5 align-self-center" >
@@ -72,7 +77,7 @@ const SobreMi = () => {
                                             <strong><h1 style={{ textAlign: 'left' }} className='h1SobreMi'>Experiencia</h1></strong>
 
                                             <div className='py-4'>
-                                            
+
                                                 <p style={estilo2}>
                                                     A la fecha he realizado las prácticas correspondientes a mi carrera realizando una
                                                     página web con wordpress y una integración de Transbank con webpay plus y One
