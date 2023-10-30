@@ -1,6 +1,4 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { navAnimation } from '../../../animation';
+import React from 'react';
 
 function NavbarRecetas() {
 

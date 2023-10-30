@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import NavbarUsuario from '../Navs/navbarUsuario';
+import NavbarUsuario from '../ElementosRecetas/Navs/navbarUsuario';
 import FormIngredientesAdmin from './FormIngredientesAdmin';
 
 const FormRecetasAdmin = (props) => {

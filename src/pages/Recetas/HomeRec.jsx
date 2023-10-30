@@ -1,5 +1,5 @@
 import React from 'react';
-import NavbarRecetas from './Navs/navbar-recetas';
+import NavbarRecetas from './ElementosRecetas/Navs/navbar-recetas';
 import Recetas from './Recetas';
 
 const RecetasPreLog = () => {

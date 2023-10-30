@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types'
-import { RecetasC } from '../../models/recetas.class';
+import { RecetasC } from '../../../models/recetas.class';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
-import { cargarGuardados, eliminarGuardados, mostrarRecetasGuardadas } from '../../api/receta.api';
+import { cargarGuardados, eliminarGuardados, mostrarRecetasGuardadas } from '../../../api/receta.api';
 import { Box, Fade, Typography } from '@mui/material';
 import Modal from '@mui/material/Modal';
 import Backdrop from '@mui/material/Backdrop';
-import DetalleRecetas from '../Recetas/VistaDetalleRecetas';
+import DetalleRecetas from '../VistaDetalleRecetas';
 import { Link, useNavigate } from 'react-router-dom';
 
 
@@ -82,7 +82,6 @@ const CardRecetas = ({ rec }) => {
                     correousuario ? <button
                         className="save"
                         onClick={handleChange}
-                        style={{ color: "grey" }}
                     >
                         {estaGuardado || save ? <BookmarkIcon /> : <BookmarkBorderIcon />}
                     </button>
@@ -90,7 +89,6 @@ const CardRecetas = ({ rec }) => {
                         <button
                             className="save"
                             onClick={handleClickOpen}
-                            style={{ color: "grey" }}
                         >
                             {<BookmarkBorderIcon />}
                         </button>
@@ -136,14 +134,14 @@ const CardRecetas = ({ rec }) => {
                                         <p className="text-muted text-center">
                                             Al ser un demo, las credenciales principales son:
                                             
-                                            <div className='row'>
-                                                <div className='col-4'>
+                                            <div className='row text-start'>
+                                                <div className='col-2'>
                                                 </div>
-                                                <div className='col-4'>
-                                                    <li style={{textAlign:'start'}}><strong>Correo:</strong> root@root.cl</li>
-                                                    <li style={{textAlign:'start'}}> <strong>Pass:</strong> root</li>
+                                                <div className='col-8'>
+                                                    <li><strong>Correo:</strong> root@root.cl</li>
+                                                    <li> <strong>Pass:</strong> root</li>
                                                 </div>
-                                                <div className='col-4'>
+                                                <div className='col-2'>
                                                 </div>
                                             </div>
 

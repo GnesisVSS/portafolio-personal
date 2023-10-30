@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import CardRecetas from '../Elementos/cardRecetas';
+import CardRecetas from './ElementosRecetas/cardRecetas';
 import { consMostrar, mostrarRecetas } from '../../api/receta.api';
 import Loading from './ElementosRecetas/Loading';
 import { Alert } from '@mui/material';

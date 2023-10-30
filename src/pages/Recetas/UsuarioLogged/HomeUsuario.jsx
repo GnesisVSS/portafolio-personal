@@ -1,5 +1,5 @@
 import React from 'react';
-import NavbarUsuario from '../Navs/navbarUsuario';
+import NavbarUsuario from '../ElementosRecetas/Navs/navbarUsuario';
 import VistaCards from '../VistaCards';
 
 const HomeUsuario = () => {

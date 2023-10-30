@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Field, Form, Formik, useFormik } from 'formik';
 import { useNavigate } from 'react-router-dom';
 import { carga } from '../../../funciones/carga';
-import NavbarRecetas from './../Navs/navbar-recetas';
+import NavbarRecetas from '../ElementosRecetas/Navs/navbar-recetas';
 import { Alert, Box, IconButton } from '@mui/material';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import InputLabel from '@mui/material/InputLabel';

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import NavbarUsuario from './Navs/navbarUsuario';
+import NavbarUsuario from './ElementosRecetas/Navs/navbarUsuario';
 import PropTypes from 'prop-types'
 import { RecetasC } from '../../models/recetas.class';
 import { useLocation } from 'react-router-dom';

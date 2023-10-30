@@ -5,9 +5,8 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Unstable_Grid2';
 import { Avatar } from '@mui/material';
-import VistaCards from '../../VistaCards';
-import VistaCardsGuardadas from '../../UsuarioLogged/VistaCardsGuardadas';
-import VistaMisRecPerfil from '../../UsuarioLogged/VistaMisRecPerfil';
+import VistaCardsGuardadas from '../../../UsuarioLogged/VistaCardsGuardadas';
+import VistaMisRecPerfil from '../../../UsuarioLogged/VistaMisRecPerfil';
 
 const MiPerfil = () => {
     var fondo = document.getElementById('root');

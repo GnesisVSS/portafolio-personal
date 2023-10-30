@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { mostrarDetalleIngredientes, mostrarDetalleRecetasGuardadas } from '../../../api/receta.api';
 import { useLocation } from 'react-router';
-import NavbarUsuario from '../Navs/navbarUsuario';
+import NavbarUsuario from '../ElementosRecetas/Navs/navbarUsuario';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import { Chip } from '@mui/material';
 import GroupIcon from '@mui/icons-material/Group';

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Field, Form, Formik, useFormik } from 'formik';
 import { guardar } from '../../../api/registro.api';
-import NavbarRecetas from '../Navs/navbar-recetas';
+import NavbarRecetas from '../ElementosRecetas/Navs/navbar-recetas';
 import { FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput, TextField } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import * as Yup from 'yup';

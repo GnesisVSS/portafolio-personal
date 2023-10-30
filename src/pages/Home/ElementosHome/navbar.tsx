@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { navAnimation } from "../../animation";
+import { navAnimation } from "../../../animation";
 
 export default function Navbar() {
   return (
@@ -8,13 +8,11 @@ export default function Navbar() {
       <nav
         id="navbar"
         className={"navbar navbar-expand-lg"}
-        style={{ padding: "20px", color: "white" }}
       >
-        <div className="container" style={{ color: "white" }}>
+        <div className="container ColorFontWhite">
           <a
-            className="navbar-brand"
+            className="navbar-brand ColorFontWhite"
             id="nav-titulo"
-            style={{ color: "white" }}
             href="/#home"
           >
             <img src="img/portafolio.png" id="port" width="35" height="35" />{" "}
@@ -35,8 +33,7 @@ export default function Navbar() {
             <ul className="navbar-nav text">
               <li className="nav-item ">
                 <a
-                  className="nav-link"
-                  style={{ color: "white" }}
+                  className="nav-link ColorFontWhite"
                   id="nav-recetas"
                   href="/#sobreMi"
                 >
@@ -45,8 +42,7 @@ export default function Navbar() {
               </li>
               <li className="nav-item ">
                 <a
-                  className="nav-link"
-                  style={{ color: "white" }}
+                  className="nav-link ColorFontWhite"
                   id="nav-recetas"
                   href="/#recetas"
                 >
@@ -56,7 +52,7 @@ export default function Navbar() {
             </ul>
             <ul className="navbar-nav flex-row flex-wrap ms-md-auto">
               <button className="btn-cssbuttons">
-                <span style={{ color: "white" }}>Contactame!</span>
+                <span className="ColorFontWhite">Contactame!</span>
                 <span>
                   <svg
                     height="18"

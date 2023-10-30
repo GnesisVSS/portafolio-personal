@@ -3,6 +3,10 @@
     box-shadow: 0 0 10px rgb(162, 129, 255);
 }
 
+*{
+  --gray: gray;
+  --morado: 
+}
 
 /* ------------------------------------PAGINA DE RECETAS---------------------------------------- */
 /*RECETAS..................LOGIN/REGISTRO ..................... */
@@ -132,6 +136,7 @@
   align-items: center;
   justify-content: center;
   border: none;
+  color: var(--gray);
 }
 .text-rec {
   margin: 20px;
@@ -462,6 +467,10 @@
 
 .menuProyectos:hover{
   color: #3f6875,
+}
+
+.boton-save{
+  color: var(--gray);
 }
 
 

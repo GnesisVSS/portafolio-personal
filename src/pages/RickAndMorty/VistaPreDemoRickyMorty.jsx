@@ -10,8 +10,8 @@ import { IconBrandJavascript } from '@tabler/icons-react';
 import { IconBrandGit } from '@tabler/icons-react';
 import { IconBrandCss3 } from '@tabler/icons-react';
 import { IconBrandHtml5 } from '@tabler/icons-react';
-import Navbar from '../Elementos/navbar';
-import Footer from '../Elementos/footer';
+import Navbar from '../Home/ElementosHome/navbar';
+import Footer from '../Home/ElementosHome/footer';
 import { IconBrandGraphql } from '@tabler/icons-react';
 import { IconApi } from '@tabler/icons-react';
 

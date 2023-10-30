@@ -1,16 +1,12 @@
 
 /* eslint-disable react/jsx-no-target-blank */
 /* eslint-disable react/prop-types */
-import { Box, Fade, Modal, TextField, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import { ErrorMessage, Field, Form, Formik, useFormik } from 'formik';
+import { Field, Form, Formik, useFormik } from 'formik';
 import FormIngredientes from './FormIngredientes';
-import Photo from '../../Photo';
-import { registroDetalleRecetaUsuario, registroIngredientes, registroRecetasUsuario } from '../../../../api/receta.api';
-import { Navigate, useNavigate } from 'react-router-dom';
-import Backdrop from '@mui/material/Backdrop';
+import Photo from '../../../Photo';
+import { registroDetalleRecetaUsuario, registroIngredientes } from '../../../../../api/receta.api';
 import * as Yup from 'yup';
-import Cleave from 'cleave.js/react';
 
 const FormDetalles = (datosIngredientes, props) => {
     const [valorInput, setValorInput] = useState('');

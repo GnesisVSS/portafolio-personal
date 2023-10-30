@@ -1,6 +1,4 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { navAnimation } from '../../../animation';
+import React from 'react';
 import { Avatar, Box, IconButton, Menu, MenuItem, Tooltip, Typography } from '@mui/material';
 
 const NavbarUsuario = () => {
@@ -93,18 +91,6 @@ const NavbarUsuario = () => {
                                                 <Typography textAlign="center"> </Typography>
                                             </MenuItem>
                                         ))}
-                                        {/* <MenuItem onClick={handleCloseUserMenu}>
-                                            <Typography textAlign="center">Mi perfil</Typography>
-                                        </MenuItem>
-                                        <MenuItem onClick={handleCloseUserMenu}>
-                                            <Typography textAlign="center">Mis recetas</Typography>
-                                        </MenuItem>
-                                        <MenuItem onClick={handleCloseUserMenu}>
-                                            <Typography textAlign="center">Guardados</Typography>
-                                        </MenuItem>
-                                        <MenuItem onClick={handleCloseUserMenu}>
-                                            <Typography textAlign="center">Cerrar Sesión</Typography>
-                                        </MenuItem> */}
                                     </Menu>
                                 </Box>
                             </ul>

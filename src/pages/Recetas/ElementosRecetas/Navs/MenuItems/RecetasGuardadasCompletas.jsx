@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import CardRecetas from '../../../Elementos/cardRecetas';
-import { mostrarRecetasGuardadas } from '../../../../api/receta.api';
+import { mostrarRecetasGuardadas } from '../../../../../api/receta.api';
 import NavbarUsuario from '../navbarUsuario';
-import RecetasGuard from '../../UsuarioLogged/RecetasGuard';
-import Loading from '../../ElementosRecetas/Loading';
+import RecetasGuard from '../../../UsuarioLogged/RecetasGuard';
+import Loading from '../../../ElementosRecetas/Loading';
 
 const RecetasGuardadasCompletas = () => {
     var fondo = document.getElementById('root');

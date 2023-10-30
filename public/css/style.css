@@ -1,13 +1,15 @@
+*{
+  --bgPrincipal : #2A0253;
+  --colorWhite : #ffff;
+  --bgSecundario : #EDE6F1;
+  --colorFuente: #162E36;
+  --size48: 48px;
+}
+
 /* Fuente para los parrafos y links */
 p,a{
     font-family: 'Nunito', sans-serif;
 }
-
-/* Color de fondo base */
-/* body{
-    background-color: #2A0253;
-    
-} */
 
 /* Para titulos de tipo h1 y h2 se especifica otro tipo de fuente */
 h1, h2{
@@ -19,7 +21,7 @@ el tamaño de la fuente de los titulos será de 78px  */
 
 
 @media screen and (min-width: 601px){
-  .h1SobreMi,.h1Proyectos {
+  .h1SobreMi,.h1Proyectos,.h1ContactForm {
     font-size: 78px;
   }
 
@@ -28,30 +30,39 @@ el tamaño de la fuente de los titulos será de 78px  */
 /* Para responsive en pantallas que tengan HASTA 600 px de ancho y menos 
 el tamaño de la fuente de los titulos será de 61px  */
 @media screen and (max-width: 600px){
-  .h1SobreMi,.h1Proyectos {
+  .h1SobreMi,.h1Proyectos,.h1ContactForm {
     font-size: 61px;
   }
 }
 
 @media screen and (width: 1024px){
-  .h1SobreMi,.h1Proyectos {
+  .h1SobreMi,.h1Proyectos,.h1ContactForm {
     font-size: 61px;
   }
-
 }
 
 .mobile {
   display: none; /* Ocultar por defecto en dispositivos móviles */
 }
+
+.mobile h1 {
+  font-size: var(--size48);
+  padding-top: var(--size48);
+}
+
 .pantalla {
   display: none; /* Ocultar por defecto en dispositivos móviles */
 }
+
+.pantalla h1 {
+  font-size: var(--size48);
+}
+
 @media (min-width: 768px) {
   /* Estilos para pantallas grandes (768px o más) */
   .pantalla {
       display: block; 
-      
-}
+  }
 }
 
 @media (max-width: 767px) {
@@ -76,7 +87,7 @@ los elementos se muestren centrados al ocupar el alto de toda la pantalla */
 /* para la barra de navegacion del home del portafolio se le da un fondo determinado 
 y se especifica la transicion para el momento de hacer scroll */
 #navbar{
-  background: #2A0253;
+  background: var(--bgPrincipal);
   width: 100%;
   display: flex;
   justify-content: space-around;
@@ -85,7 +96,11 @@ y se especifica la transicion para el momento de hacer scroll */
   /* position: fixed; */
   top: 0;
   transition: top 0.5s;
+  color : var(--colorWhite);
+  padding: 20px;
 }
+
+
 
 /* Botón de la barra de navegación con los links de contacto */
 .btn-cssbuttons {
@@ -261,7 +276,6 @@ btn-cssbuttons ul li a:hover {
 .titulo-demo{
   text-align: left;
 }
-
 /* Boton para enviar el correo */
 .butcorreo {
   width: 150px;
@@ -364,7 +378,7 @@ html {
 
 ::-webkit-scrollbar {
   height: 5px;
-  width: 5px;
+  width: 10px;
   background: #3a0370;
 }
 
@@ -376,3 +390,52 @@ html {
 ::-webkit-scrollbar-corner {
   background: #3a0370;
 }
+
+.bgPrimario{
+  background-color: var(--bgPrincipal);
+}
+
+.headerSobreMi{
+  margin-top: -1px;
+}
+
+.header-svg{
+  fill: var(--bgPrincipal);
+  width: 100%;
+  height: 110px;
+  transform: scaleX(-1);
+}
+
+.ColorFontWhite{
+  color: var(--colorWhite);
+}
+
+.formContacto{
+  background-color: var(--bgSecundario);
+  color: var(--colorFuente);
+  height: 100vh;
+  display:grid; 
+}
+
+.tituloFormContacto{
+  text-align: left; 
+  color: var(--colorFuente);
+}
+
+.w100 {
+  width: 100%;
+}
+
+.bgWhite{
+  background-color: var(--colorWhite);
+}
+
+.bgSecundario{
+  background-color: var(--bgSecundario);
+}
+
+.styleDefHome1{
+  min-height: 100vh;
+  background-color: var(--bgPrincipal);
+}
+

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { consMostrar, mostrarRecetas } from '../../api/receta.api';
 import { RecetasC } from '../../models/recetas.class';
-import CardRecetas from '../Elementos/cardRecetas';
-import NavbarRecetas from './Navs/navbar-recetas';
+import CardRecetas from './ElementosRecetas/cardRecetas';
+import NavbarRecetas from './ElementosRecetas/Navs/navbar-recetas';
 import VistaCards from './VistaCards';
 import Loading from './ElementosRecetas/Loading';
 

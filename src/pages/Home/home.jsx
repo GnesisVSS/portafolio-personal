@@ -1,11 +1,9 @@
 import { useAnimation, motion } from 'framer-motion';
 import React, { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
-import Navbar from '../Elementos/navbar';
+import Navbar from './ElementosHome/navbar';
 import Typed from 'typed.js';
 import { Parallax } from "react-scroll-parallax";
-import styles from '../../../public/css/Home.module.scss';
-import HeaderExperiencia from '../Elementos/headerExperiencia';
 
 
 const copy = "HolaMundo".split("");
@@ -55,7 +53,7 @@ const Home = () => {
     }, [])
     const headerClass = screenSize < 767 ? 'mobile' : 'pantalla';
     return (
-        <div id='home' style={{ minHeight: '100vh', backgroundColor: '#2A0253' }} className='align-items-center'>
+        <div id='home' className='align-items-center styleDefHome1'>
             <Navbar />
             <div>
 
@@ -68,14 +66,13 @@ const Home = () => {
                                     easing={[1, -0.75, 1, 1.34]}
                                     translateX={[-10, -50]}
                                 >
-
-                                    <h1 style={{ 'fontSize': '48px' }}>
+                                    <h1>
                                         <span ref={el} />
                                     </h1>
                                 </Parallax>
                             </div>
                             <div className='mobile'>
-                                <h1 style={{ 'fontSize': '48px', paddingTop: '48px' }} className='mobile'>
+                                <h1 className='mobile tituloHomeMobile'>
                                     Soy Genesis, ingeniera en informática y desarrolladora frontend!
                                 </h1>
 
@@ -83,7 +80,7 @@ const Home = () => {
                         </div>
 
 
-                        <div className="col-sm-6 col-md-5 p-5 align-self-center col-img-home" style={{ 'textAlign': 'center' }}>
+                        <div className="col-sm-6 col-md-5 p-5 align-self-center col-img-home" >
                             <div className='pantalla'>
                                 <Parallax
                                     easing={[1, -0.75, 1, 1.34]}
