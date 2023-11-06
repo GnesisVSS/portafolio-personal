@@ -36,10 +36,10 @@ const Home = () => {
     React.useEffect(() => {
         const options = {
             strings: [
-                'Soy Genesis, ingeniera en informática y desarrolladora frontend!'
+                'Soy Genesis, ingeniera en informática y desarrolladora <span style=color:#FF725E> fullStack! </span>'
             ],
-            typeSpeed: 50,
-            backSpeed: 50,
+            typeSpeed: 20,
+            backSpeed: 20,
         };
 
         // elRef refers to the <span> rendered below

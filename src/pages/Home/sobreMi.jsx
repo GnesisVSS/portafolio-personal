@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { IconBrandReact, IconBrandJavascript, IconBrandGit, IconBrandCss3, IconBrandHtml5 } from '@tabler/icons-react';
 import { useScroll, useTransform, motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { Tooltip } from '@mui/material';
 
 
 
 const SobreMi = () => {
 
-    const [screenSize, setScreenSize] = useState(window.innerWidth); 
+    const [screenSize, setScreenSize] = useState(window.innerWidth);
     const [ref, inView] = useInView()
     useEffect(() => {
         if (inView) {
@@ -28,7 +29,7 @@ const SobreMi = () => {
     //     visible: { x: 0, opacity: 1, transition: { duration: 1 } },
     //     hidden: { x: -200, opacity: 0 },
     // }
-    
+
     const estilo2 = {
         fontSize: '18px'
     }
@@ -91,6 +92,7 @@ const SobreMi = () => {
                                             <div className='py-3' id='iconos'>
                                                 <h4>Conocimientos destacables</h4>
                                                 <IconBrandReact width='50px' height='50px' style={{ color: '#61DBFB', margin: '18px', backgroundColor: 'white', borderRadius: '15px' }} />
+
 
                                                 <IconBrandJavascript width='50px' height='50px' style={{ color: '#ffd630', margin: '18px', backgroundColor: 'white', borderRadius: '15px' }} />
 

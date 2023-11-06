@@ -9,13 +9,13 @@ export default function Navbar() {
         id="navbar"
         className={"navbar navbar-expand-lg"}
       >
-        <div className="container ColorFontWhite">
+        <div className="container ColorFontWhite   nav-item-home">
           <a
-            className="navbar-brand ColorFontWhite"
+            className="navbar-brand ColorFontWhite nav-link"
             id="nav-titulo"
             href="/#home"
           >
-            <img src="img/portafolio.png" id="port" width="35" height="35" />{" "}
+            <img src="img/portafolio.png" id="port" width="35" height="35"/>{" "}
             Portafolio
           </a>
           <button
@@ -31,16 +31,16 @@ export default function Navbar() {
           </button>
           <div className="  collapse navbar-collapse  " id="navbarNav">
             <ul className="navbar-nav text">
-              <li className="nav-item ">
+              <li className="nav-item nav-item-home">
                 <a
                   className="nav-link ColorFontWhite"
                   id="nav-recetas"
                   href="/#sobreMi"
                 >
-                  Sobre mi
+                  Sobre mí
                 </a>
               </li>
-              <li className="nav-item ">
+              <li className="nav-item nav-item-home">
                 <a
                   className="nav-link ColorFontWhite"
                   id="nav-recetas"
@@ -52,7 +52,7 @@ export default function Navbar() {
             </ul>
             <ul className="navbar-nav flex-row flex-wrap ms-md-auto">
               <button className="btn-cssbuttons">
-                <span className="ColorFontWhite">Contactame!</span>
+                <span className="ColorFontWhite">Contáctame!</span>
                 <span>
                   <svg
                     height="18"

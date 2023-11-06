@@ -78,6 +78,9 @@ function Routing() {
                     <Route path='/DetalleMisRecetas' element={<VistaDetalleRecetasUsuario />} />
                     <Route path='/DemoRecetas' element={<VistaPreDemo />} />
                     {/* RUTAS RICK Y MORTY */}
+                    <Route path='/DemoRickyMorty' element={<ApolloProvider client={client}>
+                        <VistaPreDemoRickyMorty client={client} />
+                    </ApolloProvider>} style={{backgroundColor: 'white'}}/>
                     <Route path='/RickYMorty' element={<ApolloProvider client={client}>
                         <RickAndMortyPages client={client} />
                     </ApolloProvider>} style={{backgroundColor: 'white'}}/>

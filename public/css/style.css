@@ -41,6 +41,59 @@ el tamaño de la fuente de los titulos será de 61px  */
   }
 }
 
+
+
+
+
+
+
+/* para titulo escribeme */
+@media screen and (min-width: 601px){
+  .h2Escribeme {
+    font-size: 58px;
+  }
+
+}
+
+/* Para responsive en pantallas que tengan HASTA 600 px de ancho y menos 
+el tamaño de la fuente de los titulos será de 61px  */
+@media screen and (max-width: 600px){
+  .h2Escribeme {
+    font-size: 61px;
+  }
+}
+
+@media screen and (width: 1024px){
+  .h2Escribeme {
+    font-size: 61px;
+  }
+}
+
+.css-1o0voyd-MuiFormLabel-root-MuiInputLabel-root.Mui-focused{
+  font-size: 20px;
+}
+
+.css-179z3gj-MuiFormLabel-root-MuiInputLabel-root.Mui-focused{
+  font-size: 20px;
+}
+
+.css-l62xy5-MuiInputBase-root-MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline{
+  border-top: 0px;
+  border-right: 0px;
+  border-left: 0px;
+}
+
+.css-1u3bzj6-MuiFormControl-root-MuiTextField-root{
+  border-radius: 5px;
+}
+
+.labelMensaje{
+  color:#9c27b0;
+  font-family: "Roboto","Helvetica","Arial","sans-serif";
+  font-weight: 400;
+  line-height: 1.4375em;
+  font-size: 15.5px;
+}
 .mobile {
   display: none; /* Ocultar por defecto en dispositivos móviles */
 }
@@ -367,7 +420,7 @@ html {
 }
 
 .section-home {
-  height: 100vh;
+  /* height: 100vh; */
   /* display: flex; */
   justify-content: center;
   align-items: center;
@@ -413,7 +466,7 @@ html {
 .formContacto{
   background-color: var(--bgSecundario);
   color: var(--colorFuente);
-  height: 100vh;
+  /* height: 100vh; */
   display:grid; 
 }
 
@@ -439,3 +492,96 @@ html {
   background-color: var(--bgPrincipal);
 }
 
+.nav-item-home .nav-link:hover {
+  color: #a3a3a3;
+}
+
+
+
+.card-inner {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.999s;
+}
+
+.card-inner:hover  {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.card-front {
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotateY(0deg);
+}
+
+.card-back {
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotateY(180deg);
+}
+
+.iconContact{
+  height: 100px;
+  width: 100px;
+  margin: 0 80px 0 80px;
+}
+
+.button-contact {
+  font-size: 18px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  display: inline-block;
+  text-align: center;
+  font-weight: bold;
+  padding: 0.7em 2em;
+  border: 3px solid #2a0253;
+  border-radius: 2px;
+  position: relative;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.1);
+  color: #2a0253;
+  text-decoration: none;
+  transition: 0.3s ease all;
+  z-index: 1;
+  border-radius: 5px;
+  margin: 32px;
+}
+
+.button-contact:before {
+  transition: 0.5s all ease;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  right: 50%;
+  bottom: 0;
+  opacity: 0;
+  content: '';
+  background-color: #2a0253;
+  z-index: -1;
+}
+
+.button-contact:hover, .button-contact:focus {
+  color: #f9d613;
+}
+
+.button-contact:hover:before, .button-contact:focus:before {
+  transition: 0.5s all ease;
+  left: 0;
+  right: 0;
+  opacity: 1;
+}
+
+.button-contact:active {
+  transform: scale(0.9);
+}
