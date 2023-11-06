@@ -65,11 +65,11 @@ el tamaño de la fuente de los titulos será de 61px  */
   }
 }
 
-.css-1o0voyd-MuiFormLabel-root-MuiInputLabel-root.Mui-focused{
+.css-1o0voyd-MuiFormLabel-root-MuiInputLabel-root.Mui-focused, .css-fj7reh.Mui-focused{
   font-size: 20px;
 }
 
-.css-179z3gj-MuiFormLabel-root-MuiInputLabel-root.Mui-focused{
+.css-179z3gj-MuiFormLabel-root-MuiInputLabel-root.Mui-focused, .css-fj7reh.Mui-focused{
   font-size: 20px;
 }
 
