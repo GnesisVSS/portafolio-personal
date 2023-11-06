@@ -43,10 +43,6 @@ el tamaño de la fuente de los titulos será de 61px  */
 
 
 
-
-
-
-
 /* para titulo escribeme */
 @media screen and (min-width: 601px){
   .h2Escribeme {
@@ -493,7 +489,7 @@ html {
 }
 
 .nav-item-home .nav-link:hover {
-  color: #a3a3a3;
+  color: #f9d613;
 }
 
 

@@ -36,7 +36,7 @@ const Home = () => {
     React.useEffect(() => {
         const options = {
             strings: [
-                'Soy Genesis, ingeniera en informática y desarrolladora <span style=color:#FF725E> fullStack! </span>'
+                'Soy Genesis, ingeniera en informática y desarrolladora <span style=color:#f9d613> fullStack! </span>'
             ],
             typeSpeed: 20,
             backSpeed: 20,
@@ -86,11 +86,11 @@ const Home = () => {
                                     easing={[1, -0.75, 1, 1.34]}
                                     translateX={[10, 50]}
                                 >
-                                    <img src="img/gifHome.gif" alt="" className='img-fluid rounded-circle' />
+                                    <img src="img/gifHome3.gif" alt="" className='img-fluid rounded-circle' />
                                 </Parallax>
                             </div>
                             <div className='mobile'>
-                                <img src="img/gifHome.gif" alt="" className='img-fluid rounded-circle' />
+                                <img src="img/gifHome3.gif" alt="" className='img-fluid rounded-circle' />
 
                             </div>
                         </div>
