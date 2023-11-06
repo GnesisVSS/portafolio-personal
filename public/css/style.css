@@ -83,6 +83,11 @@ el tamaño de la fuente de los titulos será de 61px  */
   border-radius: 5px;
 }
 
+.nav-link-home{
+  margin-left: 28px;
+  margin-right: 28px;
+}
+
 .labelMensaje{
   color:#9c27b0;
   font-family: "Roboto","Helvetica","Arial","sans-serif";

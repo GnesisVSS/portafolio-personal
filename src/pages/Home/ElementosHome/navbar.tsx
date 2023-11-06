@@ -31,9 +31,9 @@ export default function Navbar() {
           </button>
           <div className="  collapse navbar-collapse  " id="navbarNav">
             <ul className="navbar-nav text">
-              <li className="nav-item nav-item-home">
+              <li className="nav-item-home">
                 <a
-                  className="nav-link ColorFontWhite"
+                  className="nav-link nav-link-home ColorFontWhite"
                   id="nav-recetas"
                   href="/#sobreMi"
                 >
@@ -42,7 +42,7 @@ export default function Navbar() {
               </li>
               <li className="nav-item nav-item-home">
                 <a
-                  className="nav-link ColorFontWhite"
+                  className="nav-link nav-link-home ColorFontWhite"
                   id="nav-recetas"
                   href="/#recetas"
                 >
@@ -50,7 +50,7 @@ export default function Navbar() {
                 </a>
               </li>
             </ul>
-            <ul className="navbar-nav flex-row flex-wrap ms-md-auto">
+            {/* <ul className="navbar-nav flex-row flex-wrap ms-md-auto">
               <button className="btn-cssbuttons">
                 <span className="ColorFontWhite">Contáctame!</span>
                 <span>
@@ -117,7 +117,7 @@ export default function Navbar() {
                   </li>
                 </ul>
               </button>
-            </ul>
+            </ul> */}
           </div>
         </div>
       </nav>
