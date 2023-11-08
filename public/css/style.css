@@ -73,7 +73,7 @@ el tamaño de la fuente de los titulos será de 61px  */
   font-size: 20px;
 }
 
-.css-l62xy5-MuiInputBase-root-MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline{
+.css-l62xy5-MuiInputBase-root-MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline,.css-5g81cm.Mui-focused .MuiOutlinedInput-notchedOutline{
   border-top: 0px;
   border-right: 0px;
   border-left: 0px;
