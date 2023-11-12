@@ -61,7 +61,6 @@ export default function Index() {
         <Image id={index} key={image}/>
       ))}
       
-      <motion.div className="progress-home" style={{ scaleX }} />
     </>
   );
 }
