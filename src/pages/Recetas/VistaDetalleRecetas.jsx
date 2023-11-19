@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import NavbarUsuario from './ElementosRecetas/Navs/navbarUsuario';
-import PropTypes from 'prop-types'
-import { RecetasC } from '../../models/recetas.class';
-import { useLocation } from 'react-router-dom';
-import { mostrarDetalleIngredientes, mostrarDetalleRecetas } from '../../api/receta.api';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import GroupIcon from '@mui/icons-material/Group';
 import { Chip } from '@mui/material';
+import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import { mostrarDetalleIngredientes, mostrarDetalleRecetas } from '../../api/receta.api';
+import NavbarUsuario from './ElementosRecetas/Navs/navbarUsuario';
 
 const DetalleRecetas = () => {
     const location = useLocation();
