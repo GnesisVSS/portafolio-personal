@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import CardRecetas from './ElementosRecetas/cardRecetas';
-import { consMostrar, mostrarRecetas } from '../../api/receta.api';
+import { mostrarRecetas } from '../../api/receta.api';
 import Loading from './ElementosRecetas/Loading';
-import { Alert } from '@mui/material';
+import CardRecetas from './ElementosRecetas/cardRecetas';
 
 
 const VistaCards = () => {
@@ -54,6 +53,8 @@ const VistaCards = () => {
 
     let recetaInfo;
 
+    
+
     if (recetas.length > 0) {
         recetaInfo = <Tarjetas></Tarjetas>
     } else {
@@ -67,7 +68,7 @@ const VistaCards = () => {
         <section>
             <div className='container mx-auto py-4'>
                 <div>
-                    <div>
+                    <div className="rowRecetas">
                         {/* <Alert severity="info">
                             {guardadoLocal}
                             
