@@ -1,13 +1,12 @@
 /* eslint-disable react/jsx-no-target-blank */
 /* eslint-disable react/prop-types */
-import React, { Fragment, useEffect, useState } from 'react';
-import { Field, useFormik } from 'formik';
-import NavbarRecetas from '../ElementosRecetas/Navs/navbar-recetas';
 import { TextField } from '@mui/material';
-import { cargarRecetaAdmin, registroDetalleRecetasGenerales, registroIngredientes } from '../../../api/receta.api';
+import { useFormik } from 'formik';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router';
+import { registroDetalleRecetasGenerales, registroIngredientes } from '../../../api/receta.api';
 import Photo from '../Photo';
 import FormIngredientesAdmin from './FormIngredientesAdmin';
-import { useNavigate } from 'react-router';
 
 
 const RegRecAdmin = (datosIngredientes, props) => {
@@ -88,7 +87,7 @@ const RegRecAdmin = (datosIngredientes, props) => {
                     <h1 className='text-focus-in titulo-inicio'>Detalles</h1>
                     <div className='py-4'>
                         <div className="input-group mb-3">
-                            <TextField fullWidth sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }} name='nombre' onChange={formik.handleChange} id="outlined-basic" label="Nombre" variant="outlined" />
+                            <TextField fullWidth sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }} name='nombre' onChange={formik.handleChange} id="outlined-basic" label="Nombre" variant="outlined" inputProps={{ maxLength: 40 }}/>
                         </div>
                         <div className="input-group mb-3">
                             <TextField fullWidth sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }} name='descripcion' onChange={formik.handleChange} id="outlined-basic" label="Descripcion" variant="outlined" />
