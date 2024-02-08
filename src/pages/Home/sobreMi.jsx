@@ -90,16 +90,21 @@ const SobreMi = () => {
 
                                             <div className='py-3' id='iconos'>
                                                 <h4>Conocimientos destacables</h4>
-                                                <IconBrandReact width='50px' height='50px' style={{ color: '#61DBFB', margin: '18px', backgroundColor: 'white', borderRadius: '15px' }} />
+                                                <IconBrandReact width='46px' height='46px' style={{ color: '#61DBFB', margin: '14px', backgroundColor: 'white', borderRadius: '15px' }} />
+
+                                                <IconBrandJavascript width='46px' height='46px' style={{ color: '#ffd630', margin: '14px', backgroundColor: 'white', borderRadius: '15px' }} />
+
+                                                <IconBrandGit width='46px' height='46px' style={{ color: '#f96926', margin: '14px', backgroundColor: 'white', borderRadius: '15px' }} />
+
+                                                <IconBrandCss3 width='46px' height='46px' style={{ color: '#61DBFB', margin: '14px', backgroundColor: 'white', borderRadius: '15px' }} />
+
+                                                <IconBrandHtml5 width='46px' height='46px' style={{ color: '#f96926', margin: '14px', backgroundColor: 'white', borderRadius: '15px' }} />
+
+                                                <div style={{ width: '46px', padding: '1px', height: '46px', margin: '14px', backgroundColor: 'white', borderRadius: '15px' }}>
+                                                <img src="img/springboot-color.svg" alt="Descripción del SVG"></img>
+                                                </div>
 
 
-                                                <IconBrandJavascript width='50px' height='50px' style={{ color: '#ffd630', margin: '18px', backgroundColor: 'white', borderRadius: '15px' }} />
-
-                                                <IconBrandGit width='50px' height='50px' style={{ color: '#f96926', margin: '18px', backgroundColor: 'white', borderRadius: '15px' }} />
-
-                                                <IconBrandCss3 width='50px' height='50px' style={{ color: '#61DBFB', margin: '18px', backgroundColor: 'white', borderRadius: '15px' }} />
-
-                                                <IconBrandHtml5 width='50px' height='50px' style={{ color: '#f96926', margin: '18px', backgroundColor: 'white', borderRadius: '15px' }} />
                                             </div>
                                         </div>
                                     </div>
