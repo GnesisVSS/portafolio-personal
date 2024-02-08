@@ -76,7 +76,7 @@ const DetalleRecetas = () => {
                                         <h1 style={{paddingBottom:'1.5rem'}}>Ingredientes</h1>
                                         {ingr.map(objeto => (
                                             <div key={objeto.id}>
-                                                <p> <strong>{objeto.nombre}</strong>  {objeto.cantidad === 0 ? '' : objeto.cantidad} {objeto.unidad === 'na' ? '' : objeto.unidad} </p>
+                                                <p> <strong>{objeto.nombre}</strong>  {objeto.cantidad === undefined ? '' : objeto.cantidad} {objeto.unidad === undefined ? '' : objeto.unidad} </p>
                                             </div>
                                         ))}
                                     </div>

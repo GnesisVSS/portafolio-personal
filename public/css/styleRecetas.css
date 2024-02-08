@@ -478,3 +478,7 @@
 .boton-save{
   color: var(--gray);
 }
+
+.botonRecetas{
+  color: #00A087!important;
+}

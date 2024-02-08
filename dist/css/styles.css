@@ -191,6 +191,14 @@ btn-cssbuttons ul li a:hover {
   border-radius: 50%;
 }
 
+.box-titulo {
+  display: flex;
+  align-items: center;
+ 
+  border-radius: 50%;
+  border: #EDE6F1;
+}
+
 .red {
   background-color: #ff605c;
 }

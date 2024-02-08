@@ -1,11 +1,8 @@
-import { ContactSupportOutlined, Photo } from '@mui/icons-material';
-import { Button, FormControl, FormHelperText, InputLabel, MenuItem, Select, TextField } from '@mui/material';
-import React, { useEffect, useState } from 'react';
-import { ErrorMessage, Field, setIn, useFormik } from 'formik';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
-import FormDetalles from './FormDetalles';
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
-import * as Yup from 'yup';
+import { Button } from '@mui/material';
+import React, { useEffect, useState } from 'react';
+import FormDetalles from './FormDetalles';
 
 
 const FormIngredientes = () => {
@@ -16,6 +13,15 @@ const FormIngredientes = () => {
     const [page, setPage] = useState(true);
     const [mensajeError, setMensajeError] = useState({});
 
+    // Para manejo de las cantidades con su checkbox, se hace de manera individual para el correcto funcionamiento, de lo contrario al tomar el check de la primera cantidad tambien tomaría de la segunda
+    const [disabled, setDisabled] = useState(false);
+    const [disabled2, setDisabled2] = useState(false);
+    const [disabled3, setDisabled3] = useState(false);
+
+
+    const [cambioCantidad1, setCambioCantidad1] = useState('');
+    const [cambioCantidad2, setCambioCantidad2] = useState('');
+    const [cambioCantidad3, setCambioCantidad3] = useState('');
     // Manejo del click del botón "siguente"
     const handleClick = () => {
         //  cambio de pagina, se toma el valor de page(true) y cambia a falso para que en el return condicional de mas abajo llame al componente FormDetalles
@@ -23,22 +29,45 @@ const FormIngredientes = () => {
 
         // se inicializa el valor final de el form en un arreglo vacío para almacenar cada valor de los inputs ingresados por el usuario
         let valFinal = []
+        if (disabled) {
+            setFormValues((prevState) => {
+                // Se clona el estado anterior para no mutar directamente el estado
+                const newState = [...prevState];
 
+                // Se verifica si el objeto en la posición 0 ya existe
+                if (!newState[0]) {
+                    newState[0] = {}; // Si no existe, se inicializa
+                }
+
+                // Se establece la propiedad cantidad en "0"
+                newState[0].cantidad = "0";
+
+                return newState; // Devolvemos el nuevo estado
+            });
+        }
         // el valor final, toma el valor de lo obtenido del formValues (arreglo con los valores ingresados por el usuario) concatenado a los valores de los inputs adicionales
         valFinal = formValues.concat(additionalInputs)
 
         // se le da como valor al Values, los elementos que ya tenia en el arreglo, mas, lo que hay en valFinal declarado anteriormente
         // este proceso es para luego enviarle estos valores finales al componente FormDetalles como props, se dejan en un valor a parte ya que solo en esta variable se juntan los valores en un solo arreglo de los inputs adicionales y los inputs por defecto
+
         setValues([...values, valFinal]);
 
         // se crean las keys con sus values en el localStorage para mantener los datos desde el FormValues (sus valores se determinan en el HandleChange) y los additionalInputs (sus valores se determinan en handleAddInput)
         localStorage.setItem('formValues', JSON.stringify(formValues));
         localStorage.setItem('additionalInputs', JSON.stringify(additionalInputs));
     }
+    const [checkboxStatesExtra, setCheckboxStatesExtra] = useState([]);
 
     const handleAddInput = () => {
+
         // se le da como valor al additionalInputs los valores que ya tenia, mas los valores ingresados después como un objeto dentro de un arreglo
         setAdditionalInputs([...additionalInputs, {}]);
+        setCheckboxStatesExtra((prevState) => {
+            const newState = [...prevState];
+            newState.push(true); // Agregamos true al final del arreglo
+            return newState;
+        });
     };
 
     useEffect(() => {
@@ -135,7 +164,7 @@ const FormIngredientes = () => {
             }
             // ------------------------------------SECCIÓN CANTIDAD--------------------------------------------------
         } else if (name === 'cantidad1' || name === 'cantidad2' || name === 'cantidad3' || name.startsWith('cantidadExtra-')) {
-            if (value === "0") {
+            if (value <= 0 && value !== "0" && disabled === false) {
                 name === 'cantidad1' ? newErrors.cantidad1 = mensajeCantidadErrorComun
                     :
                     name === 'cantidad2' ? newErrors.cantidad2 = mensajeCantidadErrorComun
@@ -177,6 +206,8 @@ const FormIngredientes = () => {
                 break;
             }
         }
+
+
         // se llama a la funcion handleChange 
         handleChange(event);
     }
@@ -185,6 +216,13 @@ const FormIngredientes = () => {
 
         // se obtiene el nombre y valor de cada campo
         const { name, value } = event.target;
+        if (name === 'cantidad1') {
+            setCambioCantidad1(value);
+        } else if (name === 'cantidad1') {
+            setCambioCantidad2(value);
+        } else if (name === 'cantidad3') {
+            setCambioCantidad3(value)
+        }
 
         // se define como index a el numero dentro de name, se extrae el ultimo caracter de la cadena name (que es un numero) y se le resta 1 a este numero
         const index = parseInt(name.slice(-1)) - 1;
@@ -205,9 +243,57 @@ const FormIngredientes = () => {
 
             return newState; // devolvemos el nuevo estado
         });
+
+
         // se llama a validaciones
         validaciones(event);
     }
+
+    const handleCheckboxChange = () => {
+
+        setDisabled(!disabled);
+
+    };
+
+    const handleCheckboxChange2 = () => {
+
+        setDisabled2(!disabled2);
+
+    };
+
+    const handleCheckboxChange3 = () => {
+
+        setDisabled3(!disabled3);
+
+    };
+
+    const [checkboxStates, setCheckboxStates] = useState([]);
+    // const [checkboxStatesExtra, setCheckboxStatesExtra] = useState([]);
+
+    const handleToggleDisabled = (index) => {
+
+        setCheckboxStatesExtra((prevState) => {
+            // se define como newState el estado anterior dentro de un arreglo
+            const newState = [...prevState];
+            // si el largo del arreglo newState es menor o igual al index creado anteriormente, entra en el ciclo
+            // verifica si existe un objeto en esta posicion
+            if (newState.length <= index) {
+                newState[index] = {}; // inicializamos el objeto en el índice si aún no existe
+            } else {
+                newState[index] = value; // actualizamos el campo correspondiente
+            }
+
+            return newState; // devolvemos el nuevo estado
+        });
+    };
+    const handleCheckboxChangeExtra = (index) => {
+        setCheckboxStatesExtra((prevState) => {
+            const newState = [...prevState];
+            newState[index] = !newState[index]; // Cambia al contrario del valor actual
+            return newState;
+        });
+    };
+    console.log(checkboxStatesExtra[0]);
 
     return (
         // se verifica si page es verdadero, si no, cambia a la siguente pagina
@@ -219,7 +305,7 @@ const FormIngredientes = () => {
                     {/*---------------------------------------------------------------------------------------------*/}
                     {/* Primera fila de inputs */}
 
-                    <div className='row py-4'>
+                    <div className='row py-2'>
 
                         <div className='col'>
                             <div className='form-floating'>
@@ -245,16 +331,25 @@ const FormIngredientes = () => {
                                 <input
                                     className='form-control'
                                     type="number"
-                                    name={'cantidad1'}
+                                    name='cantidad1'
                                     id="cantidad1"
-                                    value={formValues[0]?.cantidad}
+                                    value={disabled ? "0" : formValues[0]?.cantidad}
                                     onChange={handleChange}
                                     placeholder="Cantidad"
                                     required
-                                    min={1}
+                                    min={disabled ? 0 : 0.1}
+                                    step={0.1}
+                                    disabled={disabled}
                                 />
                                 <label htmlFor="cantidad1" style={{ color: 'grey' }}>Cantidad</label>
                                 {mensajeError.cantidad1 ? <div className="invalid-feedback">{mensajeError.cantidad1}</div> : <div className="invalid-feedback">Por favor, ingrese una cantidad</div>}
+                                <div className="form-check mt-4">
+                                    <input className="form-check-input" onChange={handleCheckboxChange} type="checkbox" id="gridCheck1" checked={formValues[0]?.cantidad === "0" || disabled ? true : false} required={cambioCantidad1 === '' ? true : false} disabled={cambioCantidad1 === '' ? false : true} />
+                                    <label className="form-check-label" htmlFor="gridCheck1">
+                                        No Aplica
+                                    </label>
+                                    {cambioCantidad1 === '' ? <div className="invalid-feedback" /> : ''}
+                                </div>
                             </div>
                         </div>
 
@@ -274,6 +369,8 @@ const FormIngredientes = () => {
                                     <option value={"oz."}>Onza (oz.)</option>
                                     <option value={"c.s."}>Cucharada sopera(c.s.) </option>
                                     <option value={"c.c."}>Cucharadita de postre(c.c.) </option>
+                                    <option value={"Tazas"}>Tazas </option>
+                                    <option value={"A gusto"}>A gusto </option>
                                 </select>
                                 <div className="invalid-feedback">
                                     Por favor, selecciona una unidad de medida
@@ -315,14 +412,24 @@ const FormIngredientes = () => {
                                     type="number"
                                     name={'cantidad2'}
                                     id="cantidad2"
-                                    value={formValues[1]?.cantidad}
+                                    value={disabled2 ? "0" : formValues[1]?.cantidad}
                                     onChange={handleChange}
                                     placeholder="Cantidad"
                                     required
-                                    min={1}
+                                    min={disabled2 ? 0 : 0.1}
+                                    step={0.1}
+                                    disabled={disabled2}
                                 />
                                 <label htmlFor="cantidad2" style={{ color: 'grey' }}>Cantidad</label>
                                 {mensajeError.cantidad2 ? <div className="invalid-feedback">{mensajeError.cantidad2}</div> : <div className="invalid-feedback">Por favor, ingrese una cantidad</div>}
+                                <div className="form-check mt-4">
+                                    <input className="form-check-input" onChange={handleCheckboxChange2} type="checkbox" id="gridCheck1" checked={formValues[1]?.cantidad === "0" || disabled2 ? true : false} required={cambioCantidad2 === '' ? true : false} disabled={cambioCantidad2 === '' ? false : true} />
+                                    <label className="form-check-label" htmlFor="gridCheck1">
+                                        No Aplica
+                                    </label>
+                                    {cambioCantidad2 === '' ? <div className="invalid-feedback" /> : ''}
+                                </div>
+
                             </div>
                         </div>
 
@@ -342,6 +449,8 @@ const FormIngredientes = () => {
                                     <option value={"oz."}>Onza (oz.)</option>
                                     <option value={"c.s."}>Cucharada sopera(c.s.) </option>
                                     <option value={"c.c."}>Cucharadita de postre(c.c.) </option>
+                                    <option value={"Tazas"}>Tazas </option>
+                                    <option value={"A gusto"}>A gusto </option>
                                 </select>
                                 <div className="invalid-feedback">
                                     Por favor, selecciona una unidad de medida
@@ -383,14 +492,23 @@ const FormIngredientes = () => {
                                     type="number"
                                     name={'cantidad3'}
                                     id="cantidad3"
-                                    value={formValues[2]?.cantidad}
+                                    value={disabled3 ? "0" : formValues[2]?.cantidad}
                                     onChange={handleChange}
                                     placeholder="Cantidad"
                                     required
-                                    min={1}
+                                    min={disabled3 ? 0 : 0.1}
+                                    step={0.1}
+                                    disabled={disabled3}
                                 />
                                 <label htmlFor="cantidad3" style={{ color: 'grey' }}>Cantidad</label>
                                 {mensajeError.cantidad3 ? <div className="invalid-feedback">{mensajeError.cantidad3}</div> : <div className="invalid-feedback">Por favor, ingrese una cantidad</div>}
+                                <div className="form-check mt-4">
+                                    <input className="form-check-input" onChange={handleCheckboxChange3} type="checkbox" id="gridCheck1" checked={formValues[2]?.cantidad === "0" || disabled3 ? true : false} required={cambioCantidad3 === '' ? true : false} disabled={cambioCantidad3 === '' ? false : true} />
+                                    <label className="form-check-label" htmlFor="gridCheck1">
+                                        No Aplica
+                                    </label>
+                                    {cambioCantidad3 === '' ? <div className="invalid-feedback" /> : ''}
+                                </div>
                             </div>
                         </div>
 
@@ -410,6 +528,8 @@ const FormIngredientes = () => {
                                     <option value={"oz."}>Onza (oz.)</option>
                                     <option value={"c.s."}>Cucharada sopera(c.s.) </option>
                                     <option value={"c.c."}>Cucharadita de postre(c.c.) </option>
+                                    <option value={"Tazas"}>Tazas </option>
+                                    <option value={"A gusto"}>A gusto </option>
                                 </select>
                                 <div className="invalid-feedback">
                                     Por favor, selecciona una unidad de medida
@@ -464,17 +584,39 @@ const FormIngredientes = () => {
                                             id={`cantidadExtra-${index}`}
                                             value={input.cantidad || ''}
                                             placeholder="Cantidad"
-                                            min={1}
-                                            required
+                                            checked={checkboxStatesExtra[index] || formValues[index]?.cantidad === "0"}
                                             onChange={(event) => {
                                                 validaciones(event);
                                                 const updatedInputs = [...additionalInputs];
                                                 updatedInputs[index].cantidad = event.target.value;
                                                 setAdditionalInputs(updatedInputs);
                                             }}
+                                            required={formValues[index]?.cantidad === '' ? true : false}
+                                            disabled={checkboxStatesExtra[index] === false || formValues[index]?.cantidad === "0" ? true : false}
+                                            min={0.1}
+                                            step={0.1}
                                         />
                                         <label htmlFor={`cantidadExtra-${index}`} style={{ color: 'grey' }}>Cantidad</label>
                                         {mensajeError[`cantidadExtra-${index}`] ? <div className="invalid-feedback">{mensajeError[`cantidadExtra-${index}`]}</div> : <div className="invalid-feedback">Por favor,ingrese un nombre</div>}
+                                        {/* {formValues[index]?.cantidad === '' ? <div className="invalid-feedback" /> : ''} */}
+
+
+                                        <div className="form-check mt-4">
+                                            <input className="form-check-input" onChange={() => handleCheckboxChangeExtra(index)} type="checkbox" id="gridCheck1" checked={formValues[index]?.cantidad === "0" || !checkboxStatesExtra[index] ? true : false} required={ formValues[index]?.cantidad === '' ? true : false} disabled={ input.cantidad === '' ? false : true} />
+                                            <label className="form-check-label" htmlFor="gridCheck1">
+                                                No Aplica
+                                            </label>
+                                            {cambioCantidad3 === '' ? <div className="invalid-feedback" /> : ''}
+                                        </div>
+{/* 
+
+
+                                        <div className="form-check mt-4">
+                                            <input className="form-check-input" onChange={() => handleCheckboxChangeExtra(index)} type="checkbox" id="gridCheck1" />
+                                            <label className="form-check-label" htmlFor="gridCheck1">
+                                                No Aplica
+                                            </label>
+                                        </div> */}
                                     </div>
                                 </div>
                                 <div className='col'>
@@ -515,6 +657,9 @@ const FormIngredientes = () => {
                                             <option value={"oz."}>Onza (oz.)</option>
                                             <option value={"c.s."}>Cucharada sopera(c.s.) </option>
                                             <option value={"c.c."}>Cucharadita de postre(c.c.) </option>
+                                            <option value={"Tazas"}>Tazas </option>
+                                            <option value={"A gusto"}>A gusto </option>
+                                            <option value={"Pizca"}>Pizca</option>
                                         </select>
                                         <label htmlFor={`unidadExtra-${index}`} style={{ color: 'grey' }}>Cantidad</label>
                                         <div className="invalid-feedback">
@@ -528,7 +673,7 @@ const FormIngredientes = () => {
 
                             </div>
                         ))}
-                        <Button variant="text" onClick={handleAddInput} style={{ color: "#00A087" }} startIcon={<AddCircleIcon />}>Agregar otro</Button>
+                        <Button variant="text" onClick={handleAddInput} type='button' style={{ color: "#00A087" }} startIcon={<AddCircleIcon />}>Agregar otro</Button>
                         <div style={{ textAlign: "right" }}>
                             <button type="submit" className="button-inicio">
                                 {/* <span >Loading...</span> */}

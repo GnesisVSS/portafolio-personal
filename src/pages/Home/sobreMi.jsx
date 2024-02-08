@@ -1,8 +1,7 @@
+import { IconBrandCss3, IconBrandGit, IconBrandHtml5, IconBrandJavascript, IconBrandReact } from '@tabler/icons-react';
+import { motion, useAnimation } from 'framer-motion';
 import React, { useEffect, useState } from 'react';
-import { IconBrandReact, IconBrandJavascript, IconBrandGit, IconBrandCss3, IconBrandHtml5 } from '@tabler/icons-react';
-import { useScroll, useTransform, motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Tooltip } from '@mui/material';
 
 
 
