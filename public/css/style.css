@@ -283,8 +283,8 @@ btn-cssbuttons ul li a:hover {
   align-items: center;
   width: 100%; /* Establecer el ancho máximo */
   color: white;
-  border: #485b62 1px solid;
-  background-color: #5b7078;
+  border: #5b707854 1px solid;
+  background-color: #5b707854;
   border-radius: 12px;
   box-sizing: border-box; /* Esto asegura que el padding esté incluido en el ancho */
   margin: 0 12px;
