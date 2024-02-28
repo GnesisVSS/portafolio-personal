@@ -125,7 +125,7 @@ const Proyectos = () => {
     const headerClass = screenSize < 767 ? 'mobile' : 'pantalla';
 
     return (
-        <section id='recetas' style={{ backgroundColor: '#EDE6F1', color: '#162E36', height: '100vh', minHeight: '100vh' }}>
+        <section id='recetas' style={{ backgroundColor: '#EDE6F1', color: '#162E36' }}>
             <div >
                 <motion.div
                     ref={ref}
@@ -143,7 +143,7 @@ const Proyectos = () => {
 
                                 </div>
 
-                                <div className='col-sm-12 col-md-12 col-lg-4 align-self-center' >
+                                <div className='col-sm-12 col-md-12 col-lg-4 align-self-center py-3' >
                                     <Atropos>
                                         <div className="card-prev-rec" data-atropos-offset="-3">
                                             <div className="tools">
@@ -180,7 +180,7 @@ const Proyectos = () => {
                                         </div>
                                     </Atropos>
                                 </div>
-                                <div className='col-sm-12 col-md-12 col-lg-4 align-self-center' >
+                                <div className='col-sm-12 col-md-12 col-lg-4 align-self-center py-3' >
                                     <Atropos>
                                         <div className="card-prev-rec" data-atropos-offset="-3">
                                             <div className="tools">
@@ -229,7 +229,7 @@ const Proyectos = () => {
 
 
                                 </div>
-                                <div className='col-sm-12 col-md-12 col-lg-4 align-self-center' >
+                                <div className='col-sm-12 col-md-12 col-lg-4 align-self-center py-3' >
                                     <Atropos>
                                         <div className="card-prev-rec" data-atropos-offset="-3">
                                             <div className="tools">

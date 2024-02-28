@@ -36,7 +36,7 @@ const SobreMi = () => {
     const headerClass = screenSize < 767 ? 'mobile' : 'pantalla';
 
     return (
-        <section id='sobreMi' style={{ backgroundColor: '#EDE6F1', color: '#162E36', height: '100vh' }}>
+        <section id='sobreMi' style={{ backgroundColor: '#EDE6F1', color: '#162E36' }}>
             <div className={headerClass}>
                 {headerClass === "pantalla" ? <div style={{ overflow: "hidden" }}>
                     <svg
@@ -63,7 +63,7 @@ const SobreMi = () => {
                                 animate={control}
                             >
                                 <div className="row justify-content-center" >
-                                    <div className="col-sm-6 col-md-7 p-5 align-self-center col-imagen" >
+                                    <div className="col-sm-12 col-md-12 col-xl-7 p-5 align-self-center col-imagen" >
 
                                         <div className="col">
                                             {/* <img alt='' src='img/pensando.gif' id='gifSobreMi' className='img-fluid' /> */}
@@ -71,7 +71,7 @@ const SobreMi = () => {
 
                                         </div>
                                     </div>
-                                    <div className="col-sm-8 col-md-5 px-5 align-self-center col-texto" >
+                                    <div className="col-sm-12 col-md-12 col-xl-5 px-5 align-self-center col-texto" >
 
                                         <div className="col" >
                                             <strong><h1 style={{ textAlign: 'left' }} className='h1SobreMi'>Experiencia</h1></strong>

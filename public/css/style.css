@@ -134,7 +134,7 @@ los elementos se muestren centrados al ocupar el alto de toda la pantalla */
 .rowhome{
   display: flex;
   align-items: center;
-  height: 90vh;
+  min-height: 90vh;
 }
 
 /* PORTAFOLIO.........NAVBAR DE HOME......... */
@@ -603,7 +603,7 @@ html {
 }
 
 .styleDefHome1{
-  min-height: 100vh;
+  /* min-height: 100vh; */
   background-color: var(--bgPrincipal);
 }
 

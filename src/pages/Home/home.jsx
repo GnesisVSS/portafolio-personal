@@ -1,9 +1,9 @@
-import { useAnimation, motion } from 'framer-motion';
+import { useAnimation } from 'framer-motion';
 import React, { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
-import Navbar from './ElementosHome/navbar';
-import Typed from 'typed.js';
 import { Parallax } from "react-scroll-parallax";
+import Typed from 'typed.js';
+import Navbar from './ElementosHome/navbar';
 
 
 const copy = "HolaMundo".split("");
@@ -53,7 +53,7 @@ const Home = () => {
     }, [])
     const headerClass = screenSize < 767 ? 'mobile' : 'pantalla';
     return (
-        <div id='home' className='align-items-center styleDefHome1'>
+        <section id='home' className='align-items-center styleDefHome1'>
             <Navbar />
             <div>
 
@@ -90,7 +90,7 @@ const Home = () => {
                                 </Parallax>
                             </div>
                             <div className='mobile'>
-                                <img src="img/gifHome3.gif" alt="" className='img-fluid rounded-circle' />
+                                    <img src="img/gifHome3.gif" alt="" className='img-fluid rounded-circle' />
 
                             </div>
                         </div>
@@ -99,7 +99,7 @@ const Home = () => {
                 </div>
             </div >
 
-        </div >
+        </section >
     );
 }
 
