@@ -1,7 +1,7 @@
 import axios from "axios";
 
 
-let url_recetas = 'https://bdapirest.netlify.app/.netlify/functions/api/api/receta';
+let url_recetas = 'https://apiprueba.netlify.app/.netlify/functions/api/api/recetas';
 let url_ingr = 'https://bdapirest.netlify.app/.netlify/functions/api/api/ingredientes';
 let url_guardadas = 'https://bdapirest.netlify.app/.netlify/functions/api/api/recetaguardada';
 let url_rec_usuario = 'https://bdapirest.netlify.app/.netlify/functions/api/api/recetausuario';
