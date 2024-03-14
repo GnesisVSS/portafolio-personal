@@ -1,6 +1,6 @@
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import GroupIcon from '@mui/icons-material/Group';
-import { Chip } from '@mui/material';
+import { Checkbox, Chip, FormControlLabel, FormGroup } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { mostrarDetalleIngredientes, mostrarDetalleRecetas } from '../../api/receta.api';
@@ -11,6 +11,7 @@ const DetalleRecetas = () => {
     const { rec } = location.state;
     const [recetas, setRecetas] = useState([])
     const [ingr, setIngr] = useState([]);
+    const [checked, setChecked] = useState([]);
     var fondo = document.getElementById('root');
     fondo.style.backgroundColor = "white";
 
@@ -58,46 +59,96 @@ const DetalleRecetas = () => {
         }
     }
 
-    console.log(ingr)
+    const ingredienteTachado = (valor) => {
+        if (checked.includes(valor)) {
+            setChecked(checked.filter(item => item !== valor));
+        } else {
+            setChecked([...checked, valor]);
+        }
+    };
+
+
 
     return (
         <section>
             <NavbarUsuario />
 
 
-            <div className='container mx-auto py-4'>
+            <div className='container mx-auto py-4' style={{ margin: '0px 32px 0px 32px' }}>
                 <div>
                     <div>
                         <div key={recetas.id} className='py-5 row justify-content-center'>
                             <div className='col-5 col-sm-6' style={{ textAlign: 'center' }}>
-                                <img src={recetas.imgUrl} style={{ maxHeight: 400, maxWidth: 500 }} />
+                                <img src={recetas.imgUrl ? recetas.imgUrl : "/img/FondoDefecto.svg"} style={{ maxHeight: 400, maxWidth: 500, borderRadius: "25px" }} />
                             </div>
                             <div className='col-5 col-sm-6'>
                                 <h1> {recetas.nombre}</h1>
+                                <h6> <em>{recetas.descripcion}</em> </h6>
                                 <hr style={{ borderTop: "1px solid black" }} />
-                                <h4> <AccessTimeIcon /> {recetas.tiempoPreparacion} minutos <GroupIcon /> {recetas.porciones} porciones</h4>
-                                <h5 className='py-5'> Categoria <Chip label={recetas.categoria} /> </h5>
+                                <h4>
+                                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                        <div>
+                                            <AccessTimeIcon /> {recetas.tiempoPreparacion} minutos <GroupIcon /> {recetas.porciones} porciones
+                                        </div>
+                                        <div>
+                                            <Chip label={recetas.categoria} /> <Chip style={{ background: recetas.dificultad == "Baja" ? "#8bc34a" : recetas.dificultad == "Media" ? "#ffb74d" : recetas.dificultad == "Alta" ? "#ff7043" : "" }} label={"Dificultad " + recetas.dificultad} />
+                                        </div>
+                                    </div>
+
+
+                                </h4>
+                                <div className="py-2">
+
+
+                                </div>
+                                {recetas.recursos !== "" ?
+                                    <div>
+                                        <a type='button' className="button-recursos" href={recetas.recursos} target="_blank" rel='noreferrer'>
+                                            {/* <span >Loading...</span> */}
+                                            <div className="visually-hidden" id='loading' role="status" >
+                                                <div className="spinner-border spinner-border-sm" role="status" />
+                                            </div>
+
+                                            <span className="" id='iniciar'>Mira un video de la receta aqui!</span>
+                                        </a>
+                                        <div>
+                                        <span style={{fontSize:'12px',color:'grey'}}>
+                                        Los videos mostrados pertenecen a sus respectivos autores.
+                                        </span>
+                                        </div>
+                                        
+                                    </div>
+
+                                    :
+                                    ""
+                                }
+
 
                             </div>
 
 
                         </div>
-                        {/* <p className='py-4'>{recetas[0].nombre_receta}</p> */}
                     </div>
-                    <div>
-                        <div key={recetas.id} className='py-5 row justify-content-center'>
+                    <div className='px-5'>
+                        <div key={recetas.id} className='px-5 row justify-content-center'>
                             <div className='col-5 col-sm-6' style={{ textAlign: 'left' }}>
-                                <div style={{ border: '1px solid black' }} className='p-5'>
+                                <div className='py-5'>
                                     <h1 style={{ paddingBottom: '1.5rem' }}>Ingredientes</h1>
-                                    {ingr.map(objeto => (
-                                        <div key={objeto.id}>
-                                            <p> <strong>{objeto.nombre}</strong>  {objeto.cantidad === undefined ? '' : objeto.cantidad} {objeto.unidad === undefined ? '' : objeto.unidad} </p>
-                                        </div>
-                                    ))}
+                                    <FormGroup>
+                                        {ingr.map(objeto => (
+                                            <div key={objeto.id}>
+                                                <FormControlLabel control={<Checkbox checked={checked.includes(objeto.nombre)} // Establecemos el estado del checkbox según si objeto.nombre está en el array checkedItems
+                                                    onChange={() => ingredienteTachado(objeto.nombre)} />} label={<span> <strong>{objeto.nombre}</strong>  {objeto.cantidad === undefined ? '' : objeto.cantidad} {objeto.unidad === undefined ? '' : objeto.unidad}</span>}
+                                                    className={checked.includes(objeto.nombre) ? 'tachado' : ''} />
+
+                                            </div>
+                                        ))}
+
+                                    </FormGroup>
                                 </div>
                             </div>
                             <div className='col-5 col-sm-6'>
-                                <div className='p-5' style={{ border: '1px solid black' }}>
+                                <div className='py-5'>
                                     <h1>Preparación</h1>
 
                                     <div key={recetas.id} className='py-4' style={{ wordWrap: "break-word" }}>
