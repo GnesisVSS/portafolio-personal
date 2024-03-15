@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types'
-import { RecetasC } from '../../../models/recetas.class';
-import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
-import { cargarGuardados, eliminarGuardados, mostrarRecetasGuardadas } from '../../../api/receta.api';
+import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import { Box, Fade, Typography } from '@mui/material';
-import Modal from '@mui/material/Modal';
 import Backdrop from '@mui/material/Backdrop';
-import DetalleRecetas from '../VistaDetalleRecetas';
-import { Link, useNavigate } from 'react-router-dom';
+import Modal from '@mui/material/Modal';
+import PropTypes from 'prop-types';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { cargarGuardados, eliminarGuardados, mostrarRecetasGuardadas } from '../../../api/receta.api';
+import { RecetasC } from '../../../models/recetas.class';
 
 
 const CardRecetas = ({ rec }) => {
@@ -77,7 +76,7 @@ const CardRecetas = ({ rec }) => {
 
         <div className="card card-home-rec justify-content-center">
         
-            <div className="img" style={rec.imgUrl === "" ? { backgroundImage: 'url(/img/FondoDefecto.svg)' } : { backgroundImage: `url(${rec.imgUrl})` }}>
+            <div className="img" style={rec.imgUrl === "" || undefined ? { backgroundImage: 'url(/img/FondoDefecto.svg)' } : { backgroundImage: `url(${rec.imgUrl})` }}>
                 {
                     correousuario ? <button
                         className="save"
