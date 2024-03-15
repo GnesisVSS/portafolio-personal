@@ -1,37 +1,31 @@
 /* eslint-disable react/react-in-jsx-scope */
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom'
+import { ApolloClient, ApolloProvider, HttpLink, InMemoryCache, from } from '@apollo/client';
+import { onError } from "@apollo/client/link/error";
+import React from 'react';
+import { Provider } from 'react-redux';
+import { Navigate, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import Index from './pages';
-import Login from './pages/Recetas/Log/login';
-import Recetas from './pages/Recetas/Recetas';
-import Registro from './pages/Recetas/Log/registro';
-import React, { useEffect, useState } from 'react';
-import RecetasPreLog from './pages/Recetas/HomeRec.jsx';
-import RegRecAdmin from './pages/Recetas/Admin/ingreso-rec-admin';
-import HomeUsuario from './pages/Recetas/UsuarioLogged/HomeUsuario';
-import MiPerfil from './pages/Recetas/ElementosRecetas/Navs/MenuItems/miPerfil';
-import RecetasGuardadasCompletas from './pages/Recetas/ElementosRecetas/Navs/MenuItems/RecetasGuardadasCompletas';
-import MisRecetas from './pages/Recetas/ElementosRecetas/Navs/MenuItems/misRecetas';
-import FormRecetas from './pages/Recetas/ElementosRecetas/Navs/MenuItems/FormRecetas';
-import VistaRecetasUsuario from './pages/Recetas/UsuarioLogged/VistaRecetasUsuario';
-import DetalleRecetas from './pages/Recetas/VistaDetalleRecetas';
-import FormIngredientesAdmin from './pages/Recetas/Admin/FormIngredientesAdmin';
 import FormRecetasAdmin from './pages/Recetas/Admin/FormRecetasAdmin';
+import FormRecetas from './pages/Recetas/ElementosRecetas/Navs/MenuItems/FormRecetas';
+import RecetasGuardadasCompletas from './pages/Recetas/ElementosRecetas/Navs/MenuItems/RecetasGuardadasCompletas';
+import MiPerfil from './pages/Recetas/ElementosRecetas/Navs/MenuItems/miPerfil';
+import RecetasPreLog from './pages/Recetas/HomeRec.jsx';
+import Login from './pages/Recetas/Log/login';
+import Registro from './pages/Recetas/Log/registro';
+import Recetas from './pages/Recetas/Recetas';
+import HomeUsuario from './pages/Recetas/UsuarioLogged/HomeUsuario';
 import VistaDetalleGuardados from './pages/Recetas/UsuarioLogged/VistaDetalleGuardados';
 import VistaDetalleRecetasUsuario from './pages/Recetas/UsuarioLogged/VistaDetalleRecetasUsuario';
+import VistaRecetasUsuario from './pages/Recetas/UsuarioLogged/VistaRecetasUsuario';
+import DetalleRecetas from './pages/Recetas/VistaDetalleRecetas';
 import VistaPreDemo from './pages/Recetas/VistaPreDemo';
-import RickAndMortyPages from './pages/RickAndMorty/RickAndMortyPages';
-import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
-import { HttpLink, from } from "@apollo/client";
-import { onError } from "@apollo/client/link/error";
-import store from './pages/RickAndMorty/Redux/store/store';
-import { Provider } from 'react-redux';
 import InfoDetalladaId from './pages/RickAndMorty/InfoDetalladaId';
 import InfoFavoritos from './pages/RickAndMorty/InfoFavoritos';
+import store from './pages/RickAndMorty/Redux/store/store';
+import RickAndMortyPages from './pages/RickAndMorty/RickAndMortyPages';
 
-import VistaPreDemoRickyMorty from './pages/RickAndMorty/VistaPreDemoRickyMorty';
 import '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
-import { StyledEngineProvider } from '@mui/material/styles';
+import VistaPreDemoRickyMorty from './pages/RickAndMorty/VistaPreDemoRickyMorty';
 
 import Proyectos from './pages/Home/proyectos';
 

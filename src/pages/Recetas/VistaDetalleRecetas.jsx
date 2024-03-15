@@ -78,17 +78,17 @@ const DetalleRecetas = () => {
                 <div>
                     <div>
                         <div key={recetas.id} className='py-5 row justify-content-center'>
-                            <div className='col-5 col-sm-6' style={{ textAlign: 'center' }}>
-                                <img src={recetas.imgUrl ? recetas.imgUrl : "/img/FondoDefecto.svg"} style={{ maxHeight: 400, maxWidth: 500, borderRadius: "25px" }} />
+                            <div className='col-lg-6 col-sm-12 py-4' style={{ textAlign: 'center' }}>
+                                <img className='img-fluid' src={recetas.imgUrl ? recetas.imgUrl : "/img/FondoDefecto.svg"} style={{ maxHeight: 400,  borderRadius: "25px" }} />
                             </div>
-                            <div className='col-5 col-sm-6'>
+                            <div className='col-lg-6 col-sm-12'>
                                 <h1> {recetas.nombre}</h1>
                                 <h6> <em>{recetas.descripcion}</em> </h6>
                                 <hr style={{ borderTop: "1px solid black" }} />
                                 <h4>
                                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                        <div>
-                                            <AccessTimeIcon /> {recetas.tiempoPreparacion} minutos <GroupIcon /> {recetas.porciones} porciones
+                                        <div style={{marginRight:'1.5rem'}}>
+                                            <AccessTimeIcon/> {recetas.tiempoPreparacion} minutos <GroupIcon/> {recetas.porciones} porciones
                                         </div>
                                         <div>
                                             <Chip label={recetas.categoria} /> <Chip style={{ background: recetas.dificultad == "Baja" ? "#8bc34a" : recetas.dificultad == "Media" ? "#ffb74d" : recetas.dificultad == "Alta" ? "#ff7043" : "" }} label={"Dificultad " + recetas.dificultad} />
@@ -130,15 +130,15 @@ const DetalleRecetas = () => {
                         </div>
                     </div>
                     <div className='px-5'>
-                        <div key={recetas.id} className='px-5 row justify-content-center'>
-                            <div className='col-5 col-sm-6' style={{ textAlign: 'left' }}>
+                        <div key={recetas.id} className=' row justify-content-center'>
+                            <div className='col-lg-6 col-sm-12' style={{ textAlign: 'left' }}>
                                 <div className='py-5'>
                                     <h1 style={{ paddingBottom: '1.5rem' }}>Ingredientes</h1>
                                     <FormGroup>
                                         {ingr.map(objeto => (
                                             <div key={objeto.id}>
                                                 <FormControlLabel control={<Checkbox checked={checked.includes(objeto.nombre)} // Establecemos el estado del checkbox según si objeto.nombre está en el array checkedItems
-                                                    onChange={() => ingredienteTachado(objeto.nombre)} />} label={<span> <strong>{objeto.nombre}</strong>  {objeto.cantidad === undefined ? '' : objeto.cantidad} {objeto.unidad === undefined ? '' : objeto.unidad}</span>}
+                                                    onChange={() => ingredienteTachado(objeto.nombre)} />} label={<span> <strong>{objeto.nombre}</strong>  {objeto.cantidad === 0 ? '' : objeto.cantidad} {objeto.unidad === 0 ? '' : objeto.unidad}</span>}
                                                     className={checked.includes(objeto.nombre) ? 'tachado' : ''} />
 
                                             </div>
@@ -147,7 +147,7 @@ const DetalleRecetas = () => {
                                     </FormGroup>
                                 </div>
                             </div>
-                            <div className='col-5 col-sm-6'>
+                            <div className='col-lg-6 col-sm-12'>
                                 <div className='py-5'>
                                     <h1>Preparación</h1>
 
