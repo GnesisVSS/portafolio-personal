@@ -138,7 +138,7 @@ const DetalleRecetas = () => {
                                         {ingr.map(objeto => (
                                             <div key={objeto.id}>
                                                 <FormControlLabel control={<Checkbox checked={checked.includes(objeto.nombre)} // Establecemos el estado del checkbox según si objeto.nombre está en el array checkedItems
-                                                    onChange={() => ingredienteTachado(objeto.nombre)} />} label={<span> <strong>{objeto.nombre}</strong>  {objeto.cantidad === 0 ? '' : objeto.cantidad} {objeto.unidad === 0 ? '' : objeto.unidad}</span>}
+                                                    onChange={() => ingredienteTachado(objeto.nombre)} />} label={<span> <strong>{objeto.nombre}</strong>  {objeto.cantidad === 0 ? '' : objeto.cantidad} {objeto.unidad === 'na' ? '' : objeto.unidad}</span>}
                                                     className={checked.includes(objeto.nombre) ? 'tachado' : ''} />
 
                                             </div>
