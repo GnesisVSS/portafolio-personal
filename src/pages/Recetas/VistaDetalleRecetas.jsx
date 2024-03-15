@@ -101,7 +101,7 @@ const DetalleRecetas = () => {
 
 
                                 </div>
-                                {recetas.recursos !== "" ?
+                                {recetas.recursos ?
                                     <div>
                                         <a type='button' className="button-recursos" href={recetas.recursos} target="_blank" rel='noreferrer'>
                                             {/* <span >Loading...</span> */}
