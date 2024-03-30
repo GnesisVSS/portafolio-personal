@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { mostrarDetalleIngredientes, mostrarDetalleRecetasGuardadas } from '../../../api/receta.api';
-import { useLocation } from 'react-router';
-import NavbarUsuario from '../ElementosRecetas/Navs/navbarUsuario';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import { Chip } from '@mui/material';
 import GroupIcon from '@mui/icons-material/Group';
+import { Chip } from '@mui/material';
+import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router';
+import { mostrarDetalleIngredientes } from '../../../api/receta.api';
+import NavbarUsuario from '../ElementosRecetas/Navs/navbarUsuario';
 
 
 const VistaDetalleGuardados = () => {
@@ -20,7 +20,7 @@ const VistaDetalleGuardados = () => {
         async function loadRecetasDetalle() {
             const correousuario = localStorage.getItem("correoUsuario");
 
-            const response = await mostrarDetalleRecetasGuardadas(rec.id_receta,correousuario)
+            const response = await mostrarDetalleRecetas(rec.id_receta)
             const responseIngr = await mostrarDetalleIngredientes(rec.id)
             // console.log(response.data[0].id)
             setRecetas(...recetas, response.data)
