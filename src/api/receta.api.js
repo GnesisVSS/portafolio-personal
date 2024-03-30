@@ -22,7 +22,7 @@ export const mostrarDetalleRecetas = async (ingreso) =>
     await axios.get(url_recetas + `/${ingreso}`)
 
 export const mostrarDetalleRecetasGuardadas = async (id,correo) =>
-    await axios.get(url_guardadasDet + `/${id}` + `/${correo}`)
+    await axios.get(url_recetas + `/${id}` + `/${correo}`)
 
 export const mostrarDetalleRecetasUsuario = async (id,correo) =>
     await axios.get(url_rec_usuarioDet + `/${id}` + `/${correo}`)
