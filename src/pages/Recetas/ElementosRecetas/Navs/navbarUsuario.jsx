@@ -1,10 +1,10 @@
-import React from 'react';
 import { Avatar, Box, IconButton, Menu, MenuItem, Tooltip, Typography } from '@mui/material';
+import React from 'react';
 
 const NavbarUsuario = () => {
     const InicialesUsuario = localStorage.getItem("inicialesUsuario");
 
-    const settings = ['Mi perfil', 'Guardados','Mis recetas' , 'Cerrar Sesión'];
+    const settings = ['Mi perfil', 'Guardados', 'Cerrar Sesión'];
     const [anchorElUser, setAnchorElUser] = React.useState(null);
 
     const [selectedIndex, setSelectedIndex] = React.useState();
@@ -24,8 +24,6 @@ const NavbarUsuario = () => {
         }else if(index===1){
             window.location.href = '/misGuardados';
         }else if(index===2){
-            window.location.href = '/misRecetas';
-        }else if(index===3){
             localStorage.removeItem("nombreUsuario");
             localStorage.removeItem("inicialesUsuario");
             localStorage.removeItem("correoUsuario");

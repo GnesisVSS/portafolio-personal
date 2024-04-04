@@ -1,8 +1,7 @@
+import { Alert, AlertTitle } from '@mui/material';
+import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { consultaRecetasUsuario } from '../../../../../api/receta.api';
-import { Alert, AlertTitle, Fab } from '@mui/material';
-import AddIcon from '@mui/icons-material/Add';
-import PropTypes from 'prop-types'
 import { RecetasC } from '../../../../../models/recetas.class';
 import VistaRecetasUsuario from '../../../UsuarioLogged/VistaRecetasUsuario';
 
@@ -52,11 +51,11 @@ const MisRecetas = ({ rec }) => {
 
 
             </div >
-            <a href='/FormRecetas'>
+            {/* <a href='/FormRecetas'>
                 <Fab color="primary" aria-label="add" >
                     <AddIcon />
                 </Fab>
-            </a>
+            </a> */}
         </div >
     );
 }

@@ -1,5 +1,4 @@
-import AddIcon from '@mui/icons-material/Add';
-import { Alert, AlertTitle, Fab } from '@mui/material';
+import { Alert, AlertTitle } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { consultaRecetasUsuario } from '../../../api/receta.api';
 import NavbarUsuario from '../ElementosRecetas/Navs/navbarUsuario';
@@ -47,11 +46,11 @@ const VistaRecetasUsuario = () => {
 
                         <div className="col-3 py-4 text-end">
 
-                            <a href='/FormRecetas'>
+                            {/* <a href='/FormRecetas'>
                                 <Fab color="primary" aria-label="add" >
                                     <AddIcon />
                                 </Fab>
-                            </a>
+                            </a> */}
 
                         </div>
                     </div>
