@@ -12,8 +12,7 @@ const VistaMisRecPerfil = () => {
     useEffect(() => {
         async function loadRecetas() {
             const correousuario = localStorage.getItem("correoUsuario");
-            const cant = 2;
-            const response = await misRecetasLimit(correousuario, cant)
+            const response = await misRecetasLimit(correousuario)
             setRecetas(response.data)
             // setImage(new Blob([response.data], { type: "image/jpeg" }));
         }

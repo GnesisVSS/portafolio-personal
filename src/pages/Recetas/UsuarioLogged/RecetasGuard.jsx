@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types'
-import { RecetasC } from '../../../models/recetas.class';
-import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
-import { cargarGuardados, eliminarGuardados, mostrarRecetasGuardadas } from '../../../api/receta.api';
+import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
+import PropTypes from 'prop-types';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
+import { cargarGuardados, eliminarGuardados, mostrarRecetasGuardadas } from '../../../api/receta.api';
+import { RecetasC } from '../../../models/recetas.class';
 
 const RecetasGuard = ({ rec }) => {
     
@@ -41,7 +41,7 @@ const RecetasGuard = ({ rec }) => {
     const navigate = useNavigate();
     const nombreReceta = rec.nombre
     const redirigirADetalleRecetas = () => {
-        navigate('/DetalleGuardados', { state: { rec } }); // Redirige a '/detalle-recetas' y pasa 'receta' como prop
+        navigate('/DetalleRecetas', { state: { rec } }); // Redirige a '/detalle-recetas' y pasa 'receta' como prop
         console.log(rec)
     };
 

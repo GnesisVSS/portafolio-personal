@@ -5,14 +5,18 @@ import axios from "axios";
 // let url_recetas = 'https://bdapirest.netlify.app/.netlify/functions/api/api/receta';
 // let url_ingr = 'https://bdapirest.netlify.app/.netlify/functions/api/api/ingredientes';
 // let url_guardadas = 'https://bdapirest.netlify.app/.netlify/functions/api/api/recetaguardada';
-let url_rec_usuario = 'https://bdapirest.netlify.app/.netlify/functions/api/api/recetausuario';
-let url_guardadasDet = 'https://bdapirest.netlify.app/.netlify/functions/api/api/recetaguardadaDet';
-let url_rec_usuarioDet = 'https://bdapirest.netlify.app/.netlify/functions/api/api/recetausuarioDet';
+// let url_rec_usuario = 'https://bdapirest.netlify.app/.netlify/functions/api/api/recetausuario';
+// let url_guardadasDet = 'https://bdapirest.netlify.app/.netlify/functions/api/api/recetaguardadaDet';
+// let url_rec_usuarioDet = 'https://bdapirest.netlify.app/.netlify/functions/api/api/recetausuarioDet';
 
 // url de recetas para json
 let url_recetas = 'https://apiprueba.netlify.app/.netlify/functions/api/recetas';
 let url_ingr = 'https://apiprueba.netlify.app/.netlify/functions/api/ingredientes';
 let url_guardadas = 'https://apiprueba.netlify.app/.netlify/functions/api/recetasGuardadas';
+let url_guardadasLimit = 'https://apiprueba.netlify.app/.netlify/functions/api/recetasGuardadasLimit';
+let url_rec_usuario = 'https://apiprueba.netlify.app/.netlify/functions/api/recetasUsuario';
+//url extra de limite de recetas para mostrar propias del usuario
+let url_rec_usuarioLimit = 'https://apiprueba.netlify.app/.netlify/functions/api/recetasGuardadasLimitUsuario';
 
 // Mostrar recetas
 export const mostrarRecetas = async () =>
@@ -26,7 +30,7 @@ export const mostrarDetalleRecetasGuardadas = async (id,correo) =>
     await axios.get(url_recetas + `/${id}` + `/${correo}`)
 
 export const mostrarDetalleRecetasUsuario = async (id,correo) =>
-    await axios.get(url_rec_usuarioDet + `/${id}` + `/${correo}`)
+    await axios.get(url_rec_usuario + `/${id}` + `/${correo}`)
 
 // Mostrar detalles de los ingredientes en detalle receta
 export const mostrarDetalleIngredientes = async (ingreso) =>
@@ -64,8 +68,8 @@ export const registroDetalleRecetasGenerales = async (ingreso) => {
 export const mostrarRecetasGuardadas = async (ingreso) =>
     await axios.get(url_guardadas + `/${ingreso}`)
 
-export const mostrarRecetasGuardadaslimit = async (ingreso, cant) =>
-    await axios.get(url_guardadas + `/${ingreso}` + `/${cant}`)
+export const mostrarRecetasGuardadaslimit = async (ingreso) =>
+    await axios.get(url_guardadasLimit + `/${ingreso}`)
 
 //insertar recetas guardadas
 export const cargarGuardados = async (idreceta, correousuario) => {
@@ -128,5 +132,5 @@ export const registroDetalleRecetaUsuario = async (ingreso) => {
 
 
 // Limite de muestra de recetas del usuario para mi Perfil
-export const misRecetasLimit = async (ingreso, cant) =>
-    await axios.get(url_rec_usuario + `/${ingreso}` + `/${cant}`)
+export const misRecetasLimit = async (ingreso) =>
+    await axios.get(url_rec_usuarioLimit + `/${ingreso}`)

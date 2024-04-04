@@ -1,12 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import RecetasUsuario from './RecetasUsuario';
-import { consultaRecetasUsuario, misRecetasLimit } from '../../../api/receta.api';
-import Loading from '../ElementosRecetas/Loading';
-import MisRecetas from '../ElementosRecetas/Navs/MenuItems/misRecetas';
-import NavbarUsuario from '../ElementosRecetas/Navs/navbarUsuario';
-import { Alert, AlertTitle, Fab } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
-import { Visibility } from '@mui/icons-material';
+import { Alert, AlertTitle, Fab } from '@mui/material';
+import React, { useEffect, useState } from 'react';
+import { consultaRecetasUsuario } from '../../../api/receta.api';
+import NavbarUsuario from '../ElementosRecetas/Navs/navbarUsuario';
+import RecetasUsuario from './RecetasUsuario';
 
 const VistaRecetasUsuario = () => {
     var fondo = document.getElementById('root');

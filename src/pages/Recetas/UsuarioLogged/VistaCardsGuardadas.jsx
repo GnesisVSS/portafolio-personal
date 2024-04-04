@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { mostrarRecetasGuardadaslimit } from '../../../api/receta.api';
-import RecetasGuard from './RecetasGuard';
 import Loading from '../ElementosRecetas/Loading';
+import RecetasGuard from './RecetasGuard';
 
 const VistaCardsGuardadas = () => {
     // use state para definir como estado inicial las tareas definidas como base
@@ -12,8 +12,7 @@ const VistaCardsGuardadas = () => {
     useEffect(() => {
         async function loadRecetas() {
             const correousuario = localStorage.getItem("correoUsuario");
-            const cant = 2;
-            const response = await mostrarRecetasGuardadaslimit(correousuario, cant)
+            const response = await mostrarRecetasGuardadaslimit(correousuario)
             setRecetas(response.data)
         }
         if (recetas.length === 0) {

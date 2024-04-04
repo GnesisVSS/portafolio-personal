@@ -3,7 +3,7 @@ import GroupIcon from '@mui/icons-material/Group';
 import { Chip } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router';
-import { mostrarDetalleIngredientes } from '../../../api/receta.api';
+import { mostrarDetalleIngredientes, mostrarDetalleRecetas } from '../../../api/receta.api';
 import NavbarUsuario from '../ElementosRecetas/Navs/navbarUsuario';
 
 
@@ -20,7 +20,7 @@ const VistaDetalleGuardados = () => {
         async function loadRecetasDetalle() {
             const correousuario = localStorage.getItem("correoUsuario");
 
-            const response = await mostrarDetalleRecetas(rec.id_receta)
+            const response = await mostrarDetalleRecetas(rec.id)
             const responseIngr = await mostrarDetalleIngredientes(rec.id)
             // console.log(response.data[0].id)
             setRecetas(...recetas, response.data)
@@ -52,28 +52,25 @@ const VistaDetalleGuardados = () => {
             <div className='container mx-auto py-4'>
                 <div>
                     <div>
-                        {recetas.map(objeto => (
-                            <div key={objeto.id} className='py-5 row justify-content-center'>
+                            <div key={recetas.id} className='py-5 row justify-content-center'>
                                 <div className='col-5 col-sm-6' style={{ textAlign: 'center' }}>
-                                    <img src={objeto.imgUrl==="" ? 'img/FondoDefecto.svg' : objeto.imgUrl} style={{ maxHeight: 400, maxWidth: 500 }}/>
+                                    <img src={recetas.imgUrl==="" ? 'img/FondoDefecto.svg' : recetas.imgUrl} style={{ maxHeight: 400, maxWidth: 500 }}/>
                                 </div>
                                 <div className='col-5 col-sm-6'>
-                                    <h1> {objeto.nombre}</h1>
+                                    <h1> {recetas.nombre}</h1>
                                     <hr style={{ borderTop: "1px solid black" }} />
-                                    <h4> <AccessTimeIcon /> {objeto.tiempoPreparacion} minutos <GroupIcon /> {objeto.porciones} porciones</h4>
-                                    <h5 className='py-5'> Categoria <Chip label={objeto.categoria} /> </h5>
+                                    <h4> <AccessTimeIcon /> {recetas.tiempoPreparacion} minutos <GroupIcon /> {recetas.porciones} porciones</h4>
+                                    <h5 className='py-5'> Categoria <Chip label={recetas.categoria} /> </h5>
 
                                 </div>
 
 
                             </div>
 
-                        ))}
                         {/* <p className='py-4'>{recetas[0].nombre_receta}</p> */}
                     </div>
                     <div>
-                        {recetas.map(objeto => (
-                            <div key={objeto.id} className='py-5 row justify-content-center'>
+                            <div key={recetas.id} className='py-5 row justify-content-center'>
                                 <div className='col-5 col-sm-6' style={{ textAlign: 'left' }}>
                                     <div style={{ border: '1px solid black' }} className='p-5'>
                                         <h1 style={{ paddingBottom: '1.5rem' }}>Ingredientes</h1>
@@ -111,8 +108,6 @@ const VistaDetalleGuardados = () => {
 
 
                             </div>
-
-                        ))}
                         {/* <p className='py-4'>{recetas[0].nombre_receta}</p> */}
                     </div>
 
