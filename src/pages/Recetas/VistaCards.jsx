@@ -18,21 +18,21 @@ const VistaCards = () => {
         loadRecetas()
     }, [])
 
-    // Función para verificar el cambio en el localStorage
-    function checkLocalStorage() {
-        var currentValue = localStorage.getItem("guardado");
-        if (currentValue !== null && currentValue !== previousValue) {
-            // Aquí puedes realizar las acciones necesarias cuando cambia el valor de "guardado"
-            console.log("El valor de 'guardado' ha cambiado:", currentValue);
-            setGuardadoLocal(currentValue)
-            previousValue = currentValue; // Actualizar el valor anterior
-        }
-    }
+    // // Función para verificar el cambio en el localStorage
+    // function checkLocalStorage() {
+    //     var currentValue = localStorage.getItem("guardado");
+    //     if (currentValue !== null && currentValue !== previousValue) {
+    //         // Aquí puedes realizar las acciones necesarias cuando cambia el valor de "guardado"
+    //         console.log("El valor de 'guardado' ha cambiado:", currentValue);
+    //         setGuardadoLocal(currentValue)
+    //         previousValue = currentValue; // Actualizar el valor anterior
+    //     }
+    // }
 
-    var previousValue = localStorage.getItem("guardado"); // Valor inicial
+    // var previousValue = localStorage.getItem("guardado"); // Valor inicial
 
-    // Verificar el cambio cada segundo (puedes ajustar el intervalo según tus necesidades)
-    setInterval(checkLocalStorage, 500);
+    // // Verificar el cambio cada segundo (puedes ajustar el intervalo según tus necesidades)
+    // setInterval(checkLocalStorage, 500);
 
     const Tarjetas = () => {
         return (

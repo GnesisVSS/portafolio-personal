@@ -1,5 +1,5 @@
 import React from 'react';
-import NavbarUsuario from '../ElementosRecetas/Navs/navbarUsuario';
+import NavbarRecetas from '../ElementosRecetas/Navs/navbar-recetas';
 import VistaCards from '../VistaCards';
 
 const HomeUsuario = () => {
@@ -15,7 +15,8 @@ const HomeUsuario = () => {
 
         <section id='homeRecetas'>
 
-            <NavbarUsuario />
+            {/* <NavbarUsuario /> */}
+            <NavbarRecetas></NavbarRecetas>
             <VistaCards />
         </section>
     );

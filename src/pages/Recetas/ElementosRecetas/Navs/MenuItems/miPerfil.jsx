@@ -1,12 +1,11 @@
-import React from 'react';
-import NavbarUsuario from '../navbarUsuario';
-import { styled } from '@mui/material/styles';
+import { Avatar } from '@mui/material';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Unstable_Grid2';
-import { Avatar } from '@mui/material';
+import { styled } from '@mui/material/styles';
+import React from 'react';
 import VistaCardsGuardadas from '../../../UsuarioLogged/VistaCardsGuardadas';
-import VistaMisRecPerfil from '../../../UsuarioLogged/VistaMisRecPerfil';
+import NavbarUsuario from '../navbarUsuario';
 
 const MiPerfil = () => {
     var fondo = document.getElementById('root');
@@ -74,21 +73,7 @@ const MiPerfil = () => {
                                             </Box>
                                         </Item>
                                     </Grid>
-                                    <Grid xs={6} lg={10}>
-                                        <Item>
-                                            <Box
-                                                id="category-c"
-                                                sx={{ fontSize: '12px', textTransform: 'uppercase', textAlign: 'left' }}
-                                            >
-                                                Mis recetas
-                                            </Box>
-                                            <Box component="ul" aria-labelledby="category-b" sx={{ pl: 2 }}>
-                                                {/* Cards */}
-                                                <VistaMisRecPerfil></VistaMisRecPerfil>
-                                            </Box>
-
-                                        </Item>
-                                    </Grid>
+                                    
                                 </Grid>
 
                             </Grid>

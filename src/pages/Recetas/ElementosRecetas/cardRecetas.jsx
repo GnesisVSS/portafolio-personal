@@ -1,12 +1,8 @@
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
-import { Box, Fade, Typography } from '@mui/material';
-import Backdrop from '@mui/material/Backdrop';
-import Modal from '@mui/material/Modal';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { cargarGuardados, eliminarGuardados, mostrarRecetasGuardadas } from '../../../api/receta.api';
 import { RecetasC } from '../../../models/recetas.class';
 
 
@@ -14,34 +10,109 @@ const CardRecetas = ({ rec }) => {
 
     const [save, setSave] = useState(false);
     const [recetas, setRecetas] = useState([])
-    const [estaGuardado, setEstaguardado] = useState(false);
+    const [estaGuardado, setEstaguardado] = useState();
 
     const correousuario = localStorage.getItem("correoUsuario");
 
     useEffect(() => {
+        // Obtener los elementos del localStorage
+        // const guardadoString = localStorage.getItem('guardado');
+        // if (guardadoString) {
+        //     // Convertir los elementos del localStorage de nuevo a un arreglo
+        //     const recetasGuardadas = JSON.parse(guardadoString);
+        //     // Actualizar el estado de las recetas guardadas con los elementos del localStorage
+        //     setRecetas(recetasGuardadas);
+        //     // Verificar si alguna de las recetas guardadas coincide con la receta actual
+        //     setEstaguardado(recetasGuardadas.some(elemento => rec.id === elemento.id));
+        // }
 
-        async function loadRecetasGuardadas() {
-            const response = await mostrarRecetasGuardadas(correousuario)
-            // console.log(response.data[0].id)
-            setRecetas(...recetas, response.data)
-            setEstaguardado(response.data.some((elemento) => rec.id === elemento.id));
-        }
-        loadRecetasGuardadas();
-    }, [])
+    }, []);
 
-    const handleChange = () => {
-        if (estaGuardado === false && save === false) {
-            setSave(true);
-            cargarGuardados(rec.id, correousuario);
-            localStorage.setItem('guardado', rec.nombre)
 
-        } else {
+
+    const handleChange = (id) => {
+        let guardado;
+        if (localStorage.getItem("guardado") && localStorage.getItem("guardado").indexOf(id) !== -1) {
             setSave(false);
-            eliminarGuardados(rec.id, correousuario);
+            guardado = false;
+        }else{
+            setSave(!save);
+            guardado = !save;
         }
-        setEstaguardado(!estaGuardado);
+        
+        cambioValorLocal(guardado);
     };
 
+    const cambioValorLocal = (guardado) => {
+        const guardadoString = localStorage.getItem('guardado');
+        let nombresGuardados = [];
+        if (guardado === true) {
+
+            if (guardadoString) {
+                nombresGuardados = JSON.parse(guardadoString);
+            } else {
+                localStorage.setItem('guardado', nombresGuardados)
+            }
+
+            // Verificar si ya hay algo guardado en el localStorage
+
+            // Agregar el nuevo nombre al arreglo
+            nombresGuardados.push(rec.id);
+            // Guardar el arreglo actualizado en el localStorage
+            localStorage.setItem('guardado', JSON.stringify(nombresGuardados));
+            // cargarGuardados(rec.id, correousuario);
+            // localStorage.setItem('guardado', rec.nombre)
+
+        } else {
+            let recetasGuardadas = JSON.parse(guardadoString);
+            console.log("se desguardo:c")
+            const idAEliminar = rec.nombre;
+
+            // Encontrar el índice del elemento a eliminar en el arreglo
+            recetasGuardadas = recetasGuardadas.filter(elemento => elemento !== rec.id);
+            localStorage.setItem('guardado', JSON.stringify(recetasGuardadas));
+        }
+    }
+
+
+
+    // useEffect(() => {
+    //     // Obtener los elementos del localStorage
+    //     const guardadoString = localStorage.getItem('guardado');
+    //     if (guardadoString) {
+    //         // Convertir los elementos del localStorage de nuevo a un arreglo
+    //         const recetasGuardadas = JSON.parse(guardadoString);
+    //         // Actualizar el estado de las recetas guardadas con los elementos del localStorage
+    //         setRecetas(recetasGuardadas);
+    //         // Verificar si alguna de las recetas guardadas coincide con la receta actual
+    //         setEstaguardado(recetasGuardadas.some(elemento => rec.id === elemento.id));
+    //     }
+    // }, []);
+
+    // const handleChange = () => {
+    //     if (estaGuardado === false || save === false) {
+    //         setSave(true);
+    //         let nombresGuardados = [];
+    //         // Verificar si ya hay algo guardado en el localStorage
+    //         const guardadoString = localStorage.getItem('guardado');
+    //         if (guardadoString) {
+    //             // Si hay algo guardado, convertirlo de vuelta a un arreglo
+    //             nombresGuardados = JSON.parse(guardadoString);
+    //         }
+    //         // Agregar el nuevo nombre al arreglo
+    //         nombresGuardados.push(rec.nombre);
+    //         // Guardar el arreglo actualizado en el localStorage
+    //         localStorage.setItem('guardado', JSON.stringify(nombresGuardados));
+    //         console.log(localStorage.getItem('guardado'));
+    //         // cargarGuardados(rec.id, correousuario);
+    //         // localStorage.setItem('guardado', rec.nombre)
+
+    //     } else {
+    //         setSave(false);
+    //         // eliminarGuardados(rec.id, correousuario);
+    //     }
+    //     setEstaguardado(!estaGuardado);
+    // };
 
     // ELEMENTOS PARA USUARIOS QUE NO ESTÉN LOGEADOS
     const [open, setOpen] = React.useState(false);
@@ -75,23 +146,16 @@ const CardRecetas = ({ rec }) => {
     return (
 
         <div className="card card-home-rec justify-content-center">
-        
+
             <div className="img" style={rec.imgUrl === "" || undefined ? { backgroundImage: 'url(/img/FondoDefecto.svg)' } : { backgroundImage: `url(${rec.imgUrl})` }}>
-                {
-                    correousuario ? <button
-                        className="save"
-                        onClick={handleChange}
-                    >
-                        {estaGuardado || save ? <BookmarkIcon /> : <BookmarkBorderIcon />}
-                    </button>
-                        :
-                        <button
-                            className="save"
-                            onClick={handleClickOpen}
-                        >
-                            {<BookmarkBorderIcon />}
-                        </button>
-                }
+
+                <button
+                    className="save"
+                    onClick={() => handleChange(rec.id)}
+                >
+                    {save || (localStorage.getItem("guardado") && localStorage.getItem("guardado").indexOf(rec.id) !== -1) ? <BookmarkIcon /> : <BookmarkBorderIcon />}
+                </button>
+
 
             </div>
 
@@ -105,62 +169,7 @@ const CardRecetas = ({ rec }) => {
             </div >
 
             <div>
-                <Modal
-                    aria-labelledby="transition-modal-title"
-                    aria-describedby="transition-modal-description"
-                    open={open}
-                    onClose={handleClose}
-                    closeAfterTransition
-                    slots={{ backdrop: Backdrop }}
-                    slotProps={{
-                        backdrop: {
-                            timeout: 500,
-                        },
-                    }}
-                >
-                    <Fade in={open}>
-                        <Box sx={style}>
-                            <div className="container text-center">
-                                <div className="row align-items-center">
-                                    <div className="col">
-                                        <img src="../img/ohno.svg" />
-                                    </div>
-                                    <div className="col align-self-center">
-                                        <h1 className="card-title text-center fw-bold">Oh, no!</h1>
-                                        <Typography id="transition-modal-description" sx={{ mt: 2 }}>
-                                            Debes iniciar sesión para poder guardar tus recetas favoritas. Crea una cuenta gratis para acceder a esta función y más!
-                                        </Typography>
-                                        <p className="text-muted text-center">
-                                            Al ser un demo, las credenciales principales son:
-                                            
-                                            <div className='row text-start'>
-                                                <div className='col-2'>
-                                                </div>
-                                                <div className='col-8'>
-                                                    <li><strong>Correo:</strong> root@root.cl</li>
-                                                    <li> <strong>Pass:</strong> root</li>
-                                                </div>
-                                                <div className='col-2'>
-                                                </div>
-                                            </div>
 
-
-
-                                        </p>
-
-                                        <a className="button-inicio" type='button' href='./login'>
-                                            <span className="" id='iniciar'>Iniciar sesión</span>
-                                        </a>
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-
-                        </Box>
-                    </Fade>
-                </Modal>
             </div>
         </div >
 

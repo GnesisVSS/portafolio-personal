@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { mostrarRecetasGuardadas } from '../../../../../api/receta.api';
-import NavbarUsuario from '../navbarUsuario';
-import RecetasGuard from '../../../UsuarioLogged/RecetasGuard';
+import { mostrarRecetasGuardadasGeneral } from '../../../../../api/receta.api';
 import Loading from '../../../ElementosRecetas/Loading';
+import RecetasGuard from '../../../UsuarioLogged/RecetasGuard';
+import NavbarRecetas from '../navbar-recetas';
 
 const RecetasGuardadasCompletas = () => {
     var fondo = document.getElementById('root');
@@ -11,9 +11,13 @@ const RecetasGuardadasCompletas = () => {
     const [recetas, setRecetas] = useState([])
     // const [image, setImage] = useState(null);
     const correo = localStorage.getItem("correoUsuario");
+    const ids = localStorage.getItem("guardado")
+    let arreg = localStorage.getItem('guardado');
+    let ar = JSON.parse(arreg);
+
     useEffect(() => {
         async function loadRecetas() {
-            const response = await mostrarRecetasGuardadas(correo)
+            const response = await mostrarRecetasGuardadasGeneral(ar.join(','))
             setRecetas(response.data)
             // setImage(new Blob([response.data], { type: "image/jpeg" }));
         }
@@ -46,7 +50,7 @@ const RecetasGuardadasCompletas = () => {
     }
     return (
         <section>
-            <NavbarUsuario />
+            <NavbarRecetas />
             <div className='container mx-auto py-4'>
                 <div>
                     <div>

@@ -64,7 +64,8 @@ function Routing() {
                     <Route path='/regRecAdmin' element={<FormRecetasAdmin />} />
                     <Route path='/HomeUsuario' element={datos ? <HomeUsuario /> : <Navigate to='/login' />} />
                     <Route path='/miPerfil' element={datos ? <MiPerfil /> : <Navigate to='/login' />} />
-                    <Route path='/misGuardados' element={datos ? <RecetasGuardadasCompletas /> : <Navigate to='/login' />} />
+                    {/* <Route path='/misGuardados' element={datos ? <RecetasGuardadasCompletas /> : <Navigate to='/login' />} /> */}
+                    <Route path='/misGuardados' element={<RecetasGuardadasCompletas />} />
                     <Route path='/misRecetas' element={datos ? <VistaRecetasUsuario /> : <Navigate to='/login' />} />
                     <Route path='/FormRecetas' element={datos ? <FormRecetas /> : <Navigate to='/login' />} />
                     <Route path='/DetalleRecetas' element={<DetalleRecetas />} />

@@ -13,6 +13,7 @@ import axios from "axios";
 let url_recetas = 'https://apiprueba.netlify.app/.netlify/functions/api/recetas';
 let url_ingr = 'https://apiprueba.netlify.app/.netlify/functions/api/ingredientes';
 let url_guardadas = 'https://apiprueba.netlify.app/.netlify/functions/api/recetasGuardadas';
+let url_guardadasGeneral = 'https://apiprueba.netlify.app/.netlify/functions/api/recetasGuardadasGeneral';
 let url_guardadasLimit = 'https://apiprueba.netlify.app/.netlify/functions/api/recetasGuardadasLimit';
 let url_rec_usuario = 'https://apiprueba.netlify.app/.netlify/functions/api/recetasUsuario';
 //url extra de limite de recetas para mostrar propias del usuario
@@ -67,6 +68,10 @@ export const registroDetalleRecetasGenerales = async (ingreso) => {
 // Recetas guardadas
 export const mostrarRecetasGuardadas = async (ingreso) =>
     await axios.get(url_guardadas + `/${ingreso}`)
+
+export const mostrarRecetasGuardadasGeneral = async (ingreso) =>
+    await axios.get(url_guardadasGeneral + `/${ingreso}`)
+
 
 export const mostrarRecetasGuardadaslimit = async (ingreso) =>
     await axios.get(url_guardadasLimit + `/${ingreso}`)

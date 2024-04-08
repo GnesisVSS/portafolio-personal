@@ -22,12 +22,15 @@ function NavbarRecetas() {
                                     <strong><a className="nav-link" style={{ color: " #3a3228" }} id="nav-recetas" href="/recetas">Home</a></strong>
                                 </li>
 
+                                <li className="nav-item px-3">
+                                    <a className="nav-link" style={{ color: "#60513f" }} id="guardados" href="/misGuardados">Mis guardados</a>
+                                </li>
                             </ul>
                             <ul className="navbar-nav flex-row flex-wrap ms-md-auto">
-                                <li className="nav-item px-5">
+                                <li className="nav-item px-3">
                                     <a className="nav-link" style={{ color: "#60513f" }} id="nav-recetas" href="/#Home">Volver al portafolio</a>
                                 </li>
-                                <a className='LogReg' href='./login' type='button'>Inicia Sesión/Registrate</a>
+                                {/* <a className='LogReg' href='./login' type='button'>Inicia Sesión/Registrate</a> */}
                             </ul>
 
                         </div>
