@@ -1,3 +1,4 @@
+import Alert from '@mui/material/Alert';
 import React, { useEffect, useState } from 'react';
 import { mostrarRecetasGuardadasGeneral } from '../../../../../api/receta.api';
 import Loading from '../../../ElementosRecetas/Loading';
@@ -11,8 +12,10 @@ const RecetasGuardadasCompletas = () => {
     const [recetas, setRecetas] = useState([])
     // const [image, setImage] = useState(null);
     const correo = localStorage.getItem("correoUsuario");
-    const ids = localStorage.getItem("guardado")
     let arreg = localStorage.getItem('guardado');
+    const [nohayrecetas, setNohayrecetas] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
+
     let ar = JSON.parse(arreg);
 
     useEffect(() => {
@@ -21,6 +24,12 @@ const RecetasGuardadasCompletas = () => {
             setRecetas(response.data)
             // setImage(new Blob([response.data], { type: "image/jpeg" }));
         }
+        if (recetas.length === 0) {
+            setNohayrecetas(true)
+        }
+        const timer = setTimeout(() => {
+            setIsLoading(false);
+        }, 2000);
         loadRecetas()
     }, [])
 
@@ -30,8 +39,11 @@ const RecetasGuardadasCompletas = () => {
                 <div className='container'>
                     {recetas.map((rec, index) => {
                         return (
-                            
-                            <RecetasGuard key={index} rec={rec} />
+                            // eslint-disable-next-line react/jsx-key
+                            <div>
+                                <RecetasGuard key={index} rec={rec} />
+
+                            </div>
                         )
                     })}
                 </div>
@@ -41,13 +53,30 @@ const RecetasGuardadasCompletas = () => {
 
     let recetaInfo;
 
-    if (recetas.length > 0) {
-        recetaInfo = <Tarjetas></Tarjetas>
-    } else {
+    if (isLoading) {
         recetaInfo = (
             <Loading />
-        )
+        ) // Renderizar un indicador de carga mientras isLoading sea verdadero
+    } else {
+        if (recetas.length > 0) {
+            recetaInfo = <Tarjetas />
+        } else {
+
+            if (nohayrecetas === true) {
+                recetaInfo = (
+                    <div className='py-5'>
+                        <Alert severity="warning">Ooops! No hay recetas guardadas por mostrar, intenta guardar una!</Alert>
+
+                    </div>
+                )
+            } else {
+                recetaInfo = (
+                    <Loading />
+                )
+            }
+        }
     }
+
     return (
         <section>
             <NavbarRecetas />
