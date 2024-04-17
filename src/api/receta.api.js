@@ -2,22 +2,23 @@ import axios from "axios";
 
 // url de recetas para base de datos local
 
-// let url_recetas = 'https://bdapirest.netlify.app/.netlify/functions/api/api/receta';
-// let url_ingr = 'https://bdapirest.netlify.app/.netlify/functions/api/api/ingredientes';
+let url_recetas = 'https://bdapirest.netlify.app/.netlify/functions/api/api/receta';
+let url_ingr = 'https://bdapirest.netlify.app/.netlify/functions/api/api/ingredientes';
+let url_guardadasGeneral = 'https://bdapirest.netlify.app/.netlify/functions/api/api/recetasGuardadasGeneral';
 // let url_guardadas = 'https://bdapirest.netlify.app/.netlify/functions/api/api/recetaguardada';
 // let url_rec_usuario = 'https://bdapirest.netlify.app/.netlify/functions/api/api/recetausuario';
 // let url_guardadasDet = 'https://bdapirest.netlify.app/.netlify/functions/api/api/recetaguardadaDet';
 // let url_rec_usuarioDet = 'https://bdapirest.netlify.app/.netlify/functions/api/api/recetausuarioDet';
 
 // url de recetas para json
-let url_recetas = 'https://apiprueba.netlify.app/.netlify/functions/api/recetas';
-let url_ingr = 'https://apiprueba.netlify.app/.netlify/functions/api/ingredientes';
-let url_guardadas = 'https://apiprueba.netlify.app/.netlify/functions/api/recetasGuardadas';
-let url_guardadasGeneral = 'https://apiprueba.netlify.app/.netlify/functions/api/recetasGuardadasGeneral';
-let url_guardadasLimit = 'https://apiprueba.netlify.app/.netlify/functions/api/recetasGuardadasLimit';
-let url_rec_usuario = 'https://apiprueba.netlify.app/.netlify/functions/api/recetasUsuario';
+// let url_recetas = 'https://apiprueba.netlify.app/.netlify/functions/api/recetas';
+// let url_ingr = 'https://apiprueba.netlify.app/.netlify/functions/api/ingredientes';
+// let url_guardadas = 'https://apiprueba.netlify.app/.netlify/functions/api/recetasGuardadas';
+// let url_guardadasGeneral = 'https://apiprueba.netlify.app/.netlify/functions/api/recetasGuardadasGeneral';
+// let url_guardadasLimit = 'https://apiprueba.netlify.app/.netlify/functions/api/recetasGuardadasLimit';
+// let url_rec_usuario = 'https://apiprueba.netlify.app/.netlify/functions/api/recetasUsuario';
 //url extra de limite de recetas para mostrar propias del usuario
-let url_rec_usuarioLimit = 'https://apiprueba.netlify.app/.netlify/functions/api/recetasGuardadasLimitUsuario';
+// let url_rec_usuarioLimit = 'https://apiprueba.netlify.app/.netlify/functions/api/recetasGuardadasLimitUsuario';
 
 // Mostrar recetas
 export const mostrarRecetas = async () =>

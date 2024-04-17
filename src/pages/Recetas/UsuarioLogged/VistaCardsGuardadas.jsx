@@ -26,8 +26,10 @@ const VistaCardsGuardadas = () => {
 
     const Tarjetas = () => {
         return (
+            
             <section>
                 <div className='container'>
+                
                     {recetas.map((rec, index) => {
                         return (
                             <RecetasGuard key={index} rec={rec} />
@@ -63,18 +65,18 @@ const VistaCardsGuardadas = () => {
 
     
     return (
-        <section >
+        <section className='guardados'>
             <div className='container mx-auto py-4'>
                 <div>
-                    <div>
+                    <div className="rowRecetas">
+                        {/* <Alert severity="info">
+                            {guardadoLocal}
+                            
+                        </Alert> */}
                         {recetaInfo}
                     </div>
                 </div>
             </div >
-            <div className='text-end p-4'>
-                <a href='/MisGuardados'>Ver todo</a>
-            </div >
-
         </section>
     );
 }

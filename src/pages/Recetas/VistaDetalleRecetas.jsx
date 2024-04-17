@@ -21,9 +21,9 @@ const DetalleRecetas = () => {
             const response = await mostrarDetalleRecetas(rec.id)
             const responseIngr = await mostrarDetalleIngredientes(rec.id)
             // console.log(response.data[0].id)
-            setRecetas(...recetas, response.data)
+            setRecetas(...recetas, response.data[0])
             setIngr(...ingr, responseIngr.data)
-            console.log(response.data)
+            // console.log(response.data[0])
         }
         loadRecetasDetalle();
 

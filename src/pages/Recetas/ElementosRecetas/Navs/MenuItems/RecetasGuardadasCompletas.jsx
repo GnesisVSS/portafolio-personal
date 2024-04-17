@@ -39,11 +39,7 @@ const RecetasGuardadasCompletas = () => {
                 <div className='container'>
                     {recetas.map((rec, index) => {
                         return (
-                            // eslint-disable-next-line react/jsx-key
-                            <div>
-                                <RecetasGuard key={index} rec={rec} />
-
-                            </div>
+                            <RecetasGuard key={index} rec={rec} />
                         )
                     })}
                 </div>
@@ -82,12 +78,17 @@ const RecetasGuardadasCompletas = () => {
             <NavbarRecetas />
             <div className='container mx-auto py-4'>
                 <div>
-                    <div>
+                    <div className="rowRecetas">
+                        {/* <Alert severity="info">
+                            {guardadoLocal}
+                            
+                        </Alert> */}
                         {recetaInfo}
                     </div>
                 </div>
-            </div >
+            </div>
         </section>
+
     );
 }
 
