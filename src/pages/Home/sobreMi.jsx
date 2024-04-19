@@ -1,4 +1,4 @@
-import { IconBrandCss3, IconBrandGit, IconBrandHtml5, IconBrandJavascript, IconBrandReact } from '@tabler/icons-react';
+import { Tooltip } from '@mui/material';
 import { motion, useAnimation } from 'framer-motion';
 import React, { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
@@ -88,25 +88,90 @@ const SobreMi = () => {
                                                 </p>
                                             </div>
 
-                                            <div className='py-3' id='iconos'>
-                                                <h4>Conocimientos destacables</h4>
-                                                <IconBrandReact width='46px' height='46px' style={{ color: '#61DBFB', margin: '14px', backgroundColor: 'white', borderRadius: '15px' }} />
 
-                                                <IconBrandJavascript width='46px' height='46px' style={{ color: '#ffd630', margin: '14px', backgroundColor: 'white', borderRadius: '15px' }} />
-
-                                                <IconBrandGit width='46px' height='46px' style={{ color: '#f96926', margin: '14px', backgroundColor: 'white', borderRadius: '15px' }} />
-
-                                                <IconBrandCss3 width='46px' height='46px' style={{ color: '#61DBFB', margin: '14px', backgroundColor: 'white', borderRadius: '15px' }} />
-
-                                                <IconBrandHtml5 width='46px' height='46px' style={{ color: '#f96926', margin: '14px', backgroundColor: 'white', borderRadius: '15px' }} />
-
-                                                <div style={{ width: '46px', padding: '1px', height: '46px', margin: '14px', backgroundColor: 'white', borderRadius: '15px' }}>
-                                                <img src="img/springboot-color.svg" alt="Descripción del SVG"></img>
-                                                </div>
-
-
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className='py-3 row' id='iconos' >
+                                    <strong><h2 style={{ textAlign: 'left' }}>Conocimientos destacables</h2></strong>
+                                    <div className='col py-2' style={{ border: '1px solid grey', borderRadius: '25px', textAlign: 'center', margin: '12px', display: 'flex', justifyContent: 'center' }}>
+                                        <div style={{ textAlign: 'center' }}>
+                                            <h4>Lenguajes</h4>
+                                            <div style={{ display: 'flex', alignItems: 'center' }}>
+                                                <Tooltip title="Java">
+                                                    <img src='img/icons/java.svg' height={'32px'} className='px-2' alt='Java' />
+                                                </Tooltip>
+                                                <Tooltip title="JavaScript">
+                                                    <img src='img/icons/javascript.svg' height={'32px'} className='px-2' alt='Javascript' />
+                                                </Tooltip>
+                                                <Tooltip title="C#">
+                                                    <img src='img/icons/cSharp.svg' height={'32px'} className='px-2' alt="C#" />
+                                                </Tooltip>
+                                                <Tooltip title="Python">
+                                                    <img src='img/icons/python.svg' height={'32px'} className='px-2' alt="Python" />
+                                                </Tooltip>
+                                                <Tooltip title="Typescript">
+                                                    <img src='img/icons/typescript.svg' height={'32px'} className='px-2' alt="Typescript" />
+                                                </Tooltip>
+                                                <Tooltip title="PHP">
+                                                    <img src='img/icons/php.svg' height={'32px'} className='px-2' alt="PHP" />
+                                                </Tooltip>
                                             </div>
                                         </div>
+                                    </div>
+
+                                    <div className='col py-2' style={{ border: '1px solid grey', borderRadius: '25px', textAlign: 'center', margin: '12px' }}>
+                                        <h4>Frameworks</h4>
+                                        <Tooltip title=".NET">
+                                            <img src='img/icons/dotNet.svg' height={'32px'} className='px-2' alt=".net" />
+                                        </Tooltip>
+                                        <Tooltip title="React">
+                                            <img src='img/icons/react.svg' height={'32px'} className='px-2' alt='React' />
+                                        </Tooltip>
+                                        <Tooltip title="Spring Boot">
+                                            <img src='img/icons/springboot.svg' height={'32px'} className='px-2' alt='Spring Boot' />
+                                        </Tooltip>
+                                        <Tooltip title="Django">
+                                            <img src='img/icons/django.svg' height={'32px'} className='px-2' alt='Django' />
+                                        </Tooltip>
+                                        <Tooltip title="Bootstrap">
+                                            <img src='img/icons/bootstrap.svg' height={'32px'} className='px-2' alt='Bootstrap' />
+                                        </Tooltip>
+                                    </div>
+
+                                    <div className='col py-2' style={{ border: '1px solid grey', borderRadius: '25px', textAlign: 'center', margin: '12px' }}>
+                                        <h4>Bases de Datos</h4>
+                                        <Tooltip title="MySQL">
+                                            <img src='img/icons/mySql.svg' height={'32px'} className='px-2' alt='MySQL' />
+                                        </Tooltip>
+                                        <Tooltip title="Microsoft SQL Server">
+                                            <img src='img/icons/sqlServer.svg' height={'32px'} className='px-2' alt='Microsoft SQL Server' />
+                                        </Tooltip>
+                                        <Tooltip title="Oracle SQL">
+                                            <img src='img/icons/oracleSql.svg' height={'32px'} className='px-2' alt='Oracle SQL' />
+                                        </Tooltip>
+                                        <Tooltip title="AWS RDS">
+                                            <img src='img/icons/rds.svg' height={'32px'} className='px-2' alt='AWS RDS' />
+                                        </Tooltip>
+                                        <Tooltip title="GraphQL">
+                                            <img src='img/icons/graph.svg' height={'32px'} className='px-2' alt='GraphQL' />
+                                        </Tooltip>
+
+                                    </div>
+                                    <div className='col py-2' style={{ border: '1px solid grey', borderRadius: '25px', textAlign: 'center', margin: '12px' }}>
+                                        <h4>Herramientas</h4>
+                                        <Tooltip title="Git">
+                                            <img src='img/icons/git.svg' height={'32px'} className='px-2' alt='Git' />
+                                        </Tooltip>
+                                        <Tooltip title="HTML">
+                                            <img src='img/icons/html.svg' height={'32px'} className='px-2' alt='HTML' />
+                                        </Tooltip>
+                                        <Tooltip title="CSS">
+                                            <img src='img/icons/css.svg' height={'32px'} className='px-2' alt='CSS' />
+                                        </Tooltip>
+                                        <Tooltip title="Jira">
+                                            <img src='img/icons/jira.svg' height={'32px'} className='px-2' alt='Jira' />
+                                        </Tooltip>
                                     </div>
                                 </div>
                             </motion.div>
@@ -116,6 +181,7 @@ const SobreMi = () => {
 
                     </div>
                 </div>
+
             </div>
 
 

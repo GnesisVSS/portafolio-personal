@@ -1,20 +1,17 @@
 import React from "react";
-import { useInView } from "react-intersection-observer";
 
 // Secciones para el Home
+import {
+  useScroll,
+  useSpring,
+  useTransform
+} from "framer-motion";
+import { useRef } from "react";
+import { ParallaxProvider } from "react-scroll-parallax";
+import ContactForm from "./Home/ContactForm";
 import Home from "./Home/home";
 import Proyectos from "./Home/proyectos";
 import SobreMi from "./Home/sobreMi";
-import ContactForm from "./Home/ContactForm";
-import { useRef } from "react";
-import {
-  motion,
-  useScroll,
-  useSpring,
-  useTransform,
-  MotionValue,
-} from "framer-motion";
-import { ParallaxProvider } from "react-scroll-parallax";
 
 function useParallax(value, distance) {
   return useTransform(value, [0, 1], [-distance, distance]);

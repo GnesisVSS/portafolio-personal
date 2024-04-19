@@ -12,7 +12,7 @@ p,a{
 }
 
 /* Para titulos de tipo h1 y h2 se especifica otro tipo de fuente */
-h1, h2{
+h1, h2,h4{
   font-family: 'Righteous', cursive;
 }
 
@@ -540,7 +540,7 @@ html {
   justify-content: center;
   align-items: center;
   position: relative;
-  scroll-snap-align: center;
+  /* scroll-snap-align: center; */
   /* perspective: 500px; */
 }
 
