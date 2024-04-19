@@ -1,19 +1,10 @@
-import { useAnimation, motion } from 'framer-motion';
+import Table from '@mui/joy/Table';
+import Atropos from 'atropos/react';
+import { useAnimation } from 'framer-motion';
 import React, { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
-import { homeAnimation } from '../../animation';
-import Recetas from '../Recetas/Recetas';
-import Atropos from 'atropos/react';
-import Table from '@mui/joy/Table';
-import { IconBrandReact, IconBrandRedux } from '@tabler/icons-react';
-import { IconBrandJavascript } from '@tabler/icons-react';
-import { IconBrandGit } from '@tabler/icons-react';
-import { IconBrandCss3 } from '@tabler/icons-react';
-import { IconBrandHtml5 } from '@tabler/icons-react';
-import Navbar from '../Home/ElementosHome/navbar';
 import Footer from '../Home/ElementosHome/footer';
-import { IconBrandGraphql } from '@tabler/icons-react';
-import { IconApi } from '@tabler/icons-react';
+import Navbar from '../Home/ElementosHome/navbar';
 
 const VistaPreDemoRickyMorty = () => {
 
@@ -141,35 +132,37 @@ const VistaPreDemoRickyMorty = () => {
                                     <tr>
                                         <td> <strong>Lenguaje de Programación</strong></td>
                                         <td></td>
-                                        <td><IconBrandJavascript width='32px' height='32px' style={{ color: '#ffd630', margin: '18px', backgroundColor: 'white', borderRadius: '15px' }} />JavaScript</td>
+                                        <td>
+                                        <img src='img/icons/javascript.svg' width='32px' height='32px' style={{margin: '12px'}}/> JavaScript
+                                        </td>
                                     </tr>
                                     <tr className='complementos'>
                                         <td> <strong>Frameworks y Librerías</strong> </td>
                                         <td></td>
                                         <td >
-                                            <IconBrandReact width='32px' height='32px' style={{ color: '#61DBFB', margin: '18px', backgroundColor: 'white', borderRadius: '15px' }} />ReactJS
+                                            <img src='img/icons/react.svg' width='32px' height='32px' style={{margin: '12px'}}/> ReactJS
                                             <br />
-                                            <IconBrandRedux width='32px' height='32px' style={{ color: '#764abc', margin: '18px', backgroundColor: 'white', borderRadius: '15px' }} />React Redux
+                                            <img src='img/icons/redux.svg' width='32px' height='32px' style={{margin: '12px'}}/> React Redux
                                         </td>
                                     </tr>
                                     <tr>
                                         <td> <strong>Base de Datos</strong> </td>
                                         <td></td>
-                                        <td><IconBrandGraphql width='32px' height='32px' style={{ color: '#E10098', margin: '18px', backgroundColor: 'white', borderRadius: '15px' }} /> GraphQL </td>
+                                        <td><img src='img/icons/graph.svg' width='32px' height='32px' style={{margin: '12px'}}/> GraphQL </td>
                                     </tr>
                                     <tr className='complemetos'>
                                         <td> <strong>Complementos</strong> </td>
                                         <td></td>
                                         <td >
-                                            <IconBrandGit width='32px' height='32px' style={{ color: '#f96926', margin: '18px', backgroundColor: 'white', borderRadius: '15px' }} />Git
+                                            <img src='img/icons/git.svg' width='32px' height='32px' style={{margin: '12px'}}/> Git
                                             <br />
-                                            <IconBrandHtml5 width='32px' height='32px' style={{ color: '#f96926', margin: '18px', backgroundColor: 'white', borderRadius: '15px' }} />HTML
+                                            <img src='img/icons/html.svg' width='32px' height='32px' style={{margin: '12px'}}/> HTML
 
                                             <br />
-                                            <IconBrandCss3 width='32px' height='32px' style={{ color: '#61DBFB', margin: '18px', backgroundColor: 'white', borderRadius: '15px' }} />CSS
+                                            <img src='img/icons/css.svg' width='32px' height='32px' style={{margin: '12px'}}/> CSS
 
                                             <br />
-                                            <IconApi width='32px' height='32px' style={{ color: 'gray', margin: '18px', backgroundColor: 'white', borderRadius: '15px' }} />Rick and Morty API
+                                            <img src='img/icons/rickyMorty.svg' width='32px' height='32px' style={{margin: '12px'}}/> Rick and Morty API
                                         </td>
                                     </tr>
 

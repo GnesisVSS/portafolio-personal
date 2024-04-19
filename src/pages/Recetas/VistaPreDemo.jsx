@@ -1,17 +1,10 @@
-import { useAnimation, motion } from 'framer-motion';
+import Table from '@mui/joy/Table';
+import Atropos from 'atropos/react';
+import { useAnimation } from 'framer-motion';
 import React, { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
-import { homeAnimation } from '../../animation';
-import Recetas from '../Recetas/Recetas';
-import Atropos from 'atropos/react';
-import Table from '@mui/joy/Table';
-import { IconBrandReact } from '@tabler/icons-react';
-import { IconBrandJavascript } from '@tabler/icons-react';
-import { IconBrandGit } from '@tabler/icons-react';
-import { IconBrandCss3 } from '@tabler/icons-react';
-import { IconBrandHtml5 } from '@tabler/icons-react';
-import Navbar from '../Home/ElementosHome/navbar';
 import Footer from '../Home/ElementosHome/footer';
+import Navbar from '../Home/ElementosHome/navbar';
 
 const VistaPreDemo = () => {
 
@@ -139,33 +132,34 @@ const VistaPreDemo = () => {
                                     <tr>
                                         <td> <strong>Lenguaje de Programación</strong></td>
                                         <td></td>
-                                        <td><IconBrandJavascript width='32px' height='32px' style={{ color: '#ffd630', margin: '18px', backgroundColor: 'white', borderRadius: '15px' }} />JavaScript</td>
+                                        <td>
+                                        <img src='img/icons/javascript.svg' width='32px' height='32px' style={{margin: '18px'}}/> JavaScript
+                                        </td>
                                     </tr>
                                     <tr>
-                                        <td> <strong>Framework</strong> </td>
+                                        <td> <strong>Frameworks / Librerías </strong> </td>
                                         <td></td>
-                                        <td><IconBrandReact width='32px' height='32px' style={{ color: '#61DBFB', margin: '18px', backgroundColor: 'white', borderRadius: '15px' }} />ReactJS</td>
+                                        <td>
+                                        <img src='img/icons/react.svg' width='32px' height='32px' style={{margin: '18px'}}/> ReactJS
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td> <strong>Base de Datos</strong> </td>
                                         <td></td>
-                                        <td><svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-brand-planetscale" width='32px' height='32px' viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round" style={{ color: 'black', margin: '18px', backgroundColor: 'white', borderRadius: '15px' }}>
-                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                            <path d="M20.993 11.63a9 9 0 0 1 -9.362 9.362l9.362 -9.362z"></path>
-                                            <path d="M12 3a9.001 9.001 0 0 1 8.166 5.211l-11.955 11.955a9 9 0 0 1 3.789 -17.166z"></path>
-                                            <path d="M12 12l-6 6"></path>
-                                        </svg>MySql con PlanetScale</td>
+                                        <td>
+                                        <img src='img/icons/rds.svg' width='32px' height='32px' style={{margin: '18px'}}/>  AWS RDS con MySQL
+                                        </td>
                                     </tr>
                                     <tr className='complemetos'>
-                                        <td> <strong>Complementos</strong> </td>
+                                        <td> <strong>Herramientas</strong> </td>
                                         <td></td>
                                         <td >
-                                            <IconBrandGit width='32px' height='32px' style={{ color: '#f96926', margin: '18px', backgroundColor: 'white', borderRadius: '15px' }} />Git
+                                            <img src='img/icons/git.svg' width='32px' height='32px' style={{margin: '18px'}} /> Git
                                             <br />
-                                            <IconBrandHtml5 width='32px' height='32px' style={{ color: '#f96926', margin: '18px', backgroundColor: 'white', borderRadius: '15px' }} />HTML
+                                            <img src='img/icons/html.svg' width='32px' height='32px' style={{margin: '18px'}}/> HTML
 
                                             <br />
-                                            <IconBrandCss3 width='32px' height='32px' style={{ color: '#61DBFB', margin: '18px', backgroundColor: 'white', borderRadius: '15px' }} />CSS
+                                            <img src='img/icons/css.svg' width='32px' height='32px' style={{margin: '18px'}}/> CSS
 
                                         </td>
                                     </tr>
