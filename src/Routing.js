@@ -60,7 +60,8 @@ function Routing() {
                     <Route path='/recetas' element={<Recetas />} />
                     <Route path='/login' element={<Login />} />
                     <Route path='/registro' element={<Registro />} />
-                    <Route path='/RecetasHome' element={datos ? <Navigate to='/HomeUsuario' /> : <RecetasPreLog />} />
+                    // <Route path='/RecetasHome' element={datos ? <Navigate to='/HomeUsuario' /> : <RecetasPreLog />} />
+                    <Route path='/RecetasHome' element={<Navigate to='/HomeUsuario' />} />
                     <Route path='/regRecAdmin' element={<FormRecetasAdmin />} />
                     <Route path='/HomeUsuario' element={datos ? <HomeUsuario /> : <Navigate to='/login' />} />
                     <Route path='/miPerfil' element={datos ? <MiPerfil /> : <Navigate to='/login' />} />
