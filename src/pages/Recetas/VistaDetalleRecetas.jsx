@@ -4,7 +4,7 @@ import { Checkbox, Chip, FormControlLabel, FormGroup } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { mostrarDetalleIngredientes, mostrarDetalleRecetas } from '../../api/receta.api';
-import NavbarUsuario from './ElementosRecetas/Navs/navbarUsuario';
+import NavbarRecetas from './ElementosRecetas/Navs/navbar-recetas';
 
 const DetalleRecetas = () => {
     const location = useLocation();
