@@ -71,7 +71,7 @@ const DetalleRecetas = () => {
 
     return (
         <section>
-            <NavbarUsuario />
+            <NavbarRecetas/>
 
 
             <div className='container mx-auto py-4' style={{ margin: '0px 32px 0px 32px' }}>
