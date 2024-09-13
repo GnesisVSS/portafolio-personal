@@ -95,7 +95,7 @@ const ContactForm = () => {
                                                 <div className="icon-demo-icon icon-demo-stroke-150 icon-demo-size-32">
                                                     <IconFileDownload className='iconContact'></IconFileDownload>                                                </div>
                                                 <div className="text-uppercase font-h5 mt-2 font-medium"> <strong>CV</strong></div>
-                                                <a type='button' className='button-contact' href='files/GenesisSaez-CV.pdf'>
+                                                <a type='button' className='button-contact' href='files/CV_Genesis_Saez.pdf'>
                                                     Descargar CV
                                                 </a>
                                             </div>
