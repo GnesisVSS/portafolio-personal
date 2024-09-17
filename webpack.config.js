@@ -56,7 +56,7 @@ module.exports = {
             },
             // Reglas para los archivos de imágenes
             {
-                test: /\.(png|jpe?g|gif)$/i,
+                test: /\.(png|jpe?g|gif|jfif)$/i,
                 use: [
                     {
                         loader: 'file-loader',
