@@ -23,7 +23,7 @@ import InfoDetalladaId from './pages/RickAndMorty/InfoDetalladaId';
 import InfoFavoritos from './pages/RickAndMorty/InfoFavoritos';
 import store from './pages/RickAndMorty/Redux/store/store';
 import RickAndMortyPages from './pages/RickAndMorty/RickAndMortyPages';
-
+import VistaPreDemoTalentAlke from './pages/TalentAlke/vistaPreDemoTA.jsx';
 import '@mui/material/styles';
 import VistaPreDemoRickyMorty from './pages/RickAndMorty/VistaPreDemoRickyMorty';
 
@@ -85,7 +85,7 @@ function Routing() {
                     <Route path='/MisFavoritos' element={<ApolloProvider client={client}>
                         <InfoFavoritos />
                     </ApolloProvider>} />
-                    
+                    <Route path='/DemoTalentAlke' element={<VistaPreDemoTalentAlke />} />
                     
                 </Routes>
             </Router>

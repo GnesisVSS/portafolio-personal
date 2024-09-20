@@ -6,7 +6,7 @@ import { useInView } from 'react-intersection-observer';
 
 
 const SobreMi = () => {
-
+    const control = useAnimation()
     const [screenSize, setScreenSize] = useState(window.innerWidth);
     const [ref, inView] = useInView()
     useEffect(() => {
@@ -32,7 +32,7 @@ const SobreMi = () => {
     const estilo2 = {
         fontSize: '18px'
     }
-    const control = useAnimation()
+    
     const headerClass = screenSize < 767 ? 'mobile' : 'pantalla';
 
     return (
