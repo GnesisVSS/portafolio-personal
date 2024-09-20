@@ -60,7 +60,7 @@ const VistaPreDemoTalentAlke = () => {
                                             eliminarlos, modificarlos con restricciones en base al rol que tiene la persona que quiere editar, y también se puede ver la información de un usuario específico.
                                             Ademas de contar con la vista de usuario normal de tipo empleado con la vista de su perfil.
                                         </p>
-                                        <small><em>Especial mension a Brisa, Kamila y Teresa que fueron mis compañeras de desarrollo en este proyecto.</em></small>
+                                        <small><em>Especial mención a Brisa, Kamila y Teresa que fueron mis compañeras de desarrollo en este proyecto.</em></small>
                                     </div>
 
                                 </div>
