@@ -111,7 +111,7 @@ const SobreMi = () => {
                                                     <img src='img/icons/python.svg' height={'32px'} className='px-2' alt="Python" />
                                                 </Tooltip>
                                                 <Tooltip title="Typescript">
-                                                    <img src='img/icons/typescript.svg' height={'32px'} className='px-2' alt="Typescript" />
+                                                    <img src='img/icons/typescript-color.svg' height={'32px'} className='px-2' alt="Typescript" />
                                                 </Tooltip>
                                                 <Tooltip title="PHP">
                                                     <img src='img/icons/php.svg' height={'32px'} className='px-2' alt="PHP" />
@@ -151,7 +151,7 @@ const SobreMi = () => {
                                             <img src='img/icons/oracleSql.svg' height={'32px'} className='px-2' alt='Oracle SQL' />
                                         </Tooltip>
                                         <Tooltip title="AWS RDS">
-                                            <img src='img/icons/rds.svg' height={'32px'} className='px-2' alt='AWS RDS' />
+                                            <img src='img/icons/amazonrds-color.svg' height={'32px'} className='px-2' alt='AWS RDS' />
                                         </Tooltip>
                                         <Tooltip title="GraphQL">
                                             <img src='img/icons/graph.svg' height={'32px'} className='px-2' alt='GraphQL' />
