@@ -55,11 +55,12 @@ const VistaPreDemoTalentAlke = () => {
                                     <strong><h1 style={{ textAlign: 'left', color: '#162E36', marginTop: '40px' }} className='h1Proyectos'>TalentAlke</h1></strong>
                                     <div className='py-4'>
                                         <p style={estilo2}>
-                                            Aplicación web enfocada en la administración de usuarios, enfocada principalmente para el uso de administradores pero también con
-                                            funcionalidades básicas de usuarios de tipo empleado. Las funcionalidades se basan en un CRUD, es decir se permite agregar usuarios nuevos,
+                                            Aplicación web enfocada en la administración de usuarios principalmente para el uso de administradores teniendo
+                                            funcionalidades basadas en un CRUD, es decir se permite agregar usuarios nuevos,
                                             eliminarlos, modificarlos con restricciones en base al rol que tiene la persona que quiere editar, y también se puede ver la información de un usuario específico.
+                                            Ademas de contar con la vista de usuario normal de tipo empleado con la vista de su perfil.
                                         </p>
-
+                                        <small>Especial mension a Brisa, Kamila y Teresa que fueron mis compañeras de desarrollo en este proyecto.</small>
                                     </div>
 
                                 </div>
